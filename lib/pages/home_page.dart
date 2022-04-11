@@ -114,7 +114,9 @@ class HomePage extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
             ),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/form-activity');
+              },
               child: Image.asset(
                 'assets/run.png',
                 width: 50,
@@ -188,7 +190,9 @@ class HomePage extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
             ),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/form-antrhopometri');
+              },
               child: Image.asset(
                 'assets/weight.png',
                 width: 50,
@@ -225,7 +229,9 @@ class HomePage extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
             ),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/form-hemoglobin');
+              },
               child: Image.asset(
                 'assets/blood.png',
                 width: 50,

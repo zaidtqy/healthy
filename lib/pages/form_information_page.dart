@@ -572,10 +572,13 @@ class _FormInformationState extends State<FormInformation> {
                       child: TextFormField(
                         keyboardType: TextInputType.phone,
                         style: primaryTextStyle,
-                        decoration: InputDecoration.collapsed(
+                        decoration: InputDecoration(
                           hintText: 'Jumlah',
                           hintStyle: primaryTextStyle,
+                          counterText: "",
+                          border: InputBorder.none,
                         ),
+                        maxLength: 2,
                       ),
                     ),
                   ],
@@ -631,10 +634,13 @@ class _FormInformationState extends State<FormInformation> {
                       child: TextFormField(
                         keyboardType: TextInputType.phone,
                         style: primaryTextStyle,
-                        decoration: InputDecoration.collapsed(
+                        decoration: InputDecoration(
                           hintText: 'Anak ke',
                           hintStyle: primaryTextStyle,
+                          counterText: "",
+                          border: InputBorder.none,
                         ),
+                        maxLength: 2,
                       ),
                     ),
                   ],
@@ -857,10 +863,13 @@ class _FormInformationState extends State<FormInformation> {
                       child: TextFormField(
                         keyboardType: TextInputType.phone,
                         style: primaryTextStyle,
-                        decoration: InputDecoration.collapsed(
+                        decoration: InputDecoration(
                           hintText: 'Usia ke',
                           hintStyle: primaryTextStyle,
+                          counterText: "",
+                          border: InputBorder.none,
                         ),
+                        maxLength: 3,
                       ),
                     ),
                   ],
@@ -958,7 +967,7 @@ class _FormInformationState extends State<FormInformation> {
 
     Widget saveButton() {
       return Container(
-        height: 40,
+        height: 45,
         width: double.infinity,
         margin: const EdgeInsets.only(top: 30, bottom: 30),
         child: TextButton(
