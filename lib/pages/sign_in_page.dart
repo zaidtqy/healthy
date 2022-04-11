@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:healthy/theme.dart';
 
 class SignInPage extends StatelessWidget {
+  const SignInPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Widget header() {
       return Container(
-        margin: EdgeInsets.only(top: 30),
+        margin: const EdgeInsets.only(top: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -31,7 +33,7 @@ class SignInPage extends StatelessWidget {
 
     Widget emailInput() {
       return Container(
-        margin: EdgeInsets.only(top: 65),
+        margin: const EdgeInsets.only(top: 65),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -42,12 +44,12 @@ class SignInPage extends StatelessWidget {
                 fontWeight: semibold,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
               height: 45,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 15,
               ),
               decoration: BoxDecoration(
@@ -65,11 +67,12 @@ class SignInPage extends StatelessWidget {
                       'assets/email.png',
                       width: 20,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     Expanded(
                       child: TextFormField(
+                        keyboardType: TextInputType.emailAddress,
                         style: primaryTextStyle,
                         decoration: InputDecoration.collapsed(
                           hintText: 'Alamat Email',
@@ -88,7 +91,7 @@ class SignInPage extends StatelessWidget {
 
     Widget passwordInput() {
       return Container(
-        margin: EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -99,12 +102,12 @@ class SignInPage extends StatelessWidget {
                 fontWeight: semibold,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
               height: 45,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 15,
               ),
               decoration: BoxDecoration(
@@ -122,7 +125,7 @@ class SignInPage extends StatelessWidget {
                       'assets/lock.png',
                       width: 20,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     Expanded(
@@ -148,7 +151,7 @@ class SignInPage extends StatelessWidget {
       return Container(
         height: 40,
         width: double.infinity,
-        margin: EdgeInsets.only(top: 30),
+        margin: const EdgeInsets.only(top: 30),
         child: TextButton(
           onPressed: () {
             Navigator.pushNamed(context, '/home-page');
@@ -171,7 +174,7 @@ class SignInPage extends StatelessWidget {
 
     Widget footer() {
       return Container(
-        margin: EdgeInsets.only(bottom: 30),
+        margin: const EdgeInsets.only(bottom: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -181,7 +184,7 @@ class SignInPage extends StatelessWidget {
                 fontSize: 15,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 5,
             ),
             GestureDetector(
@@ -215,7 +218,7 @@ class SignInPage extends StatelessWidget {
               emailInput(),
               passwordInput(),
               signInButton(),
-              Spacer(),
+              const Spacer(),
               footer(),
             ],
           ),

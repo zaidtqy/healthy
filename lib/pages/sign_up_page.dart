@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:healthy/theme.dart';
 
 class SignUpPage extends StatelessWidget {
+  const SignUpPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Widget header() {
       return Container(
-        margin: EdgeInsets.only(top: 30),
+        margin: const EdgeInsets.only(top: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -31,7 +33,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget nameInput() {
       return Container(
-        margin: EdgeInsets.only(top: 65),
+        margin: const EdgeInsets.only(top: 65),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -42,12 +44,12 @@ class SignUpPage extends StatelessWidget {
                 fontWeight: semibold,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
               height: 45,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 15,
               ),
               decoration: BoxDecoration(
@@ -65,7 +67,7 @@ class SignUpPage extends StatelessWidget {
                       'assets/user.png',
                       width: 20,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     Expanded(
@@ -88,7 +90,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget emailInput() {
       return Container(
-        margin: EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -99,12 +101,12 @@ class SignUpPage extends StatelessWidget {
                 fontWeight: semibold,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
               height: 45,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 15,
               ),
               decoration: BoxDecoration(
@@ -122,11 +124,12 @@ class SignUpPage extends StatelessWidget {
                       'assets/email.png',
                       width: 20,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     Expanded(
                       child: TextFormField(
+                        keyboardType: TextInputType.emailAddress,
                         style: primaryTextStyle,
                         decoration: InputDecoration.collapsed(
                           hintText: 'Alamat Email',
@@ -145,7 +148,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget phoneInput() {
       return Container(
-        margin: EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -156,12 +159,12 @@ class SignUpPage extends StatelessWidget {
                 fontWeight: semibold,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
               height: 45,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 15,
               ),
               decoration: BoxDecoration(
@@ -179,11 +182,12 @@ class SignUpPage extends StatelessWidget {
                       'assets/phone-call.png',
                       width: 20,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     Expanded(
                       child: TextFormField(
+                        keyboardType: TextInputType.phone,
                         style: primaryTextStyle,
                         decoration: InputDecoration.collapsed(
                           hintText: 'Nomor Telepon',
@@ -202,7 +206,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget passwordInput() {
       return Container(
-        margin: EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -213,12 +217,12 @@ class SignUpPage extends StatelessWidget {
                 fontWeight: semibold,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
               height: 45,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 15,
               ),
               decoration: BoxDecoration(
@@ -236,7 +240,7 @@ class SignUpPage extends StatelessWidget {
                       'assets/lock.png',
                       width: 20,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     Expanded(
@@ -262,7 +266,7 @@ class SignUpPage extends StatelessWidget {
       return Container(
         height: 40,
         width: double.infinity,
-        margin: EdgeInsets.only(top: 30),
+        margin: const EdgeInsets.only(top: 30),
         child: TextButton(
           onPressed: () {},
           style: TextButton.styleFrom(
@@ -283,7 +287,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget footer() {
       return Container(
-        margin: EdgeInsets.only(bottom: 30),
+        margin: const EdgeInsets.only(bottom: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -293,7 +297,7 @@ class SignUpPage extends StatelessWidget {
                 fontSize: 15,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 5,
             ),
             GestureDetector(
@@ -330,7 +334,7 @@ class SignUpPage extends StatelessWidget {
               phoneInput(),
               passwordInput(),
               signInButton(),
-              Spacer(),
+              const Spacer(),
               footer(),
             ],
           ),

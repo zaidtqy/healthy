@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:healthy/theme.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Widget info() {
@@ -9,7 +11,7 @@ class HomePage extends StatelessWidget {
         height: 94,
         width: double.infinity,
         padding: EdgeInsets.all(defaultMargin),
-        margin: EdgeInsets.only(top: 30),
+        margin: const EdgeInsets.only(top: 30),
         decoration: BoxDecoration(
           color: fourthColor.withOpacity(0.5),
           borderRadius: BorderRadius.circular(15),
@@ -28,7 +30,7 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             Flexible(
@@ -42,7 +44,7 @@ class HomePage extends StatelessWidget {
                       fontWeight: bold,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Text(
@@ -67,23 +69,25 @@ class HomePage extends StatelessWidget {
           Container(
             height: 75,
             width: 75,
-            margin: EdgeInsets.only(top: 30),
+            margin: const EdgeInsets.only(top: 30),
             decoration: BoxDecoration(
               color: fourthColor,
               borderRadius: BorderRadius.circular(15),
             ),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/form-information');
+              },
               child: Image.asset(
                 'assets/user.png',
                 width: 50,
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
-          Container(
+          SizedBox(
             width: 75,
             child: Text(
               'Data Informasi Subyek',
@@ -104,7 +108,7 @@ class HomePage extends StatelessWidget {
           Container(
             height: 75,
             width: 75,
-            margin: EdgeInsets.only(top: 30),
+            margin: const EdgeInsets.only(top: 30),
             decoration: BoxDecoration(
               color: fourthColor,
               borderRadius: BorderRadius.circular(15),
@@ -117,10 +121,10 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
-          Container(
+          SizedBox(
             width: 75,
             child: Text(
               'Data Aktifitas Fisik Subyek',
@@ -141,7 +145,7 @@ class HomePage extends StatelessWidget {
           Container(
             height: 75,
             width: 75,
-            margin: EdgeInsets.only(top: 30),
+            margin: const EdgeInsets.only(top: 30),
             decoration: BoxDecoration(
               color: fourthColor,
               borderRadius: BorderRadius.circular(15),
@@ -154,10 +158,10 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
-          Container(
+          SizedBox(
             width: 75,
             child: Text(
               'Data Asupan Subyek',
@@ -178,7 +182,7 @@ class HomePage extends StatelessWidget {
           Container(
             height: 75,
             width: 75,
-            margin: EdgeInsets.only(top: 30),
+            margin: const EdgeInsets.only(top: 30),
             decoration: BoxDecoration(
               color: fourthColor,
               borderRadius: BorderRadius.circular(15),
@@ -191,10 +195,10 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
-          Container(
+          SizedBox(
             width: 75,
             child: Text(
               'Data Antrhopometri',
@@ -215,7 +219,7 @@ class HomePage extends StatelessWidget {
           Container(
             height: 75,
             width: 75,
-            margin: EdgeInsets.only(top: 30),
+            margin: const EdgeInsets.only(top: 30),
             decoration: BoxDecoration(
               color: fourthColor,
               borderRadius: BorderRadius.circular(15),
@@ -228,10 +232,10 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
-          Container(
+          SizedBox(
             width: 75,
             child: Text(
               'Data Hemoglobin',
@@ -252,7 +256,7 @@ class HomePage extends StatelessWidget {
           Container(
             height: 75,
             width: 75,
-            margin: EdgeInsets.only(top: 30),
+            margin: const EdgeInsets.only(top: 30),
             decoration: BoxDecoration(
               color: fourthColor,
               borderRadius: BorderRadius.circular(15),
@@ -265,10 +269,10 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
-          Container(
+          SizedBox(
             width: 75,
             child: Text(
               'Kesehatan Reproduksi dan Pola Makan',
@@ -287,7 +291,7 @@ class HomePage extends StatelessWidget {
       return Container(
         height: 166,
         width: double.infinity,
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
           color: secondaryColor.withOpacity(0.5),
           borderRadius: BorderRadius.circular(15),
@@ -304,7 +308,7 @@ class HomePage extends StatelessWidget {
                     fontWeight: medium,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Text(
                   '29/03/2022',
                   style: primaryTextStyle.copyWith(
@@ -314,7 +318,7 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -323,7 +327,7 @@ class HomePage extends StatelessWidget {
                   'assets/user.png',
                   width: 15,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
@@ -333,7 +337,7 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Row(
@@ -342,7 +346,7 @@ class HomePage extends StatelessWidget {
                   'assets/placeholder.png',
                   width: 15,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
@@ -354,10 +358,10 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Container(
+            SizedBox(
               height: 40,
               width: double.infinity,
               child: TextButton(
@@ -385,7 +389,7 @@ class HomePage extends StatelessWidget {
       return Container(
         height: 166,
         width: double.infinity,
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
           color: secondaryColor.withOpacity(0.5),
           borderRadius: BorderRadius.circular(15),
@@ -402,7 +406,7 @@ class HomePage extends StatelessWidget {
                     fontWeight: medium,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Text(
                   '29/03/2022',
                   style: primaryTextStyle.copyWith(
@@ -412,7 +416,7 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -421,7 +425,7 @@ class HomePage extends StatelessWidget {
                   'assets/clock.png',
                   width: 15,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
@@ -431,7 +435,7 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Row(
@@ -440,7 +444,7 @@ class HomePage extends StatelessWidget {
                   'assets/date.png',
                   width: 15,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
@@ -450,14 +454,14 @@ class HomePage extends StatelessWidget {
                     fontWeight: medium,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 25,
                 ),
                 Image.asset(
                   'assets/run.png',
                   width: 15,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
@@ -476,10 +480,10 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Container(
+            SizedBox(
               height: 40,
               width: double.infinity,
               child: TextButton(
@@ -507,7 +511,7 @@ class HomePage extends StatelessWidget {
       return Container(
         height: 166,
         width: double.infinity,
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
           color: secondaryColor.withOpacity(0.5),
           borderRadius: BorderRadius.circular(15),
@@ -524,7 +528,7 @@ class HomePage extends StatelessWidget {
                     fontWeight: medium,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Text(
                   '29/03/2022',
                   style: primaryTextStyle.copyWith(
@@ -534,7 +538,7 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -543,7 +547,7 @@ class HomePage extends StatelessWidget {
                   'assets/cutlery.png',
                   width: 15,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
@@ -553,7 +557,7 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Row(
@@ -562,7 +566,7 @@ class HomePage extends StatelessWidget {
                   'assets/file.png',
                   width: 15,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
@@ -574,10 +578,10 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Container(
+            SizedBox(
               height: 40,
               width: double.infinity,
               child: TextButton(
@@ -605,7 +609,7 @@ class HomePage extends StatelessWidget {
       return Container(
         height: 166,
         width: double.infinity,
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
           color: secondaryColor.withOpacity(0.5),
           borderRadius: BorderRadius.circular(15),
@@ -622,7 +626,7 @@ class HomePage extends StatelessWidget {
                     fontWeight: medium,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Text(
                   '29/03/2022',
                   style: primaryTextStyle.copyWith(
@@ -632,7 +636,7 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -641,7 +645,7 @@ class HomePage extends StatelessWidget {
                   'assets/height.png',
                   width: 15,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
@@ -649,14 +653,14 @@ class HomePage extends StatelessWidget {
                   style:
                       primaryTextStyle.copyWith(fontSize: 20, fontWeight: bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 68,
                 ),
                 Image.asset(
                   'assets/weight.png',
                   width: 15,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
@@ -666,7 +670,7 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Row(
@@ -675,7 +679,7 @@ class HomePage extends StatelessWidget {
                   'assets/file.png',
                   width: 15,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
@@ -694,10 +698,10 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Container(
+            SizedBox(
               height: 40,
               width: double.infinity,
               child: TextButton(
@@ -725,7 +729,7 @@ class HomePage extends StatelessWidget {
       return Container(
         height: 166,
         width: double.infinity,
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
           color: secondaryColor.withOpacity(0.5),
           borderRadius: BorderRadius.circular(15),
@@ -742,7 +746,7 @@ class HomePage extends StatelessWidget {
                     fontWeight: medium,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Text(
                   '29/03/2022',
                   style: primaryTextStyle.copyWith(
@@ -752,7 +756,7 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -761,7 +765,7 @@ class HomePage extends StatelessWidget {
                   'assets/blood.png',
                   width: 15,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
@@ -769,14 +773,14 @@ class HomePage extends StatelessWidget {
                   style:
                       primaryTextStyle.copyWith(fontSize: 20, fontWeight: bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 68,
                 ),
                 Image.asset(
                   'assets/report.png',
                   width: 15,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
@@ -788,7 +792,7 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Row(
@@ -797,7 +801,7 @@ class HomePage extends StatelessWidget {
                   'assets/file.png',
                   width: 15,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
@@ -809,10 +813,10 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Container(
+            SizedBox(
               height: 40,
               width: double.infinity,
               child: TextButton(
@@ -840,7 +844,7 @@ class HomePage extends StatelessWidget {
       return Container(
         height: 166,
         width: double.infinity,
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
           color: secondaryColor.withOpacity(0.5),
           borderRadius: BorderRadius.circular(15),
@@ -857,7 +861,7 @@ class HomePage extends StatelessWidget {
                     fontWeight: medium,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Text(
                   '29/03/2022',
                   style: primaryTextStyle.copyWith(
@@ -867,7 +871,7 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -876,7 +880,7 @@ class HomePage extends StatelessWidget {
                   'assets/books.png',
                   width: 15,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
@@ -886,7 +890,7 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Row(
@@ -895,7 +899,7 @@ class HomePage extends StatelessWidget {
                   'assets/file.png',
                   width: 15,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
@@ -907,10 +911,10 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Container(
+            SizedBox(
               height: 40,
               width: double.infinity,
               child: TextButton(
@@ -937,42 +941,37 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50.0),
+        preferredSize: const Size.fromHeight(50.0),
         child: AppBar(
           backgroundColor: fourthColor,
           automaticallyImplyLeading: false,
           elevation: 5,
           flexibleSpace: SafeArea(
-            child: Container(
-              child: Row(
-                children: [
-                  TextButton(
-                    onPressed: () {},
-                    child: Image.asset(
-                      'assets/menu.png',
-                      width: 20,
-                    ),
+            child: Row(
+              children: [
+                TextButton(
+                  onPressed: () {},
+                  child: Image.asset(
+                    'assets/menu.png',
+                    width: 20,
                   ),
-                  SizedBox(
-                    width: 15,
+                ),
+                Text(
+                  'Halo, Selamat datang',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: bold,
                   ),
-                  Text(
-                    'Halo, Selamat datang',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: bold,
-                    ),
+                ),
+                const Spacer(),
+                TextButton(
+                  onPressed: () {},
+                  child: Image.asset(
+                    'assets/bell.png',
+                    width: 20,
                   ),
-                  Spacer(),
-                  TextButton(
-                    onPressed: () {},
-                    child: Image.asset(
-                      'assets/bell.png',
-                      width: 20,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
@@ -988,46 +987,46 @@ class HomePage extends StatelessWidget {
               Row(
                 children: [
                   menuInformation(),
-                  Spacer(),
+                  const Spacer(),
                   menuActivity(),
-                  Spacer(),
+                  const Spacer(),
                   menuIntake(),
                 ],
               ),
               Row(
                 children: [
                   menuAntrhopometri(),
-                  Spacer(),
+                  const Spacer(),
                   menuHb(),
-                  Spacer(),
+                  const Spacer(),
                   menuKnowledge(),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               informationSubject(),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               activitySubject(),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               intakeSubject(),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               antrhopometriSubject(),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               hemoglobinSubject(),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               knowledgeSubject(),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
             ],
