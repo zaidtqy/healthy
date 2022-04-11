@@ -227,7 +227,7 @@ class _FormInformationState extends State<FormInformation> {
                     'assets/user.png',
                     width: 20,
                   ),
-                  Container(
+                  SizedBox(
                     width: 310,
                     child: DropdownButtonHideUnderline(
                       child: ButtonTheme(
@@ -311,7 +311,7 @@ class _FormInformationState extends State<FormInformation> {
                     'assets/user.png',
                     width: 20,
                   ),
-                  Container(
+                  SizedBox(
                     width: 310,
                     child: DropdownButtonHideUnderline(
                       child: ButtonTheme(
@@ -395,7 +395,7 @@ class _FormInformationState extends State<FormInformation> {
                     'assets/user.png',
                     width: 20,
                   ),
-                  Container(
+                  SizedBox(
                     width: 310,
                     child: DropdownButtonHideUnderline(
                       child: ButtonTheme(
@@ -479,7 +479,7 @@ class _FormInformationState extends State<FormInformation> {
                     'assets/user.png',
                     width: 20,
                   ),
-                  Container(
+                  SizedBox(
                     width: 310,
                     child: DropdownButtonHideUnderline(
                       child: ButtonTheme(
@@ -681,7 +681,7 @@ class _FormInformationState extends State<FormInformation> {
                     'assets/user.png',
                     width: 20,
                   ),
-                  Container(
+                  SizedBox(
                     width: 310,
                     child: DropdownButtonHideUnderline(
                       child: ButtonTheme(
@@ -765,7 +765,7 @@ class _FormInformationState extends State<FormInformation> {
                     'assets/user.png',
                     width: 20,
                   ),
-                  Container(
+                  SizedBox(
                     width: 310,
                     child: DropdownButtonHideUnderline(
                       child: ButtonTheme(
@@ -907,7 +907,7 @@ class _FormInformationState extends State<FormInformation> {
                     'assets/user.png',
                     width: 20,
                   ),
-                  Container(
+                  SizedBox(
                     width: 310,
                     child: DropdownButtonHideUnderline(
                       child: ButtonTheme(
@@ -952,6 +952,29 @@ class _FormInformationState extends State<FormInformation> {
               ),
             ),
           ],
+        ),
+      );
+    }
+
+    Widget saveButton() {
+      return Container(
+        height: 40,
+        width: double.infinity,
+        margin: const EdgeInsets.only(top: 30, bottom: 30),
+        child: TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(
+              backgroundColor: primaryColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              )),
+          child: Text(
+            'Simpan Data',
+            style: backgroundTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: bold,
+            ),
+          ),
         ),
       );
     }
@@ -1009,6 +1032,7 @@ class _FormInformationState extends State<FormInformation> {
             outcomeForm(),
             ageTeen(),
             historyDisease(),
+            saveButton(),
             const SizedBox(
               height: 30,
             ),
