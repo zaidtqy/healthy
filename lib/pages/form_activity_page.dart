@@ -9,6 +9,11 @@ class FormActivity extends StatefulWidget {
 }
 
 class _FormActivityState extends State<FormActivity> {
+  bool _isShowField1 = false;
+  bool _isShowField2 = false;
+  bool _isShowField3 = false;
+  bool _isShowField4 = false;
+
   String? _valAct1;
   final _act1 = [
     "Berjalan",
@@ -119,13 +124,74 @@ class _FormActivityState extends State<FormActivity> {
                             );
                           }).toList(),
                           onChanged: (value) {
-                            setState(
-                              () {
-                                _valAct1 = value;
-                              },
-                            );
+                            setState(() {
+                              _valAct1 = value;
+                              if (_valAct1 == _act1.last) {
+                                setState(() {
+                                  _isShowField1 = true;
+                                });
+                              } else {
+                                _isShowField1 = false;
+                              }
+                            });
                           },
                         ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    Widget other1Form() {
+      return Container(
+        margin: const EdgeInsets.only(top: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Kegiatan Lain',
+              style: primaryTextStyle.copyWith(
+                fontSize: 15,
+                fontWeight: semibold,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              height: 45,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+              ),
+              decoration: BoxDecoration(
+                color: backgroundColor,
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(
+                  width: 1.0,
+                  color: primaryColor,
+                ),
+              ),
+              child: Row(
+                children: [
+                  Image.asset(
+                    'assets/user.png',
+                    width: 20,
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  Expanded(
+                    child: TextFormField(
+                      autofocus: true,
+                      style: primaryTextStyle,
+                      decoration: InputDecoration.collapsed(
+                        hintText: 'Kegiatan lain',
+                        hintStyle: primaryTextStyle,
                       ),
                     ),
                   ),
@@ -277,13 +343,74 @@ class _FormActivityState extends State<FormActivity> {
                             );
                           }).toList(),
                           onChanged: (value) {
-                            setState(
-                              () {
-                                _valAct2 = value;
-                              },
-                            );
+                            setState(() {
+                              _valAct2 = value;
+                              if (_valAct2 == _act2.last) {
+                                setState(() {
+                                  _isShowField2 = true;
+                                });
+                              } else {
+                                _isShowField2 = false;
+                              }
+                            });
                           },
                         ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    Widget other2Form() {
+      return Container(
+        margin: const EdgeInsets.only(top: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Kegiatan Lain',
+              style: primaryTextStyle.copyWith(
+                fontSize: 15,
+                fontWeight: semibold,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              height: 45,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+              ),
+              decoration: BoxDecoration(
+                color: backgroundColor,
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(
+                  width: 1.0,
+                  color: primaryColor,
+                ),
+              ),
+              child: Row(
+                children: [
+                  Image.asset(
+                    'assets/user.png',
+                    width: 20,
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  Expanded(
+                    child: TextFormField(
+                      autofocus: true,
+                      style: primaryTextStyle,
+                      decoration: InputDecoration.collapsed(
+                        hintText: 'Kegiatan lain',
+                        hintStyle: primaryTextStyle,
                       ),
                     ),
                   ),
@@ -435,13 +562,74 @@ class _FormActivityState extends State<FormActivity> {
                             );
                           }).toList(),
                           onChanged: (value) {
-                            setState(
-                              () {
-                                _valAct3 = value;
-                              },
-                            );
+                            setState(() {
+                              _valAct3 = value;
+                              if (_valAct3 == _act3.last) {
+                                setState(() {
+                                  _isShowField3 = true;
+                                });
+                              } else {
+                                _isShowField3 = false;
+                              }
+                            });
                           },
                         ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    Widget other3Form() {
+      return Container(
+        margin: const EdgeInsets.only(top: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Kegiatan Lain',
+              style: primaryTextStyle.copyWith(
+                fontSize: 15,
+                fontWeight: semibold,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              height: 45,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+              ),
+              decoration: BoxDecoration(
+                color: backgroundColor,
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(
+                  width: 1.0,
+                  color: primaryColor,
+                ),
+              ),
+              child: Row(
+                children: [
+                  Image.asset(
+                    'assets/user.png',
+                    width: 20,
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  Expanded(
+                    child: TextFormField(
+                      autofocus: true,
+                      style: primaryTextStyle,
+                      decoration: InputDecoration.collapsed(
+                        hintText: 'Kegiatan lain',
+                        hintStyle: primaryTextStyle,
                       ),
                     ),
                   ),
@@ -593,13 +781,74 @@ class _FormActivityState extends State<FormActivity> {
                             );
                           }).toList(),
                           onChanged: (value) {
-                            setState(
-                              () {
-                                _valAct4 = value;
-                              },
-                            );
+                            setState(() {
+                              _valAct4 = value;
+                              if (_valAct4 == _act4.last) {
+                                setState(() {
+                                  _isShowField4 = true;
+                                });
+                              } else {
+                                _isShowField4 = false;
+                              }
+                            });
                           },
                         ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    Widget other4Form() {
+      return Container(
+        margin: const EdgeInsets.only(top: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Kegiatan Lain',
+              style: primaryTextStyle.copyWith(
+                fontSize: 15,
+                fontWeight: semibold,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              height: 45,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+              ),
+              decoration: BoxDecoration(
+                color: backgroundColor,
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(
+                  width: 1.0,
+                  color: primaryColor,
+                ),
+              ),
+              child: Row(
+                children: [
+                  Image.asset(
+                    'assets/user.png',
+                    width: 20,
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  Expanded(
+                    child: TextFormField(
+                      autofocus: true,
+                      style: primaryTextStyle,
+                      decoration: InputDecoration.collapsed(
+                        hintText: 'Kegiatan lain',
+                        hintStyle: primaryTextStyle,
                       ),
                     ),
                   ),
@@ -718,7 +967,9 @@ class _FormActivityState extends State<FormActivity> {
             child: Row(
               children: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   child: Image.asset(
                     'assets/back.png',
                     width: 20,
@@ -752,6 +1003,12 @@ class _FormActivityState extends State<FormActivity> {
             const SizedBox(
               height: 10,
             ),
+            if (_isShowField1) ...[
+              other1Form(),
+            ],
+            const SizedBox(
+              height: 10,
+            ),
             Row(
               children: [
                 act2Form(),
@@ -759,6 +1016,12 @@ class _FormActivityState extends State<FormActivity> {
                 minutesAct2(),
               ],
             ),
+            const SizedBox(
+              height: 10,
+            ),
+            if (_isShowField2) ...[
+              other2Form(),
+            ],
             const SizedBox(
               height: 10,
             ),
@@ -772,6 +1035,12 @@ class _FormActivityState extends State<FormActivity> {
             const SizedBox(
               height: 10,
             ),
+            if (_isShowField3) ...[
+              other3Form(),
+            ],
+            const SizedBox(
+              height: 10,
+            ),
             Row(
               children: [
                 act4Form(),
@@ -779,6 +1048,12 @@ class _FormActivityState extends State<FormActivity> {
                 minutesAct4(),
               ],
             ),
+            const SizedBox(
+              height: 10,
+            ),
+            if (_isShowField4) ...[
+              other4Form(),
+            ],
             const SizedBox(
               height: 10,
             ),

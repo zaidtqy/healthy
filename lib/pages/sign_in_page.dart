@@ -74,10 +74,13 @@ class SignInPage extends StatelessWidget {
                       child: TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         style: primaryTextStyle,
-                        decoration: InputDecoration.collapsed(
+                        decoration: InputDecoration(
                           hintText: 'Alamat Email',
                           hintStyle: primaryTextStyle,
+                          counterText: "",
+                          border: InputBorder.none,
                         ),
+                        maxLength: 25,
                       ),
                     ),
                   ],
@@ -132,10 +135,13 @@ class SignInPage extends StatelessWidget {
                       child: TextFormField(
                         obscureText: true,
                         style: primaryTextStyle,
-                        decoration: InputDecoration.collapsed(
+                        decoration: InputDecoration(
                           hintText: 'Kata Sandi',
                           hintStyle: primaryTextStyle,
+                          counterText: "",
+                          border: InputBorder.none,
                         ),
+                        maxLength: 45,
                       ),
                     ),
                   ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthy/pages/history_form_intake_page.dart';
 import 'package:healthy/pages/splash_page.dart';
 import 'package:healthy/pages/sign_in_page.dart';
 import 'package:healthy/pages/sign_up_page.dart';
@@ -7,6 +8,11 @@ import 'package:healthy/pages/form_information_page.dart';
 import 'package:healthy/pages/form_activity_page.dart';
 import 'package:healthy/pages/form_antrhopometri_page.dart';
 import 'package:healthy/pages/form_hemoglobin_page.dart';
+import 'package:healthy/pages/menu_page.dart';
+import 'package:healthy/pages/history_form_activity_page.dart';
+import 'package:healthy/pages/history_form_antrhopometri_page.dart';
+import 'package:healthy/pages/history_form_hemoglobin_page.dart';
+import 'package:healthy/pages/history_form_knowledge_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -26,6 +32,12 @@ class MyApp extends StatelessWidget {
         '/form-activity': (context) => const FormActivity(),
         '/form-antrhopometri': (context) => const FormAntrhopometri(),
         '/form-hemoglobin': (context) => const FormHemoglobin(),
+        '/menu-page': (context) => const MenuPage(),
+        '/history-activity': (context) => const HistoryFormActivity(),
+        '/history-intake': (context) => const HistoryFormIntake(),
+        '/history-antrhopometri': (context) => const HistoryFormAntrhopometri(),
+        '/history-hemoglobin': (context) => const HistoryFormHemoglobin(),
+        '/history-knowledge': (context) => const HistoryFormKnowledge(),
       },
     );
   }

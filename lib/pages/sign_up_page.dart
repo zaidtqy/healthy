@@ -73,10 +73,13 @@ class SignUpPage extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         style: primaryTextStyle,
-                        decoration: InputDecoration.collapsed(
+                        decoration: InputDecoration(
                           hintText: 'Nama Lengkap',
                           hintStyle: primaryTextStyle,
+                          counterText: "",
+                          border: InputBorder.none,
                         ),
+                        maxLength: 45,
                       ),
                     ),
                   ],
@@ -131,10 +134,13 @@ class SignUpPage extends StatelessWidget {
                       child: TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         style: primaryTextStyle,
-                        decoration: InputDecoration.collapsed(
+                        decoration: InputDecoration(
                           hintText: 'Alamat Email',
                           hintStyle: primaryTextStyle,
+                          counterText: "",
+                          border: InputBorder.none,
                         ),
+                        maxLength: 25,
                       ),
                     ),
                   ],
@@ -189,10 +195,13 @@ class SignUpPage extends StatelessWidget {
                       child: TextFormField(
                         keyboardType: TextInputType.phone,
                         style: primaryTextStyle,
-                        decoration: InputDecoration.collapsed(
+                        decoration: InputDecoration(
                           hintText: 'Nomor Telepon',
                           hintStyle: primaryTextStyle,
+                          counterText: "",
+                          border: InputBorder.none,
                         ),
+                        maxLength: 13,
                       ),
                     ),
                   ],
@@ -247,10 +256,13 @@ class SignUpPage extends StatelessWidget {
                       child: TextFormField(
                         obscureText: true,
                         style: primaryTextStyle,
-                        decoration: InputDecoration.collapsed(
+                        decoration: InputDecoration(
                           hintText: 'Kata Sandi',
                           hintStyle: primaryTextStyle,
+                          counterText: "",
+                          border: InputBorder.none,
                         ),
+                        maxLength: 45,
                       ),
                     ),
                   ],

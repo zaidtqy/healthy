@@ -9,6 +9,8 @@ class FormInformation extends StatefulWidget {
 }
 
 class _FormInformationState extends State<FormInformation> {
+  bool _isShowField = false;
+
   String? _valEduFather;
   final _eduFather = [
     "Tidak Sekolah",
@@ -123,10 +125,13 @@ class _FormInformationState extends State<FormInformation> {
                   Expanded(
                     child: TextFormField(
                       style: primaryTextStyle,
-                      decoration: InputDecoration.collapsed(
+                      decoration: InputDecoration(
                         hintText: 'Nama Lengkap',
                         hintStyle: primaryTextStyle,
+                        counterText: "",
+                        border: InputBorder.none,
                       ),
+                      maxLength: 45,
                     ),
                   ),
                 ],
@@ -166,9 +171,14 @@ class _FormInformationState extends State<FormInformation> {
               ),
               child: Row(
                 children: [
-                  Image.asset(
-                    'assets/user.png',
-                    width: 20,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset(
+                        'assets/user.png',
+                        width: 20,
+                      ),
+                    ],
                   ),
                   const SizedBox(
                     width: 15,
@@ -881,6 +891,62 @@ class _FormInformationState extends State<FormInformation> {
       );
     }
 
+    Widget otherForm() {
+      return Container(
+        margin: const EdgeInsets.only(top: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Penyakit Lain',
+              style: primaryTextStyle.copyWith(
+                fontSize: 15,
+                fontWeight: semibold,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              height: 45,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+              ),
+              decoration: BoxDecoration(
+                color: backgroundColor,
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(
+                  width: 1.0,
+                  color: primaryColor,
+                ),
+              ),
+              child: Row(
+                children: [
+                  Image.asset(
+                    'assets/user.png',
+                    width: 20,
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  Expanded(
+                    child: TextFormField(
+                      autofocus: true,
+                      style: primaryTextStyle,
+                      decoration: InputDecoration.collapsed(
+                        hintText: 'Penyakit lain',
+                        hintStyle: primaryTextStyle,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
     Widget historyDisease() {
       return Container(
         margin: const EdgeInsets.only(top: 10),
@@ -947,9 +1013,19 @@ class _FormInformationState extends State<FormInformation> {
                             );
                           }).toList(),
                           onChanged: (value) {
+                            debugPrint('HERE : $value');
                             setState(
                               () {
                                 _valDisease = value;
+                                if (_valDisease == _disease.last) {
+                                  setState(() {
+                                    _isShowField = true;
+                                  });
+                                } else {
+                                  setState(() {
+                                    _isShowField = false;
+                                  });
+                                }
                               },
                             );
                           },
@@ -1000,7 +1076,9 @@ class _FormInformationState extends State<FormInformation> {
             child: Row(
               children: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   child: Image.asset(
                     'assets/back.png',
                     width: 20,
@@ -1041,6 +1119,9 @@ class _FormInformationState extends State<FormInformation> {
             outcomeForm(),
             ageTeen(),
             historyDisease(),
+            if (_isShowField) ...[
+              otherForm(),
+            ],
             saveButton(),
             const SizedBox(
               height: 30,

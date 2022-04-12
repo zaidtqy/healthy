@@ -242,7 +242,9 @@ class FormAntrhopometri extends StatelessWidget {
             child: Row(
               children: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   child: Image.asset(
                     'assets/back.png',
                     width: 20,

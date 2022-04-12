@@ -7,12 +7,10 @@ class FormHemoglobin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget image() {
-      return Container(
-        child: Image.asset(
-          'assets/image_hb.png',
-          width: 360,
-          height: 170,
-        ),
+      return Image.asset(
+        'assets/image_hb.png',
+        width: 360,
+        height: 170,
       );
     }
 
@@ -120,7 +118,9 @@ class FormHemoglobin extends StatelessWidget {
             child: Row(
               children: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   child: Image.asset(
                     'assets/back.png',
                     width: 20,

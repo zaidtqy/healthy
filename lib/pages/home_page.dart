@@ -493,7 +493,9 @@ class HomePage extends StatelessWidget {
               height: 40,
               width: double.infinity,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/history-activity');
+                },
                 style: TextButton.styleFrom(
                     backgroundColor: primaryColor,
                     shape: RoundedRectangleBorder(
@@ -591,7 +593,9 @@ class HomePage extends StatelessWidget {
               height: 40,
               width: double.infinity,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/history-intake');
+                },
                 style: TextButton.styleFrom(
                     backgroundColor: primaryColor,
                     shape: RoundedRectangleBorder(
@@ -711,7 +715,9 @@ class HomePage extends StatelessWidget {
               height: 40,
               width: double.infinity,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/history-antrhopometri');
+                },
                 style: TextButton.styleFrom(
                     backgroundColor: primaryColor,
                     shape: RoundedRectangleBorder(
@@ -826,7 +832,9 @@ class HomePage extends StatelessWidget {
               height: 40,
               width: double.infinity,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/history-hemoglobin');
+                },
                 style: TextButton.styleFrom(
                     backgroundColor: primaryColor,
                     shape: RoundedRectangleBorder(
@@ -924,7 +932,9 @@ class HomePage extends StatelessWidget {
               height: 40,
               width: double.infinity,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/history-knowledge');
+                },
                 style: TextButton.styleFrom(
                     backgroundColor: primaryColor,
                     shape: RoundedRectangleBorder(
@@ -956,7 +966,9 @@ class HomePage extends StatelessWidget {
             child: Row(
               children: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/menu-page');
+                  },
                   child: Image.asset(
                     'assets/menu.png',
                     width: 20,
