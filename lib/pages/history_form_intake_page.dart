@@ -69,7 +69,7 @@ class HistoryFormIntake extends StatelessWidget {
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 180,
             ),
             Row(
@@ -81,14 +81,14 @@ class HistoryFormIntake extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Text(
               'Riwayat Data Kosong',
               style: primaryTextStyle.copyWith(fontSize: 15, fontWeight: bold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             backButton(),

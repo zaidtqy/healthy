@@ -11,7 +11,7 @@ class HistoryFormAntrhopometri extends StatelessWidget {
         height: 168,
         width: double.infinity,
         padding: const EdgeInsets.all(15),
-        margin: EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 10),
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(15),
@@ -178,7 +178,7 @@ class HistoryFormAntrhopometri extends StatelessWidget {
         ),
         child: ListView(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             antrhopometriSubject(),
@@ -189,7 +189,7 @@ class HistoryFormAntrhopometri extends StatelessWidget {
             antrhopometriSubject(),
             antrhopometriSubject(),
             antrhopometriSubject(),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
           ],

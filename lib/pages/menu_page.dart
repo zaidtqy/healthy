@@ -7,7 +7,7 @@ class MenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget saveButton() {
-      return Container(
+      return SizedBox(
         height: 45,
         width: double.infinity,
         child: TextButton(
@@ -25,7 +25,7 @@ class MenuPage extends StatelessWidget {
               Image.asset(
                 'assets/logout.png',
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Text(
@@ -158,20 +158,20 @@ class MenuPage extends StatelessWidget {
                               fontWeight: medium,
                             ),
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Icon(
                             Icons.keyboard_arrow_right_rounded,
                             color: primaryColor,
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Container(
@@ -191,20 +191,20 @@ class MenuPage extends StatelessWidget {
                               fontWeight: medium,
                             ),
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Icon(
                             Icons.keyboard_arrow_right_rounded,
                             color: primaryColor,
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Container(
@@ -224,20 +224,20 @@ class MenuPage extends StatelessWidget {
                               fontWeight: medium,
                             ),
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Icon(
                             Icons.keyboard_arrow_right_rounded,
                             color: primaryColor,
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 60,
                 ),
                 saveButton(),

@@ -11,7 +11,7 @@ class HistoryFormHemoglobin extends StatelessWidget {
         height: 168,
         width: double.infinity,
         padding: const EdgeInsets.all(15),
-        margin: EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 10),
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(15),
@@ -172,7 +172,7 @@ class HistoryFormHemoglobin extends StatelessWidget {
         ),
         child: ListView(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             hemoglobinSubject(),
@@ -183,7 +183,7 @@ class HistoryFormHemoglobin extends StatelessWidget {
             hemoglobinSubject(),
             hemoglobinSubject(),
             hemoglobinSubject(),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
           ],

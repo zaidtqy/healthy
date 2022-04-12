@@ -11,7 +11,7 @@ class HistoryFormActivity extends StatelessWidget {
         height: 168,
         width: double.infinity,
         padding: const EdgeInsets.all(15),
-        margin: EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 10),
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(15),
@@ -180,7 +180,7 @@ class HistoryFormActivity extends StatelessWidget {
         ),
         child: ListView(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             activitySubject(),
@@ -191,7 +191,7 @@ class HistoryFormActivity extends StatelessWidget {
             activitySubject(),
             activitySubject(),
             activitySubject(),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
           ],

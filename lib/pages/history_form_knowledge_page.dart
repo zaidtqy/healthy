@@ -11,7 +11,7 @@ class HistoryFormKnowledge extends StatelessWidget {
         height: 168,
         width: double.infinity,
         padding: const EdgeInsets.all(15),
-        margin: EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 10),
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(15),
@@ -155,7 +155,7 @@ class HistoryFormKnowledge extends StatelessWidget {
         ),
         child: ListView(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             knowledgeSubject(),
@@ -166,7 +166,7 @@ class HistoryFormKnowledge extends StatelessWidget {
             knowledgeSubject(),
             knowledgeSubject(),
             knowledgeSubject(),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
           ],
