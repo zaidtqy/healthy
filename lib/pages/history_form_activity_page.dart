@@ -120,7 +120,9 @@ class HistoryFormActivity extends StatelessWidget {
                   ),
                 ),
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/result-activity');
+                  },
                   style: TextButton.styleFrom(
                     backgroundColor: backgroundColor,
                     shape: RoundedRectangleBorder(
@@ -128,7 +130,7 @@ class HistoryFormActivity extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    'Lihat Riwayat',
+                    'Lihat Detail',
                     style: primaryTextStyle.copyWith(
                       fontSize: 15,
                       fontWeight: bold,

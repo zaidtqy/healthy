@@ -113,14 +113,16 @@ class HistoryFormHemoglobin extends StatelessWidget {
                   ),
                 ),
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/result-hemoglobin');
+                  },
                   style: TextButton.styleFrom(
                       backgroundColor: backgroundColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       )),
                   child: Text(
-                    'Lihat Riwayat',
+                    'Lihat Detail',
                     style: primaryTextStyle.copyWith(
                       fontSize: 15,
                       fontWeight: bold,

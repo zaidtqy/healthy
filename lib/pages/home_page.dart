@@ -371,7 +371,9 @@ class HomePage extends StatelessWidget {
               height: 40,
               width: double.infinity,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/result-information');
+                },
                 style: TextButton.styleFrom(
                     backgroundColor: primaryColor,
                     shape: RoundedRectangleBorder(

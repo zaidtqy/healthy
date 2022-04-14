@@ -118,7 +118,9 @@ class HistoryFormAntrhopometri extends StatelessWidget {
                   ),
                 ),
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/result-antrhopometri');
+                  },
                   style: TextButton.styleFrom(
                     backgroundColor: backgroundColor,
                     shape: RoundedRectangleBorder(
@@ -126,7 +128,7 @@ class HistoryFormAntrhopometri extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    'Lihat Riwayat',
+                    'Lihat Detail',
                     style: primaryTextStyle.copyWith(
                       fontSize: 15,
                       fontWeight: bold,
