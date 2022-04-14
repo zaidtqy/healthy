@@ -829,7 +829,7 @@ class ResultInformation extends StatelessWidget {
             Row(
               children: [
                 brothers(),
-                Spacer(),
+                const Spacer(),
                 amount(),
               ],
             ),
@@ -837,7 +837,7 @@ class ResultInformation extends StatelessWidget {
             outcome(),
             ageTeen(),
             historyDisease(),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
           ],

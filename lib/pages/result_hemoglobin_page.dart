@@ -223,7 +223,7 @@ class ResultHemoglobin extends StatelessWidget {
                       fontWeight: bold,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
                     '20',
                     style: primaryTextStyle.copyWith(
@@ -231,7 +231,7 @@ class ResultHemoglobin extends StatelessWidget {
                       fontWeight: bold,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
                     'g/dL',
                     style: primaryTextStyle.copyWith(

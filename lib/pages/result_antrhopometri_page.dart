@@ -352,7 +352,7 @@ class ResultAntrhopometri extends StatelessWidget {
                       fontWeight: bold,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
                     '60',
                     style: primaryTextStyle.copyWith(
@@ -360,7 +360,7 @@ class ResultAntrhopometri extends StatelessWidget {
                       fontWeight: bold,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
                     'Kg/m2',
                     style: primaryTextStyle.copyWith(
