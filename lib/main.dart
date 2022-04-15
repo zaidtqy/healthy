@@ -8,7 +8,10 @@ import 'package:healthy/pages/form_information_page.dart';
 import 'package:healthy/pages/form_activity_page.dart';
 import 'package:healthy/pages/form_antrhopometri_page.dart';
 import 'package:healthy/pages/form_hemoglobin_page.dart';
+import 'package:healthy/pages/form_knowledge_page.dart';
 import 'package:healthy/pages/menu_page.dart';
+import 'package:healthy/pages/notifications_page.dart';
+import 'package:healthy/pages/notif_reproduction_page.dart';
 import 'package:healthy/pages/history_form_activity_page.dart';
 import 'package:healthy/pages/history_form_antrhopometri_page.dart';
 import 'package:healthy/pages/history_form_hemoglobin_page.dart';
@@ -36,7 +39,10 @@ class MyApp extends StatelessWidget {
         '/form-activity': (context) => const FormActivity(),
         '/form-antrhopometri': (context) => const FormAntrhopometri(),
         '/form-hemoglobin': (context) => const FormHemoglobin(),
+        '/form-knowledge': (context) => const FormKnowledge(),
         '/menu-page': (context) => const MenuPage(),
+        '/notifications-page': (context) => const NotificationsPage(),
+        '/notif-repro': (context) => const NotifReproduction(),
         '/history-activity': (context) => const HistoryFormActivity(),
         '/history-intake': (context) => const HistoryFormIntake(),
         '/history-antrhopometri': (context) => const HistoryFormAntrhopometri(),

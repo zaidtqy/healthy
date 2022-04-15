@@ -268,7 +268,9 @@ class HomePage extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
             ),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/form-knowledge');
+              },
               child: Image.asset(
                 'assets/books.png',
                 width: 50,
@@ -985,7 +987,9 @@ class HomePage extends StatelessWidget {
                 ),
                 const Spacer(),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/notifications-page');
+                  },
                   child: Image.asset(
                     'assets/bell.png',
                     width: 20,
