@@ -46,6 +46,7 @@ class ResultInformation extends StatelessWidget {
                   ),
                   Expanded(
                     child: TextFormField(
+                      enabled: false,
                       style: primaryTextStyle,
                       decoration: InputDecoration(
                         hintText: '29/03/2022',
@@ -166,6 +167,7 @@ class ResultInformation extends StatelessWidget {
                   ),
                   Flexible(
                     child: TextField(
+                      enabled: false,
                       style: primaryTextStyle,
                       decoration: InputDecoration.collapsed(
                         hintText:

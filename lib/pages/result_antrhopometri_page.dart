@@ -46,6 +46,7 @@ class ResultAntrhopometri extends StatelessWidget {
                   ),
                   Expanded(
                     child: TextFormField(
+                      enabled: false,
                       style: primaryTextStyle,
                       decoration: InputDecoration(
                         hintText: '29/03/2022',

@@ -94,325 +94,345 @@ class NotificationsPage extends StatelessWidget {
     }
 
     Widget notifFood() {
-      return Container(
-        decoration: BoxDecoration(
-          color: primaryColor.withOpacity(0.2),
-          border: Border(
-            bottom: BorderSide(width: 0.5, color: primaryColor),
-          ),
-        ),
+      return GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, '/notif-food');
+        },
         child: Container(
-          margin: EdgeInsets.symmetric(
-            horizontal: defaultMargin,
-            vertical: 15,
+          decoration: BoxDecoration(
+            color: primaryColor.withOpacity(0.2),
+            border: Border(
+              bottom: BorderSide(width: 0.5, color: primaryColor),
+            ),
           ),
-          child: Row(
-            children: [
-              Container(
-                margin: EdgeInsets.only(
-                  right: defaultMargin,
-                ),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      'assets/information.png',
-                      width: 20,
-                    ),
-                  ],
-                ),
-              ),
-              Flexible(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Pola Makan Sehat Seimbang',
-                          style: primaryTextStyle.copyWith(
-                            fontSize: 10,
-                            fontWeight: semibold,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 126,
-                        ),
-                        Text(
-                          '24/03/2022',
-                          style: primaryTextStyle.copyWith(
-                            fontSize: 10,
-                            fontWeight: semibold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'Makanan yang Kamu Makan Perlu diatur loh!',
-                      style: primaryTextStyle.copyWith(
-                        fontSize: 15,
-                        fontWeight: bold,
+          child: Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: defaultMargin,
+              vertical: 15,
+            ),
+            child: Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                    right: defaultMargin,
+                  ),
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        'assets/information.png',
+                        width: 20,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'Jangan asal makan ya, nanti kamu sakit. Kalo kamu sakit ada yang mau perhatiin kamu ga?',
-                      style: primaryTextStyle.copyWith(
-                        fontSize: 13,
-                        fontWeight: medium,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Pola Makan Sehat Seimbang',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: semibold,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 126,
+                          ),
+                          Text(
+                            '24/03/2022',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: semibold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'Makanan yang Kamu Makan Perlu diatur loh!',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: bold,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'Jangan asal makan ya, nanti kamu sakit. Kalo kamu sakit ada yang mau perhatiin kamu ga?',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 13,
+                          fontWeight: medium,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       );
     }
 
     Widget notifTablet() {
-      return Container(
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(width: 0.5, color: primaryColor),
-          ),
-        ),
+      return GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, '/notif-tablets');
+        },
         child: Container(
-          margin: EdgeInsets.symmetric(
-            horizontal: defaultMargin,
-            vertical: 15,
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(width: 0.5, color: primaryColor),
+            ),
           ),
-          child: Row(
-            children: [
-              Container(
-                margin: EdgeInsets.only(
-                  right: defaultMargin,
-                ),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      'assets/information.png',
-                      width: 20,
-                    ),
-                  ],
-                ),
-              ),
-              Flexible(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Konsumsi Tablet Tambah Darah',
-                          style: primaryTextStyle.copyWith(
-                            fontSize: 10,
-                            fontWeight: semibold,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 113,
-                        ),
-                        Text(
-                          '23/03/2022',
-                          style: primaryTextStyle.copyWith(
-                            fontSize: 10,
-                            fontWeight: semibold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'Gais, Yuk Tetap Sehat! BEBAS ANEMIA!',
-                      style: primaryTextStyle.copyWith(
-                        fontSize: 15,
-                        fontWeight: bold,
+          child: Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: defaultMargin,
+              vertical: 15,
+            ),
+            child: Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                    right: defaultMargin,
+                  ),
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        'assets/information.png',
+                        width: 20,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'Cocok nih buat kamu yang pengen tau tentang anemia, baca selengkapnya disini!',
-                      style: primaryTextStyle.copyWith(
-                        fontSize: 13,
-                        fontWeight: medium,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Konsumsi Tablet Tambah Darah',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: semibold,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 113,
+                          ),
+                          Text(
+                            '23/03/2022',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: semibold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'Gais, Yuk Tetap Sehat! BEBAS ANEMIA!',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: bold,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'Cocok nih buat kamu yang pengen tau tentang anemia, baca selengkapnya disini!',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 13,
+                          fontWeight: medium,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       );
     }
 
     Widget notifActivity() {
-      return Container(
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(width: 0.5, color: primaryColor),
-          ),
-        ),
+      return GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, '/notif-activity');
+        },
         child: Container(
-          margin: EdgeInsets.symmetric(
-            horizontal: defaultMargin,
-            vertical: 15,
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(width: 0.5, color: primaryColor),
+            ),
           ),
-          child: Row(
-            children: [
-              Container(
-                margin: EdgeInsets.only(
-                  right: defaultMargin,
-                ),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      'assets/information.png',
-                      width: 20,
-                    ),
-                  ],
-                ),
-              ),
-              Flexible(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Aktifitas Fisik',
-                          style: primaryTextStyle.copyWith(
-                            fontSize: 10,
-                            fontWeight: semibold,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 195,
-                        ),
-                        Text(
-                          '22/03/2022',
-                          style: primaryTextStyle.copyWith(
-                            fontSize: 10,
-                            fontWeight: semibold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'Biar sehat, jangan lupa gerak ya!',
-                      style: primaryTextStyle.copyWith(
-                        fontSize: 15,
-                        fontWeight: bold,
+          child: Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: defaultMargin,
+              vertical: 15,
+            ),
+            child: Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                    right: defaultMargin,
+                  ),
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        'assets/information.png',
+                        width: 20,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'Tetap jaga tubuhmu agar terus sehat ya, aktifitas kecil juga gamasalah kok.',
-                      style: primaryTextStyle.copyWith(
-                        fontSize: 13,
-                        fontWeight: medium,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Aktifitas Fisik',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: semibold,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 195,
+                          ),
+                          Text(
+                            '22/03/2022',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: semibold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'Biar sehat, jangan lupa gerak ya!',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: bold,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'Tetap jaga tubuhmu agar terus sehat ya, aktifitas kecil juga gamasalah kok.',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 13,
+                          fontWeight: medium,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       );
     }
 
     Widget notifProkes() {
-      return Container(
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(width: 0.5, color: primaryColor),
-          ),
-        ),
+      return GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, '/notif-prokes');
+        },
         child: Container(
-          margin: EdgeInsets.symmetric(
-            horizontal: defaultMargin,
-            vertical: 15,
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(width: 0.5, color: primaryColor),
+            ),
           ),
-          child: Row(
-            children: [
-              Container(
-                margin: EdgeInsets.only(
-                  right: defaultMargin,
-                ),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      'assets/information.png',
-                      width: 20,
-                    ),
-                  ],
-                ),
-              ),
-              Flexible(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Protokol Kesehatan',
-                          style: primaryTextStyle.copyWith(
-                            fontSize: 10,
-                            fontWeight: semibold,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 164,
-                        ),
-                        Text(
-                          '22/03/2022',
-                          style: primaryTextStyle.copyWith(
-                            fontSize: 10,
-                            fontWeight: semibold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'Eittss! Jangan Lengah Ya, Covid-19 masi ada!',
-                      style: primaryTextStyle.copyWith(
-                        fontSize: 15,
-                        fontWeight: bold,
+          child: Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: defaultMargin,
+              vertical: 15,
+            ),
+            child: Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                    right: defaultMargin,
+                  ),
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        'assets/information.png',
+                        width: 20,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'Udah vaksin bukan berarti bebas dari virus, tetap jaga sesama ya biar semua sehat. ',
-                      style: primaryTextStyle.copyWith(
-                        fontSize: 13,
-                        fontWeight: medium,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Protokol Kesehatan',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: semibold,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 164,
+                          ),
+                          Text(
+                            '22/03/2022',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: semibold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'Eittss! Jangan Lengah Ya, Covid-19 masi ada!',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: bold,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'Udah vaksin bukan berarti bebas dari virus, tetap jaga sesama ya biar semua sehat. ',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 13,
+                          fontWeight: medium,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       );

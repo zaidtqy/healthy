@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:healthy/theme.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class NotifReproduction extends StatelessWidget {
-  const NotifReproduction({Key? key}) : super(key: key);
+class NotifProkes extends StatelessWidget {
+  const NotifProkes({Key? key}) : super(key: key);
 
-  Widget articleReproduction() {
+  Widget articleProkes() {
     return Container(
       decoration: BoxDecoration(
         border: Border(
@@ -14,7 +14,7 @@ class NotifReproduction extends StatelessWidget {
       ),
       child: ExpansionTile(
         title: Text(
-          'Kesehatan Organ Reproduksi',
+          'Patuhi Protokol Kesehatan',
           style: primaryTextStyle.copyWith(
             fontSize: 15,
             fontWeight: bold,
@@ -28,75 +28,15 @@ class NotifReproduction extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Image.asset('assets/Kesehatan Organ Reproduksi 1.png'),
+                Image.asset('assets/Prokes 1.png'),
                 const SizedBox(
                   height: 10,
                 ),
-                Image.asset('assets/Kesehatan Organ Reproduksi 2 1.png'),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget articleSexEdu() {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(width: 0.5, color: primaryColor),
-        ),
-      ),
-      child: ExpansionTile(
-        title: Text(
-          'Hindari Seks Pra Nikah',
-          style: primaryTextStyle.copyWith(
-            fontSize: 15,
-            fontWeight: bold,
-          ),
-        ),
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.symmetric(
-              horizontal: defaultMargin,
-              vertical: 10,
-            ),
-            child: Column(
-              children: [
-                Image.asset('assets/Hindari Seks Pra Nikah 1.png'),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget articlePragnant() {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(width: 0.5, color: primaryColor),
-        ),
-      ),
-      child: ExpansionTile(
-        title: Text(
-          'Hindari Kehamilan Usia Remaja',
-          style: primaryTextStyle.copyWith(
-            fontSize: 15,
-            fontWeight: bold,
-          ),
-        ),
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.symmetric(
-              horizontal: defaultMargin,
-              vertical: 10,
-            ),
-            child: Column(
-              children: [
-                Image.asset('assets/Hindari Seks Pra Nikah 2 1.png'),
+                Image.asset('assets/Prokes 2 1.png'),
+                const SizedBox(
+                  height: 10,
+                ),
+                Image.asset('assets/Prokes 3 1.png'),
               ],
             ),
           ),
@@ -190,7 +130,7 @@ class NotifReproduction extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Artikel Kesehatan Reproduksi',
+                  'Artikel Protokol Kesehatan',
                   style: primaryTextStyle.copyWith(
                     fontSize: 15,
                     fontWeight: bold,
@@ -208,10 +148,7 @@ class NotifReproduction extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            articleReproduction(),
-            articleSexEdu(),
-            articlePragnant(),
-            link1(),
+            articleProkes(),
           ],
         ),
       ),
