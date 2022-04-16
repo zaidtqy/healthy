@@ -44,17 +44,11 @@ class ResultInformation extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  Expanded(
-                    child: TextFormField(
-                      enabled: false,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration(
-                        hintText: '29/03/2022',
-                        hintStyle: primaryTextStyle,
-                        counterText: "",
-                        border: InputBorder.none,
-                      ),
-                      maxLength: 45,
+                  Text(
+                    '29/03/2022',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 15,
+                      fontWeight: medium,
                     ),
                   ),
                 ],
@@ -103,17 +97,11 @@ class ResultInformation extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  Expanded(
-                    child: TextFormField(
-                      enabled: false,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration(
-                        hintText: 'Mazaya Hurun\'in',
-                        hintStyle: primaryTextStyle,
-                        counterText: "",
-                        border: InputBorder.none,
-                      ),
-                      maxLength: 45,
+                  Text(
+                    'Mazaya Hurun\in',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 15,
+                      fontWeight: medium,
                     ),
                   ),
                 ],
@@ -166,15 +154,17 @@ class ResultInformation extends StatelessWidget {
                     width: 15,
                   ),
                   Flexible(
-                    child: TextField(
-                      enabled: false,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration.collapsed(
-                        hintText:
-                            'Perum Kodim Blok D No 10 RT.005/002, Kel. Bekasi Jaya, Kec. Bekasi Timur, Kota Bekasi. 17112',
-                        hintStyle: primaryTextStyle,
-                      ),
-                      maxLines: 5,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Perum Kodim Blok D No 10 RT.005/002, Kel. Bekasi Jaya, Kec. Bekasi Timur, Kota Bekasi. 17112',
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 15,
+                            fontWeight: medium,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -223,17 +213,11 @@ class ResultInformation extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  Expanded(
-                    child: TextFormField(
-                      enabled: false,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration(
-                        hintText: 'Sarjana, Master, Doktor',
-                        hintStyle: primaryTextStyle,
-                        counterText: "",
-                        border: InputBorder.none,
-                      ),
-                      maxLength: 45,
+                  Text(
+                    'Sarjana, Master, Doktor',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 15,
+                      fontWeight: medium,
                     ),
                   ),
                 ],
@@ -282,17 +266,11 @@ class ResultInformation extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  Expanded(
-                    child: TextFormField(
-                      enabled: false,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration(
-                        hintText: 'Sarjana, Master, Doktor',
-                        hintStyle: primaryTextStyle,
-                        counterText: "",
-                        border: InputBorder.none,
-                      ),
-                      maxLength: 45,
+                  Text(
+                    'Sarjana, Master, Doktor',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 15,
+                      fontWeight: medium,
                     ),
                   ),
                 ],
@@ -341,17 +319,11 @@ class ResultInformation extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  Expanded(
-                    child: TextFormField(
-                      enabled: false,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration(
-                        hintText: 'Pegawai Swasta',
-                        hintStyle: primaryTextStyle,
-                        counterText: "",
-                        border: InputBorder.none,
-                      ),
-                      maxLength: 45,
+                  Text(
+                    'Pegawai Swasta',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 15,
+                      fontWeight: medium,
                     ),
                   ),
                 ],
@@ -400,17 +372,11 @@ class ResultInformation extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  Expanded(
-                    child: TextFormField(
-                      enabled: false,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration(
-                        hintText: 'Tidak Bekerja',
-                        hintStyle: primaryTextStyle,
-                        counterText: "",
-                        border: InputBorder.none,
-                      ),
-                      maxLength: 45,
+                  Text(
+                    'Tidak Bekerja',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 15,
+                      fontWeight: medium,
                     ),
                   ),
                 ],
@@ -461,18 +427,11 @@ class ResultInformation extends StatelessWidget {
                     const SizedBox(
                       width: 15,
                     ),
-                    Expanded(
-                      child: TextFormField(
-                        enabled: false,
-                        keyboardType: TextInputType.phone,
-                        style: primaryTextStyle,
-                        decoration: InputDecoration(
-                          hintText: '3',
-                          hintStyle: primaryTextStyle,
-                          counterText: "",
-                          border: InputBorder.none,
-                        ),
-                        maxLength: 2,
+                    Text(
+                      '3',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: medium,
                       ),
                     ),
                   ],
@@ -524,18 +483,11 @@ class ResultInformation extends StatelessWidget {
                     const SizedBox(
                       width: 15,
                     ),
-                    Expanded(
-                      child: TextFormField(
-                        enabled: false,
-                        keyboardType: TextInputType.phone,
-                        style: primaryTextStyle,
-                        decoration: InputDecoration(
-                          hintText: '3',
-                          hintStyle: primaryTextStyle,
-                          counterText: "",
-                          border: InputBorder.none,
-                        ),
-                        maxLength: 2,
+                    Text(
+                      '3',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: medium,
                       ),
                     ),
                   ],
@@ -585,17 +537,11 @@ class ResultInformation extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  Expanded(
-                    child: TextFormField(
-                      enabled: false,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration(
-                        hintText: '> Rp 10,000,000',
-                        hintStyle: primaryTextStyle,
-                        counterText: "",
-                        border: InputBorder.none,
-                      ),
-                      maxLength: 45,
+                  Text(
+                    '> Rp 10,000,000',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 15,
+                      fontWeight: medium,
                     ),
                   ),
                 ],
@@ -644,17 +590,11 @@ class ResultInformation extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  Expanded(
-                    child: TextFormField(
-                      enabled: false,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration(
-                        hintText: 'Rp 5,000,000 - Rp 10,000,000',
-                        hintStyle: primaryTextStyle,
-                        counterText: "",
-                        border: InputBorder.none,
-                      ),
-                      maxLength: 45,
+                  Text(
+                    'Rp 5,000,000 - Rp 10,000,000',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 15,
+                      fontWeight: medium,
                     ),
                   ),
                 ],
@@ -703,17 +643,11 @@ class ResultInformation extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  Expanded(
-                    child: TextFormField(
-                      enabled: false,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration(
-                        hintText: '14',
-                        hintStyle: primaryTextStyle,
-                        counterText: "",
-                        border: InputBorder.none,
-                      ),
-                      maxLength: 45,
+                  Text(
+                    '14',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 15,
+                      fontWeight: medium,
                     ),
                   ),
                 ],
@@ -762,17 +696,11 @@ class ResultInformation extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  Expanded(
-                    child: TextFormField(
-                      enabled: false,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration(
-                        hintText: 'Tidak Ada',
-                        hintStyle: primaryTextStyle,
-                        counterText: "",
-                        border: InputBorder.none,
-                      ),
-                      maxLength: 45,
+                  Text(
+                    'Tidak Ada',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 15,
+                      fontWeight: medium,
                     ),
                   ),
                 ],

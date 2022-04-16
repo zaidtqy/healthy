@@ -44,17 +44,11 @@ class ResultActivity extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  Expanded(
-                    child: TextFormField(
-                      enabled: false,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration(
-                        hintText: '29/03/2022',
-                        hintStyle: primaryTextStyle,
-                        counterText: "",
-                        border: InputBorder.none,
-                      ),
-                      maxLength: 45,
+                  Text(
+                    '29/03/2022',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 15,
+                      fontWeight: medium,
                     ),
                   ),
                 ],
@@ -104,17 +98,11 @@ class ResultActivity extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  Expanded(
-                    child: TextFormField(
-                      enabled: false,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration(
-                        hintText: 'Berlari',
-                        hintStyle: primaryTextStyle,
-                        counterText: "",
-                        border: InputBorder.none,
-                      ),
-                      maxLength: 45,
+                  Text(
+                    'Berlari',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 15,
+                      fontWeight: medium,
                     ),
                   ),
                 ],
@@ -165,23 +153,14 @@ class ResultActivity extends StatelessWidget {
                     const SizedBox(
                       width: 15,
                     ),
-                    Expanded(
-                      child: TextFormField(
-                        enabled: false,
-                        keyboardType: TextInputType.phone,
-                        style: primaryTextStyle,
-                        decoration: InputDecoration(
-                          hintText: '30',
-                          hintStyle: primaryTextStyle,
-                          counterText: "",
-                          border: InputBorder.none,
-                        ),
-                        maxLength: 3,
+                    Text(
+                      '30',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: medium,
                       ),
                     ),
-                    const SizedBox(
-                      width: 15,
-                    ),
+                    const Spacer(),
                     Text(
                       'Menit',
                       style: primaryTextStyle.copyWith(
@@ -237,17 +216,11 @@ class ResultActivity extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  Expanded(
-                    child: TextFormField(
-                      enabled: false,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration(
-                        hintText: 'Berjalan',
-                        hintStyle: primaryTextStyle,
-                        counterText: "",
-                        border: InputBorder.none,
-                      ),
-                      maxLength: 45,
+                  Text(
+                    'Berjalan',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 15,
+                      fontWeight: medium,
                     ),
                   ),
                 ],
@@ -298,23 +271,14 @@ class ResultActivity extends StatelessWidget {
                     const SizedBox(
                       width: 15,
                     ),
-                    Expanded(
-                      child: TextFormField(
-                        enabled: false,
-                        keyboardType: TextInputType.phone,
-                        style: primaryTextStyle,
-                        decoration: InputDecoration(
-                          hintText: '60',
-                          hintStyle: primaryTextStyle,
-                          counterText: "",
-                          border: InputBorder.none,
-                        ),
-                        maxLength: 3,
+                    Text(
+                      '60',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: medium,
                       ),
                     ),
-                    const SizedBox(
-                      width: 15,
-                    ),
+                    const Spacer(),
                     Text(
                       'Menit',
                       style: primaryTextStyle.copyWith(
@@ -370,17 +334,11 @@ class ResultActivity extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  Expanded(
-                    child: TextFormField(
-                      enabled: false,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration(
-                        hintText: 'Berjalan',
-                        hintStyle: primaryTextStyle,
-                        counterText: "",
-                        border: InputBorder.none,
-                      ),
-                      maxLength: 45,
+                  Text(
+                    'Berjalan',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 15,
+                      fontWeight: medium,
                     ),
                   ),
                 ],
@@ -431,23 +389,14 @@ class ResultActivity extends StatelessWidget {
                     const SizedBox(
                       width: 15,
                     ),
-                    Expanded(
-                      child: TextFormField(
-                        enabled: false,
-                        keyboardType: TextInputType.phone,
-                        style: primaryTextStyle,
-                        decoration: InputDecoration(
-                          hintText: '60',
-                          hintStyle: primaryTextStyle,
-                          counterText: "",
-                          border: InputBorder.none,
-                        ),
-                        maxLength: 3,
+                    Text(
+                      '60',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: medium,
                       ),
                     ),
-                    const SizedBox(
-                      width: 15,
-                    ),
+                    const Spacer(),
                     Text(
                       'Menit',
                       style: primaryTextStyle.copyWith(
@@ -503,17 +452,11 @@ class ResultActivity extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  Expanded(
-                    child: TextFormField(
-                      enabled: false,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration(
-                        hintText: 'Berjalan',
-                        hintStyle: primaryTextStyle,
-                        counterText: "",
-                        border: InputBorder.none,
-                      ),
-                      maxLength: 45,
+                  Text(
+                    'Berjalan',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 15,
+                      fontWeight: medium,
                     ),
                   ),
                 ],
@@ -564,23 +507,14 @@ class ResultActivity extends StatelessWidget {
                     const SizedBox(
                       width: 15,
                     ),
-                    Expanded(
-                      child: TextFormField(
-                        enabled: false,
-                        keyboardType: TextInputType.phone,
-                        style: primaryTextStyle,
-                        decoration: InputDecoration(
-                          hintText: '60',
-                          hintStyle: primaryTextStyle,
-                          counterText: "",
-                          border: InputBorder.none,
-                        ),
-                        maxLength: 3,
+                    Text(
+                      '60',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: medium,
                       ),
                     ),
-                    const SizedBox(
-                      width: 15,
-                    ),
+                    const Spacer(),
                     Text(
                       'Menit',
                       style: primaryTextStyle.copyWith(

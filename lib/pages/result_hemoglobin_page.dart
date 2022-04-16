@@ -52,17 +52,11 @@ class ResultHemoglobin extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  Expanded(
-                    child: TextFormField(
-                      enabled: false,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration(
-                        hintText: '29/03/2022',
-                        hintStyle: primaryTextStyle,
-                        counterText: "",
-                        border: InputBorder.none,
-                      ),
-                      maxLength: 45,
+                  Text(
+                    '29/03/2022',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 15,
+                      fontWeight: medium,
                     ),
                   ),
                 ],
@@ -111,18 +105,11 @@ class ResultHemoglobin extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  Expanded(
-                    child: TextFormField(
-                      enabled: false,
-                      keyboardType: TextInputType.phone,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration(
-                        hintText: '20',
-                        hintStyle: primaryTextStyle,
-                        counterText: "",
-                        border: InputBorder.none,
-                      ),
-                      maxLength: 3,
+                  Text(
+                    '20',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 15,
+                      fontWeight: medium,
                     ),
                   ),
                   const Spacer(),
