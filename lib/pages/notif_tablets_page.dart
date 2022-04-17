@@ -70,7 +70,7 @@ class NotifTablets extends StatelessWidget {
       ),
       child: ExpansionTile(
         title: Text(
-          'Resiko Infeksi Penyakit Kelamin',
+          'Anemia? Yuk Minum Tablet Tambah Darah',
           style: primaryTextStyle.copyWith(
             fontSize: 15,
             fontWeight: bold,
@@ -89,7 +89,7 @@ class NotifTablets extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            'Menjaga diri dari resiko transmisi infeksi penyakit kelamin menular',
+                            'Bagaimana cara mengkonsumsi tablet tambah darah dengan baik dan benar?',
                             style: primaryTextStyle.copyWith(
                               fontSize: 13,
                               fontWeight: medium,
@@ -107,7 +107,7 @@ class NotifTablets extends StatelessWidget {
                         ),
                       ),
                       onTap: () => launch(
-                        'https://sehatnegeriku.kemkes.go.id/baca/rilis-media/20151130/5513794/perilaku-sehat-awal-pencegahan-hiv-dan-aids/',
+                        'https://promkes.kemkes.go.id/download/fpbn/files283TTD_REMATRI_OK2.pdf',
                       ),
                     ),
                   ],
@@ -164,7 +164,33 @@ class NotifTablets extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+              child: Text(
+                'Artikel',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 15,
+                  fontWeight: semibold,
+                  color: primaryColor.withOpacity(0.5),
+                ),
+              ),
+            ),
             articleConsumTablets(),
+            const SizedBox(
+              height: 30,
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+              child: Text(
+                'Situs Artikel Terkait',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 15,
+                  fontWeight: semibold,
+                  color: primaryColor.withOpacity(0.5),
+                ),
+              ),
+            ),
+            link1(),
           ],
         ),
       ),

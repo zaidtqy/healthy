@@ -226,7 +226,7 @@ class NotifActivity extends StatelessWidget {
       ),
       child: ExpansionTile(
         title: Text(
-          'Resiko Infeksi Penyakit Kelamin',
+          'Setiap Hari Olahraga 30 Menit? Siapa Takut!',
           style: primaryTextStyle.copyWith(
             fontSize: 15,
             fontWeight: bold,
@@ -245,7 +245,7 @@ class NotifActivity extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            'Menjaga diri dari resiko transmisi infeksi penyakit kelamin menular',
+                            'Jaga kesehatan dengan rutin olahraga 30 menit setiap hari',
                             style: primaryTextStyle.copyWith(
                               fontSize: 13,
                               fontWeight: medium,
@@ -263,7 +263,7 @@ class NotifActivity extends StatelessWidget {
                         ),
                       ),
                       onTap: () => launch(
-                        'https://sehatnegeriku.kemkes.go.id/baca/rilis-media/20151130/5513794/perilaku-sehat-awal-pencegahan-hiv-dan-aids/',
+                        'https://promkes.kemkes.go.id/content/?p=8807',
                       ),
                     ),
                   ],
@@ -320,9 +320,35 @@ class NotifActivity extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+              child: Text(
+                'Artikel',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 15,
+                  fontWeight: semibold,
+                  color: primaryColor.withOpacity(0.5),
+                ),
+              ),
+            ),
             articleDailyActivity(),
             articleTypesAct(),
-            articleMaxAct()
+            articleMaxAct(),
+            const SizedBox(
+              height: 30,
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+              child: Text(
+                'Situs Artikel Terkait',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 15,
+                  fontWeight: semibold,
+                  color: primaryColor.withOpacity(0.5),
+                ),
+              ),
+            ),
+            link1(),
           ],
         ),
       ),

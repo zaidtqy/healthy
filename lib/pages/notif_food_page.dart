@@ -78,7 +78,7 @@ class NotifFood extends StatelessWidget {
       ),
       child: ExpansionTile(
         title: Text(
-          'Resiko Infeksi Penyakit Kelamin',
+          'Situs Pedoman Gizi Sehat Seimbang',
           style: primaryTextStyle.copyWith(
             fontSize: 15,
             fontWeight: bold,
@@ -97,7 +97,7 @@ class NotifFood extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            'Menjaga diri dari resiko transmisi infeksi penyakit kelamin menular',
+                            'Sepuluh pedoman gizi seimbang dalam Pedoman Umum Gizi Seimbang (PUGS)',
                             style: primaryTextStyle.copyWith(
                               fontSize: 13,
                               fontWeight: medium,
@@ -115,7 +115,69 @@ class NotifFood extends StatelessWidget {
                         ),
                       ),
                       onTap: () => launch(
-                        'https://sehatnegeriku.kemkes.go.id/baca/rilis-media/20151130/5513794/perilaku-sehat-awal-pencegahan-hiv-dan-aids/',
+                        'http://p2ptm.kemkes.go.id/infographic-p2ptm/obesitas/apa-saja-sepuluh-pedoman-gizi-seimbang',
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget link2() {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(width: 0.5, color: primaryColor),
+        ),
+      ),
+      child: ExpansionTile(
+        title: Text(
+          'Situs Panduan Porsi Sekali Makan',
+          style: primaryTextStyle.copyWith(
+            fontSize: 15,
+            fontWeight: bold,
+          ),
+        ),
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: defaultMargin,
+            ),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Flexible(
+                      child: Column(
+                        children: [
+                          Text(
+                            'Panduan tepat untuk porsi satu piring dengan gizi seimbang #HariGiziNasional',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 13,
+                              fontWeight: medium,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    InkWell(
+                      child: Text(
+                        'Lihat',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: bold,
+                        ),
+                      ),
+                      onTap: () => launch(
+                        'http://p2ptm.kemkes.go.id/infographic-p2ptm/obesitas/yuk-terapkan-konsep-isi-piringku-dalam-kehidupan-sehari-hari',
                       ),
                     ),
                   ],
@@ -172,8 +234,35 @@ class NotifFood extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+              child: Text(
+                'Artikel',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 15,
+                  fontWeight: semibold,
+                  color: primaryColor.withOpacity(0.5),
+                ),
+              ),
+            ),
             articleNutrient(),
             articlePortion(),
+            const SizedBox(
+              height: 30,
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+              child: Text(
+                'Situs Artikel Terkait',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 15,
+                  fontWeight: semibold,
+                  color: primaryColor.withOpacity(0.5),
+                ),
+              ),
+            ),
+            link1(),
+            link2(),
           ],
         ),
       ),
