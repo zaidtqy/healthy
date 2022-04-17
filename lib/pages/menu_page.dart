@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthy/theme.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({Key? key}) : super(key: key);
@@ -141,100 +142,395 @@ class MenuPage extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(width: 0.5, color: primaryColor),
-                    ),
-                  ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'Pusat Bantuan',
-                            style: primaryTextStyle.copyWith(
-                              fontSize: 15,
-                              fontWeight: medium,
+                InkWell(
+                  splashColor: backgroundColor,
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      elevation: 50,
+                      isScrollControlled: true,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(20),
+                        ),
+                      ),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      builder: (ctx) => Container(
+                        height: 700,
+                        padding: EdgeInsets.all(defaultMargin),
+                        color: backgroundColor,
+                        child: ListView(
+                          children: [
+                            Flexible(
+                              child: Column(
+                                children: [
+                                  Center(
+                                    child: Text(
+                                      'Pusat Bantuan',
+                                      style: primaryTextStyle.copyWith(
+                                        fontSize: 15,
+                                        fontWeight: bold,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          const Spacer(),
-                          Icon(
-                            Icons.keyboard_arrow_right_rounded,
-                            color: primaryColor,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                      const SizedBox(
-                        height: 10,
+                    );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(width: 0.5, color: primaryColor),
                       ),
-                    ],
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Pusat Bantuan',
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 15,
+                                fontWeight: medium,
+                              ),
+                            ),
+                            const Spacer(),
+                            Icon(
+                              Icons.keyboard_arrow_right_rounded,
+                              color: primaryColor,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(width: 0.5, color: primaryColor),
-                    ),
-                  ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'Syarat dan Ketentuan',
-                            style: primaryTextStyle.copyWith(
-                              fontSize: 15,
-                              fontWeight: medium,
+                InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      elevation: 50,
+                      isScrollControlled: true,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(20),
+                        ),
+                      ),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      builder: (ctx) => Container(
+                        height: 700,
+                        padding: EdgeInsets.all(defaultMargin),
+                        color: backgroundColor,
+                        child: ListView(
+                          children: [
+                            Flexible(
+                              child: Column(
+                                children: [
+                                  Center(
+                                    child: Text(
+                                      'Syarat dan Ketentuan',
+                                      style: primaryTextStyle.copyWith(
+                                        fontSize: 15,
+                                        fontWeight: bold,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          const Spacer(),
-                          Icon(
-                            Icons.keyboard_arrow_right_rounded,
-                            color: primaryColor,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                      const SizedBox(
-                        height: 10,
+                    );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(width: 0.5, color: primaryColor),
                       ),
-                    ],
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Syarat dan Ketentuan',
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 15,
+                                fontWeight: medium,
+                              ),
+                            ),
+                            const Spacer(),
+                            Icon(
+                              Icons.keyboard_arrow_right_rounded,
+                              color: primaryColor,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(width: 0.5, color: primaryColor),
-                    ),
-                  ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'Privasi dan Kebijakan',
-                            style: primaryTextStyle.copyWith(
-                              fontSize: 15,
-                              fontWeight: medium,
+                InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      elevation: 50,
+                      isScrollControlled: true,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(20),
+                        ),
+                      ),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      builder: (ctx) => Container(
+                        height: 700,
+                        padding: EdgeInsets.all(defaultMargin),
+                        color: backgroundColor,
+                        child: ListView(
+                          children: [
+                            Flexible(
+                              child: Column(
+                                children: [
+                                  Center(
+                                    child: Text(
+                                      'Privasi dan Kebijakan',
+                                      style: primaryTextStyle.copyWith(
+                                        fontSize: 15,
+                                        fontWeight: bold,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: medium,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          const Spacer(),
-                          Icon(
-                            Icons.keyboard_arrow_right_rounded,
-                            color: primaryColor,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                      const SizedBox(
-                        height: 10,
+                    );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(width: 0.5, color: primaryColor),
                       ),
-                    ],
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Privasi dan Kebijakan',
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 15,
+                                fontWeight: medium,
+                              ),
+                            ),
+                            const Spacer(),
+                            Icon(
+                              Icons.keyboard_arrow_right_rounded,
+                              color: primaryColor,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(
