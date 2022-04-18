@@ -1,18 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:healthy/theme.dart';
+import 'package:cool_alert/cool_alert.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Widget saveButton() {
+    Widget logoutButton() {
       return SizedBox(
         height: 45,
         width: double.infinity,
         child: TextButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/sign-in');
+            CoolAlert.show(
+              context: context,
+              type: CoolAlertType.confirm,
+              title: "Keluar Dari Aplikasi?",
+              text: 'apakah anda yakin ingin keluar dari aplikasi',
+              confirmBtnText: 'Ya',
+              cancelBtnText: 'Tidak',
+              confirmBtnColor: Color.fromARGB(255, 194, 49, 61),
+              onConfirmBtnTap: () {
+                Navigator.pushNamed(context, '/sign-in');
+              },
+              confirmBtnTextStyle:
+                  TextStyle(color: backgroundColor, fontSize: 18),
+            );
           },
           style: TextButton.styleFrom(
               backgroundColor: fourthColor,
@@ -535,7 +549,7 @@ class MenuPage extends StatelessWidget {
                 const SizedBox(
                   height: 60,
                 ),
-                saveButton(),
+                logoutButton(),
               ],
             ),
           ],
