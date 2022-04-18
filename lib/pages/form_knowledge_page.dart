@@ -119,7 +119,7 @@ class _FormKnowledgeState extends State<FormKnowledge> {
 
   Widget nutrient() {
     return Container(
-      margin: EdgeInsets.symmetric(
+      margin: const EdgeInsets.symmetric(
         horizontal: 5,
       ),
       child: Column(

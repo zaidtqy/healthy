@@ -98,7 +98,7 @@ class ResultInformation extends StatelessWidget {
                     width: 15,
                   ),
                   Text(
-                    'Mazaya Hurun\in',
+                    'Mazaya Hurun\'in',
                     style: primaryTextStyle.copyWith(
                       fontSize: 15,
                       fontWeight: medium,

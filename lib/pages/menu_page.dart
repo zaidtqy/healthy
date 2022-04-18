@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:healthy/theme.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({Key? key}) : super(key: key);
@@ -149,7 +148,7 @@ class MenuPage extends StatelessWidget {
                       context: context,
                       elevation: 50,
                       isScrollControlled: true,
-                      shape: RoundedRectangleBorder(
+                      shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.vertical(
                           top: Radius.circular(20),
                         ),
@@ -280,7 +279,7 @@ class MenuPage extends StatelessWidget {
                       context: context,
                       elevation: 50,
                       isScrollControlled: true,
-                      shape: RoundedRectangleBorder(
+                      shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.vertical(
                           top: Radius.circular(20),
                         ),
@@ -411,7 +410,7 @@ class MenuPage extends StatelessWidget {
                       context: context,
                       elevation: 50,
                       isScrollControlled: true,
-                      shape: RoundedRectangleBorder(
+                      shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.vertical(
                           top: Radius.circular(20),
                         ),

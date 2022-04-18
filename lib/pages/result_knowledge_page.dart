@@ -6,7 +6,7 @@ class ResultKnowledge extends StatelessWidget {
 
   Widget nutrient() {
     return Container(
-      margin: EdgeInsets.symmetric(
+      margin: const EdgeInsets.symmetric(
         horizontal: 5,
       ),
       child: Column(
