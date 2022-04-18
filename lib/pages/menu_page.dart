@@ -20,7 +20,7 @@ class MenuPage extends StatelessWidget {
               text: 'apakah anda yakin ingin keluar dari aplikasi',
               confirmBtnText: 'Ya',
               cancelBtnText: 'Tidak',
-              confirmBtnColor: Color.fromARGB(255, 194, 49, 61),
+              confirmBtnColor: const Color.fromARGB(255, 194, 49, 61),
               onConfirmBtnTap: () {
                 Navigator.pushNamed(context, '/sign-in');
               },
