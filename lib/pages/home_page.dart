@@ -958,6 +958,346 @@ class HomePage extends StatelessWidget {
       );
     }
 
+    Widget article1() {
+      return GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, '/notif-repro');
+        },
+        child: Container(
+          height: 107,
+          width: double.infinity,
+          padding: EdgeInsets.all(defaultMargin),
+          margin: const EdgeInsets.only(top: 15),
+          decoration: BoxDecoration(
+            color: fourthColor.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Row(
+            children: [
+              Column(
+                children: [
+                  Image.asset(
+                    'assets/letter.png',
+                    width: 20,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'KESEHATAN REPRODUKSI',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: bold,
+                      ),
+                    ),
+                    Text(
+                      'Tersedia beberapa artikel terkait bagaimana cara menjaga kesehatan organ reproduksi',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: regular,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    const Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          'Baca Artikel',
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 10,
+                            fontWeight: bold,
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    Widget article2() {
+      return GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, '/notif-food');
+        },
+        child: Container(
+          height: 107,
+          width: double.infinity,
+          padding: EdgeInsets.all(defaultMargin),
+          margin: const EdgeInsets.only(top: 15),
+          decoration: BoxDecoration(
+            color: fourthColor.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Row(
+            children: [
+              Column(
+                children: [
+                  Image.asset(
+                    'assets/letter.png',
+                    width: 20,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'POLA MAKAN SEHAT SEIMBANG',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: bold,
+                      ),
+                    ),
+                    Text(
+                      '10 pedoman gizi seimbang yang relevan di kehidupan sekarang dan bagaimana cara mengatur porsi dalam satu kali makan',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: regular,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    const Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          'Baca Artikel',
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 10,
+                            fontWeight: bold,
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    Widget article3() {
+      return GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, '/notif-tablets');
+        },
+        child: Container(
+          height: 107,
+          width: double.infinity,
+          padding: EdgeInsets.all(defaultMargin),
+          margin: const EdgeInsets.only(top: 15),
+          decoration: BoxDecoration(
+            color: fourthColor.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Row(
+            children: [
+              Column(
+                children: [
+                  Image.asset(
+                    'assets/letter.png',
+                    width: 20,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'TABLET TAMBAH DARAH',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: bold,
+                      ),
+                    ),
+                    Text(
+                      'Bagaimana cara konsumsi tablet tambah darah dengan tepat? lalu bagaimana agar terhindar dari anemia di saat kondisi pandemi covid-19 ini?',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: regular,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    const Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          'Baca Artikel',
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 10,
+                            fontWeight: bold,
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    Widget article4() {
+      return GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, '/notif-activity');
+        },
+        child: Container(
+          height: 107,
+          width: double.infinity,
+          padding: EdgeInsets.all(defaultMargin),
+          margin: const EdgeInsets.only(top: 15),
+          decoration: BoxDecoration(
+            color: fourthColor.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Row(
+            children: [
+              Column(
+                children: [
+                  Image.asset(
+                    'assets/letter.png',
+                    width: 20,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'AKTIFITAS FISIK',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: bold,
+                      ),
+                    ),
+                    Text(
+                      'Beragam jenis aktifitas fisik yang dapat bantu menjaga kesehatan tubuh anda supaya terhindar dari segala macam penyakit dan menjaga tubuh agar tetap sehat',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: regular,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    const Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          'Baca Artikel',
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 10,
+                            fontWeight: bold,
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    Widget article5() {
+      return GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, '/notif-prokes');
+        },
+        child: Container(
+          height: 107,
+          width: double.infinity,
+          padding: EdgeInsets.all(defaultMargin),
+          margin: const EdgeInsets.only(top: 15),
+          decoration: BoxDecoration(
+            color: fourthColor.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Row(
+            children: [
+              Column(
+                children: [
+                  Image.asset(
+                    'assets/letter.png',
+                    width: 20,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'PROTOKOL KESEHATAN',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: bold,
+                      ),
+                    ),
+                    Text(
+                      'Jaga diri anda dan keluarga dari virus corona dengan Gerakan Masyarakat Hidup Sehat (GERMAS)',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: regular,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    const Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          'Baca Artikel',
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 10,
+                            fontWeight: bold,
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: PreferredSize(
@@ -1028,6 +1368,31 @@ class HomePage extends StatelessWidget {
               ),
               const SizedBox(
                 height: 30,
+              ),
+              Text(
+                'Artikel Terkait',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 20,
+                  fontWeight: bold,
+                ),
+              ),
+              article1(),
+              article2(),
+              article3(),
+              article4(),
+              article5(),
+              const SizedBox(
+                height: 30,
+              ),
+              Text(
+                'Riwayat Data Anda',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 20,
+                  fontWeight: bold,
+                ),
+              ),
+              const SizedBox(
+                height: 15,
               ),
               informationSubject(),
               const SizedBox(
