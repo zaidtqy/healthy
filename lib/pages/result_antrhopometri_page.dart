@@ -38,7 +38,7 @@ class ResultAntrhopometri extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -48,7 +48,7 @@ class ResultAntrhopometri extends StatelessWidget {
                     '29/03/2022',
                     style: primaryTextStyle.copyWith(
                       fontSize: 15,
-                      fontWeight: medium,
+                      fontWeight: bold,
                     ),
                   ),
                 ],
@@ -91,7 +91,7 @@ class ResultAntrhopometri extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -152,7 +152,7 @@ class ResultAntrhopometri extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -213,7 +213,7 @@ class ResultAntrhopometri extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(

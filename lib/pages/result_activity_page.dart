@@ -38,7 +38,7 @@ class ResultActivity extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -48,7 +48,7 @@ class ResultActivity extends StatelessWidget {
                     '29/03/2022',
                     style: primaryTextStyle.copyWith(
                       fontSize: 15,
-                      fontWeight: medium,
+                      fontWeight: bold,
                     ),
                   ),
                 ],
@@ -92,7 +92,7 @@ class ResultActivity extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -147,7 +147,7 @@ class ResultActivity extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset(
-                      'assets/phone-call.png',
+                      'assets/timer.png',
                       width: 20,
                     ),
                     const SizedBox(
@@ -210,7 +210,7 @@ class ResultActivity extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -265,7 +265,7 @@ class ResultActivity extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset(
-                      'assets/phone-call.png',
+                      'assets/timer.png',
                       width: 20,
                     ),
                     const SizedBox(
@@ -328,7 +328,7 @@ class ResultActivity extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -383,7 +383,7 @@ class ResultActivity extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset(
-                      'assets/phone-call.png',
+                      'assets/timer.png',
                       width: 20,
                     ),
                     const SizedBox(
@@ -446,7 +446,7 @@ class ResultActivity extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -501,7 +501,7 @@ class ResultActivity extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset(
-                      'assets/phone-call.png',
+                      'assets/timer.png',
                       width: 20,
                     ),
                     const SizedBox(

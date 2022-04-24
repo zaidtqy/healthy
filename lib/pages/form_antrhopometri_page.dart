@@ -38,7 +38,7 @@ class FormAntrhopometri extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -105,7 +105,7 @@ class FormAntrhopometri extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -172,7 +172,7 @@ class FormAntrhopometri extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(

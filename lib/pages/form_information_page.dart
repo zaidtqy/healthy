@@ -116,7 +116,7 @@ class _FormInformationState extends State<FormInformation> {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -175,7 +175,7 @@ class _FormInformationState extends State<FormInformation> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Image.asset(
-                        'assets/user.png',
+                        'assets/union.png',
                         width: 20,
                       ),
                     ],
@@ -234,7 +234,7 @@ class _FormInformationState extends State<FormInformation> {
               child: Row(
                 children: <Widget>[
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   SizedBox(
@@ -318,7 +318,7 @@ class _FormInformationState extends State<FormInformation> {
               child: Row(
                 children: <Widget>[
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   SizedBox(
@@ -402,7 +402,7 @@ class _FormInformationState extends State<FormInformation> {
               child: Row(
                 children: <Widget>[
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   SizedBox(
@@ -486,7 +486,7 @@ class _FormInformationState extends State<FormInformation> {
               child: Row(
                 children: <Widget>[
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   SizedBox(
@@ -572,7 +572,7 @@ class _FormInformationState extends State<FormInformation> {
                 child: Row(
                   children: [
                     Image.asset(
-                      'assets/phone-call.png',
+                      'assets/union.png',
                       width: 20,
                     ),
                     const SizedBox(
@@ -634,7 +634,7 @@ class _FormInformationState extends State<FormInformation> {
                 child: Row(
                   children: [
                     Image.asset(
-                      'assets/phone-call.png',
+                      'assets/union.png',
                       width: 20,
                     ),
                     const SizedBox(
@@ -694,7 +694,7 @@ class _FormInformationState extends State<FormInformation> {
               child: Row(
                 children: <Widget>[
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   SizedBox(
@@ -778,7 +778,7 @@ class _FormInformationState extends State<FormInformation> {
               child: Row(
                 children: <Widget>[
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   SizedBox(
@@ -863,7 +863,7 @@ class _FormInformationState extends State<FormInformation> {
                 child: Row(
                   children: [
                     Image.asset(
-                      'assets/phone-call.png',
+                      'assets/union.png',
                       width: 20,
                     ),
                     const SizedBox(
@@ -923,7 +923,7 @@ class _FormInformationState extends State<FormInformation> {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -979,7 +979,7 @@ class _FormInformationState extends State<FormInformation> {
               child: Row(
                 children: <Widget>[
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   SizedBox(

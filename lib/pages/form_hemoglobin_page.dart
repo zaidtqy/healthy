@@ -46,7 +46,7 @@ class FormHemoglobin extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/blood.png',
                     width: 20,
                   ),
                   const SizedBox(

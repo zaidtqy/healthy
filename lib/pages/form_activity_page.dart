@@ -89,7 +89,7 @@ class _FormActivityState extends State<FormActivity> {
               child: Row(
                 children: <Widget>[
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   SizedBox(
@@ -179,7 +179,7 @@ class _FormActivityState extends State<FormActivity> {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -237,7 +237,7 @@ class _FormActivityState extends State<FormActivity> {
                 child: Row(
                   children: [
                     Image.asset(
-                      'assets/phone-call.png',
+                      'assets/timer.png',
                       width: 20,
                     ),
                     const SizedBox(
@@ -308,7 +308,7 @@ class _FormActivityState extends State<FormActivity> {
               child: Row(
                 children: <Widget>[
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   SizedBox(
@@ -398,7 +398,7 @@ class _FormActivityState extends State<FormActivity> {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -456,7 +456,7 @@ class _FormActivityState extends State<FormActivity> {
                 child: Row(
                   children: [
                     Image.asset(
-                      'assets/phone-call.png',
+                      'assets/timer.png',
                       width: 20,
                     ),
                     const SizedBox(
@@ -527,7 +527,7 @@ class _FormActivityState extends State<FormActivity> {
               child: Row(
                 children: <Widget>[
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   SizedBox(
@@ -617,7 +617,7 @@ class _FormActivityState extends State<FormActivity> {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -675,7 +675,7 @@ class _FormActivityState extends State<FormActivity> {
                 child: Row(
                   children: [
                     Image.asset(
-                      'assets/phone-call.png',
+                      'assets/timer.png',
                       width: 20,
                     ),
                     const SizedBox(
@@ -746,7 +746,7 @@ class _FormActivityState extends State<FormActivity> {
               child: Row(
                 children: <Widget>[
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   SizedBox(
@@ -836,7 +836,7 @@ class _FormActivityState extends State<FormActivity> {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -894,7 +894,7 @@ class _FormActivityState extends State<FormActivity> {
                 child: Row(
                   children: [
                     Image.asset(
-                      'assets/phone-call.png',
+                      'assets/timer.png',
                       width: 20,
                     ),
                     const SizedBox(

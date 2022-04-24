@@ -38,7 +38,7 @@ class ResultInformation extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -48,7 +48,7 @@ class ResultInformation extends StatelessWidget {
                     '29/03/2022',
                     style: primaryTextStyle.copyWith(
                       fontSize: 15,
-                      fontWeight: medium,
+                      fontWeight: bold,
                     ),
                   ),
                 ],
@@ -91,7 +91,7 @@ class ResultInformation extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -145,7 +145,7 @@ class ResultInformation extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Image.asset(
-                        'assets/user.png',
+                        'assets/union.png',
                         width: 20,
                       ),
                     ],
@@ -207,7 +207,7 @@ class ResultInformation extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -260,7 +260,7 @@ class ResultInformation extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -313,7 +313,7 @@ class ResultInformation extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -366,7 +366,7 @@ class ResultInformation extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -421,7 +421,7 @@ class ResultInformation extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset(
-                      'assets/phone-call.png',
+                      'assets/union.png',
                       width: 20,
                     ),
                     const SizedBox(
@@ -477,7 +477,7 @@ class ResultInformation extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset(
-                      'assets/phone-call.png',
+                      'assets/union.png',
                       width: 20,
                     ),
                     const SizedBox(
@@ -531,7 +531,7 @@ class ResultInformation extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -584,7 +584,7 @@ class ResultInformation extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -637,7 +637,7 @@ class ResultInformation extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -690,7 +690,7 @@ class ResultInformation extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(

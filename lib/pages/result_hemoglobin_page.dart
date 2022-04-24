@@ -46,7 +46,7 @@ class ResultHemoglobin extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/union.png',
                     width: 20,
                   ),
                   const SizedBox(
@@ -56,7 +56,7 @@ class ResultHemoglobin extends StatelessWidget {
                     '29/03/2022',
                     style: primaryTextStyle.copyWith(
                       fontSize: 15,
-                      fontWeight: medium,
+                      fontWeight: bold,
                     ),
                   ),
                 ],
@@ -99,7 +99,7 @@ class ResultHemoglobin extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/user.png',
+                    'assets/blood.png',
                     width: 20,
                   ),
                   const SizedBox(
