@@ -47,43 +47,39 @@ class SignUpPage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Container(
+            SizedBox(
               height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Center(
-                child: Row(
-                  children: [
-                    Image.asset(
+              child: TextFormField(
+                keyboardType: TextInputType.name,
+                textInputAction: TextInputAction.next,
+                style: primaryTextStyle,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: primaryColor,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 15,
+                    ),
+                    child: Image.asset(
                       'assets/user.png',
                       width: 20,
                     ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      child: TextFormField(
-                        style: primaryTextStyle,
-                        decoration: InputDecoration(
-                          hintText: 'Nama Lengkap',
-                          hintStyle: primaryTextStyle,
-                          counterText: "",
-                          border: InputBorder.none,
-                        ),
-                        maxLength: 45,
-                      ),
-                    ),
-                  ],
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: const BorderSide(),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  hintText: 'Nama Lengkap',
+                  hintStyle: primaryTextStyle,
+                  counterText: "",
                 ),
+                maxLength: 45,
               ),
             ),
           ],
@@ -107,44 +103,38 @@ class SignUpPage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Center(
-                child: Row(
-                  children: [
-                    Image.asset(
+            SizedBox(
+              child: TextFormField(
+                textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.emailAddress,
+                style: primaryTextStyle,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: primaryColor,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 15,
+                    ),
+                    child: Image.asset(
                       'assets/email.png',
                       width: 20,
                     ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      child: TextFormField(
-                        keyboardType: TextInputType.emailAddress,
-                        style: primaryTextStyle,
-                        decoration: InputDecoration(
-                          hintText: 'Alamat Email',
-                          hintStyle: primaryTextStyle,
-                          counterText: "",
-                          border: InputBorder.none,
-                        ),
-                        maxLength: 25,
-                      ),
-                    ),
-                  ],
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: const BorderSide(),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  hintText: 'Alamat Email',
+                  hintStyle: primaryTextStyle,
+                  counterText: "",
                 ),
+                maxLength: 25,
               ),
             ),
           ],
@@ -168,44 +158,38 @@ class SignUpPage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Center(
-                child: Row(
-                  children: [
-                    Image.asset(
+            SizedBox(
+              child: TextFormField(
+                textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.phone,
+                style: primaryTextStyle,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: primaryColor,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 15,
+                    ),
+                    child: Image.asset(
                       'assets/phone-call.png',
                       width: 20,
                     ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      child: TextFormField(
-                        keyboardType: TextInputType.phone,
-                        style: primaryTextStyle,
-                        decoration: InputDecoration(
-                          hintText: 'Nomor Telepon',
-                          hintStyle: primaryTextStyle,
-                          counterText: "",
-                          border: InputBorder.none,
-                        ),
-                        maxLength: 13,
-                      ),
-                    ),
-                  ],
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: const BorderSide(),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  hintText: 'Nomor Telepon',
+                  hintStyle: primaryTextStyle,
+                  counterText: "",
                 ),
+                maxLength: 13,
               ),
             ),
           ],
@@ -229,44 +213,37 @@ class SignUpPage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Center(
-                child: Row(
-                  children: [
-                    Image.asset(
+            SizedBox(
+              child: TextFormField(
+                obscureText: true,
+                style: primaryTextStyle,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: primaryColor,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 15,
+                    ),
+                    child: Image.asset(
                       'assets/lock.png',
                       width: 20,
                     ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      child: TextFormField(
-                        obscureText: true,
-                        style: primaryTextStyle,
-                        decoration: InputDecoration(
-                          hintText: 'Kata Sandi',
-                          hintStyle: primaryTextStyle,
-                          counterText: "",
-                          border: InputBorder.none,
-                        ),
-                        maxLength: 45,
-                      ),
-                    ),
-                  ],
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: const BorderSide(),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  hintText: 'Kata Sandi',
+                  hintStyle: primaryTextStyle,
+                  counterText: "",
                 ),
+                maxLength: 45,
               ),
             ),
           ],

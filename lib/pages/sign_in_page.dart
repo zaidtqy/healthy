@@ -33,7 +33,7 @@ class SignInPage extends StatelessWidget {
 
     Widget emailInput() {
       return Container(
-        margin: const EdgeInsets.only(top: 65),
+        margin: const EdgeInsets.only(top: 115),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -47,44 +47,39 @@ class SignInPage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Container(
+            SizedBox(
               height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Center(
-                child: Row(
-                  children: [
-                    Image.asset(
+              child: TextFormField(
+                keyboardType: TextInputType.emailAddress,
+                style: primaryTextStyle,
+                textInputAction: TextInputAction.next,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: primaryColor,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 15,
+                    ),
+                    child: Image.asset(
                       'assets/email.png',
                       width: 20,
                     ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      child: TextFormField(
-                        keyboardType: TextInputType.emailAddress,
-                        style: primaryTextStyle,
-                        decoration: InputDecoration(
-                          hintText: 'Alamat Email',
-                          hintStyle: primaryTextStyle,
-                          counterText: "",
-                          border: InputBorder.none,
-                        ),
-                        maxLength: 25,
-                      ),
-                    ),
-                  ],
+                  ),
+                  hintText: 'Alamat Email',
+                  hintStyle: primaryTextStyle,
+                  counterText: "",
+                  border: OutlineInputBorder(
+                    borderSide: const BorderSide(),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
                 ),
+                maxLength: 25,
               ),
             ),
           ],
@@ -108,44 +103,39 @@ class SignInPage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Container(
+            SizedBox(
               height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Center(
-                child: Row(
-                  children: [
-                    Image.asset(
+              child: TextFormField(
+                obscureText: true,
+                style: primaryTextStyle,
+                textInputAction: TextInputAction.done,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: primaryColor,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 15,
+                    ),
+                    child: Image.asset(
                       'assets/lock.png',
                       width: 20,
                     ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      child: TextFormField(
-                        obscureText: true,
-                        style: primaryTextStyle,
-                        decoration: InputDecoration(
-                          hintText: 'Kata Sandi',
-                          hintStyle: primaryTextStyle,
-                          counterText: "",
-                          border: InputBorder.none,
-                        ),
-                        maxLength: 45,
-                      ),
-                    ),
-                  ],
+                  ),
+                  hintText: 'Kata Sandi',
+                  hintStyle: primaryTextStyle,
+                  counterText: "",
+                  border: OutlineInputBorder(
+                    borderSide: const BorderSide(),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
                 ),
+                maxLength: 45,
               ),
             ),
           ],
