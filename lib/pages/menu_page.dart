@@ -24,11 +24,12 @@ class MenuPage extends StatelessWidget {
             builder: (_, controller) => Container(
               decoration: BoxDecoration(
                 color: backgroundColor,
-                borderRadius: BorderRadius.vertical(
+                borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(20),
                 ),
               ),
-              padding: EdgeInsets.only(top: 5, left: 15, right: 15, bottom: 15),
+              padding: const EdgeInsets.only(
+                  top: 5, left: 15, right: 15, bottom: 15),
               child: ListView(
                 controller: controller,
                 children: [
@@ -43,7 +44,7 @@ class MenuPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Center(
@@ -55,7 +56,7 @@ class MenuPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text(
@@ -88,11 +89,12 @@ class MenuPage extends StatelessWidget {
             builder: (_, controller) => Container(
               decoration: BoxDecoration(
                 color: backgroundColor,
-                borderRadius: BorderRadius.vertical(
+                borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(20),
                 ),
               ),
-              padding: EdgeInsets.only(top: 5, left: 15, right: 15, bottom: 15),
+              padding: const EdgeInsets.only(
+                  top: 5, left: 15, right: 15, bottom: 15),
               child: ListView(
                 controller: controller,
                 children: [
@@ -107,7 +109,7 @@ class MenuPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Center(
@@ -119,7 +121,7 @@ class MenuPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text(
@@ -152,11 +154,12 @@ class MenuPage extends StatelessWidget {
             builder: (_, controller) => Container(
               decoration: BoxDecoration(
                 color: backgroundColor,
-                borderRadius: BorderRadius.vertical(
+                borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(20),
                 ),
               ),
-              padding: EdgeInsets.only(top: 5, left: 15, right: 15, bottom: 15),
+              padding: const EdgeInsets.only(
+                  top: 5, left: 15, right: 15, bottom: 15),
               child: ListView(
                 controller: controller,
                 children: [
@@ -171,7 +174,7 @@ class MenuPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Center(
@@ -183,7 +186,7 @@ class MenuPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text(
