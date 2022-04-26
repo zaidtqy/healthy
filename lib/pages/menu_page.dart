@@ -1,9 +1,37 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:healthy/model/user_model.dart';
+import 'package:healthy/pages/sign_in_page.dart';
 import 'package:healthy/theme.dart';
 import 'package:cool_alert/cool_alert.dart';
 
-class MenuPage extends StatelessWidget {
+class MenuPage extends StatefulWidget {
   const MenuPage({Key? key}) : super(key: key);
+
+  @override
+  State<MenuPage> createState() => _MenuPageState();
+}
+
+class _MenuPageState extends State<MenuPage> {
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel();
+
+  @override
+  void initState() {
+    // ignore: todo
+    // TODO: Implement initState
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      // ignore: unnecessary_this
+      this.loggedInUser = UserModel.fromMap(value.data());
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -226,7 +254,7 @@ class MenuPage extends StatelessWidget {
               cancelBtnText: 'Tidak',
               confirmBtnColor: const Color.fromARGB(255, 194, 49, 61),
               onConfirmBtnTap: () {
-                Navigator.pushNamed(context, '/sign-in');
+                logout(context);
               },
               confirmBtnTextStyle:
                   TextStyle(color: backgroundColor, fontSize: 18),
@@ -313,7 +341,7 @@ class MenuPage extends StatelessWidget {
               height: 30,
             ),
             Text(
-              'MAZAYA HURUN\'IN',
+              "${loggedInUser.name}",
               style: primaryTextStyle.copyWith(
                 fontSize: 20,
                 fontWeight: bold,
@@ -323,7 +351,7 @@ class MenuPage extends StatelessWidget {
               height: 10,
             ),
             Text(
-              'mazayahurunin11@gmail.com',
+              "${loggedInUser.email}",
               style: primaryTextStyle.copyWith(
                 fontSize: 10,
                 fontWeight: medium,
@@ -333,7 +361,7 @@ class MenuPage extends StatelessWidget {
               height: 10,
             ),
             Text(
-              '085779402511',
+              "${loggedInUser.phone}",
               style: primaryTextStyle.copyWith(
                 fontSize: 10,
                 fontWeight: medium,
@@ -490,5 +518,11 @@ class MenuPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> logout(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const SignInPage()));
   }
 }

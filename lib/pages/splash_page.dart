@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:healthy/pages/home_page.dart';
 import 'package:healthy/pages/sign_in_page.dart';
 import 'package:healthy/theme.dart';
 
