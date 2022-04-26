@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "74881987571",
+    "project_id": "healthy-e5850",
+    "storage_bucket": "healthy-e5850.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:74881987571:android:2014f11c3a60f818171886",
+        "android_client_info": {
+          "package_name": "com.example.healthy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "74881987571-064lnsa70v5t797hfvn1fu5rrt6ctql9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.healthy",
+            "certificate_hash": "b6743e5fd67597f40b6e6f6eb3007545af8bfbcc"
+          }
+        },
+        {
+          "client_id": "74881987571-hdp67dqhvbqkasjf2t9gkcqs1lu6qj1o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBC42RpzTEC8G95PM7injS-EY1Gmb_YDak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "74881987571-hdp67dqhvbqkasjf2t9gkcqs1lu6qj1o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

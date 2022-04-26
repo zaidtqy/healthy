@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:healthy/pages/home_page.dart';
+import 'package:healthy/pages/sign_in_page.dart';
 import 'package:healthy/theme.dart';
 
 class SplashPage extends StatefulWidget {
@@ -18,7 +20,8 @@ class _SplashPageState extends State<SplashPage> {
 
     Timer(
       const Duration(seconds: 3),
-      () => Navigator.pushNamed(context, '/sign-in'),
+      () => Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const SignInPage())),
     );
 
     super.initState();
