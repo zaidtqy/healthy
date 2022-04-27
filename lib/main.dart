@@ -21,7 +21,6 @@ import 'package:healthy/pages/history_form_intake_page.dart';
 import 'package:healthy/pages/history_form_antrhopometri_page.dart';
 import 'package:healthy/pages/history_form_hemoglobin_page.dart';
 import 'package:healthy/pages/history_form_knowledge_page.dart';
-import 'package:healthy/pages/result_activity_page.dart';
 import 'package:healthy/pages/result_information_page.dart';
 import 'package:healthy/pages/result_antrhopometri_page.dart';
 import 'package:healthy/pages/result_hemoglobin_page.dart';
