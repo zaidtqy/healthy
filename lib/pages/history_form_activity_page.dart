@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:healthy/model/activity_model.dart';
+import 'package:healthy/pages/result_activity_page.dart';
 import 'package:healthy/theme.dart';
 
 class HistoryFormActivity extends StatelessWidget {
@@ -6,7 +8,8 @@ class HistoryFormActivity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget activitySubject() {
+    Widget activitySubject(
+        {required HistoryActivityModel historyActivityModel}) {
       return Container(
         height: 168,
         width: double.infinity,
@@ -33,7 +36,7 @@ class HistoryFormActivity extends StatelessWidget {
                 ),
                 const Spacer(),
                 Text(
-                  '29/03/2022',
+                  historyActivityModel.date,
                   style: primaryTextStyle.copyWith(
                     fontSize: 10,
                     fontWeight: bold,
@@ -54,7 +57,7 @@ class HistoryFormActivity extends StatelessWidget {
                   width: 10,
                 ),
                 Text(
-                  '40 Menit',
+                  '${historyActivityModel.activityModel.last.activityTime} Menit',
                   style:
                       primaryTextStyle.copyWith(fontSize: 20, fontWeight: bold),
                 ),
@@ -73,7 +76,7 @@ class HistoryFormActivity extends StatelessWidget {
                   width: 10,
                 ),
                 Text(
-                  'Bangun tidur - jam 12 siang',
+                  historyActivityModel.activityModel.last.descriptionActivity,
                   style: primaryTextStyle.copyWith(
                     fontSize: 10,
                     fontWeight: medium,
@@ -97,7 +100,7 @@ class HistoryFormActivity extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Berlari',
+                  historyActivityModel.activityModel.last.activityName,
                   style: primaryTextStyle.copyWith(
                     fontSize: 10,
                     fontWeight: bold,
@@ -121,7 +124,16 @@ class HistoryFormActivity extends StatelessWidget {
                 ),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/result-activity');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) {
+                          return ResultActivity(
+                            historyActivityModel: historyActivityModel,
+                          );
+                        },
+                      ),
+                    );
                   },
                   style: TextButton.styleFrom(
                     backgroundColor: backgroundColor,
@@ -140,6 +152,31 @@ class HistoryFormActivity extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      );
+    }
+
+    Widget backButton() {
+      return Container(
+        height: 45,
+        width: 130,
+        margin: const EdgeInsets.only(top: 30, bottom: 30),
+        child: TextButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/home-page');
+          },
+          style: TextButton.styleFrom(
+              backgroundColor: primaryColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              )),
+          child: Text(
+            'Kembali',
+            style: backgroundTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: bold,
+            ),
+          ),
         ),
       );
     }
@@ -180,24 +217,49 @@ class HistoryFormActivity extends StatelessWidget {
         margin: EdgeInsets.symmetric(
           horizontal: defaultMargin,
         ),
-        child: ListView(
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-            activitySubject(),
-            activitySubject(),
-            activitySubject(),
-            activitySubject(),
-            activitySubject(),
-            activitySubject(),
-            activitySubject(),
-            activitySubject(),
-            const SizedBox(
-              height: 30,
-            ),
-          ],
-        ),
+        child: (mockHistoryActivityModel.isNotEmpty)
+            ? ListView.builder(
+                padding: const EdgeInsets.only(top: 30),
+                itemCount: mockHistoryActivityModel.length,
+                itemBuilder: (context, index) {
+                  return activitySubject(
+                    historyActivityModel: mockHistoryActivityModel[index],
+                  );
+                },
+              )
+            : Container(
+                margin: EdgeInsets.symmetric(
+                  horizontal: defaultMargin,
+                ),
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 180,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/image_empty.png',
+                          width: 250,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      'Riwayat Data Kosong',
+                      style: primaryTextStyle.copyWith(
+                          fontSize: 15, fontWeight: bold),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    backButton(),
+                  ],
+                ),
+              ),
       ),
     );
   }

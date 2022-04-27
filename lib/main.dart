@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
         '/history-antrhopometri': (context) => const HistoryFormAntrhopometri(),
         '/history-hemoglobin': (context) => const HistoryFormHemoglobin(),
         '/history-knowledge': (context) => const HistoryFormKnowledge(),
-        '/result-activity': (context) => const ResultActivity(),
+        // '/result-activity': (context) => const ResultActivity(),
         '/result-information': (context) => const ResultInformation(),
         '/result-antrhopometri': (context) => const ResultAntrhopometri(),
         '/result-hemoglobin': (context) => const ResultHemoglobin(),

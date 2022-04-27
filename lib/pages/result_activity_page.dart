@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:healthy/model/activity_model.dart';
 import 'package:healthy/theme.dart';
 
 class ResultActivity extends StatelessWidget {
-  const ResultActivity({Key? key}) : super(key: key);
+  final HistoryActivityModel historyActivityModel;
+
+  const ResultActivity({Key? key, required this.historyActivityModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +49,7 @@ class ResultActivity extends StatelessWidget {
                     width: 15,
                   ),
                   Text(
-                    '29/03/2022',
+                    historyActivityModel.date,
                     style: primaryTextStyle.copyWith(
                       fontSize: 15,
                       fontWeight: bold,
@@ -59,475 +63,123 @@ class ResultActivity extends StatelessWidget {
       );
     }
 
-    Widget act1Result() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Bangun Tidur - Jam 12 Siang',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              width: 195,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
+    Widget actResult({required ActivityModel activityModel}) {
+      return Row(
+        children: [
+          Container(
+            margin: const EdgeInsets.only(top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  activityModel.descriptionActivity,
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: semibold,
+                  ),
                 ),
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Text(
-                    'Berlari',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: medium,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget minutesAct1() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Lama Waktu',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              width: 155,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
+                const SizedBox(
+                  height: 10,
                 ),
-              ),
-              child: Center(
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/timer.png',
-                      width: 20,
+                Container(
+                  height: 45,
+                  width: 195,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  decoration: BoxDecoration(
+                    color: primaryColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      width: 1.0,
+                      color: primaryColor,
                     ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      '30',
-                      style: primaryTextStyle.copyWith(
-                        fontSize: 15,
-                        fontWeight: medium,
+                  ),
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assets/union.png',
+                        width: 20,
                       ),
-                    ),
-                    const Spacer(),
-                    Text(
-                      'Menit',
-                      style: primaryTextStyle.copyWith(
-                        fontSize: 15,
-                        fontWeight: medium,
+                      const SizedBox(
+                        width: 15,
                       ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget act2Result() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Jam 12 Siang - Jam 6 Sore',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              width: 195,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Text(
-                    'Berjalan',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: medium,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget minutesAct2() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Lama Waktu',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              width: 155,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Center(
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/timer.png',
-                      width: 20,
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      '60',
-                      style: primaryTextStyle.copyWith(
-                        fontSize: 15,
-                        fontWeight: medium,
+                      Text(
+                        activityModel.activityName,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
                       ),
-                    ),
-                    const Spacer(),
-                    Text(
-                      'Menit',
-                      style: primaryTextStyle.copyWith(
-                        fontSize: 15,
-                        fontWeight: medium,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget act3Result() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Jam 12 Siang - Jam 6 Sore',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              width: 195,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
+                    ],
                   ),
-                  const SizedBox(
-                    width: 15,
+                ),
+              ],
+            ),
+          ),
+          const Spacer(),
+          Container(
+            margin: const EdgeInsets.only(top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Lama Waktu',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: semibold,
                   ),
-                  Text(
-                    'Berjalan',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: medium,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 45,
+                  width: 155,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  decoration: BoxDecoration(
+                    color: primaryColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      width: 1.0,
+                      color: primaryColor,
                     ),
                   ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget minutesAct3() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Lama Waktu',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              width: 155,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Center(
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/timer.png',
-                      width: 20,
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      '60',
-                      style: primaryTextStyle.copyWith(
-                        fontSize: 15,
-                        fontWeight: medium,
-                      ),
-                    ),
-                    const Spacer(),
-                    Text(
-                      'Menit',
-                      style: primaryTextStyle.copyWith(
-                        fontSize: 15,
-                        fontWeight: medium,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget act4Result() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Jam 12 Siang - Jam 6 Sore',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              width: 195,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Text(
-                    'Berjalan',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: medium,
+                  child: Center(
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          'assets/timer.png',
+                          width: 20,
+                        ),
+                        const SizedBox(
+                          width: 15,
+                        ),
+                        Text(
+                          activityModel.activityTime,
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 15,
+                            fontWeight: medium,
+                          ),
+                        ),
+                        const Spacer(),
+                        Text(
+                          'Menit',
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 15,
+                            fontWeight: medium,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget minutesAct4() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Lama Waktu',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              width: 155,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
                 ),
-              ),
-              child: Center(
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/timer.png',
-                      width: 20,
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      '60',
-                      style: primaryTextStyle.copyWith(
-                        fontSize: 15,
-                        fontWeight: medium,
-                      ),
-                    ),
-                    const Spacer(),
-                    Text(
-                      'Menit',
-                      style: primaryTextStyle.copyWith(
-                        fontSize: 15,
-                        fontWeight: medium,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       );
     }
 
@@ -567,36 +219,15 @@ class ResultActivity extends StatelessWidget {
         margin: EdgeInsets.symmetric(
           horizontal: defaultMargin,
         ),
-        child: ListView(
+        child: Column(
           children: [
             dateInput(),
-            Row(
-              children: [
-                act1Result(),
-                const Spacer(),
-                minutesAct1(),
-              ],
-            ),
-            Row(
-              children: [
-                act2Result(),
-                const Spacer(),
-                minutesAct2(),
-              ],
-            ),
-            Row(
-              children: [
-                act3Result(),
-                const Spacer(),
-                minutesAct3(),
-              ],
-            ),
-            Row(
-              children: [
-                act4Result(),
-                const Spacer(),
-                minutesAct4(),
-              ],
+            Expanded(
+              child: ListView.builder(
+                itemCount: historyActivityModel.activityModel.length,
+                itemBuilder: (context, index) => actResult(
+                    activityModel: historyActivityModel.activityModel[index]),
+              ),
             ),
           ],
         ),
