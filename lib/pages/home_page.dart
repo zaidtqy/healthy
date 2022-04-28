@@ -1,7 +1,9 @@
+import 'package:badges/badges.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:healthy/model/user_model.dart';
+import 'package:healthy/models/notification_model.dart';
+import 'package:healthy/models/user_model.dart';
 import 'package:healthy/theme.dart';
 
 class HomePage extends StatefulWidget {
@@ -1332,38 +1334,52 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: fourthColor,
           automaticallyImplyLeading: false,
           elevation: 5,
-          flexibleSpace: SafeArea(
-            child: Row(
-              children: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/menu-page');
-                  },
-                  child: Image.asset(
-                    'assets/menu.png',
-                    width: 20,
-                  ),
-                ),
-                Text(
-                  'Halo, Selamat datang',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 15,
-                    fontWeight: bold,
-                  ),
-                ),
-                const Spacer(),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/notifications-page');
-                  },
-                  child: Image.asset(
-                    'assets/bell.png',
-                    width: 20,
-                  ),
-                ),
-              ],
+          title: Text(
+            'Halo, Selamat datang',
+            style: primaryTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: bold,
             ),
           ),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/menu-page');
+            },
+            icon: Icon(
+              Icons.menu,
+              color: primaryColor,
+              size: 30,
+            ),
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/notifications-page');
+              },
+              padding: const EdgeInsets.only(right: 25),
+              icon: Badge(
+                badgeContent: Align(
+                  alignment: Alignment.topRight,
+                  child: Text(
+                    mockHistoryReproModel
+                        .where((e) => e.isRead == false)
+                        .length
+                        .toString(),
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 10,
+                      fontWeight: bold,
+                    ),
+                  ),
+                ),
+                badgeColor: backgroundColor,
+                child: Icon(
+                  Icons.notifications,
+                  color: primaryColor,
+                  size: 30,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
       body: SafeArea(

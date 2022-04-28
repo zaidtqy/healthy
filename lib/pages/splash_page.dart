@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:healthy/pages/home_page.dart';
 import 'package:healthy/pages/sign_in_page.dart';
 import 'package:healthy/theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -14,14 +16,26 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    // ignore: todo
-    // TODO: implement initState
-
-    Timer(
-      const Duration(seconds: 3),
-      () => Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const SignInPage())),
-    );
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      Timer(const Duration(seconds: 3), () async {
+        final SharedPreferences pref = await SharedPreferences.getInstance();
+        final getEmail = pref.getString('email_key');
+        final getPassword = pref.getString('password_key');
+        if (getEmail == null || getPassword == null) {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) => const SignInPage(),
+            ),
+          );
+        } else {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) => const HomePage(),
+            ),
+          );
+        }
+      });
+    });
 
     super.initState();
   }

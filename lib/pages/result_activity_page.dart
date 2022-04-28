@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:healthy/model/activity_model.dart';
+import 'package:healthy/models/activity_model.dart';
 import 'package:healthy/theme.dart';
 
 class ResultActivity extends StatelessWidget {

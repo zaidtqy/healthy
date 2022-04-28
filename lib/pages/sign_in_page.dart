@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthy/theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'home_page.dart';
 
@@ -22,6 +23,13 @@ class _SignInPageState extends State<SignInPage> {
 
   // firebase
   final _auth = FirebaseAuth.instance;
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +135,7 @@ class _SignInPageState extends State<SignInPage> {
       width: double.infinity,
       margin: const EdgeInsets.only(top: 30),
       child: TextButton(
-        onPressed: () {
+        onPressed: () async {
           signIn(emailController.text, passwordController.text);
         },
         style: TextButton.styleFrom(
@@ -253,7 +261,8 @@ class _SignInPageState extends State<SignInPage> {
           ),
           child: Form(
             key: _formKey,
-            child: ListView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 header(),
                 emailInput(),
@@ -261,9 +270,7 @@ class _SignInPageState extends State<SignInPage> {
                 passwordInput(),
                 password,
                 loginButton,
-                const SizedBox(
-                  height: 250,
-                ),
+                const Spacer(),
                 footer(),
               ],
             ),
@@ -277,12 +284,15 @@ class _SignInPageState extends State<SignInPage> {
     if (_formKey.currentState!.validate()) {
       await _auth
           .signInWithEmailAndPassword(email: email, password: password)
-          .then((uid) => {
-                Fluttertoast.showToast(msg: "Berhasil Masuk"),
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const HomePage())),
-              })
-          .catchError((e) {
+          .then((uid) async {
+        final SharedPreferences pref = await SharedPreferences.getInstance();
+        pref.setString('email_key', emailController.text);
+        pref.setString('password_key', passwordController.text);
+
+        Fluttertoast.showToast(msg: "Berhasil Masuk");
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => const HomePage()));
+      }).catchError((e) {
         Fluttertoast.showToast(msg: e!.message);
       });
     }

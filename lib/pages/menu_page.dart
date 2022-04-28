@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:healthy/model/user_model.dart';
+import 'package:healthy/models/user_model.dart';
 import 'package:healthy/pages/sign_in_page.dart';
 import 'package:healthy/theme.dart';
 import 'package:cool_alert/cool_alert.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({Key? key}) : super(key: key);
@@ -248,12 +249,26 @@ class _MenuPageState extends State<MenuPage> {
             CoolAlert.show(
               context: context,
               type: CoolAlertType.confirm,
-              title: "Keluar Dari Aplikasi?",
-              text: 'apakah anda yakin ingin keluar dari aplikasi',
+              title: " ",
+              widget: Column(
+                children: [
+                  Text(
+                    'Anda yakin ingin keluar dari aplikasi?',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 25,
+                      fontWeight: bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
               confirmBtnText: 'Ya',
               cancelBtnText: 'Tidak',
-              confirmBtnColor: const Color.fromARGB(255, 194, 49, 61),
-              onConfirmBtnTap: () {
+              confirmBtnColor: const Color(0xff2F5D62),
+              onConfirmBtnTap: () async {
+                final SharedPreferences pref =
+                    await SharedPreferences.getInstance();
+                pref.clear();
                 logout(context);
               },
               confirmBtnTextStyle:

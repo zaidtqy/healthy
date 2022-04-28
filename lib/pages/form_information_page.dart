@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthy/theme.dart';
 
 class FormInformation extends StatefulWidget {
@@ -9,6 +10,17 @@ class FormInformation extends StatefulWidget {
 }
 
 class _FormInformationState extends State<FormInformation> {
+  // form key
+  final _formKey = GlobalKey<FormState>();
+
+  // controller
+  final nameController = TextEditingController();
+  final addressController = TextEditingController();
+  final brothersController = TextEditingController();
+  final amountController = TextEditingController();
+  final ageTeenController = TextEditingController();
+  final otherFormController = TextEditingController();
+
   bool _isShowField = false;
 
   String? _valEduFather;
@@ -83,986 +95,1013 @@ class _FormInformationState extends State<FormInformation> {
   ];
 
   @override
+  void dispose() {
+    nameController.dispose();
+    addressController.dispose();
+    brothersController.dispose();
+    amountController.dispose();
+    ageTeenController.dispose();
+    otherFormController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    Widget nameForm() {
-      return Container(
-        margin: const EdgeInsets.only(top: 30),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Nama',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Expanded(
-                    child: TextFormField(
-                      style: primaryTextStyle,
-                      decoration: InputDecoration(
-                        hintText: 'Nama Lengkap',
-                        hintStyle: primaryTextStyle,
-                        counterText: "",
-                        border: InputBorder.none,
-                      ),
-                      maxLength: 45,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget addressForm() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Alamat',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 135,
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Image.asset(
-                        'assets/union.png',
-                        width: 20,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Expanded(
-                    child: TextField(
-                      style: primaryTextStyle,
-                      decoration: InputDecoration.collapsed(
-                        hintText: 'Alamat Lengkap',
-                        hintStyle: primaryTextStyle,
-                      ),
-                      maxLines: 5,
-                      maxLength: 125,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget eduFatherForm() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Pendidikan Terakhir Ayah',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: <Widget>[
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  SizedBox(
-                    width: 310,
-                    child: DropdownButtonHideUnderline(
-                      child: ButtonTheme(
-                        alignedDropdown: true,
-                        child: DropdownButton<String>(
-                          hint: Text(
-                            "Pendidikan Terakhir Ayah",
-                            style: primaryTextStyle.copyWith(
-                              fontSize: 15,
-                              fontWeight: medium,
-                            ),
-                          ),
-                          icon: Icon(
-                            Icons.keyboard_arrow_down_rounded,
-                            color: primaryColor,
-                          ),
-                          value: _valEduFather,
-                          items: _eduFather.map((value) {
-                            return DropdownMenuItem(
-                              child: Text(
-                                value,
-                                style: primaryTextStyle.copyWith(
-                                  fontSize: 15,
-                                  fontWeight: medium,
-                                ),
-                              ),
-                              value: value,
-                            );
-                          }).toList(),
-                          onChanged: (value) {
-                            setState(
-                              () {
-                                _valEduFather = value;
-                              },
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget eduMotherForm() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Pendidikan Terakhir Ibu',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: <Widget>[
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  SizedBox(
-                    width: 310,
-                    child: DropdownButtonHideUnderline(
-                      child: ButtonTheme(
-                        alignedDropdown: true,
-                        child: DropdownButton<String>(
-                          hint: Text(
-                            "Pendidikan Terakhir Ibu",
-                            style: primaryTextStyle.copyWith(
-                              fontSize: 15,
-                              fontWeight: medium,
-                            ),
-                          ),
-                          icon: Icon(
-                            Icons.keyboard_arrow_down_rounded,
-                            color: primaryColor,
-                          ),
-                          value: _valEduMother,
-                          items: _eduMother.map((value) {
-                            return DropdownMenuItem(
-                              child: Text(
-                                value,
-                                style: primaryTextStyle.copyWith(
-                                  fontSize: 15,
-                                  fontWeight: medium,
-                                ),
-                              ),
-                              value: value,
-                            );
-                          }).toList(),
-                          onChanged: (value) {
-                            setState(
-                              () {
-                                _valEduMother = value;
-                              },
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget jobFatherForm() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Pekerjaan Ayah',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: <Widget>[
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  SizedBox(
-                    width: 310,
-                    child: DropdownButtonHideUnderline(
-                      child: ButtonTheme(
-                        alignedDropdown: true,
-                        child: DropdownButton<String>(
-                          hint: Text(
-                            "Pekerjaan Ayah",
-                            style: primaryTextStyle.copyWith(
-                              fontSize: 15,
-                              fontWeight: medium,
-                            ),
-                          ),
-                          icon: Icon(
-                            Icons.keyboard_arrow_down_rounded,
-                            color: primaryColor,
-                          ),
-                          value: _valJobFather,
-                          items: _jobFather.map((value) {
-                            return DropdownMenuItem(
-                              child: Text(
-                                value,
-                                style: primaryTextStyle.copyWith(
-                                  fontSize: 15,
-                                  fontWeight: medium,
-                                ),
-                              ),
-                              value: value,
-                            );
-                          }).toList(),
-                          onChanged: (value) {
-                            setState(
-                              () {
-                                _valJobFather = value;
-                              },
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget jobMotherForm() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Pekerjaan Ibu',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: <Widget>[
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  SizedBox(
-                    width: 310,
-                    child: DropdownButtonHideUnderline(
-                      child: ButtonTheme(
-                        alignedDropdown: true,
-                        child: DropdownButton<String>(
-                          hint: Text(
-                            "Pekerjaan Ibu",
-                            style: primaryTextStyle.copyWith(
-                              fontSize: 15,
-                              fontWeight: medium,
-                            ),
-                          ),
-                          icon: Icon(
-                            Icons.keyboard_arrow_down_rounded,
-                            color: primaryColor,
-                          ),
-                          value: _valJobMother,
-                          items: _jobMother.map((value) {
-                            return DropdownMenuItem(
-                              child: Text(
-                                value,
-                                style: primaryTextStyle.copyWith(
-                                  fontSize: 15,
-                                  fontWeight: medium,
-                                ),
-                              ),
-                              value: value,
-                            );
-                          }).toList(),
-                          onChanged: (value) {
-                            setState(
-                              () {
-                                _valJobMother = value;
-                              },
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget brothers() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Jumlah Saudara',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              width: 175,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Center(
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/union.png',
-                      width: 20,
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      child: TextFormField(
-                        keyboardType: TextInputType.phone,
-                        style: primaryTextStyle,
-                        decoration: InputDecoration(
-                          hintText: 'Jumlah',
-                          hintStyle: primaryTextStyle,
-                          counterText: "",
-                          border: InputBorder.none,
-                        ),
-                        maxLength: 2,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget amount() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Anak Ke -',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              width: 175,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Center(
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/union.png',
-                      width: 20,
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      child: TextFormField(
-                        keyboardType: TextInputType.phone,
-                        style: primaryTextStyle,
-                        decoration: InputDecoration(
-                          hintText: 'Anak ke',
-                          hintStyle: primaryTextStyle,
-                          counterText: "",
-                          border: InputBorder.none,
-                        ),
-                        maxLength: 2,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget incomeForm() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Jumlah Pendapatan Total Keluarga',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: <Widget>[
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  SizedBox(
-                    width: 310,
-                    child: DropdownButtonHideUnderline(
-                      child: ButtonTheme(
-                        alignedDropdown: true,
-                        child: DropdownButton<String>(
-                          hint: Text(
-                            "Jumlah pendapatan keluarga",
-                            style: primaryTextStyle.copyWith(
-                              fontSize: 15,
-                              fontWeight: medium,
-                            ),
-                          ),
-                          icon: Icon(
-                            Icons.keyboard_arrow_down_rounded,
-                            color: primaryColor,
-                          ),
-                          value: _valIncome,
-                          items: _income.map((value) {
-                            return DropdownMenuItem(
-                              child: Text(
-                                value,
-                                style: primaryTextStyle.copyWith(
-                                  fontSize: 15,
-                                  fontWeight: medium,
-                                ),
-                              ),
-                              value: value,
-                            );
-                          }).toList(),
-                          onChanged: (value) {
-                            setState(
-                              () {
-                                _valIncome = value;
-                              },
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget outcomeForm() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Jumlah Pengeluaran Total Keluarga',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: <Widget>[
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  SizedBox(
-                    width: 310,
-                    child: DropdownButtonHideUnderline(
-                      child: ButtonTheme(
-                        alignedDropdown: true,
-                        child: DropdownButton<String>(
-                          hint: Text(
-                            "Jumlah pengeluaran keluarga",
-                            style: primaryTextStyle.copyWith(
-                              fontSize: 15,
-                              fontWeight: medium,
-                            ),
-                          ),
-                          icon: Icon(
-                            Icons.keyboard_arrow_down_rounded,
-                            color: primaryColor,
-                          ),
-                          value: _valOutcome,
-                          items: _outcome.map((value) {
-                            return DropdownMenuItem(
-                              child: Text(
-                                value,
-                                style: primaryTextStyle.copyWith(
-                                  fontSize: 15,
-                                  fontWeight: medium,
-                                ),
-                              ),
-                              value: value,
-                            );
-                          }).toList(),
-                          onChanged: (value) {
-                            setState(
-                              () {
-                                _valOutcome = value;
-                              },
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget ageTeen() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Usia Pertama Haid',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Center(
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/union.png',
-                      width: 20,
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      child: TextFormField(
-                        keyboardType: TextInputType.phone,
-                        style: primaryTextStyle,
-                        decoration: InputDecoration(
-                          hintText: 'Usia ke',
-                          hintStyle: primaryTextStyle,
-                          counterText: "",
-                          border: InputBorder.none,
-                        ),
-                        maxLength: 3,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget otherForm() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Penyakit Lain',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Expanded(
-                    child: TextFormField(
-                      autofocus: true,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration.collapsed(
-                        hintText: 'Penyakit lain',
-                        hintStyle: primaryTextStyle,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget historyDisease() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Riwayat Penyakit',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: <Widget>[
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  SizedBox(
-                    width: 310,
-                    child: DropdownButtonHideUnderline(
-                      child: ButtonTheme(
-                        alignedDropdown: true,
-                        child: DropdownButton<String>(
-                          hint: Text(
-                            "Riwayat penyakit",
-                            style: primaryTextStyle.copyWith(
-                              fontSize: 15,
-                              fontWeight: medium,
-                            ),
-                          ),
-                          icon: Icon(
-                            Icons.keyboard_arrow_down_rounded,
-                            color: primaryColor,
-                          ),
-                          value: _valDisease,
-                          items: _disease.map((value) {
-                            return DropdownMenuItem(
-                              child: Text(
-                                value,
-                                style: primaryTextStyle.copyWith(
-                                  fontSize: 15,
-                                  fontWeight: medium,
-                                ),
-                              ),
-                              value: value,
-                            );
-                          }).toList(),
-                          onChanged: (value) {
-                            debugPrint('HERE : $value');
-                            setState(
-                              () {
-                                _valDisease = value;
-                                if (_valDisease == _disease.last) {
-                                  setState(() {
-                                    _isShowField = true;
-                                  });
-                                } else {
-                                  setState(() {
-                                    _isShowField = false;
-                                  });
-                                }
-                              },
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget saveButton() {
-      return Container(
-        height: 45,
-        width: double.infinity,
-        margin: const EdgeInsets.only(top: 30, bottom: 30),
-        child: TextButton(
-          onPressed: () {},
-          style: TextButton.styleFrom(
-              backgroundColor: primaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              )),
-          child: Text(
-            'Simpan Data',
-            style: backgroundTextStyle.copyWith(
+    // name
+    final name = Container(
+      margin: const EdgeInsets.only(top: 30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Nama Lengkap',
+            style: primaryTextStyle.copyWith(
               fontSize: 15,
-              fontWeight: bold,
+              fontWeight: semibold,
             ),
           ),
+          const SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+            controller: nameController,
+            style: primaryTextStyle,
+            keyboardType: TextInputType.name,
+            textInputAction: TextInputAction.next,
+            validator: (value) {
+              RegExp regex = RegExp(r'^.{3,}$');
+              if (value!.isEmpty) {
+                return ("Form ini Harus Diisi");
+              }
+              if (!regex.hasMatch(value)) {
+                return ("Masukkan Nama Lengkap Dengan Benar (Minimal 3 Karakter)");
+              }
+              return null;
+            },
+            onSaved: (value) {
+              nameController.text = value!;
+            },
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: primaryColor,
+                  width: 1.0,
+                ),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              contentPadding: const EdgeInsets.symmetric(vertical: 10),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                child: Image.asset(
+                  'assets/union.png',
+                  width: 20,
+                ),
+              ),
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              hintText: 'Nama Lengkap',
+              hintStyle: primaryTextStyle,
+              counterText: "",
+            ),
+            maxLength: 45,
+          ),
+        ],
+      ),
+    );
+
+    // address
+    final address = Container(
+      margin: const EdgeInsets.only(top: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Alamat Lengkap',
+            style: primaryTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: semibold,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+            controller: addressController,
+            style: primaryTextStyle,
+            keyboardType: TextInputType.streetAddress,
+            textInputAction: TextInputAction.next,
+            validator: (value) {
+              if (value!.isEmpty) {
+                return ("Form ini Harus Diisi");
+              }
+              return null;
+            },
+            onSaved: (value) {
+              addressController.text = value!;
+            },
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: primaryColor,
+                  width: 1.0,
+                ),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              contentPadding: const EdgeInsets.symmetric(vertical: 10),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                child: Image.asset(
+                  'assets/union.png',
+                  width: 20,
+                ),
+              ),
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              hintText: 'Alamat Lengkap',
+              hintStyle: primaryTextStyle,
+            ),
+            maxLines: 5,
+            maxLength: 125,
+          ),
+        ],
+      ),
+    );
+
+    // eduFatherForm
+    final eduFatherForm = Container(
+      margin: const EdgeInsets.only(top: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Pendidikan Terakhir Ayah',
+            style: primaryTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: semibold,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          DropdownButtonFormField<String>(
+            validator: (value) {
+              if (value?.isEmpty ?? true) {
+                return ("Form ini Harus Diisi");
+              }
+              return null;
+            },
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: primaryColor,
+                  width: 1.0,
+                ),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                child: Image.asset(
+                  'assets/union.png',
+                  width: 20,
+                ),
+              ),
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(),
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+            hint: Text(
+              "Pendidikan Terakhir Ayah",
+              style: primaryTextStyle.copyWith(
+                fontSize: 15,
+                fontWeight: medium,
+              ),
+            ),
+            icon: Icon(
+              Icons.keyboard_arrow_down_rounded,
+              color: primaryColor,
+            ),
+            value: _valEduFather,
+            items: _eduFather.map((value) {
+              return DropdownMenuItem(
+                child: Text(
+                  value,
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: medium,
+                  ),
+                ),
+                value: value,
+              );
+            }).toList(),
+            onChanged: (value) {
+              setState(
+                () {
+                  _valEduFather = value;
+                },
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    // eduMotherForm
+    final eduMotherForm = Container(
+      margin: const EdgeInsets.only(top: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Pendidikan Terakhir Ibu',
+            style: primaryTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: semibold,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          DropdownButtonFormField<String>(
+            validator: (value) {
+              if (value?.isEmpty ?? true) {
+                return ("Form ini Harus Diisi");
+              }
+              return null;
+            },
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: primaryColor,
+                  width: 1.0,
+                ),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                child: Image.asset(
+                  'assets/union.png',
+                  width: 20,
+                ),
+              ),
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(),
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+            hint: Text(
+              "Pendidikan Terakhir Ibu",
+              style: primaryTextStyle.copyWith(
+                fontSize: 15,
+                fontWeight: medium,
+              ),
+            ),
+            icon: Icon(
+              Icons.keyboard_arrow_down_rounded,
+              color: primaryColor,
+            ),
+            value: _valEduMother,
+            items: _eduMother.map((value) {
+              return DropdownMenuItem(
+                child: Text(
+                  value,
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: medium,
+                  ),
+                ),
+                value: value,
+              );
+            }).toList(),
+            onChanged: (value) {
+              setState(
+                () {
+                  _valEduMother = value;
+                },
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    // jobFatherForm
+    final jobFatherForm = Container(
+      margin: const EdgeInsets.only(top: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Pekerjaan Ayah',
+            style: primaryTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: semibold,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          DropdownButtonFormField<String>(
+            validator: (value) {
+              if (value?.isEmpty ?? true) {
+                return ("Form ini Harus Diisi");
+              }
+              return null;
+            },
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: primaryColor,
+                  width: 1.0,
+                ),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                child: Image.asset(
+                  'assets/union.png',
+                  width: 20,
+                ),
+              ),
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(),
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+            hint: Text(
+              "Pekerjaan Ayah",
+              style: primaryTextStyle.copyWith(
+                fontSize: 15,
+                fontWeight: medium,
+              ),
+            ),
+            icon: Icon(
+              Icons.keyboard_arrow_down_rounded,
+              color: primaryColor,
+            ),
+            value: _valJobFather,
+            items: _jobFather.map((value) {
+              return DropdownMenuItem(
+                child: Text(
+                  value,
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: medium,
+                  ),
+                ),
+                value: value,
+              );
+            }).toList(),
+            onChanged: (value) {
+              setState(
+                () {
+                  _valJobFather = value;
+                },
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    // jobMotherForm
+    final jobMotherForm = Container(
+      margin: const EdgeInsets.only(top: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Pekerjaan Ibu',
+            style: primaryTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: semibold,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          DropdownButtonFormField<String>(
+            validator: (value) {
+              if (value?.isEmpty ?? true) {
+                return ("Form ini Harus Diisi");
+              }
+              return null;
+            },
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: primaryColor,
+                  width: 1.0,
+                ),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                child: Image.asset(
+                  'assets/union.png',
+                  width: 20,
+                ),
+              ),
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(),
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+            hint: Text(
+              "Pekerjaan Ibu",
+              style: primaryTextStyle.copyWith(
+                fontSize: 15,
+                fontWeight: medium,
+              ),
+            ),
+            icon: Icon(
+              Icons.keyboard_arrow_down_rounded,
+              color: primaryColor,
+            ),
+            value: _valJobMother,
+            items: _jobMother.map((value) {
+              return DropdownMenuItem(
+                child: Text(
+                  value,
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: medium,
+                  ),
+                ),
+                value: value,
+              );
+            }).toList(),
+            onChanged: (value) {
+              setState(
+                () {
+                  _valJobMother = value;
+                },
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    // brothers
+    final brothers = Container(
+      margin: const EdgeInsets.only(top: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Jumlah Saudara',
+            style: primaryTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: semibold,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+            controller: brothersController,
+            style: primaryTextStyle,
+            keyboardType: TextInputType.phone,
+            textInputAction: TextInputAction.next,
+            validator: (value) {
+              if (value!.isEmpty) {
+                return ("Form ini Harus Diisi");
+              }
+              return null;
+            },
+            onSaved: (value) {
+              brothersController.text = value!;
+            },
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: primaryColor,
+                  width: 1.0,
+                ),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              contentPadding: const EdgeInsets.symmetric(vertical: 10),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                child: Image.asset(
+                  'assets/union.png',
+                  width: 20,
+                ),
+              ),
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              hintText: 'Jumlah',
+              hintStyle: primaryTextStyle,
+              counterText: "",
+            ),
+            maxLength: 2,
+          ),
+        ],
+      ),
+    );
+
+    // amount
+    final amount = Container(
+      margin: const EdgeInsets.only(top: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Anak Ke -',
+            style: primaryTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: semibold,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+            controller: amountController,
+            style: primaryTextStyle,
+            keyboardType: TextInputType.phone,
+            textInputAction: TextInputAction.next,
+            validator: (value) {
+              if (value!.isEmpty) {
+                return ("Form ini Harus Diisi");
+              }
+              return null;
+            },
+            onSaved: (value) {
+              amountController.text = value!;
+            },
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: primaryColor,
+                  width: 1.0,
+                ),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              contentPadding: const EdgeInsets.symmetric(vertical: 10),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                child: Image.asset(
+                  'assets/union.png',
+                  width: 20,
+                ),
+              ),
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              hintText: 'Anak ke',
+              hintStyle: primaryTextStyle,
+              counterText: "",
+            ),
+            maxLength: 2,
+          ),
+        ],
+      ),
+    );
+
+    // incomeForm
+    final incomeForm = Container(
+      margin: const EdgeInsets.only(top: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Jumlah Pendapatan Total Keluarga',
+            style: primaryTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: semibold,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          DropdownButtonFormField<String>(
+            validator: (value) {
+              if (value?.isEmpty ?? true) {
+                return ("Form ini Harus Diisi");
+              }
+              return null;
+            },
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: primaryColor,
+                  width: 1.0,
+                ),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                child: Image.asset(
+                  'assets/union.png',
+                  width: 20,
+                ),
+              ),
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(),
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+            hint: Text(
+              "Jumlah pendapatan keluarga",
+              style: primaryTextStyle.copyWith(
+                fontSize: 15,
+                fontWeight: medium,
+              ),
+            ),
+            icon: Icon(
+              Icons.keyboard_arrow_down_rounded,
+              color: primaryColor,
+            ),
+            value: _valIncome,
+            items: _income.map((value) {
+              return DropdownMenuItem(
+                child: Text(
+                  value,
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: medium,
+                  ),
+                ),
+                value: value,
+              );
+            }).toList(),
+            onChanged: (value) {
+              setState(
+                () {
+                  _valIncome = value;
+                },
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    // outcomeForm
+    final outcomeForm = Container(
+      margin: const EdgeInsets.only(top: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Jumlah Pengeluaran Total Keluarga',
+            style: primaryTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: semibold,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          DropdownButtonFormField<String>(
+            validator: (value) {
+              if (value?.isEmpty ?? true) {
+                return ("Form ini Harus Diisi");
+              }
+              return null;
+            },
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: primaryColor,
+                  width: 1.0,
+                ),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                child: Image.asset(
+                  'assets/union.png',
+                  width: 20,
+                ),
+              ),
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(),
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+            hint: Text(
+              "Jumlah pengeluaran keluarga",
+              style: primaryTextStyle.copyWith(
+                fontSize: 15,
+                fontWeight: medium,
+              ),
+            ),
+            icon: Icon(
+              Icons.keyboard_arrow_down_rounded,
+              color: primaryColor,
+            ),
+            value: _valOutcome,
+            items: _outcome.map((value) {
+              return DropdownMenuItem(
+                child: Text(
+                  value,
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: medium,
+                  ),
+                ),
+                value: value,
+              );
+            }).toList(),
+            onChanged: (value) {
+              setState(
+                () {
+                  _valOutcome = value;
+                },
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    // ageTeen
+    final ageTeen = Container(
+      margin: const EdgeInsets.only(top: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Usia Pertama Haid',
+            style: primaryTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: semibold,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+            controller: ageTeenController,
+            style: primaryTextStyle,
+            keyboardType: TextInputType.phone,
+            textInputAction: TextInputAction.next,
+            validator: (value) {
+              if (value!.isEmpty) {
+                return ("Form ini Harus Diisi");
+              }
+              return null;
+            },
+            onSaved: (value) {
+              ageTeenController.text = value!;
+            },
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: primaryColor,
+                  width: 1.0,
+                ),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              contentPadding: const EdgeInsets.symmetric(vertical: 10),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                child: Image.asset(
+                  'assets/union.png',
+                  width: 20,
+                ),
+              ),
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              hintText: 'Usia ke',
+              hintStyle: primaryTextStyle,
+              counterText: "",
+            ),
+            maxLength: 3,
+          ),
+        ],
+      ),
+    );
+
+    // otherForm
+    final otherForm = Container(
+      margin: const EdgeInsets.only(top: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Penyakit Lain',
+            style: primaryTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: semibold,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+            controller: otherFormController,
+            style: primaryTextStyle,
+            keyboardType: TextInputType.phone,
+            textInputAction: TextInputAction.done,
+            validator: (value) {
+              if (value!.isEmpty) {
+                return ("Form ini Harus Diisi");
+              }
+              return null;
+            },
+            onSaved: (value) {
+              otherFormController.text = value!;
+            },
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: primaryColor,
+                  width: 1.0,
+                ),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              contentPadding: const EdgeInsets.symmetric(vertical: 10),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                child: Image.asset(
+                  'assets/union.png',
+                  width: 20,
+                ),
+              ),
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              hintText: 'Penyakit lain',
+              hintStyle: primaryTextStyle,
+            ),
+          ),
+        ],
+      ),
+    );
+
+    // historyDisease
+    final historyDisease = Container(
+      margin: const EdgeInsets.only(top: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Riwayat Penyakit',
+            style: primaryTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: semibold,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          DropdownButtonFormField<String>(
+            validator: (value) {
+              if (value?.isEmpty ?? true) {
+                return ("Form ini Harus Diisi");
+              }
+              return null;
+            },
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: primaryColor,
+                  width: 1.0,
+                ),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                child: Image.asset(
+                  'assets/union.png',
+                  width: 20,
+                ),
+              ),
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(),
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+            hint: Text(
+              "Riwayat penyakit",
+              style: primaryTextStyle.copyWith(
+                fontSize: 15,
+                fontWeight: medium,
+              ),
+            ),
+            icon: Icon(
+              Icons.keyboard_arrow_down_rounded,
+              color: primaryColor,
+            ),
+            value: _valDisease,
+            items: _disease.map((value) {
+              return DropdownMenuItem(
+                child: Text(
+                  value,
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: medium,
+                  ),
+                ),
+                value: value,
+              );
+            }).toList(),
+            onChanged: (value) {
+              debugPrint('HERE : $value');
+              setState(
+                () {
+                  _valDisease = value;
+                  if (_valDisease == _disease.last) {
+                    setState(() {
+                      _isShowField = true;
+                    });
+                  } else {
+                    setState(() {
+                      _isShowField = false;
+                    });
+                  }
+                },
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    // saveButton
+    final saveButton = Container(
+      height: 45,
+      width: double.infinity,
+      margin: const EdgeInsets.only(top: 30, bottom: 30),
+      child: TextButton(
+        onPressed: () {
+          save(nameController.text);
+        },
+        style: TextButton.styleFrom(
+            backgroundColor: primaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            )),
+        child: Text(
+          'Simpan Data',
+          style: backgroundTextStyle.copyWith(
+            fontSize: 15,
+            fontWeight: bold,
+          ),
         ),
-      );
-    }
+      ),
+    );
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -1100,35 +1139,79 @@ class _FormInformationState extends State<FormInformation> {
         margin: EdgeInsets.symmetric(
           horizontal: defaultMargin,
         ),
-        child: ListView(
-          children: [
-            nameForm(),
-            addressForm(),
-            eduFatherForm(),
-            eduMotherForm(),
-            jobFatherForm(),
-            jobMotherForm(),
-            Row(
+        child: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            child: Column(
               children: [
-                brothers(),
-                const Spacer(),
-                amount(),
+                name,
+                address,
+                eduFatherForm,
+                eduMotherForm,
+                jobFatherForm,
+                jobMotherForm,
+                Row(
+                  children: [
+                    Expanded(child: brothers),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(child: amount),
+                  ],
+                ),
+                incomeForm,
+                outcomeForm,
+                ageTeen,
+                historyDisease,
+                if (_isShowField) ...[
+                  otherForm,
+                ],
+                saveButton,
               ],
             ),
-            incomeForm(),
-            outcomeForm(),
-            ageTeen(),
-            historyDisease(),
-            if (_isShowField) ...[
-              otherForm(),
-            ],
-            saveButton(),
-            const SizedBox(
-              height: 30,
-            ),
-          ],
+          ),
         ),
       ),
     );
   }
+
+  void save(String name) async {
+    if (_formKey.currentState!.validate()) {
+      // await _auth
+      //     .createUserWithEmailAndPassword(email: email, password: password)
+      //     .then((value) => {postDetailsToFirestore()})
+      //     .catchError((e) {
+      //   Fluttertoast.showToast(msg: e!.message);
+      // });
+    }
+  }
+
+  // postDetailsToFirestore() async {
+  //   // calling our firestore
+  //   // calling our user model
+  //   // sending there values
+
+  //   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+  //   User? user = _auth.currentUser;
+
+  //   UserModel userModel = UserModel();
+
+  //   // writing all the values
+  //   userModel.email = user!.email;
+  //   userModel.uid = user.uid;
+  //   userModel.name = nameEditingController.text;
+  //   userModel.phone = phoneEditingController.text;
+
+  //   await firebaseFirestore
+  //       .collection("users")
+  //       .doc(user.uid)
+  //       .set(userModel.toMap());
+  //   Fluttertoast.showToast(msg: "Akun Anda Berhasil Dibuat!");
+
+  //   Navigator.pushAndRemoveUntil(
+  //       (context),
+  //       MaterialPageRoute(builder: (context) => const SignInPage()),
+  //       (route) => false);
+  // }
+
 }
