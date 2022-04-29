@@ -329,7 +329,7 @@ class _SignUpPageState extends State<SignUpPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Kata Sandi',
+            'Ulangi Kata Sandi',
             style: primaryTextStyle.copyWith(
               fontSize: 15,
               fontWeight: semibold,
@@ -374,7 +374,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 borderSide: const BorderSide(),
                 borderRadius: BorderRadius.circular(15),
               ),
-              hintText: 'Kata Sandi',
+              hintText: 'Ulangi Kata Sandi',
               hintStyle: primaryTextStyle,
               counterText: "",
             ),
