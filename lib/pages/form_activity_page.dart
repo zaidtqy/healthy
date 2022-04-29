@@ -180,60 +180,45 @@ class _FormActivityState extends State<FormActivity> {
     Widget other1Form() {
       return Container(
         margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Kegiatan Lain',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
+        child: TextFormField(
+          controller: other1FormController,
+          style: primaryTextStyle,
+          keyboardType: TextInputType.text,
+          textInputAction: TextInputAction.done,
+          validator: (value) {
+            if (value!.isEmpty) {
+              return ("Form ini Harus Diisi");
+            }
+            return null;
+          },
+          onSaved: (value) {
+            other1FormController.text = value!;
+          },
+          decoration: InputDecoration(
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: primaryColor,
+                width: 1.0,
+              ),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            contentPadding: const EdgeInsets.symmetric(vertical: 10),
+            prefixIcon: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+              ),
+              child: Image.asset(
+                'assets/union.png',
+                width: 20,
               ),
             ),
-            const SizedBox(
-              height: 10,
+            border: OutlineInputBorder(
+              borderSide: const BorderSide(),
+              borderRadius: BorderRadius.circular(15),
             ),
-            TextFormField(
-              controller: other1FormController,
-              style: primaryTextStyle,
-              keyboardType: TextInputType.phone,
-              textInputAction: TextInputAction.done,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return ("Form ini Harus Diisi");
-                }
-                return null;
-              },
-              onSaved: (value) {
-                other1FormController.text = value!;
-              },
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: primaryColor,
-                    width: 1.0,
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                contentPadding: const EdgeInsets.symmetric(vertical: 10),
-                prefixIcon: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 15,
-                  ),
-                  child: Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                ),
-                border: OutlineInputBorder(
-                  borderSide: const BorderSide(),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                hintText: 'Kegiatan lain',
-                hintStyle: primaryTextStyle,
-              ),
-            ),
-          ],
+            hintText: 'Kegiatan lain',
+            hintStyle: primaryTextStyle,
+          ),
         ),
       );
     }
@@ -402,61 +387,46 @@ class _FormActivityState extends State<FormActivity> {
     Widget other2Form() {
       return Container(
         margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Kegiatan Lain',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
+        child: TextFormField(
+          autofocus: true,
+          controller: other2FormController,
+          style: primaryTextStyle,
+          keyboardType: TextInputType.text,
+          textInputAction: TextInputAction.done,
+          validator: (value) {
+            if (value!.isEmpty) {
+              return ("Form ini Harus Diisi");
+            }
+            return null;
+          },
+          onSaved: (value) {
+            other2FormController.text = value!;
+          },
+          decoration: InputDecoration(
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: primaryColor,
+                width: 1.0,
+              ),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            contentPadding: const EdgeInsets.symmetric(vertical: 10),
+            prefixIcon: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+              ),
+              child: Image.asset(
+                'assets/union.png',
+                width: 20,
               ),
             ),
-            const SizedBox(
-              height: 10,
+            border: OutlineInputBorder(
+              borderSide: const BorderSide(),
+              borderRadius: BorderRadius.circular(15),
             ),
-            TextFormField(
-              autofocus: true,
-              controller: other2FormController,
-              style: primaryTextStyle,
-              keyboardType: TextInputType.phone,
-              textInputAction: TextInputAction.done,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return ("Form ini Harus Diisi");
-                }
-                return null;
-              },
-              onSaved: (value) {
-                other2FormController.text = value!;
-              },
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: primaryColor,
-                    width: 1.0,
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                contentPadding: const EdgeInsets.symmetric(vertical: 10),
-                prefixIcon: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 15,
-                  ),
-                  child: Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                ),
-                border: OutlineInputBorder(
-                  borderSide: const BorderSide(),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                hintText: 'Kegiatan lain',
-                hintStyle: primaryTextStyle,
-              ),
-            ),
-          ],
+            hintText: 'Kegiatan lain',
+            hintStyle: primaryTextStyle,
+          ),
         ),
       );
     }
@@ -625,61 +595,46 @@ class _FormActivityState extends State<FormActivity> {
     Widget other3Form() {
       return Container(
         margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Kegiatan Lain',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
+        child: TextFormField(
+          autofocus: true,
+          controller: other3FormController,
+          style: primaryTextStyle,
+          keyboardType: TextInputType.text,
+          textInputAction: TextInputAction.done,
+          validator: (value) {
+            if (value!.isEmpty) {
+              return ("Form ini Harus Diisi");
+            }
+            return null;
+          },
+          onSaved: (value) {
+            other3FormController.text = value!;
+          },
+          decoration: InputDecoration(
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: primaryColor,
+                width: 1.0,
+              ),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            contentPadding: const EdgeInsets.symmetric(vertical: 10),
+            prefixIcon: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+              ),
+              child: Image.asset(
+                'assets/union.png',
+                width: 20,
               ),
             ),
-            const SizedBox(
-              height: 10,
+            border: OutlineInputBorder(
+              borderSide: const BorderSide(),
+              borderRadius: BorderRadius.circular(15),
             ),
-            TextFormField(
-              autofocus: true,
-              controller: other3FormController,
-              style: primaryTextStyle,
-              keyboardType: TextInputType.phone,
-              textInputAction: TextInputAction.done,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return ("Form ini Harus Diisi");
-                }
-                return null;
-              },
-              onSaved: (value) {
-                other3FormController.text = value!;
-              },
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: primaryColor,
-                    width: 1.0,
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                contentPadding: const EdgeInsets.symmetric(vertical: 10),
-                prefixIcon: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 15,
-                  ),
-                  child: Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                ),
-                border: OutlineInputBorder(
-                  borderSide: const BorderSide(),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                hintText: 'Kegiatan lain',
-                hintStyle: primaryTextStyle,
-              ),
-            ),
-          ],
+            hintText: 'Kegiatan lain',
+            hintStyle: primaryTextStyle,
+          ),
         ),
       );
     }
@@ -848,61 +803,46 @@ class _FormActivityState extends State<FormActivity> {
     Widget other4Form() {
       return Container(
         margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Kegiatan Lain',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
+        child: TextFormField(
+          autofocus: true,
+          controller: other4FormController,
+          style: primaryTextStyle,
+          keyboardType: TextInputType.text,
+          textInputAction: TextInputAction.done,
+          validator: (value) {
+            if (value!.isEmpty) {
+              return ("Form ini Harus Diisi");
+            }
+            return null;
+          },
+          onSaved: (value) {
+            other4FormController.text = value!;
+          },
+          decoration: InputDecoration(
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: primaryColor,
+                width: 1.0,
+              ),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            contentPadding: const EdgeInsets.symmetric(vertical: 10),
+            prefixIcon: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+              ),
+              child: Image.asset(
+                'assets/union.png',
+                width: 20,
               ),
             ),
-            const SizedBox(
-              height: 10,
+            border: OutlineInputBorder(
+              borderSide: const BorderSide(),
+              borderRadius: BorderRadius.circular(15),
             ),
-            TextFormField(
-              autofocus: true,
-              controller: other4FormController,
-              style: primaryTextStyle,
-              keyboardType: TextInputType.phone,
-              textInputAction: TextInputAction.done,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return ("Form ini Harus Diisi");
-                }
-                return null;
-              },
-              onSaved: (value) {
-                other4FormController.text = value!;
-              },
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: primaryColor,
-                    width: 1.0,
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                contentPadding: const EdgeInsets.symmetric(vertical: 10),
-                prefixIcon: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 15,
-                  ),
-                  child: Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                ),
-                border: OutlineInputBorder(
-                  borderSide: const BorderSide(),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                hintText: 'Kegiatan lain',
-                hintStyle: primaryTextStyle,
-              ),
-            ),
-          ],
+            hintText: 'Kegiatan lain',
+            hintStyle: primaryTextStyle,
+          ),
         ),
       );
     }
