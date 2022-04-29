@@ -12,6 +12,17 @@ class _FormActivityState extends State<FormActivity> {
   // form key
   final _formKey = GlobalKey<FormState>();
 
+  // controller
+
+  final other1FormController = TextEditingController();
+  final minutesAct1Controller = TextEditingController();
+  final other2FormController = TextEditingController();
+  final minutesAct2Controller = TextEditingController();
+  final other3FormController = TextEditingController();
+  final minutesAct3Controller = TextEditingController();
+  final other4FormController = TextEditingController();
+  final minutesAct4Controller = TextEditingController();
+
   bool _isShowField1 = false;
   bool _isShowField2 = false;
   bool _isShowField3 = false;
@@ -56,6 +67,19 @@ class _FormActivityState extends State<FormActivity> {
     "Duduk/Kegiatan Santai",
     "Kegiatan Lain"
   ];
+
+  @override
+  void dispose() {
+    other1FormController.dispose();
+    minutesAct1Controller.dispose();
+    other2FormController.dispose();
+    minutesAct2Controller.dispose();
+    other3FormController.dispose();
+    minutesAct3Controller.dispose();
+    other4FormController.dispose();
+    minutesAct4Controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -170,7 +194,7 @@ class _FormActivityState extends State<FormActivity> {
               height: 10,
             ),
             TextFormField(
-              // autofocus: true,controller: otherFormController,
+              controller: other1FormController,
               style: primaryTextStyle,
               keyboardType: TextInputType.phone,
               textInputAction: TextInputAction.done,
@@ -181,7 +205,7 @@ class _FormActivityState extends State<FormActivity> {
                 return null;
               },
               onSaved: (value) {
-                // otherFormController.text = value!;
+                other1FormController.text = value!;
               },
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
@@ -233,7 +257,7 @@ class _FormActivityState extends State<FormActivity> {
             SizedBox(
               width: 125,
               child: TextFormField(
-                // controller: brothersController,
+                controller: minutesAct1Controller,
                 style: primaryTextStyle,
                 keyboardType: TextInputType.phone,
                 textInputAction: TextInputAction.next,
@@ -244,7 +268,7 @@ class _FormActivityState extends State<FormActivity> {
                   return null;
                 },
                 onSaved: (value) {
-                  // brothersController.text = value!;
+                  minutesAct1Controller.text = value!;
                 },
                 decoration: InputDecoration(
                   label: const Text("Menit"),
@@ -393,7 +417,7 @@ class _FormActivityState extends State<FormActivity> {
             ),
             TextFormField(
               autofocus: true,
-              // autofocus: true,controller: otherFormController,
+              controller: other2FormController,
               style: primaryTextStyle,
               keyboardType: TextInputType.phone,
               textInputAction: TextInputAction.done,
@@ -404,7 +428,7 @@ class _FormActivityState extends State<FormActivity> {
                 return null;
               },
               onSaved: (value) {
-                // otherFormController.text = value!;
+                other2FormController.text = value!;
               },
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
@@ -456,7 +480,7 @@ class _FormActivityState extends State<FormActivity> {
             SizedBox(
               width: 125,
               child: TextFormField(
-                // controller: brothersController,
+                controller: minutesAct2Controller,
                 style: primaryTextStyle,
                 keyboardType: TextInputType.phone,
                 textInputAction: TextInputAction.next,
@@ -467,7 +491,7 @@ class _FormActivityState extends State<FormActivity> {
                   return null;
                 },
                 onSaved: (value) {
-                  // brothersController.text = value!;
+                  minutesAct2Controller.text = value!;
                 },
                 decoration: InputDecoration(
                   label: const Text("Menit"),
@@ -616,7 +640,7 @@ class _FormActivityState extends State<FormActivity> {
             ),
             TextFormField(
               autofocus: true,
-              // autofocus: true,controller: otherFormController,
+              controller: other3FormController,
               style: primaryTextStyle,
               keyboardType: TextInputType.phone,
               textInputAction: TextInputAction.done,
@@ -627,7 +651,7 @@ class _FormActivityState extends State<FormActivity> {
                 return null;
               },
               onSaved: (value) {
-                // otherFormController.text = value!;
+                other3FormController.text = value!;
               },
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
@@ -679,7 +703,7 @@ class _FormActivityState extends State<FormActivity> {
             SizedBox(
               width: 125,
               child: TextFormField(
-                // controller: brothersController,
+                controller: minutesAct3Controller,
                 style: primaryTextStyle,
                 keyboardType: TextInputType.phone,
                 textInputAction: TextInputAction.next,
@@ -690,7 +714,7 @@ class _FormActivityState extends State<FormActivity> {
                   return null;
                 },
                 onSaved: (value) {
-                  // brothersController.text = value!;
+                  minutesAct3Controller.text = value!;
                 },
                 decoration: InputDecoration(
                   label: const Text("Menit"),
@@ -839,7 +863,7 @@ class _FormActivityState extends State<FormActivity> {
             ),
             TextFormField(
               autofocus: true,
-              // controller: otherFormController,
+              controller: other4FormController,
               style: primaryTextStyle,
               keyboardType: TextInputType.phone,
               textInputAction: TextInputAction.done,
@@ -850,7 +874,7 @@ class _FormActivityState extends State<FormActivity> {
                 return null;
               },
               onSaved: (value) {
-                // otherFormController.text = value!;
+                other4FormController.text = value!;
               },
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
@@ -902,7 +926,7 @@ class _FormActivityState extends State<FormActivity> {
             SizedBox(
               width: 125,
               child: TextFormField(
-                // controller: brothersController,
+                controller: minutesAct4Controller,
                 style: primaryTextStyle,
                 keyboardType: TextInputType.phone,
                 textInputAction: TextInputAction.next,
@@ -913,7 +937,7 @@ class _FormActivityState extends State<FormActivity> {
                   return null;
                 },
                 onSaved: (value) {
-                  // brothersController.text = value!;
+                  minutesAct4Controller.text = value!;
                 },
                 decoration: InputDecoration(
                   label: const Text("Menit"),
