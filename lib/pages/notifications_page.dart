@@ -494,7 +494,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
         ),
       ),
       body: Container(
-        margin: const EdgeInsets.symmetric(),
         child: (mockHistoryReproModel.isNotEmpty)
             ? ListView.builder(
                 padding: const EdgeInsets.only(top: 30),

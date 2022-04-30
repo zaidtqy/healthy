@@ -48,7 +48,7 @@ final List<HistoryReproModel> mockHistoryReproModel = [
     content:
         "Udah tau belum tentang kesehatan reproduksi? kalo belum, Yuk cari tau disini!",
     route: "",
-    isRead: true,
+    isRead: false,
   ),
   HistoryReproModel(
     logo: "assets/clock.png",
