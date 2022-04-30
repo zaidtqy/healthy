@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:healthy/models/hemoglobin_model.dart';
 import 'package:healthy/theme.dart';
 
 class ResultHemoglobin extends StatelessWidget {
-  const ResultHemoglobin({Key? key}) : super(key: key);
+  final HistoryHBModel historyHBModel;
+
+  const ResultHemoglobin({Key? key, required this.historyHBModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +57,7 @@ class ResultHemoglobin extends StatelessWidget {
                     width: 15,
                   ),
                   Text(
-                    '29/03/2022',
+                    historyHBModel.date,
                     style: primaryTextStyle.copyWith(
                       fontSize: 15,
                       fontWeight: bold,
@@ -67,7 +71,7 @@ class ResultHemoglobin extends StatelessWidget {
       );
     }
 
-    Widget hbForm() {
+    Widget hbResult({required HbModel hbModel}) {
       return Container(
         margin: const EdgeInsets.only(top: 10),
         child: Column(
@@ -106,7 +110,7 @@ class ResultHemoglobin extends StatelessWidget {
                     width: 15,
                   ),
                   Text(
-                    '20',
+                    hbModel.hemoglobin,
                     style: primaryTextStyle.copyWith(
                       fontSize: 15,
                       fontWeight: medium,
@@ -123,6 +127,97 @@ class ResultHemoglobin extends StatelessWidget {
                 ],
               ),
             ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Keterangan',
+                  style:
+                      primaryTextStyle.copyWith(fontSize: 15, fontWeight: bold),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  'Berdasarkan hasil perhitungan data diatas, nilai Hb anda adalah: ',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: medium,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 45,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  decoration: BoxDecoration(
+                    color: primaryColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      width: 1.0,
+                      color: primaryColor,
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Text(
+                        ' ',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 25,
+                          fontWeight: bold,
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        hbModel.hemoglobin,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 25,
+                          fontWeight: bold,
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        'g/dL',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: semibold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  'Hemoglobin (Hb)',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: bold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  'Nilai Hb < 12 g/dL          :     Anemia.',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: medium,
+                  ),
+                ),
+                Text(
+                  'Nilai Hb > 12 g/dL          :     Tidak Anemia.',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: medium,
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       );
@@ -164,99 +259,17 @@ class ResultHemoglobin extends StatelessWidget {
         margin: EdgeInsets.symmetric(
           horizontal: defaultMargin,
         ),
-        child: ListView(
+        child: Column(
           children: [
             image(),
             dateInput(),
-            hbForm(),
-            const SizedBox(
-              height: 30,
-            ),
-            Text(
-              'Keterangan',
-              style: primaryTextStyle.copyWith(fontSize: 15, fontWeight: bold),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              'Berdasarkan hasil perhitungan data diatas, nilai Hb anda adalah: ',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: medium,
+            Expanded(
+              child: ListView.builder(
+                itemCount: historyHBModel.hbModel.length,
+                itemBuilder: (context, index) =>
+                    hbResult(hbModel: historyHBModel.hbModel[index]),
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: [
-                  Text(
-                    ' ',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 25,
-                      fontWeight: bold,
-                    ),
-                  ),
-                  const Spacer(),
-                  Text(
-                    '20',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 25,
-                      fontWeight: bold,
-                    ),
-                  ),
-                  const Spacer(),
-                  Text(
-                    'g/dL',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: semibold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              'Hemoglobin (Hb)',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: bold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              'Nilai Hb < 12 g/dL          :     Anemia.',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: medium,
-              ),
-            ),
-            Text(
-              'Nilai Hb > 12 g/dL          :     Tidak Anemia.',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: medium,
-              ),
-            ),
+            )
           ],
         ),
       ),
