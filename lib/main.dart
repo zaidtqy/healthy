@@ -22,7 +22,7 @@ import 'package:healthy/pages/history_form_antrhopometri_page.dart';
 import 'package:healthy/pages/history_form_hemoglobin_page.dart';
 import 'package:healthy/pages/history_form_knowledge_page.dart';
 import 'package:healthy/pages/result_information_page.dart';
-import 'package:healthy/pages/result_antrhopometri_page.dart';
+// import 'package:healthy/pages/result_antrhopometri_page.dart';
 import 'package:healthy/pages/result_hemoglobin_page.dart';
 import 'package:healthy/pages/result_knowledge_page.dart';
 
@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
         '/history-knowledge': (context) => const HistoryFormKnowledge(),
         // '/result-activity': (context) => const ResultActivity(),
         '/result-information': (context) => const ResultInformation(),
-        '/result-antrhopometri': (context) => const ResultAntrhopometri(),
+        // '/result-antrhopometri': (context) => const ResultAntrhopometri(),
         '/result-hemoglobin': (context) => const ResultHemoglobin(),
         '/result-knowledge': (context) => const ResultKnowledge(),
       },

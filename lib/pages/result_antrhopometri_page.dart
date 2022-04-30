@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:healthy/models/antrhopometri_model.dart';
 import 'package:healthy/theme.dart';
 
 class ResultAntrhopometri extends StatelessWidget {
-  const ResultAntrhopometri({Key? key}) : super(key: key);
+  final HistoryAntrhopoModel historyAntrhopoModel;
+
+  const ResultAntrhopometri({Key? key, required this.historyAntrhopoModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +49,7 @@ class ResultAntrhopometri extends StatelessWidget {
                     width: 15,
                   ),
                   Text(
-                    '29/03/2022',
+                    historyAntrhopoModel.date,
                     style: primaryTextStyle.copyWith(
                       fontSize: 15,
                       fontWeight: bold,
@@ -59,186 +63,299 @@ class ResultAntrhopometri extends StatelessWidget {
       );
     }
 
-    Widget heightForm() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Tinggi Badan',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
+    Widget anthropoResult({required AntrhopoModel antrhopoModel}) {
+      return Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.only(top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Tinggi Badan',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: semibold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 45,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  decoration: BoxDecoration(
+                    color: primaryColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      width: 1.0,
+                      color: primaryColor,
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assets/union.png',
+                        width: 20,
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        antrhopoModel.height,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        'CM',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: semibold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(
-              height: 10,
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Berat Badan',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: semibold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 45,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  decoration: BoxDecoration(
+                    color: primaryColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      width: 1.0,
+                      color: primaryColor,
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assets/union.png',
+                        width: 20,
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        antrhopoModel.weight,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        'KG',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: semibold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Lingkar Lengan Atas',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: semibold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 45,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  decoration: BoxDecoration(
+                    color: primaryColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      width: 1.0,
+                      color: primaryColor,
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assets/union.png',
+                        width: 20,
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        antrhopoModel.sizeRound,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        'CM',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: semibold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Keterangan',
+                style:
+                    primaryTextStyle.copyWith(fontSize: 15, fontWeight: bold),
               ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                'Berdasarkan hasil perhitungan data diatas, didapat nilai Indeks Massa Tubuh (IMT) anda:',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 15,
+                  fontWeight: medium,
                 ),
               ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                height: 45,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                decoration: BoxDecoration(
+                  color: primaryColor.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(
+                    width: 1.0,
+                    color: primaryColor,
                   ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Text(
-                    '167',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: medium,
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      ' ',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 25,
+                        fontWeight: bold,
+                      ),
                     ),
-                  ),
-                  const Spacer(),
-                  Text(
-                    'CM',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: semibold,
+                    const Spacer(),
+                    Text(
+                      '60',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 25,
+                        fontWeight: bold,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget weightForm() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Berat Badan',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
+                    const Spacer(),
+                    Text(
+                      'Kg/m2',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: semibold,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Text(
-                    '71',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: medium,
-                    ),
-                  ),
-                  const Spacer(),
-                  Text(
-                    'KG',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: semibold,
-                    ),
-                  ),
-                ],
+              const SizedBox(
+                height: 10,
               ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget sizeRoundForm() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Lingkar Lengan Atas',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
+              Text(
+                'Indeks Massa Tubuh (IMT)',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 15,
+                  fontWeight: bold,
                 ),
               ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Text(
-                    '60',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: medium,
-                    ),
-                  ),
-                  const Spacer(),
-                  Text(
-                    'CM',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: semibold,
-                    ),
-                  ),
-                ],
+              const SizedBox(
+                height: 10,
               ),
-            ),
-          ],
-        ),
+              Text(
+                'IMT < 17,0 Kg/m2                 :    Sangat Kurus.',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 15,
+                  fontWeight: medium,
+                ),
+              ),
+              Text(
+                '17,0 Kg/m2  - 18,4 Kg/m2   :    Kurus.',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 15,
+                  fontWeight: medium,
+                ),
+              ),
+              Text(
+                '18,5 Kg/m2  - 25,0 Kg/m2   :    Normal.',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 15,
+                  fontWeight: medium,
+                ),
+              ),
+              Text(
+                '25,1 Kg/m2  - 27,0 Kg/m2   :    Kelebihan (Grade 1).',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 15,
+                  fontWeight: medium,
+                ),
+              ),
+              Text(
+                '> 27,0 Kg/m2                        :    Kelebihan (Grade 2).',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 15,
+                  fontWeight: medium,
+                ),
+              ),
+            ],
+          ),
+        ],
       );
     }
 
@@ -278,121 +395,16 @@ class ResultAntrhopometri extends StatelessWidget {
         margin: EdgeInsets.symmetric(
           horizontal: defaultMargin,
         ),
-        child: ListView(
+        child: Column(
           children: [
             dateInput(),
-            heightForm(),
-            weightForm(),
-            sizeRoundForm(),
-            const SizedBox(
-              height: 30,
-            ),
-            Text(
-              'Keterangan',
-              style: primaryTextStyle.copyWith(fontSize: 15, fontWeight: bold),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              'Berdasarkan hasil perhitungan data diatas, didapat nilai Indeks Massa Tubuh (IMT) anda:',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: medium,
+            Expanded(
+              child: ListView.builder(
+                itemCount: historyAntrhopoModel.antrhopoModel.length,
+                itemBuilder: (context, index) => anthropoResult(
+                    antrhopoModel: historyAntrhopoModel.antrhopoModel[index]),
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: [
-                  Text(
-                    ' ',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 25,
-                      fontWeight: bold,
-                    ),
-                  ),
-                  const Spacer(),
-                  Text(
-                    '60',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 25,
-                      fontWeight: bold,
-                    ),
-                  ),
-                  const Spacer(),
-                  Text(
-                    'Kg/m2',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: semibold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              'Indeks Massa Tubuh (IMT)',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: bold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              'IMT < 17,0 Kg/m2                 :    Sangat Kurus.',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: medium,
-              ),
-            ),
-            Text(
-              '17,0 Kg/m2  - 18,4 Kg/m2   :    Kurus.',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: medium,
-              ),
-            ),
-            Text(
-              '18,5 Kg/m2  - 25,0 Kg/m2   :    Normal.',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: medium,
-              ),
-            ),
-            Text(
-              '25,1 Kg/m2  - 27,0 Kg/m2   :    Kelebihan (Grade 1).',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: medium,
-              ),
-            ),
-            Text(
-              '> 27,0 Kg/m2                        :    Kelebihan (Grade 2).',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: medium,
-              ),
-            ),
+            )
           ],
         ),
       ),
