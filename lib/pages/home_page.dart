@@ -1361,7 +1361,7 @@ class _HomePageState extends State<HomePage> {
                 badgeContent: Align(
                   alignment: Alignment.topRight,
                   child: Text(
-                    mockHistoryReproModel
+                    mockHistoryNotificationModel
                         .where((e) => e.isRead == false)
                         .length
                         .toString(),

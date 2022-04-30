@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-class HistoryReproModel {
+class HistoryNotificationModel {
   final String logo;
   final String type;
   final String date;
@@ -8,7 +8,7 @@ class HistoryReproModel {
   final String route;
   final bool isRead;
 
-  HistoryReproModel({
+  HistoryNotificationModel({
     required this.logo,
     required this.type,
     required this.date,
@@ -18,7 +18,7 @@ class HistoryReproModel {
     required this.isRead,
   });
 
-  HistoryReproModel copyWith({
+  HistoryNotificationModel copyWith({
     String? logo,
     String? type,
     String? date,
@@ -27,7 +27,7 @@ class HistoryReproModel {
     String? route,
     bool? isRead,
   }) {
-    return HistoryReproModel(
+    return HistoryNotificationModel(
       logo: logo ?? this.logo,
       type: type ?? this.type,
       date: date ?? this.date,
@@ -39,25 +39,55 @@ class HistoryReproModel {
   }
 }
 
-final List<HistoryReproModel> mockHistoryReproModel = [
-  HistoryReproModel(
-    logo: "assets/clock.png",
+final List<HistoryNotificationModel> mockHistoryNotificationModel = [
+  HistoryNotificationModel(
+    logo: "assets/information.png",
     type: "Kesehatan Reproduksi",
     date: "25/03/2022",
     title: "Cari Tau Tentang Kesehatan Reproduksi, Yuk!",
     content:
         "Udah tau belum tentang kesehatan reproduksi? kalo belum, Yuk cari tau disini!",
-    route: "",
+    route: "notif-repro",
     isRead: false,
   ),
-  HistoryReproModel(
-    logo: "assets/clock.png",
-    type: "Kesehatan Reproduksi",
-    date: "25/03/2022",
-    title: "Cari Tau Tentang Kesehatan Reproduksi, Yuk!",
+  HistoryNotificationModel(
+    logo: "assets/information.png",
+    type: "Pola Makan Sehat Seimbang",
+    date: "24/03/2022",
+    title: "Makanan yang Kamu Makan Perlu diatur loh!",
     content:
-        "Udah tau belum tentang kesehatan reproduksi? kalo belum, Yuk cari tau disini!",
-    route: "",
-    isRead: true,
+        "Jangan asal makan ya, nanti kamu sakit. Kalo kamu sakit ada yang mau perhatiin kamu ga?",
+    route: "notif-food",
+    isRead: false,
+  ),
+  HistoryNotificationModel(
+    logo: "assets/information.png",
+    type: "Konsumsi Tablet Tambah Darah",
+    date: "23/03/2022",
+    title: "Gais, Yuk Tetap Sehat! BEBAS ANEMIA!",
+    content:
+        "Cocok nih buat kamu yang pengen tau tentang anemia, baca selengkapnya disini!",
+    route: "notif-tablets",
+    isRead: false,
+  ),
+  HistoryNotificationModel(
+    logo: "assets/information.png",
+    type: "Aktifitas Fisik",
+    date: "22/03/2022",
+    title: "Biar sehat, jangan lupa gerak ya!",
+    content:
+        "Tetap jaga tubuhmu agar terus sehat ya, aktifitas kecil juga gamasalah kok.",
+    route: "notif-activity",
+    isRead: false,
+  ),
+  HistoryNotificationModel(
+    logo: "assets/information.png",
+    type: "Protokol Kesehatan",
+    date: "22/03/2022",
+    title: "Eittss! Jangan Lengah Ya, Covid-19 masih ada!",
+    content:
+        "Udah vaksin bukan berarti bebas dari virus, tetap jaga sesama ya biar semua sehat.",
+    route: "notif-prokes",
+    isRead: false,
   )
 ];
