@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:badges/badges.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -64,24 +65,55 @@ class _HomePageState extends State<HomePage> {
             Flexible(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'TETAP JAGA PROTOKOL KESEHATAN',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 10,
-                      fontWeight: bold,
-                    ),
+                children: <Widget>[
+                  AnimatedTextKit(
+                    repeatForever: true,
+                    animatedTexts: [
+                      FadeAnimatedText(
+                        'LENGKAPI DATA ANDA',
+                        textStyle: primaryTextStyle.copyWith(
+                          fontSize: 10,
+                          fontWeight: bold,
+                        ),
+                        duration: const Duration(milliseconds: 10000),
+                        textAlign: TextAlign.start,
+                      ),
+                      FadeAnimatedText(
+                        'TETAP JAGA PROTOKOL KESEHATAN',
+                        textStyle: primaryTextStyle.copyWith(
+                          fontSize: 10,
+                          fontWeight: bold,
+                        ),
+                        duration: const Duration(milliseconds: 10000),
+                        textAlign: TextAlign.start,
+                      ),
+                    ],
                   ),
                   const SizedBox(
                     height: 5,
                   ),
-                  Text(
-                    'Dimana pun kamu berada, tetap jaga protokol kesehatan ya. Gunakan masker dengan benar, Mencuci tangan, Menjaga Jarak, dan Hindari kerumunan.',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 10,
-                      fontWeight: regular,
-                    ),
-                    textAlign: TextAlign.justify,
+                  AnimatedTextKit(
+                    repeatForever: true,
+                    animatedTexts: [
+                      FadeAnimatedText(
+                        'Isi dan lengkapi data informasi anda pada menu \'Data Informasi Subyek\' dan pastikan data informasi tersebut sesuai dengan kondisi anda.',
+                        textStyle: primaryTextStyle.copyWith(
+                          fontSize: 10,
+                          fontWeight: regular,
+                        ),
+                        duration: const Duration(milliseconds: 10000),
+                        textAlign: TextAlign.justify,
+                      ),
+                      FadeAnimatedText(
+                        'Dimana pun kamu berada, tetap jaga protokol kesehatan ya. Gunakan masker dengan benar, Mencuci tangan, Menjaga Jarak, dan Hindari kerumunan.',
+                        textStyle: primaryTextStyle.copyWith(
+                          fontSize: 10,
+                          fontWeight: regular,
+                        ),
+                        duration: const Duration(milliseconds: 10000),
+                        textAlign: TextAlign.justify,
+                      ),
+                    ],
                   ),
                 ],
               ),
