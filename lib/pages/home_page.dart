@@ -3,8 +3,14 @@ import 'package:badges/badges.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:healthy/models/activity_model.dart';
+import 'package:healthy/models/information_model.dart';
 import 'package:healthy/models/notification_model.dart';
 import 'package:healthy/models/user_model.dart';
+import 'package:healthy/pages/history_form_activity_page.dart';
+import 'package:healthy/pages/result_information_page.dart';
+import 'package:healthy/services/activity_service.dart';
+import 'package:healthy/services/information_service.dart';
 import 'package:healthy/theme.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,19 +22,21 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   User? user = FirebaseAuth.instance.currentUser;
-  UserModel loggedInUser = UserModel();
+  UserModel loggedInUser = UserModel(uid: '1234');
 
   @override
   void initState() {
     // ignore: todo
     // TODO: Implement initState
     super.initState();
+
     FirebaseFirestore.instance
         .collection("users")
         .doc(user!.uid)
         .get()
-        .then((value) {
+        .then((value) async {
       loggedInUser = UserModel.fromMap(value.data());
+
       setState(() {});
     });
   }
@@ -355,227 +363,387 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
-    Widget informationSubject() {
-      return Container(
-        height: 166,
-        width: double.infinity,
-        padding: const EdgeInsets.all(15),
-        decoration: BoxDecoration(
-          color: secondaryColor.withOpacity(0.5),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Text(
-                  'Data Informasi Subyek',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 10,
-                    fontWeight: medium,
-                  ),
-                ),
-                const Spacer(),
-                Text(
-                  '29/03/2022',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 10,
-                    fontWeight: bold,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Image.asset(
-                  'assets/user.png',
-                  width: 15,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'Mazaya Hurun\'in',
-                  style:
-                      primaryTextStyle.copyWith(fontSize: 20, fontWeight: bold),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            Row(
-              children: [
-                Image.asset(
-                  'assets/placeholder.png',
-                  width: 15,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'Perum Kodim Blok D No 10 RT.005/002...',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 10,
-                    fontWeight: medium,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            SizedBox(
-              height: 40,
+    Widget informationSubject({required String uid}) {
+      return FutureBuilder<HistoryInformModel?>(
+        future: InformationService().fetchInformation(uid: uid),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Container(
+              height: 166,
               width: double.infinity,
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/result-information');
-                },
-                style: TextButton.styleFrom(
-                    backgroundColor: primaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    )),
-                child: Text(
-                  'Lihat Data',
-                  style: backgroundTextStyle.copyWith(
-                    fontSize: 15,
-                    fontWeight: bold,
-                  ),
-                ),
+              padding: const EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                color: secondaryColor.withOpacity(0.5),
+                borderRadius: BorderRadius.circular(15),
               ),
-            ),
-          ],
-        ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        'Data Informasi Subyek',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 10,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        snapshot.data!.date,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 10,
+                          fontWeight: bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    children: [
+                      Image.asset(
+                        'assets/user.png',
+                        width: 15,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        snapshot.data!.name,
+                        style: primaryTextStyle.copyWith(
+                            fontSize: 20, fontWeight: bold),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: [
+                      Image.asset(
+                        'assets/placeholder.png',
+                        width: 15,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        snapshot.data!.address,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 10,
+                          fontWeight: medium,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  SizedBox(
+                    height: 40,
+                    width: double.infinity,
+                    child: TextButton(
+                      onPressed: () async {
+                        final result = await InformationService()
+                            .fetchInformation(uid: loggedInUser.uid);
+
+                        if (result != null) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  ResultInformation(informModel: result),
+                            ),
+                          );
+                        } else {
+                          // null
+                        }
+                      },
+                      style: TextButton.styleFrom(
+                          backgroundColor: primaryColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          )),
+                      child: Text(
+                        'Lihat Data',
+                        style: backgroundTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          } else {
+            return const CircularProgressIndicator();
+          }
+        },
       );
     }
 
-    Widget activitySubject() {
-      return Container(
-        height: 166,
-        width: double.infinity,
-        padding: const EdgeInsets.all(15),
-        decoration: BoxDecoration(
-          color: secondaryColor.withOpacity(0.5),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Text(
-                  'Data Aktivitas Fisik Subyek',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 10,
-                    fontWeight: medium,
+    Widget activitySubject({required String uid}) {
+      return FutureBuilder<List<HistoryActivityModel>?>(
+        future: ActivityService().fetchActivity(uid: uid),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasData) {
+              if (snapshot.data != null && snapshot.data!.isNotEmpty) {
+                return Container(
+                  height: 166,
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: secondaryColor.withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(15),
                   ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Data Aktivitas Fisik Subyek',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: medium,
+                            ),
+                          ),
+                          const Spacer(),
+                          Text(
+                            snapshot.data!.last.date,
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            'assets/clock.png',
+                            width: 15,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            '${snapshot.data!.last.activityModel.last.activityTime} Menit',
+                            style: primaryTextStyle.copyWith(
+                                fontSize: 20, fontWeight: bold),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            'assets/date.png',
+                            width: 15,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            snapshot.data!.last.activityModel.last
+                                .descriptionActivity,
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: medium,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 25,
+                          ),
+                          Image.asset(
+                            'assets/run.png',
+                            width: 15,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            'Aktivitas : ',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: medium,
+                            ),
+                          ),
+                          Text(
+                            snapshot.data!.last.activityModel.last.activityName,
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      SizedBox(
+                        height: 40,
+                        width: double.infinity,
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HistoryFormActivity(
+                                  listActivityModel: snapshot.data!,
+                                ),
+                              ),
+                            );
+                          },
+                          style: TextButton.styleFrom(
+                              backgroundColor: primaryColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              )),
+                          child: Text(
+                            'Lihat Riwayat',
+                            style: backgroundTextStyle.copyWith(
+                              fontSize: 15,
+                              fontWeight: bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }
+            }
+          }
+          return Container(
+            height: 166,
+            width: double.infinity,
+            padding: const EdgeInsets.all(15),
+            decoration: BoxDecoration(
+              color: secondaryColor.withOpacity(0.5),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      'Data Aktivitas Fisik Subyek',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: medium,
+                      ),
+                    ),
+                    const Spacer(),
+                    Text(
+                      '--/--/----',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: bold,
+                      ),
+                    ),
+                  ],
                 ),
-                const Spacer(),
-                Text(
-                  '29/03/2022',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 10,
-                    fontWeight: bold,
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    Image.asset(
+                      'assets/clock.png',
+                      width: 15,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Data belum diisi',
+                      style: primaryTextStyle.copyWith(
+                          fontSize: 20, fontWeight: bold),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  children: [
+                    Image.asset(
+                      'assets/date.png',
+                      width: 15,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Data belum diisi',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: medium,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 25,
+                    ),
+                    Image.asset(
+                      'assets/run.png',
+                      width: 15,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Aktivitas : ',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: medium,
+                      ),
+                    ),
+                    Text(
+                      'Data belum diisi',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: bold,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                SizedBox(
+                  height: 40,
+                  width: double.infinity,
+                  child: TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                        backgroundColor: primaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        )),
+                    child: Text(
+                      'Lihat Riwayat',
+                      style: backgroundTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: bold,
+                      ),
+                    ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Image.asset(
-                  'assets/clock.png',
-                  width: 15,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  '40 Menit',
-                  style:
-                      primaryTextStyle.copyWith(fontSize: 20, fontWeight: bold),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            Row(
-              children: [
-                Image.asset(
-                  'assets/date.png',
-                  width: 15,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'Bangun tidur - jam 12 siang',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 10,
-                    fontWeight: medium,
-                  ),
-                ),
-                const SizedBox(
-                  width: 25,
-                ),
-                Image.asset(
-                  'assets/run.png',
-                  width: 15,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'Aktivitas : ',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 10,
-                    fontWeight: medium,
-                  ),
-                ),
-                Text(
-                  'Berlari',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 10,
-                    fontWeight: bold,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            SizedBox(
-              height: 40,
-              width: double.infinity,
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/history-activity');
-                },
-                style: TextButton.styleFrom(
-                    backgroundColor: primaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    )),
-                child: Text(
-                  'Lihat Riwayat',
-                  style: backgroundTextStyle.copyWith(
-                    fontSize: 15,
-                    fontWeight: bold,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+          );
+        },
       );
     }
 
@@ -1468,11 +1636,15 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 15,
               ),
-              informationSubject(),
+              informationSubject(
+                uid: loggedInUser.uid,
+              ),
               const SizedBox(
                 height: 15,
               ),
-              activitySubject(),
+              activitySubject(
+                uid: loggedInUser.uid,
+              ),
               const SizedBox(
                 height: 15,
               ),

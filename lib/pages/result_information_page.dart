@@ -1,35 +1,30 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import 'package:healthy/models/information_model.dart';
+// import 'package:healthy/models/user_model.dart';
+// import 'package:healthy/services/information_service.dart';
 import 'package:healthy/theme.dart';
 
 class ResultInformation extends StatefulWidget {
-  const ResultInformation({Key? key}) : super(key: key);
+  final HistoryInformModel informModel;
+  const ResultInformation({
+    Key? key,
+    required this.informModel,
+  }) : super(key: key);
 
   @override
   State<ResultInformation> createState() => _ResultInformationState();
 }
 
 class _ResultInformationState extends State<ResultInformation> {
-  HistoryInformModel? historyInformModel = HistoryInformModel(
-    date: 'date',
-    name: 'name',
-    address: 'address',
-    eduFather: 'eduFather',
-    eduMother: 'eduMother',
-    jobFather: 'jobFather',
-    jobMother: 'jobMother',
-    brothers: 'brothers',
-    amount: 'amount',
-    income: 'income',
-    outcome: 'outcome',
-    ageTeen: 'ageTeen',
-    disease: 'disease',
-  );
-
   @override
   Widget build(BuildContext context) {
-    Widget resultInformation({required HistoryInformModel listModel}) {
-      return Column(
+    Widget resultInformation() {
+      return ListView(
+        padding: const EdgeInsets.only(top: 30),
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,7 +62,7 @@ class _ResultInformationState extends State<ResultInformation> {
                       width: 15,
                     ),
                     Text(
-                      listModel.date,
+                      widget.informModel.date,
                       style: primaryTextStyle.copyWith(
                         fontSize: 15,
                         fontWeight: bold,
@@ -116,7 +111,7 @@ class _ResultInformationState extends State<ResultInformation> {
                         width: 15,
                       ),
                       Text(
-                        listModel.name,
+                        widget.informModel.name,
                         style: primaryTextStyle.copyWith(
                           fontSize: 15,
                           fontWeight: medium,
@@ -169,7 +164,7 @@ class _ResultInformationState extends State<ResultInformation> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              listModel.address,
+                              widget.informModel.address,
                               style: primaryTextStyle.copyWith(
                                 fontSize: 15,
                                 fontWeight: medium,
@@ -222,7 +217,7 @@ class _ResultInformationState extends State<ResultInformation> {
                         width: 15,
                       ),
                       Text(
-                        listModel.eduFather,
+                        widget.informModel.eduFather,
                         style: primaryTextStyle.copyWith(
                           fontSize: 15,
                           fontWeight: medium,
@@ -272,7 +267,7 @@ class _ResultInformationState extends State<ResultInformation> {
                         width: 15,
                       ),
                       Text(
-                        listModel.eduMother,
+                        widget.informModel.eduMother,
                         style: primaryTextStyle.copyWith(
                           fontSize: 15,
                           fontWeight: medium,
@@ -322,7 +317,7 @@ class _ResultInformationState extends State<ResultInformation> {
                         width: 15,
                       ),
                       Text(
-                        listModel.jobFather,
+                        widget.informModel.jobFather,
                         style: primaryTextStyle.copyWith(
                           fontSize: 15,
                           fontWeight: medium,
@@ -372,7 +367,7 @@ class _ResultInformationState extends State<ResultInformation> {
                         width: 15,
                       ),
                       Text(
-                        listModel.jobMother,
+                        widget.informModel.jobMother,
                         style: primaryTextStyle.copyWith(
                           fontSize: 15,
                           fontWeight: medium,
@@ -426,7 +421,7 @@ class _ResultInformationState extends State<ResultInformation> {
                               width: 15,
                             ),
                             Text(
-                              listModel.brothers,
+                              widget.informModel.brothers,
                               style: primaryTextStyle.copyWith(
                                 fontSize: 15,
                                 fontWeight: medium,
@@ -482,7 +477,7 @@ class _ResultInformationState extends State<ResultInformation> {
                               width: 15,
                             ),
                             Text(
-                              listModel.amount,
+                              widget.informModel.amount,
                               style: primaryTextStyle.copyWith(
                                 fontSize: 15,
                                 fontWeight: medium,
@@ -535,7 +530,7 @@ class _ResultInformationState extends State<ResultInformation> {
                         width: 15,
                       ),
                       Text(
-                        listModel.income,
+                        widget.informModel.income,
                         style: primaryTextStyle.copyWith(
                           fontSize: 15,
                           fontWeight: medium,
@@ -585,7 +580,7 @@ class _ResultInformationState extends State<ResultInformation> {
                         width: 15,
                       ),
                       Text(
-                        listModel.outcome,
+                        widget.informModel.outcome,
                         style: primaryTextStyle.copyWith(
                           fontSize: 15,
                           fontWeight: medium,
@@ -635,7 +630,7 @@ class _ResultInformationState extends State<ResultInformation> {
                         width: 15,
                       ),
                       Text(
-                        listModel.ageTeen,
+                        widget.informModel.ageTeen,
                         style: primaryTextStyle.copyWith(
                           fontSize: 15,
                           fontWeight: medium,
@@ -685,7 +680,7 @@ class _ResultInformationState extends State<ResultInformation> {
                         width: 15,
                       ),
                       Text(
-                        listModel.disease,
+                        widget.informModel.disease,
                         style: primaryTextStyle.copyWith(
                           fontSize: 15,
                           fontWeight: medium,
@@ -723,30 +718,30 @@ class _ResultInformationState extends State<ResultInformation> {
       );
     }
 
-    Widget backButton() {
-      return Container(
-        height: 45,
-        width: 130,
-        margin: const EdgeInsets.only(top: 30, bottom: 30),
-        child: TextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/home-page');
-          },
-          style: TextButton.styleFrom(
-              backgroundColor: primaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              )),
-          child: Text(
-            'Kembali',
-            style: backgroundTextStyle.copyWith(
-              fontSize: 15,
-              fontWeight: bold,
-            ),
-          ),
-        ),
-      );
-    }
+    // Widget backButton() {
+    //   return Container(
+    //     height: 45,
+    //     width: 130,
+    //     margin: const EdgeInsets.only(top: 30, bottom: 30),
+    //     child: TextButton(
+    //       onPressed: () {
+    //         Navigator.pushNamed(context, '/home-page');
+    //       },
+    //       style: TextButton.styleFrom(
+    //           backgroundColor: primaryColor,
+    //           shape: RoundedRectangleBorder(
+    //             borderRadius: BorderRadius.circular(15),
+    //           )),
+    //       child: Text(
+    //         'Kembali',
+    //         style: backgroundTextStyle.copyWith(
+    //           fontSize: 15,
+    //           fontWeight: bold,
+    //         ),
+    //       ),
+    //     ),
+    //   );
+    // }
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -781,53 +776,45 @@ class _ResultInformationState extends State<ResultInformation> {
         ),
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(
-          horizontal: defaultMargin,
-        ),
-        child: (mockHistoryInformModel.isNotEmpty)
-            ? ListView.builder(
-                padding: const EdgeInsets.only(top: 30),
-                itemCount: mockHistoryInformModel.length,
-                itemBuilder: (context, index) {
-                  return resultInformation(
-                    listModel: mockHistoryInformModel[index],
-                  );
-                },
-              )
-            : Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: defaultMargin,
-                ),
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 180,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/image_empty.png',
-                          width: 250,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      'Riwayat Data Informasi Kosong',
-                      style: primaryTextStyle.copyWith(
-                          fontSize: 15, fontWeight: bold),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    backButton(),
-                  ],
-                ),
-              ),
-      ),
+          margin: EdgeInsets.symmetric(
+            horizontal: defaultMargin,
+          ),
+          child: resultInformation()
+
+          // : Container(
+          //     margin: EdgeInsets.symmetric(
+          //       horizontal: defaultMargin,
+          //     ),
+          //     child: Column(
+          //       children: [
+          //         const SizedBox(
+          //           height: 180,
+          //         ),
+          //         Row(
+          //           mainAxisAlignment: MainAxisAlignment.center,
+          //           children: [
+          //             Image.asset(
+          //               'assets/image_empty.png',
+          //               width: 250,
+          //             ),
+          //           ],
+          //         ),
+          //         const SizedBox(
+          //           height: 15,
+          //         ),
+          //         Text(
+          //           'Riwayat Data Informasi Kosong',
+          //           style: primaryTextStyle.copyWith(
+          //               fontSize: 15, fontWeight: bold),
+          //         ),
+          //         const SizedBox(
+          //           height: 15,
+          //         ),
+          //         backButton(),
+          //       ],
+          //     ),
+          //   ),
+          ),
     );
   }
 }

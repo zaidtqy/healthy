@@ -1,5 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:healthy/models/activity_model.dart';
+import 'package:healthy/models/user_model.dart';
+import 'package:healthy/services/activity_service.dart';
 import 'package:healthy/theme.dart';
+import 'package:intl/intl.dart';
 
 class FormActivity extends StatefulWidget {
   const FormActivity({Key? key}) : super(key: key);
@@ -22,6 +28,9 @@ class _FormActivityState extends State<FormActivity> {
   final minutesAct3Controller = TextEditingController();
   final other4FormController = TextEditingController();
   final minutesAct4Controller = TextEditingController();
+
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel(uid: '1234');
 
   bool _isShowField1 = false;
   bool _isShowField2 = false;
@@ -67,6 +76,22 @@ class _FormActivityState extends State<FormActivity> {
     "Duduk/Kegiatan Santai",
     "Kegiatan Lain"
   ];
+
+  @override
+  void initState() {
+    // ignore: todo
+    // TODO: Implement initState
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      // ignore: unnecessary_this
+      this.loggedInUser = UserModel.fromMap(value.data());
+      setState(() {});
+    });
+  }
 
   @override
   void dispose() {
@@ -921,7 +946,35 @@ class _FormActivityState extends State<FormActivity> {
         margin: const EdgeInsets.only(top: 30, bottom: 30),
         child: TextButton(
           onPressed: () {
-            save();
+            save(
+              user: UserModel(
+                uid: loggedInUser.uid,
+                name: loggedInUser.name,
+                email: loggedInUser.email,
+                phone: loggedInUser.phone,
+              ),
+              date: DateFormat('dd/MM/yyyy').format(DateTime.now()),
+              // String? actMorning,
+              // String? otherActMorning,
+              // required String timeMorning,
+              actMorning: _valAct1 ?? 'Data Kosong',
+              otherActMorning: other1FormController.text,
+              timeMorning: minutesAct1Controller.text,
+              act12Clock: _valAct2 ?? 'Data Kosong',
+              otherAct12Clock: other2FormController.text,
+              time12Clock: minutesAct2Controller.text,
+              act18Clock: _valAct3 ?? 'Data Kosong',
+              otherAct18Clock: other3FormController.text,
+              time18Clock: minutesAct3Controller.text,
+              actNight: _valAct4 ?? 'Data Kosong',
+              otherActNight: other4FormController.text,
+              timeNight: minutesAct4Controller.text,
+              // details: ActivityModel(
+              //   activityName: activityName,
+              //   activityTime: activityTime,
+              //   descriptionActivity: descriptionActivity,
+              //   ),
+            );
           },
           style: TextButton.styleFrom(
               backgroundColor: primaryColor,
@@ -1051,8 +1104,62 @@ class _FormActivityState extends State<FormActivity> {
     );
   }
 
-  void save() async {
+  void save({
+    required UserModel user,
+    required String date,
+    String? actMorning,
+    String? otherActMorning,
+    required String timeMorning,
+    String? act12Clock,
+    String? otherAct12Clock,
+    required String time12Clock,
+    String? act18Clock,
+    String? otherAct18Clock,
+    required String time18Clock,
+    String? actNight,
+    String? otherActNight,
+    required String timeNight,
+    // ActivityModel details,
+  }) async {
     if (_formKey.currentState!.validate()) {
+      String dataActMorning =
+          (actMorning == 'Kegiatan Lain') ? otherActMorning! : actMorning!;
+      String dataAct12Clock =
+          (act12Clock == 'Kegiatan Lain') ? otherAct12Clock! : act12Clock!;
+      String dataAct18Clock =
+          (act18Clock == 'Kegiatan Lain') ? otherAct18Clock! : act18Clock!;
+      String dataActNight =
+          (actNight == 'Kegiatan Lain') ? otherActNight! : actNight!;
+
+      HistoryActivityModel activityModel = HistoryActivityModel(
+        user: user,
+        date: date,
+        activityModel: [
+          ActivityModel(
+            activityName: dataActMorning,
+            activityTime: timeMorning,
+            descriptionActivity: 'Bangun Tidur - Jam 12 Siang',
+          ),
+          ActivityModel(
+            activityName: dataAct12Clock,
+            activityTime: time12Clock,
+            descriptionActivity: 'Jam 12 Siang - Jam 6 Sore',
+          ),
+          ActivityModel(
+            activityName: dataAct18Clock,
+            activityTime: time18Clock,
+            descriptionActivity: 'Jam 6 Sore - Jam 10 Malam',
+          ),
+          ActivityModel(
+            activityName: dataActNight,
+            activityTime: timeNight,
+            descriptionActivity: 'Jam 10 Malam - Bangun Tidur',
+          ),
+        ],
+      );
+      await ActivityService().createActivity(activityModel);
+
+      Navigator.pushNamed(context, '/home-page');
       // await _auth
       //     .createUserWithEmailAndPassword(email: email, password: password)
       //     .then((value) => {postDetailsToFirestore()})

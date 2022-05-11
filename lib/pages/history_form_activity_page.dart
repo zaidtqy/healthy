@@ -1,10 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:healthy/models/activity_model.dart';
 import 'package:healthy/pages/result_activity_page.dart';
 import 'package:healthy/theme.dart';
 
 class HistoryFormActivity extends StatelessWidget {
-  const HistoryFormActivity({Key? key}) : super(key: key);
+  final List<HistoryActivityModel> listActivityModel;
+
+  const HistoryFormActivity({
+    Key? key,
+    required this.listActivityModel,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -217,13 +224,13 @@ class HistoryFormActivity extends StatelessWidget {
         margin: EdgeInsets.symmetric(
           horizontal: defaultMargin,
         ),
-        child: (mockHistoryActivityModel.isNotEmpty)
+        child: (listActivityModel.isNotEmpty)
             ? ListView.builder(
                 padding: const EdgeInsets.only(top: 30),
-                itemCount: mockHistoryActivityModel.length,
+                itemCount: listActivityModel.length,
                 itemBuilder: (context, index) {
                   return activitySubject(
-                    historyActivityModel: mockHistoryActivityModel[index],
+                    historyActivityModel: listActivityModel[index],
                   );
                 },
               )
