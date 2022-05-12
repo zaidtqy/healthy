@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:healthy/helpers/const.dart';
 import 'package:healthy/models/activity_model.dart';
 
@@ -28,8 +28,6 @@ class ActivityService {
 
       final filterActivityModel =
           activityModel.where((element) => element.user.uid == uid).toList();
-
-      debugPrint('DISINI : $filterActivityModel');
 
       return filterActivityModel;
     } catch (e) {

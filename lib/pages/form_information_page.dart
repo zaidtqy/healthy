@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:healthy/models/information_model.dart';
 import 'package:healthy/models/user_model.dart';
+import 'package:healthy/pages/home_page.dart';
 import 'package:healthy/services/information_service.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthy/theme.dart';
@@ -1260,7 +1262,58 @@ class _FormInformationState extends State<FormInformation> {
       );
       await InformationService().createInformation(informModel);
 
-      Navigator.pushNamed(context, '/home-page');
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => const HomePage(),
+        ),
+      );
+
+      CoolAlert.show(
+        context: context,
+        type: CoolAlertType.success,
+        title: " ",
+        widget: Text(
+          'Data Berhasil Disimpan!',
+          style: primaryTextStyle.copyWith(
+            fontSize: 25,
+            fontWeight: semibold,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        confirmBtnText: 'Oke',
+        confirmBtnColor: primaryColor,
+        confirmBtnTextStyle: TextStyle(color: backgroundColor, fontSize: 18),
+      );
+    } else {
+      return CoolAlert.show(
+        barrierDismissible: false,
+        context: context,
+        type: CoolAlertType.error,
+        title: " ",
+        widget: Column(
+          children: [
+            Text(
+              'Data Gagal Disimpan!',
+              style: primaryTextStyle.copyWith(
+                fontSize: 20,
+                fontWeight: semibold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              'Mohon pastikan tidak ada form yang belum diisi',
+              style: primaryTextStyle.copyWith(
+                fontSize: 15,
+                fontWeight: regular,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+        confirmBtnText: 'Mengerti',
+        confirmBtnColor: primaryColor,
+        confirmBtnTextStyle: TextStyle(color: backgroundColor, fontSize: 18),
+      );
     }
   }
 
