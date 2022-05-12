@@ -469,7 +469,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
         ),
       ),
       body: Container(
-        margin: const EdgeInsets.symmetric(),
         child: (mockHistoryReproModel.isNotEmpty)
             ? ListView.builder(
                 padding: const EdgeInsets.only(top: 30),
@@ -533,9 +532,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                           fontWeight: semibold,
                                         ),
                                       ),
-                                      const SizedBox(
-                                        width: 152,
-                                      ),
+                                      const Spacer(),
                                       Text(
                                         mockHistoryReproModel[index].date,
                                         style: primaryTextStyle.copyWith(

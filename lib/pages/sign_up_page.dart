@@ -329,7 +329,7 @@ class _SignUpPageState extends State<SignUpPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Kata Sandi',
+            'Ulangi Kata Sandi',
             style: primaryTextStyle.copyWith(
               fontSize: 15,
               fontWeight: semibold,
@@ -374,7 +374,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 borderSide: const BorderSide(),
                 borderRadius: BorderRadius.circular(15),
               ),
-              hintText: 'Kata Sandi',
+              hintText: 'Ulangi Kata Sandi',
               hintStyle: primaryTextStyle,
               counterText: "",
             ),
@@ -489,7 +489,7 @@ class _SignUpPageState extends State<SignUpPage> {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     User? user = _auth.currentUser;
 
-    UserModel userModel = UserModel();
+    UserModel userModel = UserModel(uid: '1234');
 
     // writing all the values
     userModel.email = user!.email;

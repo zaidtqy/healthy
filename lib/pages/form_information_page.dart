@@ -1,6 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:healthy/models/information_model.dart';
+import 'package:healthy/models/user_model.dart';
+import 'package:healthy/services/information_service.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthy/theme.dart';
+import 'package:intl/intl.dart';
 
 class FormInformation extends StatefulWidget {
   const FormInformation({Key? key}) : super(key: key);
@@ -20,6 +26,9 @@ class _FormInformationState extends State<FormInformation> {
   final amountController = TextEditingController();
   final ageTeenController = TextEditingController();
   final otherFormController = TextEditingController();
+
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel(uid: '1234');
 
   bool _isShowField = false;
 
@@ -93,6 +102,22 @@ class _FormInformationState extends State<FormInformation> {
     "Jantung Bawaan",
     "Penyakit Lain"
   ];
+
+  @override
+  void initState() {
+    // ignore: todo
+    // TODO: Implement initState
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      // ignore: unnecessary_this
+      this.loggedInUser = UserModel.fromMap(value.data());
+      setState(() {});
+    });
+  }
 
   @override
   void dispose() {
@@ -944,7 +969,7 @@ class _FormInformationState extends State<FormInformation> {
           TextFormField(
             controller: otherFormController,
             style: primaryTextStyle,
-            keyboardType: TextInputType.phone,
+            keyboardType: TextInputType.name,
             textInputAction: TextInputAction.done,
             validator: (value) {
               if (value!.isEmpty) {
@@ -1086,7 +1111,28 @@ class _FormInformationState extends State<FormInformation> {
       margin: const EdgeInsets.only(top: 30, bottom: 30),
       child: TextButton(
         onPressed: () {
-          save(nameController.text);
+          save(
+            user: UserModel(
+              uid: loggedInUser.uid,
+              name: loggedInUser.name,
+              email: loggedInUser.email,
+              phone: loggedInUser.phone,
+            ),
+            date: DateFormat('dd/MM/yyyy').format(DateTime.now()),
+            name: nameController.text,
+            address: addressController.text,
+            eduFather: _valEduFather ?? 'Data Kosong',
+            eduMother: _valEduMother ?? 'Data Kosong',
+            jobFather: _valJobFather ?? 'Data Kosong',
+            jobMother: _valJobMother ?? 'Data Kosong',
+            brothers: brothersController.text,
+            amount: amountController.text,
+            income: _valIncome ?? 'Data Kosong',
+            outcome: _valOutcome ?? 'Data Kosong',
+            ageTeen: ageTeenController.text,
+            disease: _valDisease ?? 'Data Kosong',
+            otherDisease: otherFormController.text,
+          );
         },
         style: TextButton.styleFrom(
             backgroundColor: primaryColor,
@@ -1175,14 +1221,46 @@ class _FormInformationState extends State<FormInformation> {
     );
   }
 
-  void save(String name) async {
+  void save({
+    required UserModel user,
+    required String date,
+    required String name,
+    required String address,
+    required String eduFather,
+    required String eduMother,
+    required String jobFather,
+    required String jobMother,
+    required String brothers,
+    required String amount,
+    required String income,
+    required String outcome,
+    required String ageTeen,
+    String? disease,
+    String? otherDisease,
+  }) async {
     if (_formKey.currentState!.validate()) {
-      // await _auth
-      //     .createUserWithEmailAndPassword(email: email, password: password)
-      //     .then((value) => {postDetailsToFirestore()})
-      //     .catchError((e) {
-      //   Fluttertoast.showToast(msg: e!.message);
-      // });
+      String dataDisease =
+          (disease == 'Penyakit Lain') ? otherDisease! : disease!;
+
+      HistoryInformModel informModel = HistoryInformModel(
+        user: user,
+        date: date,
+        name: name,
+        address: address,
+        eduFather: eduFather,
+        eduMother: eduMother,
+        jobFather: jobFather,
+        jobMother: jobMother,
+        brothers: brothers,
+        amount: amount,
+        income: income,
+        outcome: outcome,
+        ageTeen: ageTeen,
+        disease: dataDisease,
+      );
+      await InformationService().createInformation(informModel);
+
+      Navigator.pushNamed(context, '/home-page');
     }
   }
 

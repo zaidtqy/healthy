@@ -16,15 +16,15 @@ import 'package:healthy/pages/notif_food_page.dart';
 import 'package:healthy/pages/notif_tablets_page.dart';
 import 'package:healthy/pages/notif_activity_page.dart';
 import 'package:healthy/pages/notif_prokes_page.dart';
-import 'package:healthy/pages/history_form_activity_page.dart';
+// import 'package:healthy/pages/history_form_activity_page.dart';
 import 'package:healthy/pages/history_form_intake_page.dart';
 import 'package:healthy/pages/history_form_antrhopometri_page.dart';
 import 'package:healthy/pages/history_form_hemoglobin_page.dart';
 import 'package:healthy/pages/history_form_knowledge_page.dart';
-import 'package:healthy/pages/result_information_page.dart';
-import 'package:healthy/pages/result_antrhopometri_page.dart';
-import 'package:healthy/pages/result_hemoglobin_page.dart';
-import 'package:healthy/pages/result_knowledge_page.dart';
+// import 'package:healthy/pages/result_information_page.dart';
+// import 'package:healthy/pages/result_antrhopometri_page.dart';
+// import 'package:healthy/pages/result_hemoglobin_page.dart';
+// import 'package:healthy/pages/result_knowledge_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -57,16 +57,16 @@ class MyApp extends StatelessWidget {
         '/notif-tablets': (context) => const NotifTablets(),
         '/notif-activity': (context) => const NotifActivity(),
         '/notif-prokes': (context) => const NotifProkes(),
-        '/history-activity': (context) => const HistoryFormActivity(),
+        // '/history-activity': (context) => const HistoryFormActivity(),
         '/history-intake': (context) => const HistoryFormIntake(),
         '/history-antrhopometri': (context) => const HistoryFormAntrhopometri(),
         '/history-hemoglobin': (context) => const HistoryFormHemoglobin(),
         '/history-knowledge': (context) => const HistoryFormKnowledge(),
         // '/result-activity': (context) => const ResultActivity(),
-        '/result-information': (context) => const ResultInformation(),
-        '/result-antrhopometri': (context) => const ResultAntrhopometri(),
-        '/result-hemoglobin': (context) => const ResultHemoglobin(),
-        '/result-knowledge': (context) => const ResultKnowledge(),
+        // '/result-information': (context) => const ResultInformation(),
+        // '/result-antrhopometri': (context) => const ResultAntrhopometri(),
+        // '/result-hemoglobin': (context) => const ResultHemoglobin(),
+        // '/result-knowledge': (context) => const ResultKnowledge(),
       },
     );
   }

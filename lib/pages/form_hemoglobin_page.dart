@@ -1,8 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:healthy/theme.dart';
 
-class FormHemoglobin extends StatelessWidget {
+class FormHemoglobin extends StatefulWidget {
   const FormHemoglobin({Key? key}) : super(key: key);
+
+  @override
+  State<FormHemoglobin> createState() => _FormHemoglobinState();
+}
+
+class _FormHemoglobinState extends State<FormHemoglobin> {
+  // form key
+  final _formKey = GlobalKey<FormState>();
+
+  // controller
+  final hbFormController = TextEditingController();
+
+  @override
+  void dispose() {
+    hbFormController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,51 +47,47 @@ class FormHemoglobin extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
+            TextFormField(
+              controller: hbFormController,
+              style: primaryTextStyle,
+              keyboardType: TextInputType.number,
+              textInputAction: TextInputAction.next,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return ("Form ini Harus Diisi");
+                }
+                return null;
+              },
+              onSaved: (value) {
+                hbFormController.text = value!;
+              },
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: primaryColor,
+                    width: 1.0,
+                  ),
+                  borderRadius: BorderRadius.circular(15),
                 ),
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
+                contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  child: Image.asset(
                     'assets/blood.png',
                     width: 20,
                   ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Expanded(
-                    child: TextFormField(
-                      keyboardType: TextInputType.phone,
-                      style: primaryTextStyle,
-                      decoration: InputDecoration(
-                        hintText: 'Masukkan Hb',
-                        hintStyle: primaryTextStyle,
-                        counterText: "",
-                        border: InputBorder.none,
-                      ),
-                      maxLength: 3,
-                    ),
-                  ),
-                  const Spacer(),
-                  Text(
-                    'g/dL',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: semibold,
-                    ),
-                  ),
-                ],
+                ),
+                border: OutlineInputBorder(
+                  borderSide: const BorderSide(),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                hintText: 'Masukkan Hb (g/dL)',
+                hintStyle: primaryTextStyle,
+                counterText: "",
               ),
+              maxLength: 3,
             ),
           ],
         ),
@@ -89,7 +102,9 @@ class FormHemoglobin extends StatelessWidget {
           top: 30,
         ),
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            save();
+          },
           style: TextButton.styleFrom(
               backgroundColor: primaryColor,
               shape: RoundedRectangleBorder(
@@ -142,17 +157,31 @@ class FormHemoglobin extends StatelessWidget {
         margin: EdgeInsets.symmetric(
           horizontal: defaultMargin,
         ),
-        child: ListView(
-          children: [
-            image(),
-            hbForm(),
-            saveButton(),
-            const SizedBox(
-              height: 30,
-            ),
-          ],
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            children: [
+              image(),
+              hbForm(),
+              saveButton(),
+              const SizedBox(
+                height: 30,
+              ),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  void save() async {
+    if (_formKey.currentState!.validate()) {
+      // await _auth
+      //     .createUserWithEmailAndPassword(email: email, password: password)
+      //     .then((value) => {postDetailsToFirestore()})
+      //     .catchError((e) {
+      //   Fluttertoast.showToast(msg: e!.message);
+      // });
+    }
   }
 }

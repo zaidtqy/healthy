@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:healthy/models/knowledge_model.dart';
+import 'package:healthy/pages/result_knowledge_page.dart';
 import 'package:healthy/theme.dart';
 
 class HistoryFormKnowledge extends StatelessWidget {
@@ -6,7 +8,8 @@ class HistoryFormKnowledge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget knowledgeSubject() {
+    Widget knowledgeSubject(
+        {required HistoryKnowledgeModel historyKnowledgeModel}) {
       return Container(
         height: 168,
         width: double.infinity,
@@ -33,7 +36,7 @@ class HistoryFormKnowledge extends StatelessWidget {
                 ),
                 const Spacer(),
                 Text(
-                  '29/03/2022',
+                  historyKnowledgeModel.date,
                   style: primaryTextStyle.copyWith(
                     fontSize: 10,
                     fontWeight: bold,
@@ -97,7 +100,15 @@ class HistoryFormKnowledge extends StatelessWidget {
                 ),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/result-knowledge');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) {
+                          return ResultKnowledge(
+                              historyKnowledgeModel: historyKnowledgeModel);
+                        },
+                      ),
+                    );
                   },
                   style: TextButton.styleFrom(
                       backgroundColor: backgroundColor,
@@ -115,6 +126,31 @@ class HistoryFormKnowledge extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      );
+    }
+
+    Widget backButton() {
+      return Container(
+        height: 45,
+        width: 130,
+        margin: const EdgeInsets.only(top: 30, bottom: 30),
+        child: TextButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/home-page');
+          },
+          style: TextButton.styleFrom(
+              backgroundColor: primaryColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              )),
+          child: Text(
+            'Kembali',
+            style: backgroundTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: bold,
+            ),
+          ),
         ),
       );
     }
@@ -155,24 +191,49 @@ class HistoryFormKnowledge extends StatelessWidget {
         margin: EdgeInsets.symmetric(
           horizontal: defaultMargin,
         ),
-        child: ListView(
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-            knowledgeSubject(),
-            knowledgeSubject(),
-            knowledgeSubject(),
-            knowledgeSubject(),
-            knowledgeSubject(),
-            knowledgeSubject(),
-            knowledgeSubject(),
-            knowledgeSubject(),
-            const SizedBox(
-              height: 30,
-            ),
-          ],
-        ),
+        child: (mockHistoryKnowledgeModel.isNotEmpty)
+            ? ListView.builder(
+                padding: const EdgeInsets.only(top: 30),
+                itemCount: mockHistoryKnowledgeModel.length,
+                itemBuilder: (context, index) {
+                  return knowledgeSubject(
+                    historyKnowledgeModel: mockHistoryKnowledgeModel[index],
+                  );
+                },
+              )
+            : Container(
+                margin: EdgeInsets.symmetric(
+                  horizontal: defaultMargin,
+                ),
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 180,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/image_empty.png',
+                          width: 250,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      'Riwayat Data Kosong',
+                      style: primaryTextStyle.copyWith(
+                          fontSize: 15, fontWeight: bold),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    backButton(),
+                  ],
+                ),
+              ),
       ),
     );
   }

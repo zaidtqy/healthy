@@ -1,10 +1,10 @@
 class UserModel {
-  String? uid;
+  String uid;
   String? name;
   String? email;
   String? phone;
 
-  UserModel({this.uid, this.name, this.email, this.phone});
+  UserModel({required this.uid, this.name, this.email, this.phone});
 
   // data from server
   factory UserModel.fromMap(map) {

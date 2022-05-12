@@ -16,7 +16,7 @@ class MenuPage extends StatefulWidget {
 
 class _MenuPageState extends State<MenuPage> {
   User? user = FirebaseAuth.instance.currentUser;
-  UserModel loggedInUser = UserModel();
+  UserModel loggedInUser = UserModel(uid: '1234');
 
   @override
   void initState() {

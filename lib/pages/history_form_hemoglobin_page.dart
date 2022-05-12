@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:healthy/models/hemoglobin_model.dart';
+import 'package:healthy/pages/result_hemoglobin_page.dart';
 import 'package:healthy/theme.dart';
 
 class HistoryFormHemoglobin extends StatelessWidget {
@@ -6,7 +8,7 @@ class HistoryFormHemoglobin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget hemoglobinSubject() {
+    Widget hemoglobinSubject({required HistoryHBModel historyHBModel}) {
       return Container(
         height: 168,
         width: double.infinity,
@@ -33,7 +35,7 @@ class HistoryFormHemoglobin extends StatelessWidget {
                 ),
                 const Spacer(),
                 Text(
-                  '29/03/2022',
+                  historyHBModel.date,
                   style: primaryTextStyle.copyWith(
                     fontSize: 10,
                     fontWeight: bold,
@@ -54,7 +56,7 @@ class HistoryFormHemoglobin extends StatelessWidget {
                   width: 10,
                 ),
                 Text(
-                  '13 Hb',
+                  '${historyHBModel.hbModel.last.hemoglobin} Hb',
                   style:
                       primaryTextStyle.copyWith(fontSize: 20, fontWeight: bold),
                 ),
@@ -114,7 +116,16 @@ class HistoryFormHemoglobin extends StatelessWidget {
                 ),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/result-hemoglobin');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) {
+                          return ResultHemoglobin(
+                            historyHBModel: historyHBModel,
+                          );
+                        },
+                      ),
+                    );
                   },
                   style: TextButton.styleFrom(
                       backgroundColor: backgroundColor,
@@ -132,6 +143,31 @@ class HistoryFormHemoglobin extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      );
+    }
+
+    Widget backButton() {
+      return Container(
+        height: 45,
+        width: 130,
+        margin: const EdgeInsets.only(top: 30, bottom: 30),
+        child: TextButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/home-page');
+          },
+          style: TextButton.styleFrom(
+              backgroundColor: primaryColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              )),
+          child: Text(
+            'Kembali',
+            style: backgroundTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: bold,
+            ),
+          ),
         ),
       );
     }
@@ -172,24 +208,49 @@ class HistoryFormHemoglobin extends StatelessWidget {
         margin: EdgeInsets.symmetric(
           horizontal: defaultMargin,
         ),
-        child: ListView(
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-            hemoglobinSubject(),
-            hemoglobinSubject(),
-            hemoglobinSubject(),
-            hemoglobinSubject(),
-            hemoglobinSubject(),
-            hemoglobinSubject(),
-            hemoglobinSubject(),
-            hemoglobinSubject(),
-            const SizedBox(
-              height: 30,
-            ),
-          ],
-        ),
+        child: (mockHistoryHbModel.isNotEmpty)
+            ? ListView.builder(
+                padding: const EdgeInsets.only(top: 30),
+                itemCount: mockHistoryHbModel.length,
+                itemBuilder: (context, index) {
+                  return hemoglobinSubject(
+                    historyHBModel: mockHistoryHbModel[index],
+                  );
+                },
+              )
+            : Container(
+                margin: EdgeInsets.symmetric(
+                  horizontal: defaultMargin,
+                ),
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 180,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/image_empty.png',
+                          width: 250,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      'Riwayat Data Hemoglobin Kosong',
+                      style: primaryTextStyle.copyWith(
+                          fontSize: 15, fontWeight: bold),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    backButton(),
+                  ],
+                ),
+              ),
       ),
     );
   }

@@ -1,715 +1,747 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'package:healthy/models/information_model.dart';
+// import 'package:healthy/models/user_model.dart';
+// import 'package:healthy/services/information_service.dart';
 import 'package:healthy/theme.dart';
 
-class ResultInformation extends StatelessWidget {
-  const ResultInformation({Key? key}) : super(key: key);
+class ResultInformation extends StatefulWidget {
+  final HistoryInformModel informModel;
+  const ResultInformation({
+    Key? key,
+    required this.informModel,
+  }) : super(key: key);
 
   @override
+  State<ResultInformation> createState() => _ResultInformationState();
+}
+
+class _ResultInformationState extends State<ResultInformation> {
+  @override
   Widget build(BuildContext context) {
-    Widget dateInput() {
-      return Container(
-        margin: const EdgeInsets.only(top: 30),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Tanggal Input Data',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
+    Widget resultInformation() {
+      return ListView(
+        padding: const EdgeInsets.only(top: 30),
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Tanggal Input Data',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 15,
+                  fontWeight: semibold,
                 ),
               ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                height: 45,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                decoration: BoxDecoration(
+                  color: primaryColor.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(
+                    width: 1.0,
+                    color: primaryColor,
                   ),
-                  const SizedBox(
-                    width: 15,
+                ),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/union.png',
+                      width: 20,
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Text(
+                      widget.informModel.date,
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Nama',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: semibold,
                   ),
-                  Text(
-                    '29/03/2022',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: bold,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 45,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  decoration: BoxDecoration(
+                    color: primaryColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      width: 1.0,
+                      color: primaryColor,
                     ),
                   ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget nameForm() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Nama',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Text(
-                    'Mazaya Hurun\'in',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: medium,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget addressForm() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Alamat',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 135,
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Row(
                     children: [
                       Image.asset(
                         'assets/union.png',
                         width: 20,
                       ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        widget.informModel.name,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
                     ],
                   ),
-                  const SizedBox(
-                    width: 15,
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Alamat Lengkap',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: semibold,
                   ),
-                  Flexible(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Perum Kodim Blok D No 10 RT.005/002, Kel. Bekasi Jaya, Kec. Bekasi Timur, Kota Bekasi. 17112',
-                          style: primaryTextStyle.copyWith(
-                            fontSize: 15,
-                            fontWeight: medium,
-                          ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 135,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+                  decoration: BoxDecoration(
+                    color: primaryColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      width: 1.0,
+                      color: primaryColor,
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assets/union.png',
+                        width: 20,
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Flexible(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              widget.informModel.address,
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 15,
+                                fontWeight: medium,
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Pendidikan Terakhir Ayah',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: semibold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 45,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  decoration: BoxDecoration(
+                    color: primaryColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      width: 1.0,
+                      color: primaryColor,
                     ),
                   ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget eduFather() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Pendidikan Terakhir Ayah',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assets/union.png',
+                        width: 20,
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        widget.informModel.eduFather,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Pendidikan Terakhir Ibu',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: semibold,
                   ),
-                  const SizedBox(
-                    width: 15,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 45,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
                   ),
-                  Text(
-                    'Sarjana, Master, Doktor',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: medium,
+                  decoration: BoxDecoration(
+                    color: primaryColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      width: 1.0,
+                      color: primaryColor,
                     ),
                   ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget eduMother() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Pendidikan Terakhir Ibu',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assets/union.png',
+                        width: 20,
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        widget.informModel.eduMother,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Pekerjaan Ayah',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: semibold,
                   ),
-                  const SizedBox(
-                    width: 15,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 45,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
                   ),
-                  Text(
-                    'Sarjana, Master, Doktor',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: medium,
+                  decoration: BoxDecoration(
+                    color: primaryColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      width: 1.0,
+                      color: primaryColor,
                     ),
                   ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget jobFather() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Pekerjaan Ayah',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assets/union.png',
+                        width: 20,
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        widget.informModel.jobFather,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Pekerjaan Ibu',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: semibold,
                   ),
-                  const SizedBox(
-                    width: 15,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 45,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
                   ),
-                  Text(
-                    'Pegawai Swasta',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: medium,
+                  decoration: BoxDecoration(
+                    color: primaryColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      width: 1.0,
+                      color: primaryColor,
                     ),
                   ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget jobMother() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Pekerjaan Ibu',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assets/union.png',
+                        width: 20,
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        widget.informModel.jobMother,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Text(
-                    'Tidak Bekerja',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: medium,
-                    ),
-                  ),
-                ],
-              ),
+              ],
             ),
-          ],
-        ),
-      );
-    }
-
-    Widget brothers() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Jumlah Saudara',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              width: 175,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Center(
-                child: Row(
+          ),
+          Row(
+            children: [
+              Container(
+                margin: const EdgeInsets.only(top: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset(
-                      'assets/union.png',
-                      width: 20,
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
                     Text(
-                      '3',
+                      'Jumlah Saudara',
                       style: primaryTextStyle.copyWith(
                         fontSize: 15,
-                        fontWeight: medium,
+                        fontWeight: semibold,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: 45,
+                      width: 175,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 15,
+                      ),
+                      decoration: BoxDecoration(
+                        color: primaryColor.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(15),
+                        border: Border.all(
+                          width: 1.0,
+                          color: primaryColor,
+                        ),
+                      ),
+                      child: Center(
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              'assets/union.png',
+                              width: 20,
+                            ),
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            Text(
+                              widget.informModel.brothers,
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 15,
+                                fontWeight: medium,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget amount() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Anak Ke -',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
+              const SizedBox(
+                width: 10,
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              width: 175,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Center(
-                child: Row(
+              Container(
+                margin: const EdgeInsets.only(top: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset(
-                      'assets/union.png',
-                      width: 20,
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
                     Text(
-                      '3',
+                      'Anak Ke -',
                       style: primaryTextStyle.copyWith(
                         fontSize: 15,
-                        fontWeight: medium,
+                        fontWeight: semibold,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: 45,
+                      width: 175,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 15,
+                      ),
+                      decoration: BoxDecoration(
+                        color: primaryColor.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(15),
+                        border: Border.all(
+                          width: 1.0,
+                          color: primaryColor,
+                        ),
+                      ),
+                      child: Center(
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              'assets/union.png',
+                              width: 20,
+                            ),
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            Text(
+                              widget.informModel.amount,
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 15,
+                                fontWeight: medium,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
+            ],
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Jumlah Pendapatan Total Keluarga',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: semibold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 45,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  decoration: BoxDecoration(
+                    color: primaryColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      width: 1.0,
+                      color: primaryColor,
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assets/union.png',
+                        width: 20,
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        widget.informModel.income,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Jumlah Pengeluaran Total Keluarga',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: semibold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 45,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  decoration: BoxDecoration(
+                    color: primaryColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      width: 1.0,
+                      color: primaryColor,
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assets/union.png',
+                        width: 20,
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        widget.informModel.outcome,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Usia Pertama Haid',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: semibold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 45,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  decoration: BoxDecoration(
+                    color: primaryColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      width: 1.0,
+                      color: primaryColor,
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assets/union.png',
+                        width: 20,
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        widget.informModel.ageTeen,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Riwayat Penyakit',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: semibold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 45,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  decoration: BoxDecoration(
+                    color: primaryColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      width: 1.0,
+                      color: primaryColor,
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assets/union.png',
+                        width: 20,
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        widget.informModel.disease,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            height: 45,
+            width: double.infinity,
+            margin: const EdgeInsets.only(top: 30, bottom: 30),
+            child: TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/home-page');
+              },
+              style: TextButton.styleFrom(
+                  backgroundColor: primaryColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  )),
+              child: Text(
+                'Kembali',
+                style: backgroundTextStyle.copyWith(
+                  fontSize: 15,
+                  fontWeight: bold,
+                ),
+              ),
+            ),
+          ),
+        ],
       );
     }
 
-    Widget income() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Jumlah Pendapatan Total Keluarga',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Text(
-                    '> Rp 10,000,000',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: medium,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget outcome() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Jumlah Pengeluaran Total Keluarga',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Text(
-                    'Rp 5,000,000 - Rp 10,000,000',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: medium,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget ageTeen() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Usia Pertama Haid',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Text(
-                    '14',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: medium,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget historyDisease() {
-      return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Riwayat Penyakit',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: semibold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 1.0,
-                  color: primaryColor,
-                ),
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/union.png',
-                    width: 20,
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Text(
-                    'Tidak Ada',
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: medium,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
+    // Widget backButton() {
+    //   return Container(
+    //     height: 45,
+    //     width: 130,
+    //     margin: const EdgeInsets.only(top: 30, bottom: 30),
+    //     child: TextButton(
+    //       onPressed: () {
+    //         Navigator.pushNamed(context, '/home-page');
+    //       },
+    //       style: TextButton.styleFrom(
+    //           backgroundColor: primaryColor,
+    //           shape: RoundedRectangleBorder(
+    //             borderRadius: BorderRadius.circular(15),
+    //           )),
+    //       child: Text(
+    //         'Kembali',
+    //         style: backgroundTextStyle.copyWith(
+    //           fontSize: 15,
+    //           fontWeight: bold,
+    //         ),
+    //       ),
+    //     ),
+    //   );
+    // }
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -744,35 +776,45 @@ class ResultInformation extends StatelessWidget {
         ),
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(
-          horizontal: defaultMargin,
-        ),
-        child: ListView(
-          children: [
-            dateInput(),
-            nameForm(),
-            addressForm(),
-            eduFather(),
-            eduMother(),
-            jobFather(),
-            jobMother(),
-            Row(
-              children: [
-                brothers(),
-                const Spacer(),
-                amount(),
-              ],
-            ),
-            income(),
-            outcome(),
-            ageTeen(),
-            historyDisease(),
-            const SizedBox(
-              height: 30,
-            ),
-          ],
-        ),
-      ),
+          margin: EdgeInsets.symmetric(
+            horizontal: defaultMargin,
+          ),
+          child: resultInformation()
+
+          // : Container(
+          //     margin: EdgeInsets.symmetric(
+          //       horizontal: defaultMargin,
+          //     ),
+          //     child: Column(
+          //       children: [
+          //         const SizedBox(
+          //           height: 180,
+          //         ),
+          //         Row(
+          //           mainAxisAlignment: MainAxisAlignment.center,
+          //           children: [
+          //             Image.asset(
+          //               'assets/image_empty.png',
+          //               width: 250,
+          //             ),
+          //           ],
+          //         ),
+          //         const SizedBox(
+          //           height: 15,
+          //         ),
+          //         Text(
+          //           'Riwayat Data Informasi Kosong',
+          //           style: primaryTextStyle.copyWith(
+          //               fontSize: 15, fontWeight: bold),
+          //         ),
+          //         const SizedBox(
+          //           height: 15,
+          //         ),
+          //         backButton(),
+          //       ],
+          //     ),
+          //   ),
+          ),
     );
   }
 }

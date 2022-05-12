@@ -9,6 +9,9 @@ class FormKnowledge extends StatefulWidget {
 }
 
 class _FormKnowledgeState extends State<FormKnowledge> {
+  // form key
+  final _formKey = GlobalKey<FormState>();
+
   String? _valNo1;
   final _no1 = ["Ya", "Tidak"];
 
@@ -158,50 +161,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo1,
-                        items: _no1.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo1 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo1,
+                  items: _no1.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo1 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -228,50 +232,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo2,
-                        items: _no2.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo2 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo2,
+                  items: _no2.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo2 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -298,50 +303,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo3,
-                        items: _no3.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo3 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo3,
+                  items: _no3.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo3 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -368,50 +374,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo4,
-                        items: _no4.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo4 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo4,
+                  items: _no4.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo4 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -438,50 +445,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo5,
-                        items: _no5.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo5 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo5,
+                  items: _no5.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo5 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -508,50 +516,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo6,
-                        items: _no6.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo6 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo6,
+                  items: _no6.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo6 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -578,50 +587,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo7,
-                        items: _no7.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo7 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo7,
+                  items: _no7.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo7 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -648,50 +658,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo8,
-                        items: _no8.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo8 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo8,
+                  items: _no8.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo8 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -718,50 +729,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo9,
-                        items: _no9.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo9 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo9,
+                  items: _no9.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo9 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -788,50 +800,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo10,
-                        items: _no10.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo10 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo10,
+                  items: _no10.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo10 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -873,50 +886,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo11,
-                        items: _no11.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo11 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo11,
+                  items: _no11.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo11 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -958,50 +972,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 63,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo12a,
-                        items: _no12a.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo12a = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo12a,
+                  items: _no12a.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo12a = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -1028,50 +1043,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 155,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo12b,
-                        items: _no12b.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo12b = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo12b,
+                  items: _no12b.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo12b = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -1098,50 +1114,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 13,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo12c,
-                        items: _no12c.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo12c = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo12c,
+                  items: _no12c.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo12c = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -1168,50 +1185,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 95,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo12d,
-                        items: _no12d.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo12d = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo12d,
+                  items: _no12d.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo12d = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -1253,50 +1271,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 81,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo13a,
-                        items: _no13a.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo13a = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo13a,
+                  items: _no13a.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo13a = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -1323,50 +1342,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 108,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo13b,
-                        items: _no13b.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo13b = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo13b,
+                  items: _no13b.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo13b = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -1393,50 +1413,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 82,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo13c,
-                        items: _no13c.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo13c = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo13c,
+                  items: _no13c.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo13c = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -1463,50 +1484,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 179,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo13d,
-                        items: _no13d.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo13d = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo13d,
+                  items: _no13d.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo13d = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -1533,50 +1555,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo14,
-                        items: _no14.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo14 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo14,
+                  items: _no14.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo14 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -1603,50 +1626,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo15,
-                        items: _no15.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo15 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo15,
+                  items: _no15.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo15 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -1673,50 +1697,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo16,
-                        items: _no16.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo16 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo16,
+                  items: _no16.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo16 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -1743,50 +1768,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo17,
-                        items: _no17.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo17 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo17,
+                  items: _no17.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo17 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -1813,50 +1839,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo18,
-                        items: _no18.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo18 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo18,
+                  items: _no18.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo18 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -1883,50 +1910,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo19,
-                        items: _no19.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo19 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo19,
+                  items: _no19.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo19 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -1953,50 +1981,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo20,
-                        items: _no20.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo20 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo20,
+                  items: _no20.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo20 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -2023,50 +2052,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo21,
-                        items: _no21.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo21 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo21,
+                  items: _no21.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo21 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -2093,50 +2123,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo22,
-                        items: _no22.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo22 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo22,
+                  items: _no22.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo22 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -2163,50 +2194,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo23,
-                        items: _no23.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo23 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo23,
+                  items: _no23.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo23 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -2233,50 +2265,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo24,
-                        items: _no24.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo24 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo24,
+                  items: _no24.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo24 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -2303,50 +2336,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo25,
-                        items: _no25.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo25 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo25,
+                  items: _no25.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo25 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -2373,50 +2407,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo26,
-                        items: _no26.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo26 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo26,
+                  items: _no26.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo26 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -2443,50 +2478,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo27,
-                        items: _no27.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo27 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo27,
+                  items: _no27.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo27 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -2513,50 +2549,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo28,
-                        items: _no28.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo28 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo28,
+                  items: _no28.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo28 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -2583,50 +2620,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo29,
-                        items: _no29.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo29 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo29,
+                  items: _no29.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo29 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -2653,50 +2691,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 85,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    width: 1.0,
-                    color: primaryColor,
-                  ),
-                ),
-                child: SizedBox(
-                  child: DropdownButtonHideUnderline(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: primaryColor,
-                        ),
-                        value: _valNo30,
-                        items: _no30.map((value) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              value,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            value: value,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _valNo30 = value;
-                            },
-                          );
-                        },
+                child: DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: primaryColor,
+                  ),
+                  value: _valNo30,
+                  items: _no30.map((value) {
+                    return DropdownMenuItem(
+                      child: Text(
+                        value,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        _valNo30 = value;
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -2712,7 +2751,9 @@ class _FormKnowledgeState extends State<FormKnowledge> {
       width: double.infinity,
       margin: const EdgeInsets.only(top: 30, bottom: 30),
       child: TextButton(
-        onPressed: () {},
+        onPressed: () {
+          save();
+        },
         style: TextButton.styleFrom(
             backgroundColor: primaryColor,
             shape: RoundedRectangleBorder(
@@ -2767,22 +2808,36 @@ class _FormKnowledgeState extends State<FormKnowledge> {
         margin: EdgeInsets.symmetric(
           horizontal: defaultMargin,
         ),
-        child: ListView(
-          children: [
-            const SizedBox(
-              height: 30,
-            ),
-            nutrient(),
-            const SizedBox(
-              height: 10,
-            ),
-            saveButton(),
-            const SizedBox(
-              height: 30,
-            ),
-          ],
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            children: [
+              const SizedBox(
+                height: 30,
+              ),
+              nutrient(),
+              const SizedBox(
+                height: 10,
+              ),
+              saveButton(),
+              const SizedBox(
+                height: 30,
+              ),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  void save() async {
+    if (_formKey.currentState!.validate()) {
+      // await _auth
+      //     .createUserWithEmailAndPassword(email: email, password: password)
+      //     .then((value) => {postDetailsToFirestore()})
+      //     .catchError((e) {
+      //   Fluttertoast.showToast(msg: e!.message);
+      // });
+    }
   }
 }
