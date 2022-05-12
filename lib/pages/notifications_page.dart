@@ -13,7 +13,7 @@ class NotificationsPage extends StatefulWidget {
 class _NotificationsPageState extends State<NotificationsPage> {
   @override
   Widget build(BuildContext context) {
-    Widget notification({required HistoryReproModel listModel}) {
+    Widget notification({required HistoryNotificationModel listModel}) {
       return GestureDetector(
         onTap: () {
           setState(() {
@@ -464,26 +464,29 @@ class _NotificationsPageState extends State<NotificationsPage> {
         ),
         elevation: 5,
         leading: IconButton(
-          onPressed: () => Navigator.of(context).pop(mockHistoryReproModel),
+          onPressed: () =>
+              Navigator.of(context).pop(mockHistoryNotificationModel),
           icon: const Icon(Icons.chevron_left),
+          color: primaryColor,
         ),
       ),
       body: Container(
-        child: (mockHistoryReproModel.isNotEmpty)
+        child: (mockHistoryNotificationModel.isNotEmpty)
             ? ListView.builder(
                 padding: const EdgeInsets.only(top: 30),
-                itemCount: mockHistoryReproModel.length,
+                itemCount: mockHistoryNotificationModel.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      if (mockHistoryReproModel[index].isRead == false) {
-                        final newIndex = mockHistoryReproModel.indexWhere(
-                          (e) => e.id == mockHistoryReproModel[index].id,
+                      if (mockHistoryNotificationModel[index].isRead == false) {
+                        final newIndex =
+                            mockHistoryNotificationModel.indexWhere(
+                          (e) => e.id == mockHistoryNotificationModel[index].id,
                         );
 
                         setState(() {
-                          mockHistoryReproModel[newIndex] =
-                              mockHistoryReproModel[newIndex]
+                          mockHistoryNotificationModel[newIndex] =
+                              mockHistoryNotificationModel[newIndex]
                                   .copyWith(isRead: true);
                         });
                       }
@@ -492,7 +495,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color: (mockHistoryReproModel[index].isRead)
+                        color: (mockHistoryNotificationModel[index].isRead)
                             ? backgroundColor
                             : primaryColor.withOpacity(0.2),
                         border: Border(
@@ -513,7 +516,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                               child: Column(
                                 children: [
                                   Image.asset(
-                                    mockHistoryReproModel[index].logo,
+                                    mockHistoryNotificationModel[index].logo,
                                     width: 20,
                                   ),
                                 ],
@@ -526,7 +529,8 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                   Row(
                                     children: [
                                       Text(
-                                        mockHistoryReproModel[index].type,
+                                        mockHistoryNotificationModel[index]
+                                            .type,
                                         style: primaryTextStyle.copyWith(
                                           fontSize: 10,
                                           fontWeight: semibold,
@@ -534,7 +538,8 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                       ),
                                       const Spacer(),
                                       Text(
-                                        mockHistoryReproModel[index].date,
+                                        mockHistoryNotificationModel[index]
+                                            .date,
                                         style: primaryTextStyle.copyWith(
                                           fontSize: 10,
                                           fontWeight: semibold,
@@ -546,7 +551,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                     height: 5,
                                   ),
                                   Text(
-                                    mockHistoryReproModel[index].title,
+                                    mockHistoryNotificationModel[index].title,
                                     style: primaryTextStyle.copyWith(
                                       fontSize: 15,
                                       fontWeight: bold,
@@ -556,7 +561,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                     height: 5,
                                   ),
                                   Text(
-                                    mockHistoryReproModel[index].content,
+                                    mockHistoryNotificationModel[index].content,
                                     style: primaryTextStyle.copyWith(
                                       fontSize: 13,
                                       fontWeight: medium,

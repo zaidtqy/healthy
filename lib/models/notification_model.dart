@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-class HistoryReproModel {
+class HistoryNotificationModel {
   final String id;
   final String logo;
   final String type;
@@ -9,7 +9,7 @@ class HistoryReproModel {
   final String route;
   final bool isRead;
 
-  HistoryReproModel({
+  HistoryNotificationModel({
     required this.id,
     required this.logo,
     required this.type,
@@ -20,7 +20,7 @@ class HistoryReproModel {
     required this.isRead,
   });
 
-  HistoryReproModel copyWith({
+  HistoryNotificationModel copyWith({
     String? id,
     String? logo,
     String? type,
@@ -30,7 +30,7 @@ class HistoryReproModel {
     String? route,
     bool? isRead,
   }) {
-    return HistoryReproModel(
+    return HistoryNotificationModel(
       id: id ?? this.id,
       logo: logo ?? this.logo,
       type: type ?? this.type,
@@ -43,38 +43,60 @@ class HistoryReproModel {
   }
 }
 
-List<HistoryReproModel> mockHistoryReproModel = [
-  HistoryReproModel(
+List<HistoryNotificationModel> mockHistoryNotificationModel = [
+  HistoryNotificationModel(
     id: 'ghsyej1239',
-    logo: "assets/clock.png",
-    type: "Kesehatan",
+    logo: "assets/information.png",
+    type: "Kesehatan Reproduksi",
     date: "25/03/2022",
     title: "Cari Tau Tentang Kesehatan Reproduksi, Yuk!",
     content:
         "Udah tau belum tentang kesehatan reproduksi? kalo belum, Yuk cari tau disini!",
-    route: "",
+    route: "notif-repro",
     isRead: false,
   ),
-  HistoryReproModel(
+  HistoryNotificationModel(
     id: 'koensah68930',
-    logo: "assets/clock.png",
-    type: "Reproduksi",
-    date: "25/03/2022",
-    title: "Cari Tau Tentang Kesehatan Reproduksi, Yuk!",
+    logo: "assets/information.png",
+    type: "Pola Makan Sehat Seimbang",
+    date: "24/03/2022",
+    title: "Makanan yang Kamu Makan Perlu diatur loh!",
     content:
-        "Udah tau belum tentang kesehatan reproduksi? kalo belum, Yuk cari tau disini!",
-    route: "",
+        "Jangan asal makan ya, nanti kamu sakit. Kalo kamu sakit ada yang mau perhatiin kamu ga?",
+    route: "notif-food",
     isRead: false,
   ),
-  HistoryReproModel(
-    id: 'kjljas80816490',
-    logo: "assets/clock.png",
-    type: "KeRe",
-    date: "25/03/2022",
-    title: "Cari Tau Tentang Kesehatan Reproduksi, Yuk!",
+  HistoryNotificationModel(
+    id: 'asdasdas78',
+    logo: "assets/information.png",
+    type: "Konsumsi Tablet Tambah Darah",
+    date: "23/03/2022",
+    title: "Gais, Yuk Tetap Sehat! BEBAS ANEMIA!",
     content:
-        "Udah tau belum tentang kesehatan reproduksi? kalo belum, Yuk cari tau disini!",
-    route: "",
+        "Cocok nih buat kamu yang pengen tau tentang anemia, baca selengkapnya disini!",
+    route: "notif-tablets",
     isRead: false,
   ),
+  HistoryNotificationModel(
+    id: 'asdas1211',
+    logo: "assets/information.png",
+    type: "Aktifitas Fisik",
+    date: "22/03/2022",
+    title: "Biar sehat, jangan lupa gerak ya!",
+    content:
+        "Tetap jaga tubuhmu agar terus sehat ya, aktifitas kecil juga gamasalah kok.",
+    route: "notif-activity",
+    isRead: false,
+  ),
+  HistoryNotificationModel(
+    id: 'kjhkhka1238',
+    logo: "assets/information.png",
+    type: "Protokol Kesehatan",
+    date: "22/03/2022",
+    title: "Eittss! Jangan Lengah Ya, Covid-19 masih ada!",
+    content:
+        "Udah vaksin bukan berarti bebas dari virus, tetap jaga sesama ya biar semua sehat.",
+    route: "notif-prokes",
+    isRead: false,
+  )
 ];

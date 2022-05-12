@@ -1718,12 +1718,13 @@ class _HomePageState extends State<HomePage> {
           actions: [
             IconButton(
               onPressed: () async {
-                final List<HistoryReproModel>? result =
+                final List<HistoryNotificationModel>? result =
                     await Navigator.of(context).pushNamed('/notifications-page')
-                        as List<HistoryReproModel>;
+                        as List<HistoryNotificationModel>;
 
                 setState(() {
-                  mockHistoryReproModel = result ?? mockHistoryReproModel;
+                  mockHistoryNotificationModel =
+                      result ?? mockHistoryNotificationModel;
                 });
               },
               padding: const EdgeInsets.only(right: 25),
@@ -1731,7 +1732,7 @@ class _HomePageState extends State<HomePage> {
                 badgeContent: Align(
                   alignment: Alignment.topRight,
                   child: Text(
-                    mockHistoryReproModel
+                    mockHistoryNotificationModel
                         .where((e) => e.isRead == false)
                         .length
                         .toString(),
