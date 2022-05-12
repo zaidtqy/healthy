@@ -16,6 +16,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
+  List<HistoryReproModel> listHistory = mockHistoryReproModel;
 
   @override
   void initState() {
@@ -1353,8 +1354,14 @@ class _HomePageState extends State<HomePage> {
           ),
           actions: [
             IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/notifications-page');
+              onPressed: () async {
+                final List<HistoryReproModel>? result =
+                    await Navigator.of(context).pushNamed('/notifications-page')
+                        as List<HistoryReproModel>;
+
+                setState(() {
+                  mockHistoryReproModel = result ?? mockHistoryReproModel;
+                });
               },
               padding: const EdgeInsets.only(right: 25),
               icon: Badge(

@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class HistoryReproModel {
+  final String id;
   final String logo;
   final String type;
   final String date;
@@ -9,6 +10,7 @@ class HistoryReproModel {
   final bool isRead;
 
   HistoryReproModel({
+    required this.id,
     required this.logo,
     required this.type,
     required this.date,
@@ -19,6 +21,7 @@ class HistoryReproModel {
   });
 
   HistoryReproModel copyWith({
+    String? id,
     String? logo,
     String? type,
     String? date,
@@ -28,6 +31,7 @@ class HistoryReproModel {
     bool? isRead,
   }) {
     return HistoryReproModel(
+      id: id ?? this.id,
       logo: logo ?? this.logo,
       type: type ?? this.type,
       date: date ?? this.date,
@@ -39,25 +43,38 @@ class HistoryReproModel {
   }
 }
 
-final List<HistoryReproModel> mockHistoryReproModel = [
+List<HistoryReproModel> mockHistoryReproModel = [
   HistoryReproModel(
+    id: 'ghsyej1239',
     logo: "assets/clock.png",
-    type: "Kesehatan Reproduksi",
+    type: "Kesehatan",
     date: "25/03/2022",
     title: "Cari Tau Tentang Kesehatan Reproduksi, Yuk!",
     content:
         "Udah tau belum tentang kesehatan reproduksi? kalo belum, Yuk cari tau disini!",
     route: "",
-    isRead: true,
+    isRead: false,
   ),
   HistoryReproModel(
+    id: 'koensah68930',
     logo: "assets/clock.png",
-    type: "Kesehatan Reproduksi",
+    type: "Reproduksi",
     date: "25/03/2022",
     title: "Cari Tau Tentang Kesehatan Reproduksi, Yuk!",
     content:
         "Udah tau belum tentang kesehatan reproduksi? kalo belum, Yuk cari tau disini!",
     route: "",
-    isRead: true,
-  )
+    isRead: false,
+  ),
+  HistoryReproModel(
+    id: 'kjljas80816490',
+    logo: "assets/clock.png",
+    type: "KeRe",
+    date: "25/03/2022",
+    title: "Cari Tau Tentang Kesehatan Reproduksi, Yuk!",
+    content:
+        "Udah tau belum tentang kesehatan reproduksi? kalo belum, Yuk cari tau disini!",
+    route: "",
+    isRead: false,
+  ),
 ];

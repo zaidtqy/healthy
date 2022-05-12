@@ -11,20 +11,9 @@ class NotificationsPage extends StatefulWidget {
 }
 
 class _NotificationsPageState extends State<NotificationsPage> {
-  HistoryReproModel? historyReproModel = HistoryReproModel(
-    logo: 'logo',
-    type: 'type',
-    date: 'date',
-    title: 'title',
-    content: 'content',
-    route: 'route',
-    isRead: false,
-  );
   @override
   Widget build(BuildContext context) {
     Widget notification({required HistoryReproModel listModel}) {
-      bool isRead = false;
-
       return GestureDetector(
         onTap: () {
           setState(() {
@@ -463,34 +452,20 @@ class _NotificationsPageState extends State<NotificationsPage> {
 
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(50.0),
-        child: AppBar(
-          backgroundColor: fourthColor,
-          automaticallyImplyLeading: false,
-          elevation: 5,
-          flexibleSpace: SafeArea(
-            child: Row(
-              children: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Image.asset(
-                    'assets/back.png',
-                    width: 20,
-                  ),
-                ),
-                Text(
-                  'Notifikasi',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 15,
-                    fontWeight: bold,
-                  ),
-                ),
-              ],
-            ),
+      appBar: AppBar(
+        backgroundColor: fourthColor,
+        automaticallyImplyLeading: false,
+        title: Text(
+          'Notifikasi',
+          style: primaryTextStyle.copyWith(
+            fontSize: 15,
+            fontWeight: bold,
           ),
+        ),
+        elevation: 5,
+        leading: IconButton(
+          onPressed: () => Navigator.of(context).pop(mockHistoryReproModel),
+          icon: const Icon(Icons.chevron_left),
         ),
       ),
       body: Container(
@@ -502,10 +477,19 @@ class _NotificationsPageState extends State<NotificationsPage> {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      setState(() {
-                        mockHistoryReproModel[index].copyWith(isRead: true);
-                      });
-                      // Navigator.pushNamed(context, '/notif-repro');
+                      if (mockHistoryReproModel[index].isRead == false) {
+                        final newIndex = mockHistoryReproModel.indexWhere(
+                          (e) => e.id == mockHistoryReproModel[index].id,
+                        );
+
+                        setState(() {
+                          mockHistoryReproModel[newIndex] =
+                              mockHistoryReproModel[newIndex]
+                                  .copyWith(isRead: true);
+                        });
+                      }
+
+                      Navigator.pushNamed(context, '/notif-repro');
                     },
                     child: Container(
                       decoration: BoxDecoration(
