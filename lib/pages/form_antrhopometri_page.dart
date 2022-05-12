@@ -1,5 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:healthy/models/antrhopometri_model.dart';
+import 'package:healthy/models/user_model.dart';
+import 'package:healthy/services/antrhopometri_service.dart';
 import 'package:healthy/theme.dart';
+import 'package:intl/intl.dart';
 
 class FormAntrhopometri extends StatefulWidget {
   const FormAntrhopometri({Key? key}) : super(key: key);
@@ -16,6 +22,25 @@ class _FormAntrhopometriState extends State<FormAntrhopometri> {
   final heightFormController = TextEditingController();
   final weightFormController = TextEditingController();
   final sizeRoundFormController = TextEditingController();
+
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel(uid: '1234');
+
+  @override
+  void initState() {
+    // ignore: todo
+    // TODO: Implement initState
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      // ignore: unnecessary_this
+      this.loggedInUser = UserModel.fromMap(value.data());
+      setState(() {});
+    });
+  }
 
   @override
   void dispose() {
@@ -223,7 +248,18 @@ class _FormAntrhopometriState extends State<FormAntrhopometri> {
         margin: const EdgeInsets.only(top: 30),
         child: TextButton(
           onPressed: () {
-            save();
+            save(
+              user: UserModel(
+                uid: loggedInUser.uid,
+                name: loggedInUser.name,
+                email: loggedInUser.email,
+                phone: loggedInUser.phone,
+              ),
+              date: DateFormat('dd/MM/yyyy').format(DateTime.now()),
+              height: heightFormController.text,
+              weight: weightFormController.text,
+              sizeRound: sizeRoundFormController.text,
+            );
           },
           style: TextButton.styleFrom(
               backgroundColor: primaryColor,
@@ -295,8 +331,28 @@ class _FormAntrhopometriState extends State<FormAntrhopometri> {
     );
   }
 
-  void save() async {
+  void save({
+    required UserModel user,
+    required String date,
+    required String height,
+    required String weight,
+    required String sizeRound,
+  }) async {
     if (_formKey.currentState!.validate()) {
+      HistoryAntrhopoModel antrhopoModel = HistoryAntrhopoModel(
+        user: user,
+        date: date,
+        antrhopoModel: [
+          AntrhopoModel(
+            antrhopoHeight: height,
+            antrhopoWeight: weight,
+            antrhopoSizeRound: sizeRound,
+          ),
+        ],
+      );
+      await AntrhopoService().createAntrhopo(antrhopoModel);
+
+      Navigator.pushNamed(context, '/home-page');
       // await _auth
       //     .createUserWithEmailAndPassword(email: email, password: password)
       //     .then((value) => {postDetailsToFirestore()})

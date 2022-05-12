@@ -5,14 +5,18 @@ import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:healthy/models/activity_model.dart';
+import 'package:healthy/models/antrhopometri_model.dart';
 import 'package:healthy/models/information_model.dart';
 import 'package:healthy/models/notification_model.dart';
 import 'package:healthy/models/user_model.dart';
 import 'package:healthy/pages/form_activity_page.dart';
+import 'package:healthy/pages/form_antrhopometri_page.dart';
 import 'package:healthy/pages/form_information_page.dart';
 import 'package:healthy/pages/history_form_activity_page.dart';
+import 'package:healthy/pages/history_form_antrhopometri_page.dart';
 import 'package:healthy/pages/result_information_page.dart';
 import 'package:healthy/services/activity_service.dart';
+import 'package:healthy/services/antrhopometri_service.dart';
 import 'package:healthy/services/information_service.dart';
 import 'package:healthy/theme.dart';
 
@@ -450,7 +454,7 @@ class _HomePageState extends State<HomePage> {
                         height: 15,
                       ),
                       SizedBox(
-                        height: 40,
+                        height: 45,
                         width: double.infinity,
                         child: TextButton(
                           onPressed: () async {
@@ -490,7 +494,6 @@ class _HomePageState extends State<HomePage> {
             }
           }
           return Container(
-            height: 166,
             width: double.infinity,
             padding: const EdgeInsets.all(15),
             decoration: BoxDecoration(
@@ -532,7 +535,7 @@ class _HomePageState extends State<HomePage> {
                       width: 10,
                     ),
                     Text(
-                      'Data belum diisi',
+                      '-',
                       style: primaryTextStyle.copyWith(
                           fontSize: 20, fontWeight: bold),
                     ),
@@ -551,7 +554,7 @@ class _HomePageState extends State<HomePage> {
                       width: 10,
                     ),
                     Text(
-                      'Data belum diisi',
+                      '-',
                       style: primaryTextStyle.copyWith(
                         fontSize: 10,
                         fontWeight: medium,
@@ -563,7 +566,7 @@ class _HomePageState extends State<HomePage> {
                   height: 15,
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 45,
                   width: double.infinity,
                   child: TextButton(
                     onPressed: () {
@@ -723,7 +726,7 @@ class _HomePageState extends State<HomePage> {
                         height: 15,
                       ),
                       SizedBox(
-                        height: 40,
+                        height: 45,
                         width: double.infinity,
                         child: TextButton(
                           onPressed: () {
@@ -757,7 +760,6 @@ class _HomePageState extends State<HomePage> {
             }
           }
           return Container(
-            height: 166,
             width: double.infinity,
             padding: const EdgeInsets.all(15),
             decoration: BoxDecoration(
@@ -799,7 +801,7 @@ class _HomePageState extends State<HomePage> {
                       width: 10,
                     ),
                     Text(
-                      'Data belum diisi',
+                      '-',
                       style: primaryTextStyle.copyWith(
                           fontSize: 20, fontWeight: bold),
                     ),
@@ -818,7 +820,7 @@ class _HomePageState extends State<HomePage> {
                       width: 10,
                     ),
                     Text(
-                      'Data belum diisi',
+                      '-',
                       style: primaryTextStyle.copyWith(
                         fontSize: 10,
                         fontWeight: medium,
@@ -842,7 +844,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Text(
-                      'Data belum diisi',
+                      '-',
                       style: primaryTextStyle.copyWith(
                         fontSize: 10,
                         fontWeight: bold,
@@ -983,7 +985,7 @@ class _HomePageState extends State<HomePage> {
               height: 15,
             ),
             SizedBox(
-              height: 40,
+              height: 45,
               width: double.infinity,
               child: TextButton(
                 onPressed: () {
@@ -1008,124 +1010,288 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
-    Widget antrhopometriSubject() {
-      return Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(15),
-        decoration: BoxDecoration(
-          color: secondaryColor.withOpacity(0.5),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Text(
-                  'Data Antrhopometri',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 10,
-                    fontWeight: medium,
+    Widget antrhopometriSubject({required String uid}) {
+      return FutureBuilder<List<HistoryAntrhopoModel>?>(
+        future: AntrhopoService().fetchAntrhopo(uid: uid),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasData) {
+              if (snapshot.data != null && snapshot.data!.isNotEmpty) {
+                return Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: secondaryColor.withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(15),
                   ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Data Antrhopometri',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: medium,
+                            ),
+                          ),
+                          const Spacer(),
+                          Text(
+                            snapshot.data!.last.date,
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            'assets/height.png',
+                            width: 15,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            '${snapshot.data!.last.antrhopoModel.last.antrhopoHeight} CM',
+                            style: primaryTextStyle.copyWith(
+                                fontSize: 20, fontWeight: bold),
+                          ),
+                          const SizedBox(
+                            width: 68,
+                          ),
+                          Image.asset(
+                            'assets/weight.png',
+                            width: 15,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            '${snapshot.data!.last.antrhopoModel.last.antrhopoWeight} Kg',
+                            style: primaryTextStyle.copyWith(
+                                fontSize: 20, fontWeight: bold),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            'assets/file.png',
+                            width: 15,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            'Indeks Massa Tubuh : ',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: medium,
+                            ),
+                          ),
+                          Text(
+                            'Kelebihan Berat Badan (Grade 1)',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      SizedBox(
+                        height: 45,
+                        width: double.infinity,
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HistoryFormAntrhopometri(
+                                  listAntrhopoModel: snapshot.data!,
+                                ),
+                              ),
+                            );
+                          },
+                          style: TextButton.styleFrom(
+                              backgroundColor: primaryColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              )),
+                          child: Text(
+                            'Lihat Riwayat',
+                            style: backgroundTextStyle.copyWith(
+                              fontSize: 15,
+                              fontWeight: bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }
+            }
+          }
+          return Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(15),
+            decoration: BoxDecoration(
+              color: secondaryColor.withOpacity(0.5),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      'Data Antrhopometri',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: medium,
+                      ),
+                    ),
+                    const Spacer(),
+                    Text(
+                      '--/--/----',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: bold,
+                      ),
+                    ),
+                  ],
                 ),
-                const Spacer(),
-                Text(
-                  '29/03/2022',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 10,
-                    fontWeight: bold,
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    Image.asset(
+                      'assets/height.png',
+                      width: 15,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      '-',
+                      style: primaryTextStyle.copyWith(
+                          fontSize: 20, fontWeight: bold),
+                    ),
+                    const SizedBox(
+                      width: 68,
+                    ),
+                    Image.asset(
+                      'assets/weight.png',
+                      width: 15,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      '-',
+                      style: primaryTextStyle.copyWith(
+                          fontSize: 20, fontWeight: bold),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  children: [
+                    Image.asset(
+                      'assets/file.png',
+                      width: 15,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Indeks Massa Tubuh : ',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: medium,
+                      ),
+                    ),
+                    Text(
+                      '-',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: bold,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                SizedBox(
+                  height: 45,
+                  width: double.infinity,
+                  child: TextButton(
+                    onPressed: () {
+                      CoolAlert.show(
+                        context: context,
+                        type: CoolAlertType.confirm,
+                        title: " ",
+                        widget: Column(
+                          children: [
+                            Text(
+                              'Data antrhopometri anda masih kosong, apakah anda ingin mengisinya sekarang?',
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 15,
+                                fontWeight: semibold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                        confirmBtnText: 'Isi',
+                        cancelBtnText: 'Nanti',
+                        confirmBtnColor: const Color(0xff2F5D62),
+                        onConfirmBtnTap: () async {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => const FormAntrhopometri(),
+                            ),
+                          );
+                        },
+                        confirmBtnTextStyle:
+                            TextStyle(color: backgroundColor, fontSize: 18),
+                      );
+                    },
+                    style: TextButton.styleFrom(
+                        backgroundColor: primaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        )),
+                    child: Text(
+                      'Lihat Riwayat',
+                      style: backgroundTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: bold,
+                      ),
+                    ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Image.asset(
-                  'assets/height.png',
-                  width: 15,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  '165 CM',
-                  style:
-                      primaryTextStyle.copyWith(fontSize: 20, fontWeight: bold),
-                ),
-                const SizedBox(
-                  width: 68,
-                ),
-                Image.asset(
-                  'assets/weight.png',
-                  width: 15,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  '73 Kg',
-                  style:
-                      primaryTextStyle.copyWith(fontSize: 20, fontWeight: bold),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            Row(
-              children: [
-                Image.asset(
-                  'assets/file.png',
-                  width: 15,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'Indeks Massa Tubuh : ',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 10,
-                    fontWeight: medium,
-                  ),
-                ),
-                Text(
-                  'Kelebihan Berat Badan (Grade 1)',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 10,
-                    fontWeight: bold,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            SizedBox(
-              height: 40,
-              width: double.infinity,
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/history-antrhopometri');
-                },
-                style: TextButton.styleFrom(
-                    backgroundColor: primaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    )),
-                child: Text(
-                  'Lihat Riwayat',
-                  style: backgroundTextStyle.copyWith(
-                    fontSize: 15,
-                    fontWeight: bold,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+          );
+        },
       );
     }
 
@@ -1220,7 +1386,7 @@ class _HomePageState extends State<HomePage> {
               height: 15,
             ),
             SizedBox(
-              height: 40,
+              height: 45,
               width: double.infinity,
               child: TextButton(
                 onPressed: () {
@@ -1290,7 +1456,7 @@ class _HomePageState extends State<HomePage> {
                 Text(
                   'Pengetahuan Reproduksi dan Gizi',
                   style:
-                      primaryTextStyle.copyWith(fontSize: 20, fontWeight: bold),
+                      primaryTextStyle.copyWith(fontSize: 18, fontWeight: bold),
                 ),
               ],
             ),
@@ -1319,7 +1485,7 @@ class _HomePageState extends State<HomePage> {
               height: 15,
             ),
             SizedBox(
-              height: 40,
+              height: 45,
               width: double.infinity,
               child: TextButton(
                 onPressed: () {
@@ -1802,7 +1968,9 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 15,
               ),
-              antrhopometriSubject(),
+              antrhopometriSubject(
+                uid: loggedInUser.uid,
+              ),
               const SizedBox(
                 height: 15,
               ),

@@ -4,14 +4,18 @@ import 'package:healthy/pages/result_antrhopometri_page.dart';
 import 'package:healthy/theme.dart';
 
 class HistoryFormAntrhopometri extends StatelessWidget {
-  const HistoryFormAntrhopometri({Key? key}) : super(key: key);
+  final List<HistoryAntrhopoModel> listAntrhopoModel;
+
+  const HistoryFormAntrhopometri({
+    Key? key,
+    required this.listAntrhopoModel,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Widget antrhopometriSubject(
         {required HistoryAntrhopoModel historyAntrhopoModel}) {
       return Container(
-        height: 168,
         width: double.infinity,
         padding: const EdgeInsets.all(15),
         margin: const EdgeInsets.only(top: 10),
@@ -57,7 +61,7 @@ class HistoryFormAntrhopometri extends StatelessWidget {
                   width: 10,
                 ),
                 Text(
-                  '${historyAntrhopoModel.antrhopoModel.last.height} CM',
+                  '${historyAntrhopoModel.antrhopoModel.last.antrhopoHeight} CM',
                   style:
                       primaryTextStyle.copyWith(fontSize: 20, fontWeight: bold),
                 ),
@@ -72,7 +76,7 @@ class HistoryFormAntrhopometri extends StatelessWidget {
                   width: 10,
                 ),
                 Text(
-                  '${historyAntrhopoModel.antrhopoModel.last.weight} Kg',
+                  '${historyAntrhopoModel.antrhopoModel.last.antrhopoWeight} Kg',
                   style:
                       primaryTextStyle.copyWith(fontSize: 20, fontWeight: bold),
                 ),
@@ -110,7 +114,7 @@ class HistoryFormAntrhopometri extends StatelessWidget {
               height: 15,
             ),
             SizedBox(
-              height: 40,
+              height: 45,
               width: double.infinity,
               child: Container(
                 decoration: BoxDecoration(
@@ -154,31 +158,6 @@ class HistoryFormAntrhopometri extends StatelessWidget {
       );
     }
 
-    Widget backButton() {
-      return Container(
-        height: 45,
-        width: 130,
-        margin: const EdgeInsets.only(top: 30, bottom: 30),
-        child: TextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/home-page');
-          },
-          style: TextButton.styleFrom(
-              backgroundColor: primaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              )),
-          child: Text(
-            'Kembali',
-            style: backgroundTextStyle.copyWith(
-              fontSize: 15,
-              fontWeight: bold,
-            ),
-          ),
-        ),
-      );
-    }
-
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: PreferredSize(
@@ -215,49 +194,15 @@ class HistoryFormAntrhopometri extends StatelessWidget {
         margin: EdgeInsets.symmetric(
           horizontal: defaultMargin,
         ),
-        child: (mockHistoryAntrhopoModel.isNotEmpty)
-            ? ListView.builder(
-                padding: const EdgeInsets.only(top: 30),
-                itemCount: mockHistoryAntrhopoModel.length,
-                itemBuilder: (context, index) {
-                  return antrhopometriSubject(
-                    historyAntrhopoModel: mockHistoryAntrhopoModel[index],
-                  );
-                },
-              )
-            : Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: defaultMargin,
-                ),
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 180,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/image_empty.png',
-                          width: 250,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      'Riwayat Data Antrhopometri Kosong',
-                      style: primaryTextStyle.copyWith(
-                          fontSize: 15, fontWeight: bold),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    backButton(),
-                  ],
-                ),
-              ),
+        child: ListView.builder(
+          padding: const EdgeInsets.only(top: 30),
+          itemCount: listAntrhopoModel.length,
+          itemBuilder: (context, index) {
+            return antrhopometriSubject(
+              historyAntrhopoModel: listAntrhopoModel[index],
+            );
+          },
+        ),
       ),
     );
   }

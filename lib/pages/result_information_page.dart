@@ -776,45 +776,11 @@ class _ResultInformationState extends State<ResultInformation> {
         ),
       ),
       body: Container(
-          margin: EdgeInsets.symmetric(
-            horizontal: defaultMargin,
-          ),
-          child: resultInformation()
-
-          // : Container(
-          //     margin: EdgeInsets.symmetric(
-          //       horizontal: defaultMargin,
-          //     ),
-          //     child: Column(
-          //       children: [
-          //         const SizedBox(
-          //           height: 180,
-          //         ),
-          //         Row(
-          //           mainAxisAlignment: MainAxisAlignment.center,
-          //           children: [
-          //             Image.asset(
-          //               'assets/image_empty.png',
-          //               width: 250,
-          //             ),
-          //           ],
-          //         ),
-          //         const SizedBox(
-          //           height: 15,
-          //         ),
-          //         Text(
-          //           'Riwayat Data Informasi Kosong',
-          //           style: primaryTextStyle.copyWith(
-          //               fontSize: 15, fontWeight: bold),
-          //         ),
-          //         const SizedBox(
-          //           height: 15,
-          //         ),
-          //         backButton(),
-          //       ],
-          //     ),
-          //   ),
-          ),
+        margin: EdgeInsets.symmetric(
+          horizontal: defaultMargin,
+        ),
+        child: resultInformation(),
+      ),
     );
   }
 }

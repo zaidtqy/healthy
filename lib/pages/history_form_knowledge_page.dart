@@ -11,7 +11,6 @@ class HistoryFormKnowledge extends StatelessWidget {
     Widget knowledgeSubject(
         {required HistoryKnowledgeModel historyKnowledgeModel}) {
       return Container(
-        height: 168,
         width: double.infinity,
         padding: const EdgeInsets.all(15),
         margin: const EdgeInsets.only(top: 10),
@@ -59,7 +58,7 @@ class HistoryFormKnowledge extends StatelessWidget {
                 Text(
                   'Pengetahuan Reproduksi dan Gizi',
                   style:
-                      primaryTextStyle.copyWith(fontSize: 20, fontWeight: bold),
+                      primaryTextStyle.copyWith(fontSize: 18, fontWeight: bold),
                 ),
               ],
             ),
@@ -88,7 +87,7 @@ class HistoryFormKnowledge extends StatelessWidget {
               height: 15,
             ),
             SizedBox(
-              height: 40,
+              height: 45,
               width: double.infinity,
               child: Container(
                 decoration: BoxDecoration(

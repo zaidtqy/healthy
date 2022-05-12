@@ -13,97 +13,97 @@ class NotificationsPage extends StatefulWidget {
 class _NotificationsPageState extends State<NotificationsPage> {
   @override
   Widget build(BuildContext context) {
-    Widget notification({required HistoryNotificationModel listModel}) {
-      return GestureDetector(
-        onTap: () {
-          setState(() {
-            // listModel.isRead = true;
-          });
-          Navigator.pushNamed(context, '/notif-repro');
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            color: (listModel.isRead)
-                ? backgroundColor
-                : primaryColor.withOpacity(0.2),
-            border: Border(
-              bottom: BorderSide(width: 0.5, color: primaryColor),
-            ),
-          ),
-          child: Container(
-            margin: EdgeInsets.symmetric(
-              horizontal: defaultMargin,
-              vertical: 15,
-            ),
-            child: Row(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(
-                    right: defaultMargin,
-                  ),
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        listModel.logo,
-                        width: 20,
-                      ),
-                    ],
-                  ),
-                ),
-                Flexible(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            listModel.type,
-                            style: primaryTextStyle.copyWith(
-                              fontSize: 10,
-                              fontWeight: semibold,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 152,
-                          ),
-                          Text(
-                            listModel.date,
-                            style: primaryTextStyle.copyWith(
-                              fontSize: 10,
-                              fontWeight: semibold,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        listModel.title,
-                        style: primaryTextStyle.copyWith(
-                          fontSize: 15,
-                          fontWeight: bold,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        listModel.content,
-                        style: primaryTextStyle.copyWith(
-                          fontSize: 13,
-                          fontWeight: medium,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
-    }
+    // Widget notification({required HistoryNotificationModel listModel}) {
+    //   return GestureDetector(
+    //     onTap: () {
+    //       setState(() {
+    //         // listModel.isRead = true;
+    //       });
+    //       Navigator.pushNamed(context, '/notif-repro');
+    //     },
+    //     child: Container(
+    //       decoration: BoxDecoration(
+    //         color: (listModel.isRead)
+    //             ? backgroundColor
+    //             : primaryColor.withOpacity(0.2),
+    //         border: Border(
+    //           bottom: BorderSide(width: 0.5, color: primaryColor),
+    //         ),
+    //       ),
+    //       child: Container(
+    //         margin: EdgeInsets.symmetric(
+    //           horizontal: defaultMargin,
+    //           vertical: 15,
+    //         ),
+    //         child: Row(
+    //           children: [
+    //             Container(
+    //               margin: EdgeInsets.only(
+    //                 right: defaultMargin,
+    //               ),
+    //               child: Column(
+    //                 children: [
+    //                   Image.asset(
+    //                     listModel.logo,
+    //                     width: 20,
+    //                   ),
+    //                 ],
+    //               ),
+    //             ),
+    //             Flexible(
+    //               child: Column(
+    //                 crossAxisAlignment: CrossAxisAlignment.start,
+    //                 children: [
+    //                   Row(
+    //                     children: [
+    //                       Text(
+    //                         listModel.type,
+    //                         style: primaryTextStyle.copyWith(
+    //                           fontSize: 10,
+    //                           fontWeight: semibold,
+    //                         ),
+    //                       ),
+    //                       const SizedBox(
+    //                         width: 152,
+    //                       ),
+    //                       Text(
+    //                         listModel.date,
+    //                         style: primaryTextStyle.copyWith(
+    //                           fontSize: 10,
+    //                           fontWeight: semibold,
+    //                         ),
+    //                       ),
+    //                     ],
+    //                   ),
+    //                   const SizedBox(
+    //                     height: 5,
+    //                   ),
+    //                   Text(
+    //                     listModel.title,
+    //                     style: primaryTextStyle.copyWith(
+    //                       fontSize: 15,
+    //                       fontWeight: bold,
+    //                     ),
+    //                   ),
+    //                   const SizedBox(
+    //                     height: 5,
+    //                   ),
+    //                   Text(
+    //                     listModel.content,
+    //                     style: primaryTextStyle.copyWith(
+    //                       fontSize: 13,
+    //                       fontWeight: medium,
+    //                     ),
+    //                   ),
+    //                 ],
+    //               ),
+    //             ),
+    //           ],
+    //         ),
+    //       ),
+    //     ),
+    //   );
+    // }
 
     // Widget notifFood() {
     //   return GestureDetector(

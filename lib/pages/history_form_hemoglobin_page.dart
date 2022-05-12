@@ -10,7 +10,6 @@ class HistoryFormHemoglobin extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget hemoglobinSubject({required HistoryHBModel historyHBModel}) {
       return Container(
-        height: 168,
         width: double.infinity,
         padding: const EdgeInsets.all(15),
         margin: const EdgeInsets.only(top: 10),
@@ -104,7 +103,7 @@ class HistoryFormHemoglobin extends StatelessWidget {
               height: 15,
             ),
             SizedBox(
-              height: 40,
+              height: 45,
               width: double.infinity,
               child: Container(
                 decoration: BoxDecoration(

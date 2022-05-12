@@ -18,7 +18,6 @@ class HistoryFormActivity extends StatelessWidget {
     Widget activitySubject(
         {required HistoryActivityModel historyActivityModel}) {
       return Container(
-        height: 168,
         width: double.infinity,
         padding: const EdgeInsets.all(15),
         margin: const EdgeInsets.only(top: 10),
@@ -119,7 +118,7 @@ class HistoryFormActivity extends StatelessWidget {
               height: 15,
             ),
             SizedBox(
-              height: 40,
+              height: 45,
               width: double.infinity,
               child: Container(
                 decoration: BoxDecoration(
@@ -163,30 +162,30 @@ class HistoryFormActivity extends StatelessWidget {
       );
     }
 
-    Widget backButton() {
-      return Container(
-        height: 45,
-        width: 130,
-        margin: const EdgeInsets.only(top: 30, bottom: 30),
-        child: TextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/home-page');
-          },
-          style: TextButton.styleFrom(
-              backgroundColor: primaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              )),
-          child: Text(
-            'Kembali',
-            style: backgroundTextStyle.copyWith(
-              fontSize: 15,
-              fontWeight: bold,
-            ),
-          ),
-        ),
-      );
-    }
+    // Widget backButton() {
+    //   return Container(
+    //     height: 45,
+    //     width: 130,
+    //     margin: const EdgeInsets.only(top: 30, bottom: 30),
+    //     child: TextButton(
+    //       onPressed: () {
+    //         Navigator.pushNamed(context, '/home-page');
+    //       },
+    //       style: TextButton.styleFrom(
+    //           backgroundColor: primaryColor,
+    //           shape: RoundedRectangleBorder(
+    //             borderRadius: BorderRadius.circular(15),
+    //           )),
+    //       child: Text(
+    //         'Kembali',
+    //         style: backgroundTextStyle.copyWith(
+    //           fontSize: 15,
+    //           fontWeight: bold,
+    //         ),
+    //       ),
+    //     ),
+    //   );
+    // }
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -224,49 +223,15 @@ class HistoryFormActivity extends StatelessWidget {
         margin: EdgeInsets.symmetric(
           horizontal: defaultMargin,
         ),
-        child: (listActivityModel.isNotEmpty)
-            ? ListView.builder(
-                padding: const EdgeInsets.only(top: 30),
-                itemCount: listActivityModel.length,
-                itemBuilder: (context, index) {
-                  return activitySubject(
-                    historyActivityModel: listActivityModel[index],
-                  );
-                },
-              )
-            : Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: defaultMargin,
-                ),
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 180,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/image_empty.png',
-                          width: 250,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      'Riwayat Data Kosong',
-                      style: primaryTextStyle.copyWith(
-                          fontSize: 15, fontWeight: bold),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    backButton(),
-                  ],
-                ),
-              ),
+        child: ListView.builder(
+          padding: const EdgeInsets.only(top: 30),
+          itemCount: listActivityModel.length,
+          itemBuilder: (context, index) {
+            return activitySubject(
+              historyActivityModel: listActivityModel[index],
+            );
+          },
+        ),
       ),
     );
   }

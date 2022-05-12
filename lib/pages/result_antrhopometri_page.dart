@@ -104,7 +104,7 @@ class ResultAntrhopometri extends StatelessWidget {
                         width: 15,
                       ),
                       Text(
-                        antrhopoModel.height,
+                        antrhopoModel.antrhopoHeight,
                         style: primaryTextStyle.copyWith(
                           fontSize: 15,
                           fontWeight: medium,
@@ -162,7 +162,7 @@ class ResultAntrhopometri extends StatelessWidget {
                         width: 15,
                       ),
                       Text(
-                        antrhopoModel.weight,
+                        antrhopoModel.antrhopoWeight,
                         style: primaryTextStyle.copyWith(
                           fontSize: 15,
                           fontWeight: medium,
@@ -220,7 +220,7 @@ class ResultAntrhopometri extends StatelessWidget {
                         width: 15,
                       ),
                       Text(
-                        antrhopoModel.sizeRound,
+                        antrhopoModel.antrhopoSizeRound,
                         style: primaryTextStyle.copyWith(
                           fontSize: 15,
                           fontWeight: medium,

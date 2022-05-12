@@ -31,8 +31,8 @@ class ActivityService {
 
       return filterActivityModel;
     } catch (e) {
-      throw Exception(e);
-      // return null;
+      // throw Exception(e);
+      return null;
     }
   }
 }
