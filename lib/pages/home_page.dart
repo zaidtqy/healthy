@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     Widget info() {
       return Container(
-        height: 94,
+        height: 97,
         width: double.infinity,
         padding: EdgeInsets.all(defaultMargin),
         margin: const EdgeInsets.only(top: 30),
@@ -374,7 +374,6 @@ class _HomePageState extends State<HomePage> {
             if (snapshot.hasData) {
               if (snapshot.data != null) {
                 return Container(
-                  height: 166,
                   width: double.infinity,
                   padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
@@ -627,7 +626,6 @@ class _HomePageState extends State<HomePage> {
             if (snapshot.hasData) {
               if (snapshot.data != null && snapshot.data!.isNotEmpty) {
                 return Container(
-                  height: 166,
                   width: double.infinity,
                   padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
@@ -913,7 +911,6 @@ class _HomePageState extends State<HomePage> {
 
     Widget intakeSubject() {
       return Container(
-        height: 166,
         width: double.infinity,
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
@@ -1013,7 +1010,6 @@ class _HomePageState extends State<HomePage> {
 
     Widget antrhopometriSubject() {
       return Container(
-        height: 166,
         width: double.infinity,
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
@@ -1135,7 +1131,6 @@ class _HomePageState extends State<HomePage> {
 
     Widget hemoglobinSubject() {
       return Container(
-        height: 166,
         width: double.infinity,
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
@@ -1252,7 +1247,6 @@ class _HomePageState extends State<HomePage> {
 
     Widget knowledgeSubject() {
       return Container(
-        height: 166,
         width: double.infinity,
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
@@ -1356,7 +1350,7 @@ class _HomePageState extends State<HomePage> {
           Navigator.pushNamed(context, '/notif-repro');
         },
         child: Container(
-          height: 107,
+          height: 115,
           width: double.infinity,
           padding: EdgeInsets.all(defaultMargin),
           margin: const EdgeInsets.only(top: 15),
@@ -1424,7 +1418,7 @@ class _HomePageState extends State<HomePage> {
           Navigator.pushNamed(context, '/notif-food');
         },
         child: Container(
-          height: 107,
+          height: 115,
           width: double.infinity,
           padding: EdgeInsets.all(defaultMargin),
           margin: const EdgeInsets.only(top: 15),
@@ -1492,7 +1486,7 @@ class _HomePageState extends State<HomePage> {
           Navigator.pushNamed(context, '/notif-tablets');
         },
         child: Container(
-          height: 107,
+          height: 115,
           width: double.infinity,
           padding: EdgeInsets.all(defaultMargin),
           margin: const EdgeInsets.only(top: 15),
@@ -1560,7 +1554,7 @@ class _HomePageState extends State<HomePage> {
           Navigator.pushNamed(context, '/notif-activity');
         },
         child: Container(
-          height: 107,
+          height: 115,
           width: double.infinity,
           padding: EdgeInsets.all(defaultMargin),
           margin: const EdgeInsets.only(top: 15),
@@ -1628,7 +1622,7 @@ class _HomePageState extends State<HomePage> {
           Navigator.pushNamed(context, '/notif-prokes');
         },
         child: Container(
-          height: 107,
+          height: 115,
           width: double.infinity,
           padding: EdgeInsets.all(defaultMargin),
           margin: const EdgeInsets.only(top: 15),
