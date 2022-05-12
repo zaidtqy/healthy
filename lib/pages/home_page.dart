@@ -434,11 +434,15 @@ class _HomePageState extends State<HomePage> {
                           const SizedBox(
                             width: 10,
                           ),
-                          Text(
-                            snapshot.data!.address,
-                            style: primaryTextStyle.copyWith(
-                              fontSize: 10,
-                              fontWeight: medium,
+                          SizedBox(
+                            width: 300,
+                            child: Text(
+                              snapshot.data!.address,
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 10,
+                                fontWeight: medium,
+                              ),
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ],

@@ -77,6 +77,7 @@ class ResultActivity extends StatelessWidget {
                     fontSize: 15,
                     fontWeight: semibold,
                   ),
+                  overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(
                   height: 10,
@@ -104,11 +105,15 @@ class ResultActivity extends StatelessWidget {
                       const SizedBox(
                         width: 15,
                       ),
-                      Text(
-                        activityModel.activityName,
-                        style: primaryTextStyle.copyWith(
-                          fontSize: 15,
-                          fontWeight: medium,
+                      SizedBox(
+                        width: 120,
+                        child: Text(
+                          activityModel.activityName,
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 15,
+                            fontWeight: medium,
+                          ),
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ],
