@@ -338,7 +338,7 @@ class _MenuPageState extends State<MenuPage> {
         margin: EdgeInsets.symmetric(
           horizontal: defaultMargin,
         ),
-        child: Column(
+        child: ListView(
           children: [
             const SizedBox(
               height: 60,
@@ -361,6 +361,7 @@ class _MenuPageState extends State<MenuPage> {
                 fontSize: 20,
                 fontWeight: bold,
               ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(
               height: 10,
@@ -371,6 +372,7 @@ class _MenuPageState extends State<MenuPage> {
                 fontSize: 10,
                 fontWeight: medium,
               ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(
               height: 10,
@@ -381,6 +383,7 @@ class _MenuPageState extends State<MenuPage> {
                 fontSize: 10,
                 fontWeight: medium,
               ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(
               height: 30,

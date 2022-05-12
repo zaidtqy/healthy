@@ -1,12 +1,15 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:badges/badges.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:healthy/models/activity_model.dart';
 import 'package:healthy/models/information_model.dart';
 import 'package:healthy/models/notification_model.dart';
 import 'package:healthy/models/user_model.dart';
+import 'package:healthy/pages/form_activity_page.dart';
+import 'package:healthy/pages/form_information_page.dart';
 import 'package:healthy/pages/history_form_activity_page.dart';
 import 'package:healthy/pages/result_information_page.dart';
 import 'package:healthy/services/activity_service.dart';
@@ -367,120 +370,247 @@ class _HomePageState extends State<HomePage> {
       return FutureBuilder<HistoryInformModel?>(
         future: InformationService().fetchInformation(uid: uid),
         builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return Container(
-              height: 166,
-              width: double.infinity,
-              padding: const EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                color: secondaryColor.withOpacity(0.5),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        'Data Informasi Subyek',
-                        style: primaryTextStyle.copyWith(
-                          fontSize: 10,
-                          fontWeight: medium,
-                        ),
-                      ),
-                      const Spacer(),
-                      Text(
-                        snapshot.data!.date,
-                        style: primaryTextStyle.copyWith(
-                          fontSize: 10,
-                          fontWeight: bold,
-                        ),
-                      ),
-                    ],
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasData) {
+              if (snapshot.data != null) {
+                return Container(
+                  height: 166,
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: secondaryColor.withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(15),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Row(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.asset(
-                        'assets/user.png',
-                        width: 15,
+                      Row(
+                        children: [
+                          Text(
+                            'Data Informasi Subyek',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: medium,
+                            ),
+                          ),
+                          const Spacer(),
+                          Text(
+                            snapshot.data!.date,
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: bold,
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(
-                        width: 10,
+                        height: 20,
                       ),
-                      Text(
-                        snapshot.data!.name,
-                        style: primaryTextStyle.copyWith(
-                            fontSize: 20, fontWeight: bold),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Row(
-                    children: [
-                      Image.asset(
-                        'assets/placeholder.png',
-                        width: 15,
+                      Row(
+                        children: [
+                          Image.asset(
+                            'assets/user.png',
+                            width: 15,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            snapshot.data!.name,
+                            style: primaryTextStyle.copyWith(
+                                fontSize: 20, fontWeight: bold),
+                          ),
+                        ],
                       ),
                       const SizedBox(
-                        width: 10,
+                        height: 5,
                       ),
-                      Text(
-                        snapshot.data!.address,
-                        style: primaryTextStyle.copyWith(
-                          fontSize: 10,
-                          fontWeight: medium,
-                        ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            'assets/placeholder.png',
+                            width: 15,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            snapshot.data!.address,
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: medium,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  SizedBox(
-                    height: 40,
-                    width: double.infinity,
-                    child: TextButton(
-                      onPressed: () async {
-                        final result = await InformationService()
-                            .fetchInformation(uid: loggedInUser.uid);
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      SizedBox(
+                        height: 40,
+                        width: double.infinity,
+                        child: TextButton(
+                          onPressed: () async {
+                            final result = await InformationService()
+                                .fetchInformation(uid: loggedInUser.uid);
 
-                        if (result != null) {
-                          Navigator.push(
-                            context,
+                            if (result != null) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      ResultInformation(informModel: result),
+                                ),
+                              );
+                            } else {
+                              // null
+                            }
+                          },
+                          style: TextButton.styleFrom(
+                              backgroundColor: primaryColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              )),
+                          child: Text(
+                            'Lihat Data',
+                            style: backgroundTextStyle.copyWith(
+                              fontSize: 15,
+                              fontWeight: bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }
+            }
+          }
+          return Container(
+            height: 166,
+            width: double.infinity,
+            padding: const EdgeInsets.all(15),
+            decoration: BoxDecoration(
+              color: secondaryColor.withOpacity(0.5),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      'Data Informasi Subyek',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: medium,
+                      ),
+                    ),
+                    const Spacer(),
+                    Text(
+                      '--/--/----',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: bold,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    Image.asset(
+                      'assets/user.png',
+                      width: 15,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Data belum diisi',
+                      style: primaryTextStyle.copyWith(
+                          fontSize: 20, fontWeight: bold),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  children: [
+                    Image.asset(
+                      'assets/placeholder.png',
+                      width: 15,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Data belum diisi',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: medium,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                SizedBox(
+                  height: 40,
+                  width: double.infinity,
+                  child: TextButton(
+                    onPressed: () {
+                      CoolAlert.show(
+                        context: context,
+                        type: CoolAlertType.confirm,
+                        title: " ",
+                        widget: Column(
+                          children: [
+                            Text(
+                              'Data anda masih kosong, apakah anda ingin mengisinya sekarang?',
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 15,
+                                fontWeight: semibold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                        confirmBtnText: 'Isi',
+                        cancelBtnText: 'Nanti',
+                        confirmBtnColor: const Color(0xff2F5D62),
+                        onConfirmBtnTap: () async {
+                          Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  ResultInformation(informModel: result),
+                              builder: (context) => const FormInformation(),
                             ),
                           );
-                        } else {
-                          // null
-                        }
-                      },
-                      style: TextButton.styleFrom(
-                          backgroundColor: primaryColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          )),
-                      child: Text(
-                        'Lihat Data',
-                        style: backgroundTextStyle.copyWith(
-                          fontSize: 15,
-                          fontWeight: bold,
-                        ),
+                        },
+                        confirmBtnTextStyle:
+                            TextStyle(color: backgroundColor, fontSize: 18),
+                      );
+                    },
+                    style: TextButton.styleFrom(
+                        backgroundColor: primaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        )),
+                    child: Text(
+                      'Lihat Data',
+                      style: backgroundTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: bold,
                       ),
                     ),
                   ),
-                ],
-              ),
-            );
-          } else {
-            return const CircularProgressIndicator();
-          }
+                ),
+              ],
+            ),
+          );
         },
       );
     }
@@ -725,7 +855,37 @@ class _HomePageState extends State<HomePage> {
                   height: 40,
                   width: double.infinity,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      CoolAlert.show(
+                        context: context,
+                        type: CoolAlertType.confirm,
+                        title: " ",
+                        widget: Column(
+                          children: [
+                            Text(
+                              'Data aktifitas anda masih kosong, apakah anda ingin mengisinya sekarang?',
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 15,
+                                fontWeight: semibold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                        confirmBtnText: 'Isi',
+                        cancelBtnText: 'Nanti',
+                        confirmBtnColor: const Color(0xff2F5D62),
+                        onConfirmBtnTap: () async {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => const FormActivity(),
+                            ),
+                          );
+                        },
+                        confirmBtnTextStyle:
+                            TextStyle(color: backgroundColor, fontSize: 18),
+                      );
+                    },
                     style: TextButton.styleFrom(
                         backgroundColor: primaryColor,
                         shape: RoundedRectangleBorder(
@@ -1618,21 +1778,6 @@ class _HomePageState extends State<HomePage> {
                 height: 30,
               ),
               Text(
-                'Artikel Terkait',
-                style: primaryTextStyle.copyWith(
-                  fontSize: 20,
-                  fontWeight: bold,
-                ),
-              ),
-              article1(),
-              article2(),
-              article3(),
-              article4(),
-              article5(),
-              const SizedBox(
-                height: 30,
-              ),
-              Text(
                 'Riwayat Data Anda',
                 style: primaryTextStyle.copyWith(
                   fontSize: 20,
@@ -1667,6 +1812,21 @@ class _HomePageState extends State<HomePage> {
                 height: 15,
               ),
               knowledgeSubject(),
+              const SizedBox(
+                height: 30,
+              ),
+              Text(
+                'Artikel Terkait',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 20,
+                  fontWeight: bold,
+                ),
+              ),
+              article1(),
+              article2(),
+              article3(),
+              article4(),
+              article5(),
               const SizedBox(
                 height: 30,
               ),
