@@ -19,7 +19,7 @@ import 'package:healthy/pages/notif_prokes_page.dart';
 // import 'package:healthy/pages/history_form_activity_page.dart';
 import 'package:healthy/pages/history_form_intake_page.dart';
 // import 'package:healthy/pages/history_form_antrhopometri_page.dart';
-import 'package:healthy/pages/history_form_hemoglobin_page.dart';
+// import 'package:healthy/pages/history_form_hemoglobin_page.dart';
 import 'package:healthy/pages/history_form_knowledge_page.dart';
 // import 'package:healthy/pages/result_information_page.dart';
 // import 'package:healthy/pages/result_antrhopometri_page.dart';
@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
         // '/history-activity': (context) => const HistoryFormActivity(),
         '/history-intake': (context) => const HistoryFormIntake(),
         // '/history-antrhopometri': (context) => const HistoryFormAntrhopometri(),
-        '/history-hemoglobin': (context) => const HistoryFormHemoglobin(),
+        // '/history-hemoglobin': (context) => const HistoryFormHemoglobin(),
         '/history-knowledge': (context) => const HistoryFormKnowledge(),
         // '/result-activity': (context) => const ResultActivity(),
         // '/result-information': (context) => const ResultInformation(),

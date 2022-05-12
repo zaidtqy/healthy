@@ -6,17 +6,21 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:healthy/models/activity_model.dart';
 import 'package:healthy/models/antrhopometri_model.dart';
+import 'package:healthy/models/hemoglobin_model.dart';
 import 'package:healthy/models/information_model.dart';
 import 'package:healthy/models/notification_model.dart';
 import 'package:healthy/models/user_model.dart';
 import 'package:healthy/pages/form_activity_page.dart';
 import 'package:healthy/pages/form_antrhopometri_page.dart';
+import 'package:healthy/pages/form_hemoglobin_page.dart';
 import 'package:healthy/pages/form_information_page.dart';
 import 'package:healthy/pages/history_form_activity_page.dart';
 import 'package:healthy/pages/history_form_antrhopometri_page.dart';
+import 'package:healthy/pages/history_form_hemoglobin_page.dart';
 import 'package:healthy/pages/result_information_page.dart';
 import 'package:healthy/services/activity_service.dart';
 import 'package:healthy/services/antrhopometri_service.dart';
+import 'package:healthy/services/hemoglobin_service.dart';
 import 'package:healthy/services/information_service.dart';
 import 'package:healthy/theme.dart';
 
@@ -1295,119 +1299,278 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
-    Widget hemoglobinSubject() {
-      return Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(15),
-        decoration: BoxDecoration(
-          color: secondaryColor.withOpacity(0.5),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Text(
-                  'Data Hemoglobin',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 10,
-                    fontWeight: medium,
+    Widget hemoglobinSubject({required String uid}) {
+      return FutureBuilder<List<HistoryHBModel>?>(
+        future: HemoglobinService().fetchHb(uid: uid),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasData) {
+              if (snapshot.data != null && snapshot.data!.isNotEmpty) {
+                return Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: secondaryColor.withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(15),
                   ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Data Hemoglobin',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: medium,
+                            ),
+                          ),
+                          const Spacer(),
+                          Text(
+                            snapshot.data!.last.date,
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            'assets/blood.png',
+                            width: 15,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            '${snapshot.data!.last.hbModel.last.hemoglobin} Hb',
+                            style: primaryTextStyle.copyWith(
+                                fontSize: 20, fontWeight: bold),
+                          ),
+                          const SizedBox(
+                            width: 68,
+                          ),
+                          Image.asset(
+                            'assets/report.png',
+                            width: 15,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            'Tidak Anemia',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 20,
+                              fontWeight: bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            'assets/file.png',
+                            width: 15,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            'Anemia jika nilai Hb <12 g/Dl dan Tidak Anemia jika Hb >12 g/Dl',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: medium,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      SizedBox(
+                        height: 45,
+                        width: double.infinity,
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HistoryFormHemoglobin(
+                                  listHBModel: snapshot.data!,
+                                ),
+                              ),
+                            );
+                          },
+                          style: TextButton.styleFrom(
+                              backgroundColor: primaryColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              )),
+                          child: Text(
+                            'Lihat Riwayat',
+                            style: backgroundTextStyle.copyWith(
+                              fontSize: 15,
+                              fontWeight: bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }
+            }
+          }
+          return Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(15),
+            decoration: BoxDecoration(
+              color: secondaryColor.withOpacity(0.5),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      'Data Hemoglobin',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: medium,
+                      ),
+                    ),
+                    const Spacer(),
+                    Text(
+                      '--/--/----',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: bold,
+                      ),
+                    ),
+                  ],
                 ),
-                const Spacer(),
-                Text(
-                  '29/03/2022',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 10,
-                    fontWeight: bold,
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    Image.asset(
+                      'assets/blood.png',
+                      width: 15,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      '-',
+                      style: primaryTextStyle.copyWith(
+                          fontSize: 20, fontWeight: bold),
+                    ),
+                    const SizedBox(
+                      width: 68,
+                    ),
+                    Image.asset(
+                      'assets/report.png',
+                      width: 15,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      '-',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 20,
+                        fontWeight: bold,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  children: [
+                    Image.asset(
+                      'assets/file.png',
+                      width: 15,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      '-',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: medium,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                SizedBox(
+                  height: 45,
+                  width: double.infinity,
+                  child: TextButton(
+                    onPressed: () {
+                      CoolAlert.show(
+                        context: context,
+                        type: CoolAlertType.confirm,
+                        title: " ",
+                        widget: Column(
+                          children: [
+                            Text(
+                              'Data hemoglobin anda masih kosong, apakah anda ingin mengisinya sekarang?',
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 15,
+                                fontWeight: semibold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                        confirmBtnText: 'Isi',
+                        cancelBtnText: 'Nanti',
+                        confirmBtnColor: const Color(0xff2F5D62),
+                        onConfirmBtnTap: () async {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => const FormHemoglobin(),
+                            ),
+                          );
+                        },
+                        confirmBtnTextStyle:
+                            TextStyle(color: backgroundColor, fontSize: 18),
+                      );
+                    },
+                    style: TextButton.styleFrom(
+                        backgroundColor: primaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        )),
+                    child: Text(
+                      'Lihat Riwayat',
+                      style: backgroundTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: bold,
+                      ),
+                    ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Image.asset(
-                  'assets/blood.png',
-                  width: 15,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  '13 Hb',
-                  style:
-                      primaryTextStyle.copyWith(fontSize: 20, fontWeight: bold),
-                ),
-                const SizedBox(
-                  width: 68,
-                ),
-                Image.asset(
-                  'assets/report.png',
-                  width: 15,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'Tidak Anemia',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 20,
-                    fontWeight: bold,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            Row(
-              children: [
-                Image.asset(
-                  'assets/file.png',
-                  width: 15,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'Anemia jika nilai Hb <12 g/Dl dan Tidak Anemia jika Hb >12 g/Dl',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 10,
-                    fontWeight: medium,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            SizedBox(
-              height: 45,
-              width: double.infinity,
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/history-hemoglobin');
-                },
-                style: TextButton.styleFrom(
-                    backgroundColor: primaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    )),
-                child: Text(
-                  'Lihat Riwayat',
-                  style: backgroundTextStyle.copyWith(
-                    fontSize: 15,
-                    fontWeight: bold,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+          );
+        },
       );
     }
 
@@ -1974,7 +2137,7 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 15,
               ),
-              hemoglobinSubject(),
+              hemoglobinSubject(uid: loggedInUser.uid),
               const SizedBox(
                 height: 15,
               ),

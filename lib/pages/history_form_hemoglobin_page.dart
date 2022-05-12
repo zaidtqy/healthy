@@ -4,7 +4,12 @@ import 'package:healthy/pages/result_hemoglobin_page.dart';
 import 'package:healthy/theme.dart';
 
 class HistoryFormHemoglobin extends StatelessWidget {
-  const HistoryFormHemoglobin({Key? key}) : super(key: key);
+  final List<HistoryHBModel> listHBModel;
+
+  const HistoryFormHemoglobin({
+    Key? key,
+    required this.listHBModel,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -146,31 +151,6 @@ class HistoryFormHemoglobin extends StatelessWidget {
       );
     }
 
-    Widget backButton() {
-      return Container(
-        height: 45,
-        width: 130,
-        margin: const EdgeInsets.only(top: 30, bottom: 30),
-        child: TextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/home-page');
-          },
-          style: TextButton.styleFrom(
-              backgroundColor: primaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              )),
-          child: Text(
-            'Kembali',
-            style: backgroundTextStyle.copyWith(
-              fontSize: 15,
-              fontWeight: bold,
-            ),
-          ),
-        ),
-      );
-    }
-
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: PreferredSize(
@@ -207,49 +187,15 @@ class HistoryFormHemoglobin extends StatelessWidget {
         margin: EdgeInsets.symmetric(
           horizontal: defaultMargin,
         ),
-        child: (mockHistoryHbModel.isNotEmpty)
-            ? ListView.builder(
-                padding: const EdgeInsets.only(top: 30),
-                itemCount: mockHistoryHbModel.length,
-                itemBuilder: (context, index) {
-                  return hemoglobinSubject(
-                    historyHBModel: mockHistoryHbModel[index],
-                  );
-                },
-              )
-            : Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: defaultMargin,
-                ),
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 180,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/image_empty.png',
-                          width: 250,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      'Riwayat Data Hemoglobin Kosong',
-                      style: primaryTextStyle.copyWith(
-                          fontSize: 15, fontWeight: bold),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    backButton(),
-                  ],
-                ),
-              ),
+        child: ListView.builder(
+          padding: const EdgeInsets.only(top: 30),
+          itemCount: listHBModel.length,
+          itemBuilder: (context, index) {
+            return hemoglobinSubject(
+              historyHBModel: listHBModel[index],
+            );
+          },
+        ),
       ),
     );
   }

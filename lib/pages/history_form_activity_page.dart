@@ -162,31 +162,6 @@ class HistoryFormActivity extends StatelessWidget {
       );
     }
 
-    // Widget backButton() {
-    //   return Container(
-    //     height: 45,
-    //     width: 130,
-    //     margin: const EdgeInsets.only(top: 30, bottom: 30),
-    //     child: TextButton(
-    //       onPressed: () {
-    //         Navigator.pushNamed(context, '/home-page');
-    //       },
-    //       style: TextButton.styleFrom(
-    //           backgroundColor: primaryColor,
-    //           shape: RoundedRectangleBorder(
-    //             borderRadius: BorderRadius.circular(15),
-    //           )),
-    //       child: Text(
-    //         'Kembali',
-    //         style: backgroundTextStyle.copyWith(
-    //           fontSize: 15,
-    //           fontWeight: bold,
-    //         ),
-    //       ),
-    //     ),
-    //   );
-    // }
-
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: PreferredSize(

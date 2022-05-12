@@ -1,5 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cool_alert/cool_alert.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:healthy/models/hemoglobin_model.dart';
+import 'package:healthy/models/user_model.dart';
+// import 'package:healthy/pages/history_form_hemoglobin_page.dart';
+import 'package:healthy/pages/home_page.dart';
+import 'package:healthy/services/hemoglobin_service.dart';
 import 'package:healthy/theme.dart';
+import 'package:intl/intl.dart';
 
 class FormHemoglobin extends StatefulWidget {
   const FormHemoglobin({Key? key}) : super(key: key);
@@ -14,6 +23,25 @@ class _FormHemoglobinState extends State<FormHemoglobin> {
 
   // controller
   final hbFormController = TextEditingController();
+
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel(uid: '1234');
+
+  @override
+  void initState() {
+    // ignore: todo
+    // TODO: Implement initState
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      // ignore: unnecessary_this
+      this.loggedInUser = UserModel.fromMap(value.data());
+      setState(() {});
+    });
+  }
 
   @override
   void dispose() {
@@ -103,7 +131,16 @@ class _FormHemoglobinState extends State<FormHemoglobin> {
         ),
         child: TextButton(
           onPressed: () {
-            save();
+            save(
+              user: UserModel(
+                uid: loggedInUser.uid,
+                name: loggedInUser.name,
+                email: loggedInUser.email,
+                phone: loggedInUser.phone,
+              ),
+              date: DateFormat('dd/MM/yyyy').format(DateTime.now()),
+              hb: hbFormController.text,
+            );
           },
           style: TextButton.styleFrom(
               backgroundColor: primaryColor,
@@ -174,14 +211,76 @@ class _FormHemoglobinState extends State<FormHemoglobin> {
     );
   }
 
-  void save() async {
+  void save({
+    required UserModel user,
+    required String date,
+    required String hb,
+  }) async {
     if (_formKey.currentState!.validate()) {
-      // await _auth
-      //     .createUserWithEmailAndPassword(email: email, password: password)
-      //     .then((value) => {postDetailsToFirestore()})
-      //     .catchError((e) {
-      //   Fluttertoast.showToast(msg: e!.message);
-      // });
+      HistoryHBModel hbModel = HistoryHBModel(
+        user: user,
+        date: date,
+        hbModel: [
+          HbModel(
+            hemoglobin: hb,
+          ),
+        ],
+      );
+      await HemoglobinService().createHb(hbModel);
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const HomePage(),
+        ),
+      );
+
+      CoolAlert.show(
+        context: context,
+        type: CoolAlertType.success,
+        title: " ",
+        widget: Text(
+          'Data Berhasil Disimpan!',
+          style: primaryTextStyle.copyWith(
+            fontSize: 25,
+            fontWeight: semibold,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        confirmBtnText: 'Oke',
+        confirmBtnColor: primaryColor,
+        confirmBtnTextStyle: TextStyle(color: backgroundColor, fontSize: 18),
+      );
+    } else {
+      return CoolAlert.show(
+        barrierDismissible: false,
+        context: context,
+        type: CoolAlertType.error,
+        title: " ",
+        widget: Column(
+          children: [
+            Text(
+              'Data Gagal Disimpan!',
+              style: primaryTextStyle.copyWith(
+                fontSize: 20,
+                fontWeight: semibold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              'Mohon pastikan tidak ada form yang belum diisi',
+              style: primaryTextStyle.copyWith(
+                fontSize: 15,
+                fontWeight: regular,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+        confirmBtnText: 'Mengerti',
+        confirmBtnColor: primaryColor,
+        confirmBtnTextStyle: TextStyle(color: backgroundColor, fontSize: 18),
+      );
     }
   }
 }
