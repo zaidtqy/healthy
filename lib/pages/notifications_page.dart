@@ -11,110 +11,99 @@ class NotificationsPage extends StatefulWidget {
 }
 
 class _NotificationsPageState extends State<NotificationsPage> {
-  HistoryNotificationModel? historyNotificationModel = HistoryNotificationModel(
-    logo: 'logo',
-    type: 'type',
-    date: 'date',
-    title: 'title',
-    content: 'content',
-    route: 'route',
-    isRead: false,
-  );
   @override
   Widget build(BuildContext context) {
-    // Widget notification({required HistoryNotificationModel listModel}) {
-    //   bool isRead = false;
-
-    //   return GestureDetector(
-    //     onTap: () {
-    //       setState(() {
-    //         // listModel.isRead = true;
-    //       });
-    //       Navigator.pushNamed(context, '/notif-repro');
-    //     },
-    //     child: Container(
-    //       decoration: BoxDecoration(
-    //         color: (listModel.isRead)
-    //             ? backgroundColor
-    //             : primaryColor.withOpacity(0.2),
-    //         border: Border(
-    //           bottom: BorderSide(width: 0.5, color: primaryColor),
-    //         ),
-    //       ),
-    //       child: Container(
-    //         margin: EdgeInsets.symmetric(
-    //           horizontal: defaultMargin,
-    //           vertical: 15,
-    //         ),
-    //         child: Row(
-    //           children: [
-    //             Container(
-    //               margin: EdgeInsets.only(
-    //                 right: defaultMargin,
-    //               ),
-    //               child: Column(
-    //                 children: [
-    //                   Image.asset(
-    //                     listModel.logo,
-    //                     width: 20,
-    //                   ),
-    //                 ],
-    //               ),
-    //             ),
-    //             Flexible(
-    //               child: Column(
-    //                 crossAxisAlignment: CrossAxisAlignment.start,
-    //                 children: [
-    //                   Row(
-    //                     children: [
-    //                       Text(
-    //                         listModel.type,
-    //                         style: primaryTextStyle.copyWith(
-    //                           fontSize: 10,
-    //                           fontWeight: semibold,
-    //                         ),
-    //                       ),
-    //                       const SizedBox(
-    //                         width: 152,
-    //                       ),
-    //                       Text(
-    //                         listModel.date,
-    //                         style: primaryTextStyle.copyWith(
-    //                           fontSize: 10,
-    //                           fontWeight: semibold,
-    //                         ),
-    //                       ),
-    //                     ],
-    //                   ),
-    //                   const SizedBox(
-    //                     height: 5,
-    //                   ),
-    //                   Text(
-    //                     listModel.title,
-    //                     style: primaryTextStyle.copyWith(
-    //                       fontSize: 15,
-    //                       fontWeight: bold,
-    //                     ),
-    //                   ),
-    //                   const SizedBox(
-    //                     height: 5,
-    //                   ),
-    //                   Text(
-    //                     listModel.content,
-    //                     style: primaryTextStyle.copyWith(
-    //                       fontSize: 13,
-    //                       fontWeight: medium,
-    //                     ),
-    //                   ),
-    //                 ],
-    //               ),
-    //             ),
-    //           ],
-    //         ),
-    //       ),
-    //     ),
-    //   );
-    // }
+    Widget notification({required HistoryReproModel listModel}) {
+      return GestureDetector(
+        onTap: () {
+          setState(() {
+            // listModel.isRead = true;
+          });
+          Navigator.pushNamed(context, '/notif-repro');
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: (listModel.isRead)
+                ? backgroundColor
+                : primaryColor.withOpacity(0.2),
+            border: Border(
+              bottom: BorderSide(width: 0.5, color: primaryColor),
+            ),
+          ),
+          child: Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: defaultMargin,
+              vertical: 15,
+            ),
+            child: Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                    right: defaultMargin,
+                  ),
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        listModel.logo,
+                        width: 20,
+                      ),
+                    ],
+                  ),
+                ),
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            listModel.type,
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: semibold,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 152,
+                          ),
+                          Text(
+                            listModel.date,
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: semibold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        listModel.title,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 15,
+                          fontWeight: bold,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        listModel.content,
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 13,
+                          fontWeight: medium,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
 
     // Widget notifFood() {
     //   return GestureDetector(
@@ -463,54 +452,47 @@ class _NotificationsPageState extends State<NotificationsPage> {
 
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(50.0),
-        child: AppBar(
-          backgroundColor: fourthColor,
-          automaticallyImplyLeading: false,
-          elevation: 5,
-          flexibleSpace: SafeArea(
-            child: Row(
-              children: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Image.asset(
-                    'assets/back.png',
-                    width: 20,
-                  ),
-                ),
-                Text(
-                  'Notifikasi',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 15,
-                    fontWeight: bold,
-                  ),
-                ),
-              ],
-            ),
+      appBar: AppBar(
+        backgroundColor: fourthColor,
+        automaticallyImplyLeading: false,
+        title: Text(
+          'Notifikasi',
+          style: primaryTextStyle.copyWith(
+            fontSize: 15,
+            fontWeight: bold,
           ),
+        ),
+        elevation: 5,
+        leading: IconButton(
+          onPressed: () => Navigator.of(context).pop(mockHistoryReproModel),
+          icon: const Icon(Icons.chevron_left),
         ),
       ),
       body: Container(
-        child: (mockHistoryNotificationModel.isNotEmpty)
+        child: (mockHistoryReproModel.isNotEmpty)
             ? ListView.builder(
                 padding: const EdgeInsets.only(top: 30),
-                itemCount: mockHistoryNotificationModel.length,
+                itemCount: mockHistoryReproModel.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      setState(() {
-                        mockHistoryNotificationModel[index]
-                            .copyWith(isRead: true);
-                      });
-                      Navigator.pushNamed(context,
-                          '/${mockHistoryNotificationModel[index].route}');
+                      if (mockHistoryReproModel[index].isRead == false) {
+                        final newIndex = mockHistoryReproModel.indexWhere(
+                          (e) => e.id == mockHistoryReproModel[index].id,
+                        );
+
+                        setState(() {
+                          mockHistoryReproModel[newIndex] =
+                              mockHistoryReproModel[newIndex]
+                                  .copyWith(isRead: true);
+                        });
+                      }
+
+                      Navigator.pushNamed(context, '/notif-repro');
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color: (mockHistoryNotificationModel[index].isRead)
+                        color: (mockHistoryReproModel[index].isRead)
                             ? backgroundColor
                             : primaryColor.withOpacity(0.2),
                         border: Border(
@@ -531,7 +513,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                               child: Column(
                                 children: [
                                   Image.asset(
-                                    mockHistoryNotificationModel[index].logo,
+                                    mockHistoryReproModel[index].logo,
                                     width: 20,
                                   ),
                                 ],
@@ -544,8 +526,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                   Row(
                                     children: [
                                       Text(
-                                        mockHistoryNotificationModel[index]
-                                            .type,
+                                        mockHistoryReproModel[index].type,
                                         style: primaryTextStyle.copyWith(
                                           fontSize: 10,
                                           fontWeight: semibold,
@@ -553,8 +534,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                       ),
                                       const Spacer(),
                                       Text(
-                                        mockHistoryNotificationModel[index]
-                                            .date,
+                                        mockHistoryReproModel[index].date,
                                         style: primaryTextStyle.copyWith(
                                           fontSize: 10,
                                           fontWeight: semibold,
@@ -566,7 +546,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                     height: 5,
                                   ),
                                   Text(
-                                    mockHistoryNotificationModel[index].title,
+                                    mockHistoryReproModel[index].title,
                                     style: primaryTextStyle.copyWith(
                                       fontSize: 15,
                                       fontWeight: bold,
@@ -576,7 +556,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                     height: 5,
                                   ),
                                   Text(
-                                    mockHistoryNotificationModel[index].content,
+                                    mockHistoryReproModel[index].content,
                                     style: primaryTextStyle.copyWith(
                                       fontSize: 13,
                                       fontWeight: medium,
