@@ -257,7 +257,8 @@ class _FormAntrhopometriState extends State<FormAntrhopometri> {
                 email: loggedInUser.email,
                 phone: loggedInUser.phone,
               ),
-              date: DateFormat('dd/MM/yyyy').format(DateTime.now()),
+              date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
+                  .format(DateTime.now()),
               height: heightFormController.text,
               weight: weightFormController.text,
               sizeRound: sizeRoundFormController.text,

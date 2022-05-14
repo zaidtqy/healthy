@@ -2786,7 +2786,8 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               email: loggedInUser.email,
               phone: loggedInUser.phone,
             ),
-            date: DateFormat('dd/MM/yyyy').format(DateTime.now()),
+            date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
+                .format(DateTime.now()),
             no1: _valNo1 ?? '-',
             no2: _valNo2 ?? '-',
             no3: _valNo3 ?? '-',

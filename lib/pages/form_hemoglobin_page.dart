@@ -138,7 +138,8 @@ class _FormHemoglobinState extends State<FormHemoglobin> {
                 email: loggedInUser.email,
                 phone: loggedInUser.phone,
               ),
-              date: DateFormat('dd/MM/yyyy').format(DateTime.now()),
+              date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
+                  .format(DateTime.now()),
               hb: hbFormController.text,
             );
           },

@@ -1120,7 +1120,8 @@ class _FormInformationState extends State<FormInformation> {
               email: loggedInUser.email,
               phone: loggedInUser.phone,
             ),
-            date: DateFormat('dd/MM/yyyy').format(DateTime.now()),
+            date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
+                .format(DateTime.now()),
             name: nameController.text,
             address: addressController.text,
             eduFather: _valEduFather ?? 'Data Kosong',
