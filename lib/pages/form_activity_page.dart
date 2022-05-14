@@ -955,10 +955,8 @@ class _FormActivityState extends State<FormActivity> {
                 email: loggedInUser.email,
                 phone: loggedInUser.phone,
               ),
-              date: DateFormat('dd/MM/yyyy').format(DateTime.now()),
-              // String? actMorning,
-              // String? otherActMorning,
-              // required String timeMorning,
+              date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
+                  .format(DateTime.now()),
               actMorning: _valAct1 ?? 'Data Kosong',
               otherActMorning: other1FormController.text,
               timeMorning: minutesAct1Controller.text,

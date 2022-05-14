@@ -41,8 +41,8 @@ class HistoryKnowledgeModel {
       user: UserModel.fromMap(map['user'] as Map<String, dynamic>),
       date: map['date'] as String,
       knowledgeModel: List<KnowledgeModel>.from(
-        (map['knowledgeModel'] as List<int>).map<KnowledgeModel>(
-          (x) => KnowledgeModel.fromMap(x as Map<String, dynamic>),
+        (map['knowledgeModel']).map<KnowledgeModel>(
+          (x) => KnowledgeModel.fromMap(x),
         ),
       ),
     );

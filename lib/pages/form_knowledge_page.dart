@@ -2722,7 +2722,7 @@ class _FormKnowledgeState extends State<FormKnowledge> {
                 height: 40,
                 width: 85,
                 child: DropdownButtonFormField<String>(
-                  isExpanded: true,
+                  isExpanded: false,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
@@ -3028,7 +3028,7 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               textAlign: TextAlign.center,
             ),
             Text(
-              'Mohon pastikan tidak ada form yang belum diisi',
+              'Pastikan jawaban sudah terisi semua.',
               style: primaryTextStyle.copyWith(
                 fontSize: 15,
                 fontWeight: regular,

@@ -18,9 +18,10 @@ import 'package:healthy/pages/notif_activity_page.dart';
 import 'package:healthy/pages/notif_prokes_page.dart';
 // import 'package:healthy/pages/history_form_activity_page.dart';
 import 'package:healthy/pages/history_form_intake_page.dart';
+import 'package:intl/date_symbol_data_local.dart';
 // import 'package:healthy/pages/history_form_antrhopometri_page.dart';
 // import 'package:healthy/pages/history_form_hemoglobin_page.dart';
-import 'package:healthy/pages/history_form_knowledge_page.dart';
+// import 'package:healthy/pages/history_form_knowledge_page.dart';
 // import 'package:healthy/pages/result_information_page.dart';
 // import 'package:healthy/pages/result_antrhopometri_page.dart';
 // import 'package:healthy/pages/result_hemoglobin_page.dart';
@@ -28,6 +29,8 @@ import 'package:healthy/pages/history_form_knowledge_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('id_ID', null)
+      .then((_) => runApp(const MyApp()));
   await Firebase.initializeApp();
 
   runApp(const MyApp());
