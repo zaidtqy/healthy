@@ -1585,7 +1585,6 @@ class _HomePageState extends State<HomePage> {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasData) {
               if (snapshot.data != null && snapshot.data!.isNotEmpty) {
-                debugPrint('MASUK');
                 return Container(
                   width: double.infinity,
                   padding: const EdgeInsets.all(15),
@@ -1692,7 +1691,6 @@ class _HomePageState extends State<HomePage> {
               }
             }
           }
-          debugPrint('KELUAR');
           return Container(
             width: double.infinity,
             padding: const EdgeInsets.all(15),
@@ -1735,7 +1733,7 @@ class _HomePageState extends State<HomePage> {
                       width: 10,
                     ),
                     Text(
-                      'Data belum diisi',
+                      '-',
                       style: primaryTextStyle.copyWith(
                           fontSize: 18, fontWeight: bold),
                     ),
@@ -1754,7 +1752,7 @@ class _HomePageState extends State<HomePage> {
                       width: 10,
                     ),
                     Text(
-                      'Data belum diisi ',
+                      '- ',
                       style: primaryTextStyle.copyWith(
                         fontSize: 10,
                         fontWeight: medium,
