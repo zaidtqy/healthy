@@ -1,5 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cool_alert/cool_alert.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:healthy/models/knowledge_model.dart';
+import 'package:healthy/models/user_model.dart';
+import 'package:healthy/pages/home_page.dart';
+import 'package:healthy/services/knowledge_service.dart';
 import 'package:healthy/theme.dart';
+import 'package:intl/intl.dart';
 
 class FormKnowledge extends StatefulWidget {
   const FormKnowledge({Key? key}) : super(key: key);
@@ -11,6 +19,9 @@ class FormKnowledge extends StatefulWidget {
 class _FormKnowledgeState extends State<FormKnowledge> {
   // form key
   final _formKey = GlobalKey<FormState>();
+
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel(uid: '1234');
 
   String? _valNo1;
   final _no1 = ["Ya", "Tidak"];
@@ -119,6 +130,22 @@ class _FormKnowledgeState extends State<FormKnowledge> {
 
   String? _valNo30;
   final _no30 = ["Ya", "Tidak"];
+
+  @override
+  void initState() {
+    // ignore: todo
+    // TODO: Implement initState
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      // ignore: unnecessary_this
+      this.loggedInUser = UserModel.fromMap(value.data());
+      setState(() {});
+    });
+  }
 
   Widget nutrient() {
     return Container(
@@ -2752,7 +2779,51 @@ class _FormKnowledgeState extends State<FormKnowledge> {
       margin: const EdgeInsets.only(top: 30, bottom: 30),
       child: TextButton(
         onPressed: () {
-          save();
+          save(
+            user: UserModel(
+              uid: loggedInUser.uid,
+              name: loggedInUser.name,
+              email: loggedInUser.email,
+              phone: loggedInUser.phone,
+            ),
+            date: DateFormat('dd/MM/yyyy').format(DateTime.now()),
+            no1: _valNo1 ?? '-',
+            no2: _valNo2 ?? '-',
+            no3: _valNo3 ?? '-',
+            no4: _valNo4 ?? '-',
+            no5: _valNo5 ?? '-',
+            no6: _valNo6 ?? '-',
+            no7: _valNo7 ?? '-',
+            no8: _valNo8 ?? '-',
+            no9: _valNo9 ?? '-',
+            no10: _valNo10 ?? '-',
+            no11: _valNo11 ?? '-',
+            no12a: _valNo12a ?? '-',
+            no12b: _valNo12b ?? '-',
+            no12c: _valNo12c ?? '-',
+            no12d: _valNo12d ?? '-',
+            no13a: _valNo13a ?? '-',
+            no13b: _valNo13b ?? '-',
+            no13c: _valNo13c ?? '-',
+            no13d: _valNo13d ?? '-',
+            no14: _valNo14 ?? '-',
+            no15: _valNo15 ?? '-',
+            no16: _valNo16 ?? '-',
+            no17: _valNo17 ?? '-',
+            no18: _valNo18 ?? '-',
+            no19: _valNo19 ?? '-',
+            no20: _valNo20 ?? '-',
+            no21: _valNo21 ?? '-',
+            no22: _valNo22 ?? '-',
+            no23: _valNo23 ?? '-',
+            no24: _valNo24 ?? '-',
+            no25: _valNo25 ?? '-',
+            no26: _valNo26 ?? '-',
+            no27: _valNo27 ?? '-',
+            no28: _valNo28 ?? '-',
+            no29: _valNo29 ?? '-',
+            no30: _valNo30 ?? '-',
+          );
         },
         style: TextButton.styleFrom(
             backgroundColor: primaryColor,
@@ -2830,14 +2901,146 @@ class _FormKnowledgeState extends State<FormKnowledge> {
     );
   }
 
-  void save() async {
+  void save({
+    required UserModel user,
+    required String date,
+    required String no1,
+    required String no2,
+    required String no3,
+    required String no4,
+    required String no5,
+    required String no6,
+    required String no7,
+    required String no8,
+    required String no9,
+    required String no10,
+    required String no11,
+    required String no12a,
+    required String no12b,
+    required String no12c,
+    required String no12d,
+    required String no13a,
+    required String no13b,
+    required String no13c,
+    required String no13d,
+    required String no14,
+    required String no15,
+    required String no16,
+    required String no17,
+    required String no18,
+    required String no19,
+    required String no20,
+    required String no21,
+    required String no22,
+    required String no23,
+    required String no24,
+    required String no25,
+    required String no26,
+    required String no27,
+    required String no28,
+    required String no29,
+    required String no30,
+  }) async {
     if (_formKey.currentState!.validate()) {
-      // await _auth
-      //     .createUserWithEmailAndPassword(email: email, password: password)
-      //     .then((value) => {postDetailsToFirestore()})
-      //     .catchError((e) {
-      //   Fluttertoast.showToast(msg: e!.message);
-      // });
+      HistoryKnowledgeModel knowledgeModel = HistoryKnowledgeModel(
+        user: user,
+        date: date,
+        knowledgeModel: [
+          KnowledgeModel(
+            no1: no1,
+            no2: no2,
+            no3: no3,
+            no4: no4,
+            no5: no5,
+            no6: no6,
+            no7: no7,
+            no8: no8,
+            no9: no9,
+            no10: no10,
+            no11: no11,
+            no12a: no12a,
+            no12b: no12b,
+            no12c: no12c,
+            no12d: no12d,
+            no13a: no13a,
+            no13b: no13b,
+            no13c: no13c,
+            no13d: no13d,
+            no14: no14,
+            no15: no15,
+            no16: no16,
+            no17: no17,
+            no18: no18,
+            no19: no19,
+            no20: no20,
+            no21: no21,
+            no22: no22,
+            no23: no23,
+            no24: no24,
+            no25: no25,
+            no26: no26,
+            no27: no27,
+            no28: no28,
+            no29: no29,
+            no30: no30,
+          )
+        ],
+      );
+
+      await KnowledgeService().createKnowledge(knowledgeModel);
+
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => const HomePage(),
+        ),
+      );
+
+      CoolAlert.show(
+        context: context,
+        type: CoolAlertType.success,
+        title: " ",
+        widget: Text(
+          'Data Berhasil Disimpan!',
+          style: primaryTextStyle.copyWith(
+            fontSize: 25,
+            fontWeight: semibold,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        confirmBtnText: 'Oke',
+        confirmBtnColor: primaryColor,
+        confirmBtnTextStyle: TextStyle(color: backgroundColor, fontSize: 18),
+      );
+    } else {
+      return CoolAlert.show(
+        barrierDismissible: false,
+        context: context,
+        type: CoolAlertType.error,
+        title: " ",
+        widget: Column(
+          children: [
+            Text(
+              'Data Gagal Disimpan!',
+              style: primaryTextStyle.copyWith(
+                fontSize: 20,
+                fontWeight: semibold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              'Mohon pastikan tidak ada form yang belum diisi',
+              style: primaryTextStyle.copyWith(
+                fontSize: 15,
+                fontWeight: regular,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+        confirmBtnText: 'Mengerti',
+        confirmBtnColor: primaryColor,
+        confirmBtnTextStyle: TextStyle(color: backgroundColor, fontSize: 18),
+      );
     }
   }
 }

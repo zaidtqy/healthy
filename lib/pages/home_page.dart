@@ -8,20 +8,24 @@ import 'package:healthy/models/activity_model.dart';
 import 'package:healthy/models/antrhopometri_model.dart';
 import 'package:healthy/models/hemoglobin_model.dart';
 import 'package:healthy/models/information_model.dart';
+import 'package:healthy/models/knowledge_model.dart';
 import 'package:healthy/models/notification_model.dart';
 import 'package:healthy/models/user_model.dart';
 import 'package:healthy/pages/form_activity_page.dart';
 import 'package:healthy/pages/form_antrhopometri_page.dart';
 import 'package:healthy/pages/form_hemoglobin_page.dart';
 import 'package:healthy/pages/form_information_page.dart';
+import 'package:healthy/pages/form_knowledge_page.dart';
 import 'package:healthy/pages/history_form_activity_page.dart';
 import 'package:healthy/pages/history_form_antrhopometri_page.dart';
 import 'package:healthy/pages/history_form_hemoglobin_page.dart';
+import 'package:healthy/pages/history_form_knowledge_page.dart';
 import 'package:healthy/pages/result_information_page.dart';
 import 'package:healthy/services/activity_service.dart';
 import 'package:healthy/services/antrhopometri_service.dart';
 import 'package:healthy/services/hemoglobin_service.dart';
 import 'package:healthy/services/information_service.dart';
+import 'package:healthy/services/knowledge_service.dart';
 import 'package:healthy/theme.dart';
 
 class HomePage extends StatefulWidget {
@@ -1574,102 +1578,244 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
-    Widget knowledgeSubject() {
-      return Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(15),
-        decoration: BoxDecoration(
-          color: secondaryColor.withOpacity(0.5),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Text(
-                  'Kesehatan Reproduksi dan Pola Makan',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 10,
-                    fontWeight: medium,
+    Widget knowledgeSubject({required String uid}) {
+      return FutureBuilder<List<HistoryKnowledgeModel>?>(
+        future: KnowledgeService().fetchKnowledge(uid: uid),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasData) {
+              if (snapshot.data != null && snapshot.data!.isNotEmpty) {
+                return Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: secondaryColor.withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(15),
                   ),
-                ),
-                const Spacer(),
-                Text(
-                  '29/03/2022',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 10,
-                    fontWeight: bold,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Kesehatan Reproduksi dan Pola Makan',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: medium,
+                            ),
+                          ),
+                          const Spacer(),
+                          Text(
+                            '29/03/2022',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            'assets/books.png',
+                            width: 15,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            'Pengetahuan Reproduksi dan Gizi',
+                            style: primaryTextStyle.copyWith(
+                                fontSize: 18, fontWeight: bold),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            'assets/file.png',
+                            width: 15,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            'Pertanyaan seputar kesehatan reproduksi dan pola makan subyek ',
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: medium,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      SizedBox(
+                        height: 45,
+                        width: double.infinity,
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HistoryFormKnowledge(
+                                  listKnowledgeModel: snapshot.data!,
+                                ),
+                              ),
+                            );
+                          },
+                          style: TextButton.styleFrom(
+                              backgroundColor: primaryColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              )),
+                          child: Text(
+                            'Lihat Riwayat',
+                            style: backgroundTextStyle.copyWith(
+                              fontSize: 15,
+                              fontWeight: bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
+                );
+              }
+            }
+          }
+          return Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(15),
+            decoration: BoxDecoration(
+              color: secondaryColor.withOpacity(0.5),
+              borderRadius: BorderRadius.circular(15),
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset(
-                  'assets/books.png',
-                  width: 15,
+                Row(
+                  children: [
+                    Text(
+                      'Kesehatan Reproduksi dan Pola Makan',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: medium,
+                      ),
+                    ),
+                    const Spacer(),
+                    Text(
+                      '--/--/----',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: bold,
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(
-                  width: 10,
+                  height: 20,
                 ),
-                Text(
-                  'Pengetahuan Reproduksi dan Gizi',
-                  style:
-                      primaryTextStyle.copyWith(fontSize: 18, fontWeight: bold),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            Row(
-              children: [
-                Image.asset(
-                  'assets/file.png',
-                  width: 15,
+                Row(
+                  children: [
+                    Image.asset(
+                      'assets/books.png',
+                      width: 15,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Data belum diisi',
+                      style: primaryTextStyle.copyWith(
+                          fontSize: 18, fontWeight: bold),
+                    ),
+                  ],
                 ),
                 const SizedBox(
-                  width: 10,
+                  height: 5,
                 ),
-                Text(
-                  'Pertanyaan seputar kesehatan reproduksi dan pola makan subyek ',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 10,
-                    fontWeight: medium,
+                Row(
+                  children: [
+                    Image.asset(
+                      'assets/file.png',
+                      width: 15,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Data belum diisi ',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 10,
+                        fontWeight: medium,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                SizedBox(
+                  height: 45,
+                  width: double.infinity,
+                  child: TextButton(
+                    onPressed: () {
+                      CoolAlert.show(
+                        context: context,
+                        type: CoolAlertType.confirm,
+                        title: " ",
+                        widget: Column(
+                          children: [
+                            Text(
+                              'Data pengetahuan anda masih kosong, apakah anda ingin mengisinya sekarang?',
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 15,
+                                fontWeight: semibold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                        confirmBtnText: 'Isi',
+                        cancelBtnText: 'Nanti',
+                        confirmBtnColor: const Color(0xff2F5D62),
+                        onConfirmBtnTap: () async {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => const FormKnowledge(),
+                            ),
+                          );
+                        },
+                        confirmBtnTextStyle:
+                            TextStyle(color: backgroundColor, fontSize: 18),
+                      );
+                    },
+                    style: TextButton.styleFrom(
+                        backgroundColor: primaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        )),
+                    child: Text(
+                      'Lihat Riwayat',
+                      style: backgroundTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: bold,
+                      ),
+                    ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(
-              height: 15,
-            ),
-            SizedBox(
-              height: 45,
-              width: double.infinity,
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/history-knowledge');
-                },
-                style: TextButton.styleFrom(
-                    backgroundColor: primaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    )),
-                child: Text(
-                  'Lihat Riwayat',
-                  style: backgroundTextStyle.copyWith(
-                    fontSize: 15,
-                    fontWeight: bold,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+          );
+        },
       );
     }
 
@@ -2141,7 +2287,7 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 15,
               ),
-              knowledgeSubject(),
+              knowledgeSubject(uid: loggedInUser.uid),
               const SizedBox(
                 height: 30,
               ),

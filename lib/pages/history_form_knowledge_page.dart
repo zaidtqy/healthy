@@ -4,7 +4,12 @@ import 'package:healthy/pages/result_knowledge_page.dart';
 import 'package:healthy/theme.dart';
 
 class HistoryFormKnowledge extends StatelessWidget {
-  const HistoryFormKnowledge({Key? key}) : super(key: key);
+  final List<HistoryKnowledgeModel> listKnowledgeModel;
+
+  const HistoryFormKnowledge({
+    Key? key,
+    required this.listKnowledgeModel,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -129,31 +134,6 @@ class HistoryFormKnowledge extends StatelessWidget {
       );
     }
 
-    Widget backButton() {
-      return Container(
-        height: 45,
-        width: 130,
-        margin: const EdgeInsets.only(top: 30, bottom: 30),
-        child: TextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/home-page');
-          },
-          style: TextButton.styleFrom(
-              backgroundColor: primaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              )),
-          child: Text(
-            'Kembali',
-            style: backgroundTextStyle.copyWith(
-              fontSize: 15,
-              fontWeight: bold,
-            ),
-          ),
-        ),
-      );
-    }
-
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: PreferredSize(
@@ -190,49 +170,15 @@ class HistoryFormKnowledge extends StatelessWidget {
         margin: EdgeInsets.symmetric(
           horizontal: defaultMargin,
         ),
-        child: (mockHistoryKnowledgeModel.isNotEmpty)
-            ? ListView.builder(
-                padding: const EdgeInsets.only(top: 30),
-                itemCount: mockHistoryKnowledgeModel.length,
-                itemBuilder: (context, index) {
-                  return knowledgeSubject(
-                    historyKnowledgeModel: mockHistoryKnowledgeModel[index],
-                  );
-                },
-              )
-            : Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: defaultMargin,
-                ),
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 180,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/image_empty.png',
-                          width: 250,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      'Riwayat Data Kosong',
-                      style: primaryTextStyle.copyWith(
-                          fontSize: 15, fontWeight: bold),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    backButton(),
-                  ],
-                ),
-              ),
+        child: ListView.builder(
+          padding: const EdgeInsets.only(top: 30),
+          itemCount: listKnowledgeModel.length,
+          itemBuilder: (context, index) {
+            return knowledgeSubject(
+              historyKnowledgeModel: listKnowledgeModel[index],
+            );
+          },
+        ),
       ),
     );
   }
