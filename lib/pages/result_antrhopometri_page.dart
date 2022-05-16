@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+// import 'package:healthy/helpers/const.dart';
 import 'package:healthy/models/antrhopometri_model.dart';
 import 'package:healthy/theme.dart';
 
 class ResultAntrhopometri extends StatelessWidget {
   final HistoryAntrhopoModel historyAntrhopoModel;
 
-  const ResultAntrhopometri({Key? key, required this.historyAntrhopoModel})
-      : super(key: key);
+  const ResultAntrhopometri({
+    Key? key,
+    required this.historyAntrhopoModel,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +67,16 @@ class ResultAntrhopometri extends StatelessWidget {
     }
 
     Widget anthropoResult({required AntrhopoModel antrhopoModel}) {
+      final height = (double.parse(antrhopoModel.antrhopoHeight) / 100) *
+          (double.parse(antrhopoModel.antrhopoHeight) / 100);
+      final weight = double.parse(antrhopoModel.antrhopoWeight);
+
+      final imt = weight / height;
+
+      final double x = double.parse('$imt');
+
+      final String result = x.toStringAsFixed(1);
+
       return Column(
         children: [
           Container(
@@ -288,7 +301,7 @@ class ResultAntrhopometri extends StatelessWidget {
                     ),
                     const Spacer(),
                     Text(
-                      '60',
+                      result,
                       style: primaryTextStyle.copyWith(
                         fontSize: 25,
                         fontWeight: bold,
