@@ -3,7 +3,7 @@ import 'package:healthy/models/hemoglobin_model.dart';
 import 'package:healthy/pages/result_hemoglobin_page.dart';
 import 'package:healthy/theme.dart';
 
-class HistoryFormHemoglobin extends StatelessWidget {
+class HistoryFormHemoglobin extends StatefulWidget {
   final List<HistoryHBModel> listHBModel;
 
   const HistoryFormHemoglobin({
@@ -12,8 +12,25 @@ class HistoryFormHemoglobin extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<HistoryFormHemoglobin> createState() => _HistoryFormHemoglobinState();
+}
+
+class _HistoryFormHemoglobinState extends State<HistoryFormHemoglobin> {
+  @override
   Widget build(BuildContext context) {
     Widget hemoglobinSubject({required HistoryHBModel historyHBModel}) {
+      final x = historyHBModel.hbModel.last.hemoglobin;
+
+      final data = int.parse(x);
+
+      String anemia = '-';
+
+      if (data < 12) {
+        anemia = 'Anemia';
+      } else {
+        anemia = 'Tidak Anemia';
+      }
+
       return Container(
         width: double.infinity,
         padding: const EdgeInsets.all(15),
@@ -75,7 +92,7 @@ class HistoryFormHemoglobin extends StatelessWidget {
                   width: 10,
                 ),
                 Text(
-                  'Tidak Anemia',
+                  anemia,
                   style: primaryTextStyle.copyWith(
                     fontSize: 20,
                     fontWeight: bold,
@@ -179,10 +196,10 @@ class HistoryFormHemoglobin extends StatelessWidget {
         ),
         child: ListView.builder(
           padding: const EdgeInsets.only(top: 30),
-          itemCount: listHBModel.length,
+          itemCount: widget.listHBModel.length,
           itemBuilder: (context, index) {
             return hemoglobinSubject(
-              historyHBModel: listHBModel[index],
+              historyHBModel: widget.listHBModel[index],
             );
           },
         ),

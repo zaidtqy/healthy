@@ -5,7 +5,7 @@ import 'package:healthy/models/antrhopometri_model.dart';
 import 'package:healthy/pages/result_antrhopometri_page.dart';
 import 'package:healthy/theme.dart';
 
-class HistoryFormAntrhopometri extends StatelessWidget {
+class HistoryFormAntrhopometri extends StatefulWidget {
   final List<HistoryAntrhopoModel> listAntrhopoModel;
 
   const HistoryFormAntrhopometri({
@@ -14,9 +14,16 @@ class HistoryFormAntrhopometri extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<HistoryFormAntrhopometri> createState() =>
+      _HistoryFormAntrhopometriState();
+}
+
+class _HistoryFormAntrhopometriState extends State<HistoryFormAntrhopometri> {
+  @override
   Widget build(BuildContext context) {
-    Widget antrhopometriSubject(
-        {required HistoryAntrhopoModel historyAntrhopoModel}) {
+    Widget antrhopometriSubject({
+      required HistoryAntrhopoModel historyAntrhopoModel,
+    }) {
       final height = (double.parse(
                   historyAntrhopoModel.antrhopoModel.last.antrhopoHeight) /
               100) *
@@ -34,29 +41,20 @@ class HistoryFormAntrhopometri extends StatelessWidget {
 
       final double result = double.parse(d);
 
-      const String desc = '-';
+      String desc = '-';
 
       if (result <= 17.0) {
-        desc.replaceAll('-', 'Sangat Kurus');
-        // String desc = "Sangat Kurus";
+        desc = 'Sangat Kurus';
       } else if (result > 17.0 && result <= 18.4) {
-        desc.replaceAll('-', 'Kurus');
-        // String desc = "Kurus";
+        desc = 'Kurus';
       } else if (result > 18.4 && result <= 25.0) {
-        desc.replaceAll('-', 'Normal');
-        // String desc = "Normal";
+        desc = 'Normal';
       } else if (result > 25.0 && result <= 27.0) {
-        debugPrint('masokk');
-        const String desc = 'Kelebihan Berat Badan (Grade 1)';
-        // String description = 'Kelebihan Berat Badan (Grade 1)';
-        // desc.replaceAll('-', 'Kelebihan Berat Badan (Grade 1)');
-        // String desc = "Kelebihan Berat Badan (Grade 1)";
+        desc = 'Kelebihan Berat Badan (Grade 1)';
       } else if (result >= 27.0) {
-        desc.replaceAll('-', 'Kelebihan Berat Badan (Grade 2)');
-        // String desc = "Kelebihan Berat Badan (Grade 2)";
+        desc = 'Kelebihan Berat Badan (Grade 2)';
       } else {
-        desc.replaceAll('-', 'Keterangan tidak ditemukan');
-        // String desc = "Keterangan tidak ditemukan";
+        desc = 'Keterangan Tidak Ditemukan';
       }
 
       return Container(
@@ -230,10 +228,10 @@ class HistoryFormAntrhopometri extends StatelessWidget {
         ),
         child: ListView.builder(
           padding: const EdgeInsets.only(top: 30),
-          itemCount: listAntrhopoModel.length,
+          itemCount: widget.listAntrhopoModel.length,
           itemBuilder: (context, index) {
             return antrhopometriSubject(
-              historyAntrhopoModel: listAntrhopoModel[index],
+              historyAntrhopoModel: widget.listAntrhopoModel[index],
             );
           },
         ),

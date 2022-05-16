@@ -1019,6 +1019,39 @@ class _HomePageState extends State<HomePage> {
     }
 
     Widget antrhopometriSubject({required String uid}) {
+      // final height = (double.parse(
+      //             historyAntrhopoModel.antrhopoModel.last.antrhopoHeight) /
+      //         100) *
+      //     (double.parse(
+      //             historyAntrhopoModel.antrhopoModel.last.antrhopoHeight) /
+      //         100);
+      // final weight =
+      //     double.parse(historyAntrhopoModel.antrhopoModel.last.antrhopoWeight);
+
+      // final imt = weight / height;
+
+      // final double x = double.parse('$imt');
+
+      // final String d = x.toStringAsFixed(1);
+
+      // final double result = double.parse(d);
+
+      // String desc = '-';
+
+      // if (result <= 17.0) {
+      //   desc = 'Sangat Kurus';
+      // } else if (result > 17.0 && result <= 18.4) {
+      //   desc = 'Kurus';
+      // } else if (result > 18.4 && result <= 25.0) {
+      //   desc = 'Normal';
+      // } else if (result > 25.0 && result <= 27.0) {
+      //   desc = 'Kelebihan Berat Badan (Grade 1)';
+      // } else if (result >= 27.0) {
+      //   desc = 'Kelebihan Berat Badan (Grade 2)';
+      // } else {
+      //   desc = 'Keterangan Tidak Ditemukan';
+      // }
+
       return FutureBuilder<List<HistoryAntrhopoModel>?>(
         future: AntrhopoService().fetchAntrhopo(uid: uid),
         builder: (context, snapshot) {
@@ -1108,7 +1141,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           Text(
-                            'Kelebihan Berat Badan (Grade 1)',
+                            '-',
                             style: primaryTextStyle.copyWith(
                               fontSize: 10,
                               fontWeight: bold,
@@ -2283,11 +2316,15 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 15,
               ),
-              hemoglobinSubject(uid: loggedInUser.uid),
+              hemoglobinSubject(
+                uid: loggedInUser.uid,
+              ),
               const SizedBox(
                 height: 15,
               ),
-              knowledgeSubject(uid: loggedInUser.uid),
+              knowledgeSubject(
+                uid: loggedInUser.uid,
+              ),
               const SizedBox(
                 height: 30,
               ),
