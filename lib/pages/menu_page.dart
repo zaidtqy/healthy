@@ -540,7 +540,9 @@ class _MenuPageState extends State<MenuPage> {
 
   Future<void> logout(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const SignInPage()));
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (context) => const SignInPage()),
+      ModalRoute.withName('/'),
+    );
   }
 }

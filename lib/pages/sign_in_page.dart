@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:healthy/pages/sign_up_page.dart';
+// import 'package:healthy/pages/sign_up_page.dart';
 import 'package:healthy/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -237,7 +239,10 @@ class _SignInPageState extends State<SignInPage> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/sign-up');
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => const SignUpPage()),
+                  ModalRoute.withName('/'),
+                );
               },
               child: Text(
                 'Daftar disini',
@@ -290,8 +295,10 @@ class _SignInPageState extends State<SignInPage> {
         pref.setString('password_key', passwordController.text);
 
         Fluttertoast.showToast(msg: "Berhasil Masuk");
-        Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const HomePage()));
+        Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => const HomePage()),
+          ModalRoute.withName('/'),
+        );
       }).catchError((e) {
         Fluttertoast.showToast(msg: e!.message);
       });

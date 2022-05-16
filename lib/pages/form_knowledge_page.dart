@@ -2990,10 +2990,9 @@ class _FormKnowledgeState extends State<FormKnowledge> {
 
       await KnowledgeService().createKnowledge(knowledgeModel);
 
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => const HomePage(),
-        ),
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const HomePage()),
+        ModalRoute.withName('/'),
       );
 
       CoolAlert.show(

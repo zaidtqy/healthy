@@ -969,11 +969,6 @@ class _FormActivityState extends State<FormActivity> {
               actNight: _valAct4 ?? 'Data Kosong',
               otherActNight: other4FormController.text,
               timeNight: minutesAct4Controller.text,
-              // details: ActivityModel(
-              //   activityName: activityName,
-              //   activityTime: activityTime,
-              //   descriptionActivity: descriptionActivity,
-              //   ),
             );
           },
           style: TextButton.styleFrom(
@@ -1159,10 +1154,9 @@ class _FormActivityState extends State<FormActivity> {
       );
       await ActivityService().createActivity(activityModel);
 
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => const HomePage(),
-        ),
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const HomePage()),
+        ModalRoute.withName('/'),
       );
 
       CoolAlert.show(

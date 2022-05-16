@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:healthy/models/information_model.dart';
+import 'package:healthy/pages/home_page.dart';
 // import 'package:healthy/models/user_model.dart';
 // import 'package:healthy/services/information_service.dart';
 import 'package:healthy/theme.dart';
@@ -698,7 +699,10 @@ class _ResultInformationState extends State<ResultInformation> {
             margin: const EdgeInsets.only(top: 30, bottom: 30),
             child: TextButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/home-page');
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => const HomePage()),
+                  ModalRoute.withName('/'),
+                );
               },
               style: TextButton.styleFrom(
                   backgroundColor: primaryColor,
@@ -717,31 +721,6 @@ class _ResultInformationState extends State<ResultInformation> {
         ],
       );
     }
-
-    // Widget backButton() {
-    //   return Container(
-    //     height: 45,
-    //     width: 130,
-    //     margin: const EdgeInsets.only(top: 30, bottom: 30),
-    //     child: TextButton(
-    //       onPressed: () {
-    //         Navigator.pushNamed(context, '/home-page');
-    //       },
-    //       style: TextButton.styleFrom(
-    //           backgroundColor: primaryColor,
-    //           shape: RoundedRectangleBorder(
-    //             borderRadius: BorderRadius.circular(15),
-    //           )),
-    //       child: Text(
-    //         'Kembali',
-    //         style: backgroundTextStyle.copyWith(
-    //           fontSize: 15,
-    //           fontWeight: bold,
-    //         ),
-    //       ),
-    //     ),
-    //   );
-    // }
 
     return Scaffold(
       backgroundColor: backgroundColor,

@@ -1263,10 +1263,9 @@ class _FormInformationState extends State<FormInformation> {
       );
       await InformationService().createInformation(informModel);
 
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => const HomePage(),
-        ),
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const HomePage()),
+        ModalRoute.withName('/'),
       );
 
       CoolAlert.show(

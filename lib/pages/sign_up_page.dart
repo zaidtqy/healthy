@@ -426,7 +426,10 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, '/sign-in');
+              // Navigator.pushNamed(context, '/sign-in');
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => const SignInPage()),
+              );
             },
             child: Text(
               'Masuk disini',

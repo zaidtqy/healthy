@@ -355,10 +355,9 @@ class _FormAntrhopometriState extends State<FormAntrhopometri> {
       );
       await AntrhopoService().createAntrhopo(antrhopoModel);
 
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => const HomePage(),
-        ),
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const HomePage()),
+        ModalRoute.withName('/'),
       );
 
       CoolAlert.show(
