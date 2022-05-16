@@ -365,27 +365,17 @@ class NotifReproduction extends StatelessWidget {
           backgroundColor: fourthColor,
           automaticallyImplyLeading: false,
           elevation: 5,
-          flexibleSpace: SafeArea(
-            child: Row(
-              children: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Image.asset(
-                    'assets/back.png',
-                    width: 20,
-                  ),
-                ),
-                Text(
-                  'Artikel Kesehatan Reproduksi',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 15,
-                    fontWeight: bold,
-                  ),
-                ),
-              ],
+          title: Text(
+            'Artikel Kesehatan Reproduksi',
+            style: primaryTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: bold,
             ),
+          ),
+          leading: IconButton(
+            onPressed: () => Navigator.of(context).pop(context),
+            icon: const Icon(Icons.chevron_left),
+            color: primaryColor,
           ),
         ),
       ),

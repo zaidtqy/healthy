@@ -1159,28 +1159,18 @@ class _FormInformationState extends State<FormInformation> {
         child: AppBar(
           backgroundColor: fourthColor,
           automaticallyImplyLeading: false,
-          elevation: 5,
-          flexibleSpace: SafeArea(
-            child: Row(
-              children: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Image.asset(
-                    'assets/back.png',
-                    width: 20,
-                  ),
-                ),
-                Text(
-                  'Data Informasi Subyek',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 15,
-                    fontWeight: bold,
-                  ),
-                ),
-              ],
+          title: Text(
+            'Data Informasi Subyek',
+            style: primaryTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: bold,
             ),
+          ),
+          elevation: 5,
+          leading: IconButton(
+            onPressed: () => Navigator.of(context).pop(context),
+            icon: const Icon(Icons.chevron_left),
+            color: primaryColor,
           ),
         ),
       ),
