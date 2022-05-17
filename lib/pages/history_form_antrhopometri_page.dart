@@ -22,9 +22,8 @@ class HistoryFormAntrhopometri extends StatefulWidget {
 class _HistoryFormAntrhopometriState extends State<HistoryFormAntrhopometri> {
   @override
   Widget build(BuildContext context) {
-    Widget antrhopometriSubject({
-      required HistoryAntrhopoModel historyAntrhopoModel,
-    }) {
+    Widget antrhopometriSubject(
+        {required HistoryAntrhopoModel historyAntrhopoModel}) {
       final result = Utils.countData(historyAntrhopoModel);
 
       final convertDesc = Utils.converToDesc(result);

@@ -1027,7 +1027,6 @@ class _HomePageState extends State<HomePage> {
             if (snapshot.hasData) {
               if (snapshot.data != null && snapshot.data!.isNotEmpty) {
                 final result = Utils.countData(snapshot.data!.last);
-
                 final convertDesc = Utils.converToDesc(result);
 
                 return Container(
@@ -1315,6 +1314,8 @@ class _HomePageState extends State<HomePage> {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasData) {
               if (snapshot.data != null && snapshot.data!.isNotEmpty) {
+                final result = Utils.getDataAnemia(snapshot.data!.last);
+                final anemia = Utils.descAnemia(result);
                 return Container(
                   width: double.infinity,
                   padding: const EdgeInsets.all(15),
@@ -1372,7 +1373,7 @@ class _HomePageState extends State<HomePage> {
                             width: 10,
                           ),
                           Text(
-                            'Tidak Anemia',
+                            anemia,
                             style: primaryTextStyle.copyWith(
                               fontSize: 20,
                               fontWeight: bold,

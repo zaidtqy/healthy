@@ -1,25 +1,25 @@
 import 'package:healthy/models/antrhopometri_model.dart';
+import 'package:healthy/models/hemoglobin_model.dart';
 
 class Utils {
   static double countData(HistoryAntrhopoModel historyAntrhopoModel) {
     final height = (double.parse(
-                  historyAntrhopoModel.antrhopoModel.last.antrhopoHeight) /
-              100) *
-          (double.parse(
-                  historyAntrhopoModel.antrhopoModel.last.antrhopoHeight) /
-              100);
-      final weight =
-          double.parse(historyAntrhopoModel.antrhopoModel.last.antrhopoWeight);
+                historyAntrhopoModel.antrhopoModel.last.antrhopoHeight) /
+            100) *
+        (double.parse(historyAntrhopoModel.antrhopoModel.last.antrhopoHeight) /
+            100);
+    final weight =
+        double.parse(historyAntrhopoModel.antrhopoModel.last.antrhopoWeight);
 
-      final imt = weight / height;
+    final imt = weight / height;
 
-      final double x = double.parse('$imt');
+    final double x = double.parse('$imt');
 
-      final String d = x.toStringAsFixed(1);
+    final String d = x.toStringAsFixed(1);
 
-      final double result = double.parse(d);
+    final double result = double.parse(d);
 
-      return result;
+    return result;
   }
 
   static String converToDesc(double result) {
@@ -39,5 +39,24 @@ class Utils {
     }
 
     return desc;
+  }
+
+  static int getDataAnemia(HistoryHBModel historyHBModel) {
+    final x = historyHBModel.hbModel.last.hemoglobin;
+    final data = int.parse(x);
+
+    return data;
+  }
+
+  static String descAnemia(int data) {
+    String anemia = '-';
+
+    if (data < 12) {
+      anemia = 'Anemia';
+    } else {
+      anemia = 'Tidak Anemia';
+    }
+
+    return anemia;
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthy/helpers/utils.dart';
 import 'package:healthy/models/hemoglobin_model.dart';
 import 'package:healthy/pages/result_hemoglobin_page.dart';
 import 'package:healthy/theme.dart';
@@ -19,17 +20,8 @@ class _HistoryFormHemoglobinState extends State<HistoryFormHemoglobin> {
   @override
   Widget build(BuildContext context) {
     Widget hemoglobinSubject({required HistoryHBModel historyHBModel}) {
-      final x = historyHBModel.hbModel.last.hemoglobin;
-
-      final data = int.parse(x);
-
-      String anemia = '-';
-
-      if (data < 12) {
-        anemia = 'Anemia';
-      } else {
-        anemia = 'Tidak Anemia';
-      }
+      final result = Utils.getDataAnemia(historyHBModel);
+      final anemia = Utils.descAnemia(result);
 
       return Container(
         width: double.infinity,
