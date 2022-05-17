@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:healthy/helpers/utils.dart';
 import 'package:healthy/models/activity_model.dart';
 import 'package:healthy/models/antrhopometri_model.dart';
 import 'package:healthy/models/hemoglobin_model.dart';
@@ -1019,45 +1020,16 @@ class _HomePageState extends State<HomePage> {
     }
 
     Widget antrhopometriSubject({required String uid}) {
-      // final height = (double.parse(
-      //             historyAntrhopoModel.antrhopoModel.last.antrhopoHeight) /
-      //         100) *
-      //     (double.parse(
-      //             historyAntrhopoModel.antrhopoModel.last.antrhopoHeight) /
-      //         100);
-      // final weight =
-      //     double.parse(historyAntrhopoModel.antrhopoModel.last.antrhopoWeight);
-
-      // final imt = weight / height;
-
-      // final double x = double.parse('$imt');
-
-      // final String d = x.toStringAsFixed(1);
-
-      // final double result = double.parse(d);
-
-      // String desc = '-';
-
-      // if (result <= 17.0) {
-      //   desc = 'Sangat Kurus';
-      // } else if (result > 17.0 && result <= 18.4) {
-      //   desc = 'Kurus';
-      // } else if (result > 18.4 && result <= 25.0) {
-      //   desc = 'Normal';
-      // } else if (result > 25.0 && result <= 27.0) {
-      //   desc = 'Kelebihan Berat Badan (Grade 1)';
-      // } else if (result >= 27.0) {
-      //   desc = 'Kelebihan Berat Badan (Grade 2)';
-      // } else {
-      //   desc = 'Keterangan Tidak Ditemukan';
-      // }
-
       return FutureBuilder<List<HistoryAntrhopoModel>?>(
         future: AntrhopoService().fetchAntrhopo(uid: uid),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasData) {
               if (snapshot.data != null && snapshot.data!.isNotEmpty) {
+                final result = Utils.countData(snapshot.data!.last);
+
+                final convertDesc = Utils.converToDesc(result);
+
                 return Container(
                   width: double.infinity,
                   padding: const EdgeInsets.all(15),
@@ -1141,7 +1113,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           Text(
-                            '-',
+                            convertDesc,
                             style: primaryTextStyle.copyWith(
                               fontSize: 10,
                               fontWeight: bold,

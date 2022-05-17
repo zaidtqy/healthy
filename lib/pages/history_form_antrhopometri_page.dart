@@ -1,6 +1,7 @@
 // ignore_for_file: unused_local_variable
 
 import 'package:flutter/material.dart';
+import 'package:healthy/helpers/utils.dart';
 import 'package:healthy/models/antrhopometri_model.dart';
 import 'package:healthy/pages/result_antrhopometri_page.dart';
 import 'package:healthy/theme.dart';
@@ -24,38 +25,9 @@ class _HistoryFormAntrhopometriState extends State<HistoryFormAntrhopometri> {
     Widget antrhopometriSubject({
       required HistoryAntrhopoModel historyAntrhopoModel,
     }) {
-      final height = (double.parse(
-                  historyAntrhopoModel.antrhopoModel.last.antrhopoHeight) /
-              100) *
-          (double.parse(
-                  historyAntrhopoModel.antrhopoModel.last.antrhopoHeight) /
-              100);
-      final weight =
-          double.parse(historyAntrhopoModel.antrhopoModel.last.antrhopoWeight);
+      final result = Utils.countData(historyAntrhopoModel);
 
-      final imt = weight / height;
-
-      final double x = double.parse('$imt');
-
-      final String d = x.toStringAsFixed(1);
-
-      final double result = double.parse(d);
-
-      String desc = '-';
-
-      if (result <= 17.0) {
-        desc = 'Sangat Kurus';
-      } else if (result > 17.0 && result <= 18.4) {
-        desc = 'Kurus';
-      } else if (result > 18.4 && result <= 25.0) {
-        desc = 'Normal';
-      } else if (result > 25.0 && result <= 27.0) {
-        desc = 'Kelebihan Berat Badan (Grade 1)';
-      } else if (result >= 27.0) {
-        desc = 'Kelebihan Berat Badan (Grade 2)';
-      } else {
-        desc = 'Keterangan Tidak Ditemukan';
-      }
+      final convertDesc = Utils.converToDesc(result);
 
       return Container(
         width: double.infinity,
@@ -144,7 +116,7 @@ class _HistoryFormAntrhopometriState extends State<HistoryFormAntrhopometri> {
                   ),
                 ),
                 Text(
-                  desc,
+                  convertDesc,
                   style: primaryTextStyle.copyWith(
                     fontSize: 10,
                     fontWeight: bold,
