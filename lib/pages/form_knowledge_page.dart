@@ -1,3 +1,5 @@
+// ignore_for_file: null_check_always_fails, unnecessary_null_comparison
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -3018,7 +3020,7 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               textAlign: TextAlign.center,
             ),
             Text(
-              'Pastikan jawaban sudah terisi semua.',
+              'Pastikan jawaban sudah terisi semua',
               style: primaryTextStyle.copyWith(
                 fontSize: 15,
                 fontWeight: regular,

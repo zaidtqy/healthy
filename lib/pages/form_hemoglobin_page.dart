@@ -257,7 +257,7 @@ class _FormHemoglobinState extends State<FormHemoglobin> {
               textAlign: TextAlign.center,
             ),
             Text(
-              'Mohon pastikan tidak ada form yang belum diisi',
+              'Mohon pastikan tidak ada form yang kosong',
               style: primaryTextStyle.copyWith(
                 fontSize: 15,
                 fontWeight: regular,
