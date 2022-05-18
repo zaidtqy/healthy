@@ -10,7 +10,7 @@ import 'package:healthy/pages/form_antrhopometri_page.dart';
 import 'package:healthy/pages/form_hemoglobin_page.dart';
 import 'package:healthy/pages/form_knowledge_page.dart';
 import 'package:healthy/pages/menu_page.dart';
-import 'package:healthy/pages/notifications_page.dart';
+// import 'package:healthy/pages/notifications_page.dart';
 import 'package:healthy/pages/notif_reproduction_page.dart';
 import 'package:healthy/pages/notif_food_page.dart';
 import 'package:healthy/pages/notif_tablets_page.dart';
@@ -28,6 +28,19 @@ import 'package:intl/date_symbol_data_local.dart';
 // import 'package:healthy/pages/result_knowledge_page.dart';
 
 Future<void> main() async {
+//   AwesomeNotifications().initialize(
+//   'resource://drawable/res_notification_app_icon',
+//   [
+//     NotificationChannel(
+//       channelKey: 'basic_channel',
+//       channelName: 'Basic Notifications',
+//       defaultColor: Colors.teal,
+//       importance: NotificationImportance.High,
+//       channelShowBadge: true,
+//     ),
+//   ],
+// );
+
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('id_ID', null)
       .then((_) => runApp(const MyApp()));
@@ -54,7 +67,7 @@ class MyApp extends StatelessWidget {
         '/form-hemoglobin': (context) => const FormHemoglobin(),
         '/form-knowledge': (context) => const FormKnowledge(),
         '/menu-page': (context) => const MenuPage(),
-        '/notifications-page': (context) => const NotificationsPage(),
+        // '/notifications-page': (context) => const NotificationsPage(),
         '/notif-repro': (context) => const NotifReproduction(),
         '/notif-food': (context) => const NotifFood(),
         '/notif-tablets': (context) => const NotifTablets(),

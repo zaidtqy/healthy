@@ -21,12 +21,14 @@ import 'package:healthy/pages/history_form_activity_page.dart';
 import 'package:healthy/pages/history_form_antrhopometri_page.dart';
 import 'package:healthy/pages/history_form_hemoglobin_page.dart';
 import 'package:healthy/pages/history_form_knowledge_page.dart';
+import 'package:healthy/pages/notifications_page.dart';
 import 'package:healthy/pages/result_information_page.dart';
 import 'package:healthy/services/activity_service.dart';
 import 'package:healthy/services/antrhopometri_service.dart';
 import 'package:healthy/services/hemoglobin_service.dart';
 import 'package:healthy/services/information_service.dart';
 import 'package:healthy/services/knowledge_service.dart';
+import 'package:healthy/services/notification_service.dart';
 import 'package:healthy/theme.dart';
 
 class HomePage extends StatefulWidget {
@@ -2191,39 +2193,70 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           actions: [
-            IconButton(
-              onPressed: () async {
-                final List<HistoryNotificationModel>? result =
-                    await Navigator.of(context).pushNamed('/notifications-page')
-                        as List<HistoryNotificationModel>;
-
-                setState(() {
-                  mockHistoryNotificationModel =
-                      result ?? mockHistoryNotificationModel;
-                });
-              },
-              padding: const EdgeInsets.only(right: 25),
-              icon: Badge(
-                badgeContent: Align(
-                  alignment: Alignment.topRight,
-                  child: Text(
-                    mockHistoryNotificationModel
-                        .where((e) => e.isRead == false)
-                        .length
-                        .toString(),
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 10,
-                      fontWeight: bold,
+            FutureBuilder<List<HistoryNotificationModel>?>(
+              future: NotificationService()
+                  .fetchNotification(uid: loggedInUser.uid),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  if (snapshot.hasData) {
+                    return IconButton(
+                      onPressed: () async {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => NotificationsPage(
+                              listNotifModel: snapshot.data!,
+                            ),
+                          ),
+                        );
+                      },
+                      padding: const EdgeInsets.only(right: 25),
+                      icon: Badge(
+                        badgeContent: Align(
+                          alignment: Alignment.topRight,
+                          child: Text(
+                            snapshot.data!
+                                .where((e) => e.isRead == false)
+                                .length
+                                .toString(),
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: bold,
+                            ),
+                          ),
+                        ),
+                        badgeColor: backgroundColor,
+                        child: Icon(
+                          Icons.notifications,
+                          color: primaryColor,
+                          size: 30,
+                        ),
+                      ),
+                    );
+                  }
+                }
+                return IconButton(
+                  onPressed: () {},
+                  padding: const EdgeInsets.only(right: 25),
+                  icon: Badge(
+                    badgeContent: Align(
+                      alignment: Alignment.topRight,
+                      child: Text(
+                        '0',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 10,
+                          fontWeight: bold,
+                        ),
+                      ),
+                    ),
+                    badgeColor: backgroundColor,
+                    child: Icon(
+                      Icons.notifications,
+                      color: primaryColor,
+                      size: 30,
                     ),
                   ),
-                ),
-                badgeColor: backgroundColor,
-                child: Icon(
-                  Icons.notifications,
-                  color: primaryColor,
-                  size: 30,
-                ),
-              ),
+                );
+              },
             ),
           ],
         ),

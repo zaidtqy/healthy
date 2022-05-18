@@ -5,5 +5,6 @@ String activityCollection = 'activity';
 String antrhopoCollection = 'antrhopometri';
 String hbCollection = 'hemoglobin';
 String knowledgeCollection = 'knowledge';
+String notificationCollection = 'notification';
 
 FirebaseFirestore instanceFirestore = FirebaseFirestore.instance;

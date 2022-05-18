@@ -3,11 +3,14 @@ import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:healthy/models/information_model.dart';
+import 'package:healthy/models/notification_model.dart';
 import 'package:healthy/models/user_model.dart';
 import 'package:healthy/pages/home_page.dart';
 import 'package:healthy/services/information_service.dart';
+import 'package:healthy/services/notification_service.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthy/theme.dart';
+import 'package:healthy/utils/utilities.dart';
 import 'package:intl/intl.dart';
 
 class FormInformation extends StatefulWidget {
@@ -1111,44 +1114,87 @@ class _FormInformationState extends State<FormInformation> {
       height: 45,
       width: double.infinity,
       margin: const EdgeInsets.only(top: 30, bottom: 30),
-      child: TextButton(
-        onPressed: () {
-          save(
-            user: UserModel(
-              uid: loggedInUser.uid,
-              name: loggedInUser.name,
-              email: loggedInUser.email,
-              phone: loggedInUser.phone,
+      child: FutureBuilder<HistoryInformModel?>(
+        future: InformationService().fetchInformation(uid: loggedInUser.uid),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.data == null) {
+              return TextButton(
+                onPressed: () {
+                  save(
+                    user: UserModel(
+                      uid: loggedInUser.uid,
+                      name: loggedInUser.name,
+                      email: loggedInUser.email,
+                      phone: loggedInUser.phone,
+                    ),
+                    date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
+                        .format(DateTime.now()),
+                    name: nameController.text,
+                    address: addressController.text,
+                    eduFather: _valEduFather ?? 'Data Kosong',
+                    eduMother: _valEduMother ?? 'Data Kosong',
+                    jobFather: _valJobFather ?? 'Data Kosong',
+                    jobMother: _valJobMother ?? 'Data Kosong',
+                    brothers: brothersController.text,
+                    amount: amountController.text,
+                    income: _valIncome ?? 'Data Kosong',
+                    outcome: _valOutcome ?? 'Data Kosong',
+                    ageTeen: ageTeenController.text,
+                    disease: _valDisease ?? 'Data Kosong',
+                    otherDisease: otherFormController.text,
+                  );
+
+                  notif(
+                    user: UserModel(
+                      uid: loggedInUser.uid,
+                      name: loggedInUser.name,
+                      email: loggedInUser.email,
+                      phone: loggedInUser.phone,
+                    ),
+                    id: createUniqueId().toString(),
+                    logo: 'assets/information.png',
+                    type: 'Kesehatan Reproduksi',
+                    date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
+                        .format(DateTime.now()),
+                    title: 'Cari Tau Tentang Kesehatan Reproduksi, Yuk!',
+                    content:
+                        'Udah tau belum tentang kesehatan reproduksi? kalo belum, Yuk cari tau disini!',
+                    route: 'notif-repro',
+                    isRead: false,
+                  );
+                },
+                style: TextButton.styleFrom(
+                    backgroundColor: primaryColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    )),
+                child: Text(
+                  'Simpan Data',
+                  style: backgroundTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: bold,
+                  ),
+                ),
+              );
+            }
+          }
+          return TextButton(
+            onPressed: null,
+            style: TextButton.styleFrom(
+                backgroundColor: Colors.grey,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                )),
+            child: Text(
+              'Simpan Data',
+              style: backgroundTextStyle.copyWith(
+                fontSize: 15,
+                fontWeight: bold,
+              ),
             ),
-            date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
-                .format(DateTime.now()),
-            name: nameController.text,
-            address: addressController.text,
-            eduFather: _valEduFather ?? 'Data Kosong',
-            eduMother: _valEduMother ?? 'Data Kosong',
-            jobFather: _valJobFather ?? 'Data Kosong',
-            jobMother: _valJobMother ?? 'Data Kosong',
-            brothers: brothersController.text,
-            amount: amountController.text,
-            income: _valIncome ?? 'Data Kosong',
-            outcome: _valOutcome ?? 'Data Kosong',
-            ageTeen: ageTeenController.text,
-            disease: _valDisease ?? 'Data Kosong',
-            otherDisease: otherFormController.text,
           );
         },
-        style: TextButton.styleFrom(
-            backgroundColor: primaryColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            )),
-        child: Text(
-          'Simpan Data',
-          style: backgroundTextStyle.copyWith(
-            fontSize: 15,
-            fontWeight: bold,
-          ),
-        ),
       ),
     );
 
@@ -1304,6 +1350,56 @@ class _FormInformationState extends State<FormInformation> {
         confirmBtnColor: primaryColor,
         confirmBtnTextStyle: TextStyle(color: backgroundColor, fontSize: 18),
       );
+    }
+  }
+
+  void notif({
+    required UserModel user,
+    required String id,
+    required String logo,
+    required String type,
+    required String date,
+    required String title,
+    required String content,
+    required String route,
+    required bool isRead,
+  }) async {
+    if (_formKey.currentState!.validate()) {
+      HistoryNotificationModel notifModel = HistoryNotificationModel(
+          user: user,
+          id: id,
+          logo: logo,
+          type: type,
+          date: date,
+          title: title,
+          content: content,
+          route: route,
+          isRead: isRead);
+      await NotificationService().createNotification(notifModel);
+
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const HomePage()),
+        ModalRoute.withName('/'),
+      );
+
+      CoolAlert.show(
+        context: context,
+        type: CoolAlertType.success,
+        title: " ",
+        widget: Text(
+          'Data Berhasil Disimpan!',
+          style: primaryTextStyle.copyWith(
+            fontSize: 25,
+            fontWeight: semibold,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        confirmBtnText: 'Oke',
+        confirmBtnColor: primaryColor,
+        confirmBtnTextStyle: TextStyle(color: backgroundColor, fontSize: 18),
+      );
+    } else {
+      return null;
     }
   }
 
