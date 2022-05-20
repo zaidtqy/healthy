@@ -1,9 +1,11 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:badges/badges.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:healthy/helpers/notifications.dart';
 import 'package:healthy/helpers/utils.dart';
 import 'package:healthy/models/activity_model.dart';
 import 'package:healthy/models/antrhopometri_model.dart';
@@ -30,6 +32,8 @@ import 'package:healthy/services/information_service.dart';
 import 'package:healthy/services/knowledge_service.dart';
 import 'package:healthy/services/notification_service.dart';
 import 'package:healthy/theme.dart';
+import 'package:healthy/utils/utilities.dart';
+// import 'package:healthy/widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -47,6 +51,44 @@ class _HomePageState extends State<HomePage> {
     // ignore: todo
     // TODO: Implement initState
     super.initState();
+    AwesomeNotifications().isNotificationAllowed().then(
+      (isAllowed) {
+        if (!isAllowed) {
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text('Allow Notifications'),
+              content:
+                  const Text('Our app would like to send you notifications'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text(
+                    'Don\'t Allow',
+                    style: TextStyle(color: Colors.grey, fontSize: 18),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () => AwesomeNotifications()
+                      .requestPermissionToSendNotifications()
+                      .then((_) => Navigator.pop(context)),
+                  child: const Text(
+                    'Allow',
+                    style: TextStyle(
+                      color: Colors.teal,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
+      },
+    );
 
     FirebaseFirestore.instance
         .collection("users")
@@ -160,7 +202,17 @@ class _HomePageState extends State<HomePage> {
               color: fourthColor,
               borderRadius: BorderRadius.circular(15),
             ),
-            child: TextButton(
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(
+                  fourthColor,
+                ),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                ),
+              ),
               onPressed: () {
                 Navigator.pushNamed(context, '/form-information');
               },
@@ -199,7 +251,17 @@ class _HomePageState extends State<HomePage> {
               color: fourthColor,
               borderRadius: BorderRadius.circular(15),
             ),
-            child: TextButton(
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(
+                  fourthColor,
+                ),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                ),
+              ),
               onPressed: () {
                 Navigator.pushNamed(context, '/form-activity');
               },
@@ -238,8 +300,28 @@ class _HomePageState extends State<HomePage> {
               color: fourthColor,
               borderRadius: BorderRadius.circular(15),
             ),
-            child: TextButton(
-              onPressed: () {},
+            child: ElevatedButton(
+              style: ButtonStyle(
+                padding: MaterialStateProperty.all(
+                    const EdgeInsets.symmetric(vertical: 20)),
+                backgroundColor: MaterialStateProperty.all(
+                  fourthColor,
+                ),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                ),
+              ),
+              onLongPress: createDataInformationNotification,
+              onPressed: () async {
+                NotificationWeekAndTime? pickedSchedule =
+                    await pickSchedule(context);
+
+                if (pickedSchedule != null) {
+                  createReminderDataInformasiNotification(pickedSchedule);
+                }
+              },
               child: Image.asset(
                 'assets/cutlery.png',
                 width: 50,
@@ -275,7 +357,17 @@ class _HomePageState extends State<HomePage> {
               color: fourthColor,
               borderRadius: BorderRadius.circular(15),
             ),
-            child: TextButton(
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(
+                  fourthColor,
+                ),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                ),
+              ),
               onPressed: () {
                 Navigator.pushNamed(context, '/form-antrhopometri');
               },
@@ -314,7 +406,17 @@ class _HomePageState extends State<HomePage> {
               color: fourthColor,
               borderRadius: BorderRadius.circular(15),
             ),
-            child: TextButton(
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(
+                  fourthColor,
+                ),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                ),
+              ),
               onPressed: () {
                 Navigator.pushNamed(context, '/form-hemoglobin');
               },
@@ -353,7 +455,17 @@ class _HomePageState extends State<HomePage> {
               color: fourthColor,
               borderRadius: BorderRadius.circular(15),
             ),
-            child: TextButton(
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(
+                  fourthColor,
+                ),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                ),
+              ),
               onPressed: () {
                 Navigator.pushNamed(context, '/form-knowledge');
               },

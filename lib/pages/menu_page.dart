@@ -517,6 +517,94 @@ class _MenuPageState extends State<MenuPage> {
                   ),
                 ),
                 const SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Atur Pengingat',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: bold,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                InkWell(
+                  splashColor: backgroundColor,
+                  onTap: () {},
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(width: 0.5, color: primaryColor),
+                      ),
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Data Aktifitas Fisik',
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 15,
+                                fontWeight: medium,
+                              ),
+                            ),
+                            const Spacer(),
+                            Icon(
+                              Icons.keyboard_arrow_right_rounded,
+                              color: primaryColor,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(width: 0.5, color: primaryColor),
+                      ),
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Data Asupan Subyek',
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 15,
+                                fontWeight: medium,
+                              ),
+                            ),
+                            const Spacer(),
+                            Icon(
+                              Icons.keyboard_arrow_right_rounded,
+                              color: primaryColor,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(
                   height: 60,
                 ),
                 logoutButton(),

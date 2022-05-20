@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:healthy/helpers/notifications.dart';
 import 'package:healthy/models/information_model.dart';
 import 'package:healthy/models/notification_model.dart';
 import 'package:healthy/models/user_model.dart';
@@ -1121,6 +1122,8 @@ class _FormInformationState extends State<FormInformation> {
             if (snapshot.data == null) {
               return TextButton(
                 onPressed: () {
+                  createInformationNotification();
+
                   save(
                     user: UserModel(
                       uid: loggedInUser.uid,
@@ -1154,13 +1157,13 @@ class _FormInformationState extends State<FormInformation> {
                     ),
                     id: createUniqueId().toString(),
                     logo: 'assets/information.png',
-                    type: 'Kesehatan Reproduksi',
+                    type: 'Data Informasi Subyek',
                     date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
                         .format(DateTime.now()),
-                    title: 'Cari Tau Tentang Kesehatan Reproduksi, Yuk!',
+                    title: 'Yeayy! Data Anda Berhasil Disimpan.',
                     content:
-                        'Udah tau belum tentang kesehatan reproduksi? kalo belum, Yuk cari tau disini!',
-                    route: 'notif-repro',
+                        'Terima kasih sudah mengisi data informasi anda. Data berhasil tersimpan dan data anda akan kami gunakan sebagaimana mestinya.',
+                    route: '6',
                     isRead: false,
                   );
                 },

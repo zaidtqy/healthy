@@ -56,7 +56,23 @@ class _NotificationsPageState extends State<NotificationsPage> {
                       });
                     }
 
-                    Navigator.pushNamed(context, '/notif-repro');
+                    if (widget.listNotifModel[index].route == "1") {
+                      Navigator.pushNamed(context, '/notif-repro');
+                    } else if (widget.listNotifModel[index].route == "2") {
+                      Navigator.pushNamed(context, '/notif-food');
+                    } else if (widget.listNotifModel[index].route == "3") {
+                      Navigator.pushNamed(context, '/notif-tablets');
+                    } else if (widget.listNotifModel[index].route == "4") {
+                      Navigator.pushNamed(context, '/notif-activity');
+                    } else if (widget.listNotifModel[index].route == "5") {
+                      Navigator.pushNamed(context, '/notif-prokes');
+                    } else if (widget.listNotifModel[index].route == "6") {
+                      Navigator.pushNamed(context, '/notif-success-inform');
+                    } else {
+                      Navigator.pushNamed(context, '/');
+                    }
+
+                    debugPrint('asda');
                   },
                   child: Container(
                     decoration: BoxDecoration(

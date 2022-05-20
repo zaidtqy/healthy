@@ -1,5 +1,7 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:healthy/pages/notif_success_inform_page.dart';
 import 'package:healthy/pages/splash_page.dart';
 import 'package:healthy/pages/sign_in_page.dart';
 import 'package:healthy/pages/sign_up_page.dart';
@@ -18,6 +20,7 @@ import 'package:healthy/pages/notif_activity_page.dart';
 import 'package:healthy/pages/notif_prokes_page.dart';
 // import 'package:healthy/pages/history_form_activity_page.dart';
 import 'package:healthy/pages/history_form_intake_page.dart';
+import 'package:healthy/theme.dart';
 import 'package:intl/date_symbol_data_local.dart';
 // import 'package:healthy/pages/history_form_antrhopometri_page.dart';
 // import 'package:healthy/pages/history_form_hemoglobin_page.dart';
@@ -28,18 +31,27 @@ import 'package:intl/date_symbol_data_local.dart';
 // import 'package:healthy/pages/result_knowledge_page.dart';
 
 Future<void> main() async {
-//   AwesomeNotifications().initialize(
-//   'resource://drawable/res_notification_app_icon',
-//   [
-//     NotificationChannel(
-//       channelKey: 'basic_channel',
-//       channelName: 'Basic Notifications',
-//       defaultColor: Colors.teal,
-//       importance: NotificationImportance.High,
-//       channelShowBadge: true,
-//     ),
-//   ],
-// );
+  AwesomeNotifications().initialize(
+    'resource://drawable/res_notification_app_icon',
+    [
+      NotificationChannel(
+        channelKey: 'basic_channel',
+        channelName: 'Basic Notifications',
+        defaultColor: primaryColor,
+        importance: NotificationImportance.High,
+        channelShowBadge: true,
+        channelDescription: '',
+      ),
+      NotificationChannel(
+        channelKey: 'scheduled_channel',
+        channelName: 'Scheduled Notifications',
+        defaultColor: primaryColor,
+        importance: NotificationImportance.High,
+        channelShowBadge: true,
+        channelDescription: '',
+      ),
+    ],
+  );
 
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('id_ID', null)
@@ -73,6 +85,7 @@ class MyApp extends StatelessWidget {
         '/notif-tablets': (context) => const NotifTablets(),
         '/notif-activity': (context) => const NotifActivity(),
         '/notif-prokes': (context) => const NotifProkes(),
+        '/notif-success-inform': (context) => const NotifSuccessInform(),
         // '/history-activity': (context) => const HistoryFormActivity(),
         '/history-intake': (context) => const HistoryFormIntake(),
         // '/history-antrhopometri': (context) => const HistoryFormAntrhopometri(),
