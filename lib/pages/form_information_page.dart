@@ -1,8 +1,9 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:healthy/helpers/notifications.dart';
+// import 'package:healthy/helpers/notifications.dart';
 import 'package:healthy/models/information_model.dart';
 import 'package:healthy/models/notification_model.dart';
 import 'package:healthy/models/user_model.dart';
@@ -1122,7 +1123,24 @@ class _FormInformationState extends State<FormInformation> {
             if (snapshot.data == null) {
               return TextButton(
                 onPressed: () {
-                  createInformationNotification();
+                  createInformationNotification(
+                    user: UserModel(
+                      uid: loggedInUser.uid,
+                      name: loggedInUser.name,
+                      email: loggedInUser.email,
+                      phone: loggedInUser.phone,
+                    ),
+                    id: createUniqueId().toString(),
+                    logo: 'assets/information.png',
+                    type: 'Data Informasi Subyek',
+                    date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
+                        .format(DateTime.now()),
+                    title: 'Yeayy! Data Anda Berhasil Disimpan.',
+                    content:
+                        'Terima kasih sudah mengisi data informasi anda. Data berhasil tersimpan dan data anda akan kami gunakan sebagaimana mestinya.',
+                    route: '6',
+                    isRead: false,
+                  );
 
                   save(
                     user: UserModel(
@@ -1146,25 +1164,6 @@ class _FormInformationState extends State<FormInformation> {
                     ageTeen: ageTeenController.text,
                     disease: _valDisease ?? 'Data Kosong',
                     otherDisease: otherFormController.text,
-                  );
-
-                  notif(
-                    user: UserModel(
-                      uid: loggedInUser.uid,
-                      name: loggedInUser.name,
-                      email: loggedInUser.email,
-                      phone: loggedInUser.phone,
-                    ),
-                    id: createUniqueId().toString(),
-                    logo: 'assets/information.png',
-                    type: 'Data Informasi Subyek',
-                    date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
-                        .format(DateTime.now()),
-                    title: 'Yeayy! Data Anda Berhasil Disimpan.',
-                    content:
-                        'Terima kasih sudah mengisi data informasi anda. Data berhasil tersimpan dan data anda akan kami gunakan sebagaimana mestinya.',
-                    route: '6',
-                    isRead: false,
                   );
                 },
                 style: TextButton.styleFrom(
@@ -1356,7 +1355,7 @@ class _FormInformationState extends State<FormInformation> {
     }
   }
 
-  void notif({
+  Future<void> createInformationNotification({
     required UserModel user,
     required String id,
     required String logo,
@@ -1368,6 +1367,13 @@ class _FormInformationState extends State<FormInformation> {
     required bool isRead,
   }) async {
     if (_formKey.currentState!.validate()) {
+      await AwesomeNotifications().createNotification(
+        content: NotificationContent(
+            id: createUniqueId(),
+            channelKey: 'basic_channel',
+            title: 'Data Informasi Anda Berhasil Disimpan!',
+            body: 'Data informasi anda berhasil masuk kedalam database kami.'),
+      );
       HistoryNotificationModel notifModel = HistoryNotificationModel(
           user: user,
           id: id,
@@ -1401,9 +1407,7 @@ class _FormInformationState extends State<FormInformation> {
         confirmBtnColor: primaryColor,
         confirmBtnTextStyle: TextStyle(color: backgroundColor, fontSize: 18),
       );
-    } else {
-      return null;
-    }
+    } else {}
   }
 
   // postDetailsToFirestore() async {

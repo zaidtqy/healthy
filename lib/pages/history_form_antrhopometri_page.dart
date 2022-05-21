@@ -31,7 +31,7 @@ class _HistoryFormAntrhopometriState extends State<HistoryFormAntrhopometri> {
       return Container(
         width: double.infinity,
         padding: const EdgeInsets.all(15),
-        margin: const EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 10, bottom: 10),
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(15),

@@ -20,7 +20,7 @@ class HistoryFormActivity extends StatelessWidget {
       return Container(
         width: double.infinity,
         padding: const EdgeInsets.all(15),
-        margin: const EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 10, bottom: 10),
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(15),
@@ -105,11 +105,15 @@ class HistoryFormActivity extends StatelessWidget {
                     fontWeight: medium,
                   ),
                 ),
-                Text(
-                  historyActivityModel.activityModel.last.activityName,
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 10,
-                    fontWeight: bold,
+                SizedBox(
+                  width: 73,
+                  child: Text(
+                    historyActivityModel.activityModel.last.activityName,
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 10,
+                      fontWeight: bold,
+                    ),
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ],

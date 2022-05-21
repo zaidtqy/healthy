@@ -71,8 +71,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
                     } else {
                       Navigator.pushNamed(context, '/');
                     }
-
-                    debugPrint('asda');
                   },
                   child: Container(
                     decoration: BoxDecoration(

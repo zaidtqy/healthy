@@ -1,12 +1,17 @@
+// import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:healthy/helpers/notifications.dart';
 import 'package:healthy/models/activity_model.dart';
+// import 'package:healthy/models/notification_model.dart';
 import 'package:healthy/models/user_model.dart';
 import 'package:healthy/pages/home_page.dart';
 import 'package:healthy/services/activity_service.dart';
+// import 'package:healthy/services/notification_service.dart';
 import 'package:healthy/theme.dart';
+// import 'package:healthy/utils/utilities.dart';
 import 'package:intl/intl.dart';
 
 class FormActivity extends StatefulWidget {
@@ -948,6 +953,30 @@ class _FormActivityState extends State<FormActivity> {
         margin: const EdgeInsets.only(top: 30, bottom: 30),
         child: TextButton(
           onPressed: () {
+            // createActivityNotification1(
+            //   user: UserModel(
+            //     uid: loggedInUser.uid,
+            //     name: loggedInUser.name,
+            //     email: loggedInUser.email,
+            //     phone: loggedInUser.phone,
+            //   ),
+            //   id: createUniqueId().toString(),
+            //   logo: 'assets/information.png',
+            //   type: 'Data Aktifitas Subyek',
+            //   date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
+            //       .format(DateTime.now()),
+            //   title: 'Selamat Pagi! Yuk Beraktifitas Bestie ~',
+            //   content:
+            //       'Abis bangun tidur jangan tidur lagi kawan. Isi pagi hari mu dengan kegiatan yang bermanfaat ya!',
+            //   route: '4',
+            //   isRead: false,
+            // );
+
+            createActivityNotification1();
+            createActivityNotification2();
+            createActivityNotification3();
+            createActivityNotification4();
+
             save(
               user: UserModel(
                 uid: loggedInUser.uid,
@@ -1089,6 +1118,76 @@ class _FormActivityState extends State<FormActivity> {
     );
   }
 
+  // Future<void> createActivityNotification1({
+  //   required UserModel user,
+  //   required String id,
+  //   required String logo,
+  //   required String type,
+  //   required String date,
+  //   required String title,
+  //   required String content,
+  //   required String route,
+  //   required bool isRead,
+  // }) async {
+  //   DateTime now = DateTime.now();
+  //   String formatTime = DateFormat('HH:MM').format(now);
+  //   if (_formKey.currentState!.validate()) {
+  //     await AwesomeNotifications().createNotification(
+  //       content: NotificationContent(
+  //         id: createUniqueId(),
+  //         channelKey: 'basic_channel',
+  //         title: 'Selamat Pagi! Yuk Beraktifitas Bestie ~',
+  //         body:
+  //             'Abis bangun tidur jangan tidur lagi kawan. Isi pagi hari mu dengan kegiatan yang bermanfaat ya!',
+  //       ),
+  //       schedule: NotificationCalendar(
+  //         // weekday: notificationSchedule.dayOfTheWeek,
+  //         hour: 22,
+  //         minute: 50,
+  //         second: 0,
+  //         millisecond: 0,
+  //         repeats: true,
+  //       ),
+  //     );
+
+  //     HistoryNotificationModel notifModel = HistoryNotificationModel(
+  //       user: user,
+  //       id: id,
+  //       logo: logo,
+  //       type: type,
+  //       date: date,
+  //       title: title,
+  //       content: content,
+  //       route: route,
+  //       isRead: isRead,
+  //     );
+
+  //     await NotificationService().createNotification(notifModel);
+
+  //     Navigator.of(context).pushAndRemoveUntil(
+  //       MaterialPageRoute(builder: (context) => const HomePage()),
+  //       ModalRoute.withName('/'),
+  //     );
+
+  //     CoolAlert.show(
+  //       context: context,
+  //       type: CoolAlertType.success,
+  //       title: " ",
+  //       widget: Text(
+  //         'Data Berhasil Disimpan!',
+  //         style: primaryTextStyle.copyWith(
+  //           fontSize: 25,
+  //           fontWeight: semibold,
+  //         ),
+  //         textAlign: TextAlign.center,
+  //       ),
+  //       confirmBtnText: 'Oke',
+  //       confirmBtnColor: primaryColor,
+  //       confirmBtnTextStyle: TextStyle(color: backgroundColor, fontSize: 18),
+  //     );
+  //   } else {}
+  // }
+
   void save({
     required UserModel user,
     required String date,
@@ -1166,6 +1265,10 @@ class _FormActivityState extends State<FormActivity> {
         confirmBtnTextStyle: TextStyle(color: backgroundColor, fontSize: 18),
       );
     } else {
+      DateTime now = DateTime.now();
+      String formatTime = DateFormat('HH:MM').format(now);
+      debugPrint(formatTime);
+
       return CoolAlert.show(
         barrierDismissible: false,
         context: context,

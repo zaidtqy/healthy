@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:healthy/helpers/notifications.dart';
 import 'package:healthy/models/user_model.dart';
 import 'package:healthy/pages/sign_in_page.dart';
 import 'package:healthy/theme.dart';
@@ -17,6 +19,13 @@ class MenuPage extends StatefulWidget {
 class _MenuPageState extends State<MenuPage> {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel(uid: '1234');
+
+  bool isSwitched = false;
+
+  Future<bool?> switchSave() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    return sharedPreferences.getBool("isSwitched");
+  }
 
   @override
   void initState() {
@@ -329,7 +338,7 @@ class _MenuPageState extends State<MenuPage> {
           horizontal: defaultMargin,
         ),
         child: ListView(
-          children: [
+          children: <Widget>[
             const SizedBox(
               height: 60,
             ),
@@ -523,7 +532,7 @@ class _MenuPageState extends State<MenuPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      'Atur Pengingat',
+                      'Pengaturan Notifikasi',
                       style: primaryTextStyle.copyWith(
                         fontSize: 15,
                         fontWeight: bold,
@@ -534,9 +543,7 @@ class _MenuPageState extends State<MenuPage> {
                 const SizedBox(
                   height: 15,
                 ),
-                InkWell(
-                  splashColor: backgroundColor,
-                  onTap: () {},
+                SizedBox(
                   child: Container(
                     decoration: BoxDecoration(
                       border: Border(
@@ -546,54 +553,47 @@ class _MenuPageState extends State<MenuPage> {
                     child: Column(
                       children: [
                         Row(
-                          children: [
+                          children: <Widget>[
                             Text(
-                              'Data Aktifitas Fisik',
+                              'Aktifkan Semua Notifikasi',
                               style: primaryTextStyle.copyWith(
                                 fontSize: 15,
                                 fontWeight: medium,
                               ),
                             ),
                             const Spacer(),
-                            Icon(
-                              Icons.keyboard_arrow_right_rounded,
-                              color: primaryColor,
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(width: 0.5, color: primaryColor),
-                      ),
-                    ),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              'Data Asupan Subyek',
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            const Spacer(),
-                            Icon(
-                              Icons.keyboard_arrow_right_rounded,
-                              color: primaryColor,
+                            FutureBuilder<bool?>(
+                              future: switchSave(),
+                              builder: (context, _snapshot) {
+                                return Switch(
+                                  value: _snapshot.data ?? false,
+                                  onChanged: (value) {
+                                    save(value);
+                                    if (value) {
+                                      setState(() {
+                                        Fluttertoast.showToast(
+                                          msg: 'Semua Notifikasi Diaktifkan',
+                                        );
+                                        createActivityNotification1();
+                                        createActivityNotification2();
+                                        createActivityNotification3();
+                                        createActivityNotification4();
+                                        createActivityNotification();
+                                        testNotification();
+                                      });
+                                    } else {
+                                      setState(() {
+                                        Fluttertoast.showToast(
+                                          msg: 'Semua Notifikasi Dimatikan',
+                                        );
+                                        cancelScheduledNotifications();
+                                      });
+                                    }
+                                  },
+                                  activeTrackColor: fourthColor,
+                                  activeColor: primaryColor,
+                                );
+                              },
                             ),
                           ],
                         ),
@@ -614,6 +614,29 @@ class _MenuPageState extends State<MenuPage> {
         ),
       ),
     );
+  }
+
+  void toggleSwitch(bool value) {
+    if (value) {
+      setState(() {
+        isSwitched = true;
+      });
+      isSwitched = value;
+    } else {
+      setState(() {
+        isSwitched = false;
+      });
+      isSwitched = value;
+      Fluttertoast.showToast(
+        msg: 'Semua Notifikasi Dimatikan',
+      );
+      cancelScheduledNotifications();
+    }
+  }
+
+  void save(bool value) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    await sharedPreferences.setBool('isSwitched', value);
   }
 
   Future<void> logout(BuildContext context) async {

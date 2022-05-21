@@ -32,7 +32,7 @@ import 'package:healthy/services/information_service.dart';
 import 'package:healthy/services/knowledge_service.dart';
 import 'package:healthy/services/notification_service.dart';
 import 'package:healthy/theme.dart';
-import 'package:healthy/utils/utilities.dart';
+// import 'package:healthy/utils/utilities.dart';
 // import 'package:healthy/widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {
@@ -313,15 +313,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              onLongPress: createDataInformationNotification,
-              onPressed: () async {
-                NotificationWeekAndTime? pickedSchedule =
-                    await pickSchedule(context);
-
-                if (pickedSchedule != null) {
-                  createReminderDataInformasiNotification(pickedSchedule);
-                }
-              },
+              onPressed: cancelScheduledNotifications,
               child: Image.asset(
                 'assets/cutlery.png',
                 width: 50,
@@ -544,7 +536,9 @@ class _HomePageState extends State<HomePage> {
                           Text(
                             snapshot.data!.name,
                             style: primaryTextStyle.copyWith(
-                                fontSize: 20, fontWeight: bold),
+                              fontSize: 20,
+                              fontWeight: bold,
+                            ),
                           ),
                         ],
                       ),
@@ -764,7 +758,7 @@ class _HomePageState extends State<HomePage> {
                       Row(
                         children: [
                           Text(
-                            'Data Aktivitas Fisik Subyek',
+                            'Data Aktifitas Fisik Subyek',
                             style: primaryTextStyle.copyWith(
                               fontSize: 10,
                               fontWeight: medium,
@@ -795,7 +789,9 @@ class _HomePageState extends State<HomePage> {
                           Text(
                             '${snapshot.data!.last.activityModel.last.activityTime} Menit',
                             style: primaryTextStyle.copyWith(
-                                fontSize: 20, fontWeight: bold),
+                              fontSize: 20,
+                              fontWeight: bold,
+                            ),
                           ),
                         ],
                       ),
@@ -836,11 +832,16 @@ class _HomePageState extends State<HomePage> {
                               fontWeight: medium,
                             ),
                           ),
-                          Text(
-                            snapshot.data!.last.activityModel.last.activityName,
-                            style: primaryTextStyle.copyWith(
-                              fontSize: 10,
-                              fontWeight: bold,
+                          SizedBox(
+                            width: 75,
+                            child: Text(
+                              snapshot
+                                  .data!.last.activityModel.last.activityName,
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 10,
+                                fontWeight: bold,
+                              ),
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ],
