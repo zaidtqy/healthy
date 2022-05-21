@@ -972,11 +972,6 @@ class _FormActivityState extends State<FormActivity> {
             //   isRead: false,
             // );
 
-            createActivityNotification1();
-            createActivityNotification2();
-            createActivityNotification3();
-            createActivityNotification4();
-
             save(
               user: UserModel(
                 uid: loggedInUser.uid,

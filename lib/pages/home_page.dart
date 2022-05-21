@@ -32,8 +32,6 @@ import 'package:healthy/services/information_service.dart';
 import 'package:healthy/services/knowledge_service.dart';
 import 'package:healthy/services/notification_service.dart';
 import 'package:healthy/theme.dart';
-// import 'package:healthy/utils/utilities.dart';
-// import 'package:healthy/widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -143,7 +141,53 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 10,
                           fontWeight: bold,
                         ),
-                        duration: const Duration(milliseconds: 10000),
+                        fadeInEnd: 0.1,
+                        fadeOutBegin: 0.2,
+                        duration: const Duration(milliseconds: 15000),
+                        textAlign: TextAlign.start,
+                      ),
+                      FadeAnimatedText(
+                        'MENJAGA KESEHATAN REPRODUKSI',
+                        textStyle: primaryTextStyle.copyWith(
+                          fontSize: 10,
+                          fontWeight: bold,
+                        ),
+                        fadeInEnd: 0.1,
+                        fadeOutBegin: 0.2,
+                        duration: const Duration(milliseconds: 15000),
+                        textAlign: TextAlign.start,
+                      ),
+                      FadeAnimatedText(
+                        'POLA MAKAN SEHAT SEIMBANG',
+                        textStyle: primaryTextStyle.copyWith(
+                          fontSize: 10,
+                          fontWeight: bold,
+                        ),
+                        fadeInEnd: 0.1,
+                        fadeOutBegin: 0.2,
+                        duration: const Duration(milliseconds: 15000),
+                        textAlign: TextAlign.start,
+                      ),
+                      FadeAnimatedText(
+                        'TABLET TAMBAH DARAH',
+                        textStyle: primaryTextStyle.copyWith(
+                          fontSize: 10,
+                          fontWeight: bold,
+                        ),
+                        fadeInEnd: 0.1,
+                        fadeOutBegin: 0.2,
+                        duration: const Duration(milliseconds: 15000),
+                        textAlign: TextAlign.start,
+                      ),
+                      FadeAnimatedText(
+                        'AKTIFITAS FISIK SETIAP HARI',
+                        textStyle: primaryTextStyle.copyWith(
+                          fontSize: 10,
+                          fontWeight: bold,
+                        ),
+                        fadeInEnd: 0.1,
+                        fadeOutBegin: 0.2,
+                        duration: const Duration(milliseconds: 15000),
                         textAlign: TextAlign.start,
                       ),
                       FadeAnimatedText(
@@ -152,7 +196,9 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 10,
                           fontWeight: bold,
                         ),
-                        duration: const Duration(milliseconds: 10000),
+                        fadeInEnd: 0.1,
+                        fadeOutBegin: 0.2,
+                        duration: const Duration(milliseconds: 15000),
                         textAlign: TextAlign.start,
                       ),
                     ],
@@ -169,7 +215,53 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 10,
                           fontWeight: regular,
                         ),
-                        duration: const Duration(milliseconds: 10000),
+                        fadeInEnd: 0.1,
+                        fadeOutBegin: 0.2,
+                        duration: const Duration(milliseconds: 15000),
+                        textAlign: TextAlign.justify,
+                      ),
+                      FadeAnimatedText(
+                        'Menjaga dengan keadaan sehat baik secara fisik, psikis dan sosial yang berkaitan dengan sistem, fungsi dan proses reproduksi pada laki-laki dan perempuan agar dapat bertanggung jawab.',
+                        textStyle: primaryTextStyle.copyWith(
+                          fontSize: 10,
+                          fontWeight: regular,
+                        ),
+                        fadeInEnd: 0.1,
+                        fadeOutBegin: 0.2,
+                        duration: const Duration(milliseconds: 15000),
+                        textAlign: TextAlign.justify,
+                      ),
+                      FadeAnimatedText(
+                        'Ada sepuluh (10) pedoman gizi seimbang dan panduan porsi sekali makan agar mendapatkan keseimbangan gizi.',
+                        textStyle: primaryTextStyle.copyWith(
+                          fontSize: 10,
+                          fontWeight: regular,
+                        ),
+                        fadeInEnd: 0.1,
+                        fadeOutBegin: 0.2,
+                        duration: const Duration(milliseconds: 15000),
+                        textAlign: TextAlign.justify,
+                      ),
+                      FadeAnimatedText(
+                        'Mengkonsumsi tablet tambah darah agar tidak anemia bagi para remaja putra maupun remaja putri.',
+                        textStyle: primaryTextStyle.copyWith(
+                          fontSize: 10,
+                          fontWeight: regular,
+                        ),
+                        fadeInEnd: 0.1,
+                        fadeOutBegin: 0.2,
+                        duration: const Duration(milliseconds: 15000),
+                        textAlign: TextAlign.justify,
+                      ),
+                      FadeAnimatedText(
+                        'Menjaga kesehatan dengan melakukan kegitan olahraga secara rutin selama 30 menit setiap hari.',
+                        textStyle: primaryTextStyle.copyWith(
+                          fontSize: 10,
+                          fontWeight: regular,
+                        ),
+                        fadeInEnd: 0.1,
+                        fadeOutBegin: 0.2,
+                        duration: const Duration(milliseconds: 15000),
                         textAlign: TextAlign.justify,
                       ),
                       FadeAnimatedText(
@@ -178,7 +270,9 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 10,
                           fontWeight: regular,
                         ),
-                        duration: const Duration(milliseconds: 10000),
+                        fadeInEnd: 0.1,
+                        fadeOutBegin: 0.2,
+                        duration: const Duration(milliseconds: 15000),
                         textAlign: TextAlign.justify,
                       ),
                     ],

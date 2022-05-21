@@ -12,7 +12,7 @@ Future<void> createInformationNotification() async {
   );
 }
 
-Future<void> createActivityNotification1() async {
+Future<void> scheduledActivityNotification1() async {
   await AwesomeNotifications().createNotification(
     content: NotificationContent(
       id: createUniqueId(),
@@ -33,7 +33,7 @@ Future<void> createActivityNotification1() async {
   );
 }
 
-Future<void> createActivityNotification2() async {
+Future<void> scheduledActivityNotification2() async {
   await AwesomeNotifications().createNotification(
     content: NotificationContent(
       id: createUniqueId(),
@@ -52,7 +52,7 @@ Future<void> createActivityNotification2() async {
   );
 }
 
-Future<void> createActivityNotification3() async {
+Future<void> scheduledActivityNotification3() async {
   await AwesomeNotifications().createNotification(
     content: NotificationContent(
       id: createUniqueId(),
@@ -72,7 +72,7 @@ Future<void> createActivityNotification3() async {
   );
 }
 
-Future<void> createActivityNotification4() async {
+Future<void> scheduledActivityNotification4() async {
   await AwesomeNotifications().createNotification(
     content: NotificationContent(
       id: createUniqueId(),
@@ -92,7 +92,7 @@ Future<void> createActivityNotification4() async {
   );
 }
 
-Future<void> createActivityNotification() async {
+Future<void> scheduledActivityNotification() async {
   await AwesomeNotifications().createNotification(
     content: NotificationContent(
       id: createUniqueId(),
@@ -109,6 +109,19 @@ Future<void> createActivityNotification() async {
       second: 0,
       millisecond: 0,
       repeats: true,
+    ),
+  );
+}
+
+Future<void> createAntrhopometriNotification() async {
+  await AwesomeNotifications().createNotification(
+    content: NotificationContent(
+      id: createUniqueId(),
+      channelKey: 'basic_channel',
+      title:
+          '${Emojis.office_clipboard} Data Antrhopometri Berhasil Tersimpan!',
+      body:
+          'Data tinggi badan, berat badan, dan lingkar lengan atas sudah berhasil tersimpan ke dalam database kami.',
     ),
   );
 }
@@ -134,16 +147,6 @@ Future<void> testNotification() async {
 
 Future<void> cancelScheduledNotifications() async {
   await AwesomeNotifications().cancelAllSchedules();
-}
-
-Future<void> createAntrhopometriNotification() async {
-  await AwesomeNotifications().createNotification(
-    content: NotificationContent(
-        id: createUniqueId(),
-        channelKey: 'basic_channel',
-        title: 'Data Antrhopometri Anda Berhasil Disimpan!',
-        body: 'Data Antrhopometri anda berhasil masuk kedalam database kami.'),
-  );
 }
 
 Future<void> createHemoglobinNotification() async {

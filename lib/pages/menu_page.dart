@@ -574,11 +574,11 @@ class _MenuPageState extends State<MenuPage> {
                                         Fluttertoast.showToast(
                                           msg: 'Semua Notifikasi Diaktifkan',
                                         );
-                                        createActivityNotification1();
-                                        createActivityNotification2();
-                                        createActivityNotification3();
-                                        createActivityNotification4();
-                                        createActivityNotification();
+                                        scheduledActivityNotification1();
+                                        scheduledActivityNotification2();
+                                        scheduledActivityNotification3();
+                                        scheduledActivityNotification4();
+                                        scheduledActivityNotification();
                                         testNotification();
                                       });
                                     } else {
