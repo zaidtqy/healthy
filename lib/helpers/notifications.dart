@@ -113,6 +113,19 @@ Future<void> scheduledActivityNotification() async {
   );
 }
 
+Future<void> createActivityNotification() async {
+  await AwesomeNotifications().createNotification(
+    content: NotificationContent(
+      id: createUniqueId(),
+      channelKey: 'basic_channel',
+      title:
+          '${Emojis.body_flexed_biceps} Data Aktifitas Kamu Sudah Kami Rekam!',
+      body:
+          'Terima kasih sudah mengisi data aktifitas harian kamu. Tetap semangat menjalani aktifitas besok yaa',
+    ),
+  );
+}
+
 Future<void> createAntrhopometriNotification() async {
   await AwesomeNotifications().createNotification(
     content: NotificationContent(
@@ -123,6 +136,30 @@ Future<void> createAntrhopometriNotification() async {
       body:
           'Data tinggi badan, berat badan, dan lingkar lengan atas sudah berhasil tersimpan ke dalam database kami.',
     ),
+  );
+}
+
+Future<void> createHemoglobinNotification() async {
+  await AwesomeNotifications().createNotification(
+    content: NotificationContent(
+        id: createUniqueId(),
+        channelKey: 'basic_channel',
+        title:
+            '${Emojis.medical_drop_of_blood} Halo Bestie! Data Hemoglobin Kamu Berhasil Disimpan Yaa ~',
+        body:
+            'Kamu bisa liat kumpulan data hemoglobin kamu di Riwayat Data Hemoglobin.'),
+  );
+}
+
+Future<void> createKnowledgeNotification() async {
+  await AwesomeNotifications().createNotification(
+    content: NotificationContent(
+        id: createUniqueId(),
+        channelKey: 'basic_channel',
+        title:
+            '${Emojis.smile_smiling_face_with_smiling_eyes} Terima Kasih Sudah Menjawab Pertanyaannya!',
+        body:
+            'Jawaban kamu sudah berhasil kami simpan! Terus tingkatkan pengetahuan mu tentang kesehatan yaa'),
   );
 }
 
@@ -147,48 +184,4 @@ Future<void> testNotification() async {
 
 Future<void> cancelScheduledNotifications() async {
   await AwesomeNotifications().cancelAllSchedules();
-}
-
-Future<void> createHemoglobinNotification() async {
-  await AwesomeNotifications().createNotification(
-    content: NotificationContent(
-        id: createUniqueId(),
-        channelKey: 'basic_channel',
-        title: 'Data Hemoglobin Anda Berhasil Disimpan!',
-        body: 'Data Hemoglobin anda berhasil masuk kedalam database kami.'),
-  );
-}
-
-Future<void> createKnowledgeNotification() async {
-  await AwesomeNotifications().createNotification(
-    content: NotificationContent(
-        id: createUniqueId(),
-        channelKey: 'basic_channel',
-        title: 'Jawaban Anda Berhasil Disimpan!',
-        body: 'Jawaban anda berhasil masuk kedalam database kami.'),
-  );
-}
-
-Future<void> createDataInformationNotification() async {
-  await AwesomeNotifications().createNotification(
-    content: NotificationContent(
-      id: createUniqueId(),
-      channelKey: 'basic_channel',
-      title: 'Data Asupan Subyek Belum Tersedia!',
-      body:
-          'Data Asupan Subyek masih dalam pengembangan, mohon tunggu sampai proses pengembangan selesai.',
-    ),
-  );
-}
-
-Future<void> createReminderDataInformasiNotification() async {
-  await AwesomeNotifications().createNotification(
-    content: NotificationContent(
-      id: createUniqueId(),
-      channelKey: 'scheduled_channel',
-      title: '${Emojis.wheater_droplet} Pengingat Notifikasi Berhasil!',
-      body: 'Pengingat notifikasi berhasil dibuat.',
-      locked: false,
-    ),
-  );
 }

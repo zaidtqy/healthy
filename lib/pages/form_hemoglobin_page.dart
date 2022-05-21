@@ -1,13 +1,17 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:healthy/models/hemoglobin_model.dart';
+import 'package:healthy/models/notification_model.dart';
 import 'package:healthy/models/user_model.dart';
 // import 'package:healthy/pages/history_form_hemoglobin_page.dart';
 import 'package:healthy/pages/home_page.dart';
 import 'package:healthy/services/hemoglobin_service.dart';
+import 'package:healthy/services/notification_service.dart';
 import 'package:healthy/theme.dart';
+import 'package:healthy/utils/utilities.dart';
 import 'package:intl/intl.dart';
 
 class FormHemoglobin extends StatefulWidget {
@@ -131,6 +135,25 @@ class _FormHemoglobinState extends State<FormHemoglobin> {
         ),
         child: TextButton(
           onPressed: () {
+            createHemoglobinNotification(
+              user: UserModel(
+                uid: loggedInUser.uid,
+                name: loggedInUser.name,
+                email: loggedInUser.email,
+                phone: loggedInUser.phone,
+              ),
+              id: createUniqueId().toString(),
+              logo: 'assets/information.png',
+              type: 'Konsumsi Tablet Tambah Darah',
+              date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
+                  .format(DateTime.now()),
+              title: 'Bestie, Yuk Tetap Sehat! BEBAS ANEMIA!',
+              content:
+                  'Cocok nih buat kamu yang pengen tau tentang anemia, baca selengkapnya disini ya!',
+              route: '3',
+              isRead: false,
+            );
+
             save(
               user: UserModel(
                 uid: loggedInUser.uid,
@@ -271,5 +294,62 @@ class _FormHemoglobinState extends State<FormHemoglobin> {
         confirmBtnTextStyle: TextStyle(color: backgroundColor, fontSize: 18),
       );
     }
+  }
+
+  Future<void> createHemoglobinNotification({
+    required UserModel user,
+    required String id,
+    required String logo,
+    required String type,
+    required String date,
+    required String title,
+    required String content,
+    required String route,
+    required bool isRead,
+  }) async {
+    if (_formKey.currentState!.validate()) {
+      await AwesomeNotifications().createNotification(
+        content: NotificationContent(
+            id: createUniqueId(),
+            channelKey: 'basic_channel',
+            title:
+                '${Emojis.medical_drop_of_blood} Halo Bestie! Data Hemoglobin Kamu Berhasil Disimpan Yaa ~',
+            body:
+                'Kamu bisa liat kumpulan data hemoglobin kamu di Riwayat Data Hemoglobin.'),
+      );
+      HistoryNotificationModel notifModel = HistoryNotificationModel(
+          user: user,
+          id: id,
+          logo: logo,
+          type: type,
+          date: date,
+          title: title,
+          content: content,
+          route: route,
+          isRead: isRead);
+      await NotificationService().createNotification(notifModel);
+
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const HomePage()),
+        ModalRoute.withName('/'),
+      );
+
+      CoolAlert.show(
+        context: context,
+        type: CoolAlertType.success,
+        title: " ",
+        widget: Text(
+          'Data Berhasil Disimpan!',
+          style: primaryTextStyle.copyWith(
+            fontSize: 25,
+            fontWeight: semibold,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        confirmBtnText: 'Oke',
+        confirmBtnColor: primaryColor,
+        confirmBtnTextStyle: TextStyle(color: backgroundColor, fontSize: 18),
+      );
+    } else {}
   }
 }

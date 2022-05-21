@@ -1,12 +1,16 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:healthy/models/antrhopometri_model.dart';
+import 'package:healthy/models/notification_model.dart';
 import 'package:healthy/models/user_model.dart';
 import 'package:healthy/pages/home_page.dart';
 import 'package:healthy/services/antrhopometri_service.dart';
+import 'package:healthy/services/notification_service.dart';
 import 'package:healthy/theme.dart';
+import 'package:healthy/utils/utilities.dart';
 import 'package:intl/intl.dart';
 
 class FormAntrhopometri extends StatefulWidget {
@@ -250,6 +254,25 @@ class _FormAntrhopometriState extends State<FormAntrhopometri> {
         margin: const EdgeInsets.only(top: 30),
         child: TextButton(
           onPressed: () {
+            createAntrhopometriNotification(
+              user: UserModel(
+                uid: loggedInUser.uid,
+                name: loggedInUser.name,
+                email: loggedInUser.email,
+                phone: loggedInUser.phone,
+              ),
+              id: createUniqueId().toString(),
+              logo: 'assets/information.png',
+              type: 'Data Antrhopometri',
+              date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
+                  .format(DateTime.now()),
+              title: 'Data Antrhopometri Kamu Sudah Kami Simpan',
+              content:
+                  'Untuk menjaga berat badan dan kondisi fisik kamu, yuk coba baca panduan makan sehat. Klik disini ya!',
+              route: '2',
+              isRead: false,
+            );
+
             save(
               user: UserModel(
                 uid: loggedInUser.uid,
@@ -397,5 +420,62 @@ class _FormAntrhopometriState extends State<FormAntrhopometri> {
         confirmBtnTextStyle: TextStyle(color: backgroundColor, fontSize: 18),
       );
     }
+  }
+
+  Future<void> createAntrhopometriNotification({
+    required UserModel user,
+    required String id,
+    required String logo,
+    required String type,
+    required String date,
+    required String title,
+    required String content,
+    required String route,
+    required bool isRead,
+  }) async {
+    if (_formKey.currentState!.validate()) {
+      await AwesomeNotifications().createNotification(
+        content: NotificationContent(
+            id: createUniqueId(),
+            channelKey: 'basic_channel',
+            title:
+                '${Emojis.office_clipboard} Data Antrhopometri Berhasil Tersimpan!',
+            body:
+                'Data tinggi badan, berat badan, dan lingkar lengan atas sudah berhasil tersimpan ke dalam database kami.'),
+      );
+      HistoryNotificationModel notifModel = HistoryNotificationModel(
+          user: user,
+          id: id,
+          logo: logo,
+          type: type,
+          date: date,
+          title: title,
+          content: content,
+          route: route,
+          isRead: isRead);
+      await NotificationService().createNotification(notifModel);
+
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const HomePage()),
+        ModalRoute.withName('/'),
+      );
+
+      CoolAlert.show(
+        context: context,
+        type: CoolAlertType.success,
+        title: " ",
+        widget: Text(
+          'Data Berhasil Disimpan!',
+          style: primaryTextStyle.copyWith(
+            fontSize: 25,
+            fontWeight: semibold,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        confirmBtnText: 'Oke',
+        confirmBtnColor: primaryColor,
+        confirmBtnTextStyle: TextStyle(color: backgroundColor, fontSize: 18),
+      );
+    } else {}
   }
 }

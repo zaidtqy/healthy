@@ -1,14 +1,18 @@
 // ignore_for_file: null_check_always_fails, unnecessary_null_comparison
 
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:healthy/models/knowledge_model.dart';
+import 'package:healthy/models/notification_model.dart';
 import 'package:healthy/models/user_model.dart';
 import 'package:healthy/pages/home_page.dart';
 import 'package:healthy/services/knowledge_service.dart';
+import 'package:healthy/services/notification_service.dart';
 import 'package:healthy/theme.dart';
+import 'package:healthy/utils/utilities.dart';
 import 'package:intl/intl.dart';
 
 class FormKnowledge extends StatefulWidget {
@@ -2781,6 +2785,25 @@ class _FormKnowledgeState extends State<FormKnowledge> {
       margin: const EdgeInsets.only(top: 30, bottom: 30),
       child: TextButton(
         onPressed: () {
+          createKnowledgeNotification(
+            user: UserModel(
+              uid: loggedInUser.uid,
+              name: loggedInUser.name,
+              email: loggedInUser.email,
+              phone: loggedInUser.phone,
+            ),
+            id: createUniqueId().toString(),
+            logo: 'assets/information.png',
+            type: 'Pengetahuan Kesehatan Reproduksi',
+            date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
+                .format(DateTime.now()),
+            title: 'Tambah Pengetahuan Tentang Kesehatan Reproduksi, Yuk!',
+            content:
+                'Udah tau belum tentang kesehatan reproduksi apa saja yang perlu diperhatikan? kalo belum, Yuk cari tau disini!',
+            route: '1',
+            isRead: false,
+          );
+
           save(
             user: UserModel(
               uid: loggedInUser.uid,
@@ -3034,5 +3057,63 @@ class _FormKnowledgeState extends State<FormKnowledge> {
         confirmBtnTextStyle: TextStyle(color: backgroundColor, fontSize: 18),
       );
     }
+  }
+
+  Future<void> createKnowledgeNotification({
+    required UserModel user,
+    required String id,
+    required String logo,
+    required String type,
+    required String date,
+    required String title,
+    required String content,
+    required String route,
+    required bool isRead,
+  }) async {
+    if (_formKey.currentState!.validate()) {
+      await AwesomeNotifications().createNotification(
+        content: NotificationContent(
+            id: createUniqueId(),
+            channelKey: 'basic_channel',
+            title:
+                '${Emojis.smile_smiling_face_with_smiling_eyes} Terima Kasih Sudah Menjawab Pertanyaannya!',
+            body:
+                'Jawaban kamu sudah berhasil kami simpan! Terus tingkatkan pengetahuan tentang kesehatan yaa'),
+      );
+      HistoryNotificationModel notifModel = HistoryNotificationModel(
+        user: user,
+        id: id,
+        logo: logo,
+        type: type,
+        date: date,
+        title: title,
+        content: content,
+        route: route,
+        isRead: isRead,
+      );
+      await NotificationService().createNotification(notifModel);
+
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const HomePage()),
+        ModalRoute.withName('/'),
+      );
+
+      CoolAlert.show(
+        context: context,
+        type: CoolAlertType.success,
+        title: " ",
+        widget: Text(
+          'Data Berhasil Disimpan!',
+          style: primaryTextStyle.copyWith(
+            fontSize: 25,
+            fontWeight: semibold,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        confirmBtnText: 'Oke',
+        confirmBtnColor: primaryColor,
+        confirmBtnTextStyle: TextStyle(color: backgroundColor, fontSize: 18),
+      );
+    } else {}
   }
 }
