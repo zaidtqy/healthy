@@ -1151,6 +1151,7 @@ class _FormInformationState extends State<FormInformation> {
                     ),
                     date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
                         .format(DateTime.now()),
+                    id: '1',
                     name: nameController.text,
                     address: addressController.text,
                     eduFather: _valEduFather ?? 'Data Kosong',
@@ -1264,6 +1265,7 @@ class _FormInformationState extends State<FormInformation> {
 
   void save({
     required UserModel user,
+    required String id,
     required String date,
     required String name,
     required String address,
@@ -1285,6 +1287,7 @@ class _FormInformationState extends State<FormInformation> {
 
       HistoryInformModel informModel = HistoryInformModel(
         user: user,
+        id: id,
         date: date,
         name: name,
         address: address,

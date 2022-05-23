@@ -31,4 +31,10 @@ class InformationService {
       return null;
     }
   }
+
+  Future<void> deleteInformation() async {
+    var collection = FirebaseFirestore.instance.collection('information');
+    var snapshot = await collection.where('id', isEqualTo: '1').get();
+    await snapshot.docs.first.reference.delete();
+  }
 }

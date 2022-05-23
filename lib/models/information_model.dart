@@ -5,6 +5,7 @@ import 'package:healthy/models/user_model.dart';
 
 class HistoryInformModel {
   final UserModel user;
+  final String id;
   final String date;
   final String name;
   final String address;
@@ -21,6 +22,7 @@ class HistoryInformModel {
 
   HistoryInformModel({
     required this.user,
+    required this.id,
     required this.date,
     required this.name,
     required this.address,
@@ -38,6 +40,7 @@ class HistoryInformModel {
 
   HistoryInformModel copyWith({
     UserModel? user,
+    String? id,
     String? date,
     String? name,
     String? address,
@@ -54,6 +57,7 @@ class HistoryInformModel {
   }) {
     return HistoryInformModel(
       user: user ?? this.user,
+      id: id ?? this.id,
       date: date ?? this.date,
       name: name ?? this.name,
       address: address ?? this.address,
@@ -73,6 +77,7 @@ class HistoryInformModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'user': user.toMap(),
+      'id': id,
       'date': date,
       'name': name,
       'address': address,
@@ -92,6 +97,7 @@ class HistoryInformModel {
   factory HistoryInformModel.fromMap(Map<String, dynamic> map) {
     return HistoryInformModel(
       user: UserModel.fromMap(map['user'] as Map<String, dynamic>),
+      id: map['id'] as String,
       date: map['date'] as String,
       name: map['name'] as String,
       address: map['address'] as String,
@@ -115,7 +121,7 @@ class HistoryInformModel {
 
   @override
   String toString() {
-    return 'HistoryInformModel(user: $user, date: $date, name: $name, address: $address, eduFather: $eduFather, eduMother: $eduMother, jobFather: $jobFather, jobMother: $jobMother, brothers: $brothers, amount: $amount, income: $income, outcome: $outcome, ageTeen: $ageTeen, disease: $disease)';
+    return 'HistoryInformModel(user: $user, id: $id, date: $date, name: $name, address: $address, eduFather: $eduFather, eduMother: $eduMother, jobFather: $jobFather, jobMother: $jobMother, brothers: $brothers, amount: $amount, income: $income, outcome: $outcome, ageTeen: $ageTeen, disease: $disease)';
   }
 
   @override
@@ -124,6 +130,7 @@ class HistoryInformModel {
 
     return other is HistoryInformModel &&
         other.user == user &&
+        other.id == id &&
         other.date == date &&
         other.name == name &&
         other.address == address &&
@@ -142,6 +149,7 @@ class HistoryInformModel {
   @override
   int get hashCode {
     return user.hashCode ^
+        id.hashCode ^
         date.hashCode ^
         name.hashCode ^
         address.hashCode ^

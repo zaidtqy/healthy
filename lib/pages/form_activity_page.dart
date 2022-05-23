@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:healthy/helpers/notifications.dart';
+// import 'package:healthy/helpers/notifications.dart';
 import 'package:healthy/models/activity_model.dart';
 import 'package:healthy/models/notification_model.dart';
 // import 'package:healthy/models/notification_model.dart';

@@ -1,16 +1,14 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthy/models/information_model.dart';
 import 'package:healthy/pages/home_page.dart';
-// import 'package:healthy/models/user_model.dart';
-// import 'package:healthy/services/information_service.dart';
+import 'package:healthy/services/information_service.dart';
 import 'package:healthy/theme.dart';
 
 class ResultInformation extends StatefulWidget {
   final HistoryInformModel informModel;
+
   const ResultInformation({
     Key? key,
     required this.informModel,
@@ -742,6 +740,52 @@ class _ResultInformationState extends State<ResultInformation> {
             icon: const Icon(Icons.chevron_left),
             color: primaryColor,
           ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                CoolAlert.show(
+                  context: context,
+                  type: CoolAlertType.confirm,
+                  title: " ",
+                  widget: Column(
+                    children: [
+                      Text(
+                        'Apakah anda yakin ingin hapus data informasi?',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 20,
+                          fontWeight: bold,
+                          color: const Color.fromARGB(255, 210, 26, 26),
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                  confirmBtnText: 'Ya',
+                  cancelBtnText: 'Tidak',
+                  confirmBtnColor: const Color.fromARGB(255, 210, 26, 26),
+                  onConfirmBtnTap: () async {
+                    await InformationService().deleteInformation();
+
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) => const HomePage()),
+                      ModalRoute.withName('/'),
+                    );
+
+                    Fluttertoast.showToast(
+                      msg: 'Data Berhasil Dihapus',
+                    );
+                  },
+                  confirmBtnTextStyle:
+                      TextStyle(color: backgroundColor, fontSize: 18),
+                );
+              },
+              icon: Icon(
+                Icons.delete,
+                color: primaryColor,
+                size: 25,
+              ),
+            ),
+          ],
         ),
       ),
       body: Container(
