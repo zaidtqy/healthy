@@ -1,4 +1,18 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:healthy/models/user_model.dart';
+import 'package:healthy/pages/home_page.dart';
+import 'package:healthy/pages/notif_activity_page.dart';
+import 'package:healthy/pages/notif_food_page.dart';
+import 'package:healthy/pages/notif_prokes_page.dart';
+import 'package:healthy/pages/notif_reproduction_page.dart';
+import 'package:healthy/pages/notif_tablets_page.dart';
+import 'package:healthy/pages/result_information_page.dart';
+import 'package:healthy/services/information_service.dart';
+import 'package:healthy/services/notification_service.dart';
 import 'package:healthy/theme.dart';
 
 import '../models/notification_model.dart';
@@ -16,6 +30,64 @@ class NotificationsPage extends StatefulWidget {
 }
 
 class _NotificationsPageState extends State<NotificationsPage> {
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel(uid: '1234');
+
+  @override
+  void initState() {
+    // ignore: todo
+    // TODO: Implement initState
+    super.initState();
+    AwesomeNotifications().isNotificationAllowed().then(
+      (isAllowed) {
+        if (!isAllowed) {
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text('Allow Notifications'),
+              content:
+                  const Text('Our app would like to send you notifications'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text(
+                    'Don\'t Allow',
+                    style: TextStyle(color: Colors.grey, fontSize: 18),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () => AwesomeNotifications()
+                      .requestPermissionToSendNotifications()
+                      .then((_) => Navigator.pop(context)),
+                  child: const Text(
+                    'Allow',
+                    style: TextStyle(
+                      color: Colors.teal,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
+      },
+    );
+
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) async {
+      loggedInUser = UserModel.fromMap(value.data());
+
+      setState(() {});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,33 +115,80 @@ class _NotificationsPageState extends State<NotificationsPage> {
               itemCount: widget.listNotifModel.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
-                  onTap: () {
+                  onTap: () async {
                     if (widget.listNotifModel[index].isRead == false) {
                       final newIndex = widget.listNotifModel.indexWhere(
                         (e) => e.id == widget.listNotifModel[index].id,
                       );
 
-                      setState(() {
-                        widget.listNotifModel[newIndex] = widget
-                            .listNotifModel[newIndex]
-                            .copyWith(isRead: true);
-                      });
+                      await NotificationService().updateIsRead(
+                        widget.listNotifModel[newIndex].copyWith(isRead: true),
+                      );
                     }
 
                     if (widget.listNotifModel[index].route == "1") {
-                      Navigator.pushNamed(context, '/notif-repro');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const NotifReproduction(),
+                        ),
+                      );
                     } else if (widget.listNotifModel[index].route == "2") {
-                      Navigator.pushNamed(context, '/notif-food');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const NotifFood(),
+                        ),
+                      );
                     } else if (widget.listNotifModel[index].route == "3") {
-                      Navigator.pushNamed(context, '/notif-tablets');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const NotifTablets(),
+                        ),
+                      );
                     } else if (widget.listNotifModel[index].route == "4") {
-                      Navigator.pushNamed(context, '/notif-activity');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const NotifActivity(),
+                        ),
+                      );
                     } else if (widget.listNotifModel[index].route == "5") {
-                      Navigator.pushNamed(context, '/notif-prokes');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const NotifProkes(),
+                        ),
+                      );
                     } else if (widget.listNotifModel[index].route == "6") {
-                      Navigator.pushNamed(context, '/notif-success-inform');
+                      final result = await InformationService()
+                          .fetchInformation(uid: loggedInUser.uid);
+
+                      if (result != null) {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                ResultInformation(informModel: result),
+                          ),
+                        );
+                      } else {
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                              builder: (context) => const HomePage()),
+                          ModalRoute.withName('/'),
+                        );
+
+                        Fluttertoast.showToast(
+                            msg: 'Data Informasi Anda Kosong');
+                      }
                     } else {
-                      Navigator.pushNamed(context, '/');
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                            builder: (context) => const HomePage()),
+                        ModalRoute.withName('/'),
+                      );
                     }
                   },
                   child: Container(

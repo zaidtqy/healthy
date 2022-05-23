@@ -33,4 +33,12 @@ class NotificationService {
       return null;
     }
   }
+
+  Future<void> updateIsRead(HistoryNotificationModel notificationModel) async {
+    var snapshot = await instanceFirestore
+        .collection(notificationCollection)
+        .where('id', isEqualTo: notificationModel.id)
+        .get();
+    await snapshot.docs.first.reference.update(notificationModel.toMap());
+  }
 }
