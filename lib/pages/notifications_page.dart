@@ -120,7 +120,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
                       final newIndex = widget.listNotifModel.indexWhere(
                         (e) => e.id == widget.listNotifModel[index].id,
                       );
-
                       await NotificationService().updateIsRead(
                         widget.listNotifModel[newIndex].copyWith(isRead: true),
                       );
