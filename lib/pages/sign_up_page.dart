@@ -69,7 +69,7 @@ class _SignUpPageState extends State<SignUpPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Nama Lengkap',
+            'Nama Pengguna',
             style: primaryTextStyle.copyWith(
               fontSize: 15,
               fontWeight: semibold,
@@ -86,7 +86,7 @@ class _SignUpPageState extends State<SignUpPage> {
             validator: (value) {
               RegExp regex = RegExp(r'^.{3,}$');
               if (value!.isEmpty) {
-                return ("Nama Harus Diisi");
+                return ("Nama Pengguna Harus Diisi");
               }
               if (!regex.hasMatch(value)) {
                 return ("Masukkan Nama Dengan Benar (Minimal 3 Karakter)");
@@ -118,7 +118,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 borderSide: const BorderSide(),
                 borderRadius: BorderRadius.circular(15),
               ),
-              hintText: 'Nama Lengkap',
+              hintText: 'Nama Pengguna',
               hintStyle: primaryTextStyle,
               counterText: "",
             ),
@@ -499,6 +499,7 @@ class _SignUpPageState extends State<SignUpPage> {
     userModel.uid = user.uid;
     userModel.name = nameEditingController.text;
     userModel.phone = phoneEditingController.text;
+    userModel.role = "user";
 
     await firebaseFirestore
         .collection("users")
