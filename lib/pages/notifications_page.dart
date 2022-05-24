@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthy/models/user_model.dart';
+import 'package:healthy/pages/form_information_page.dart';
 import 'package:healthy/pages/home_page.dart';
 import 'package:healthy/pages/notif_activity_page.dart';
 import 'package:healthy/pages/notif_food_page.dart';
@@ -172,6 +173,13 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                 ResultInformation(informModel: result),
                           ),
                         );
+                      } else if (widget.listNotifModel[index].route == "7") {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const FormInformation(),
+                          ),
+                        );
                       } else {
                         Navigator.of(context).pushAndRemoveUntil(
                           MaterialPageRoute(
@@ -180,7 +188,8 @@ class _NotificationsPageState extends State<NotificationsPage> {
                         );
 
                         Fluttertoast.showToast(
-                            msg: 'Data Informasi Anda Kosong');
+                          msg: 'Data Informasi Anda Kosong',
+                        );
                       }
                     } else {
                       Navigator.of(context).pushAndRemoveUntil(

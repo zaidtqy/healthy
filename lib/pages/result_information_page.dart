@@ -1,10 +1,18 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cool_alert/cool_alert.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthy/models/information_model.dart';
+import 'package:healthy/models/notification_model.dart';
+import 'package:healthy/models/user_model.dart';
+// import 'package:healthy/pages/form_information_page.dart';
 import 'package:healthy/pages/home_page.dart';
 import 'package:healthy/services/information_service.dart';
+import 'package:healthy/services/notification_service.dart';
 import 'package:healthy/theme.dart';
+import 'package:healthy/utils/utilities.dart';
+import 'package:intl/intl.dart';
 
 class ResultInformation extends StatefulWidget {
   final HistoryInformModel informModel;
@@ -19,6 +27,9 @@ class ResultInformation extends StatefulWidget {
 }
 
 class _ResultInformationState extends State<ResultInformation> {
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel(uid: '1234');
+
   @override
   Widget build(BuildContext context) {
     Widget resultInformation() {
@@ -741,49 +752,84 @@ class _ResultInformationState extends State<ResultInformation> {
             color: primaryColor,
           ),
           actions: [
-            IconButton(
-              onPressed: () {
-                CoolAlert.show(
-                  context: context,
-                  type: CoolAlertType.confirm,
-                  title: " ",
-                  widget: Column(
-                    children: [
-                      Text(
-                        'Apakah anda yakin ingin hapus data informasi?',
-                        style: primaryTextStyle.copyWith(
-                          fontSize: 20,
-                          fontWeight: bold,
-                          color: const Color.fromARGB(255, 210, 26, 26),
-                        ),
-                        textAlign: TextAlign.center,
+            FutureBuilder<HistoryInformModel?>(
+              future:
+                  InformationService().fetchInformation(uid: loggedInUser.uid),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  if (snapshot.data == null) {
+                    return IconButton(
+                      onPressed: () {
+                        CoolAlert.show(
+                          context: context,
+                          type: CoolAlertType.confirm,
+                          title: " ",
+                          widget: Column(
+                            children: [
+                              Text(
+                                'Apakah anda yakin ingin hapus data informasi?',
+                                style: primaryTextStyle.copyWith(
+                                  fontSize: 20,
+                                  fontWeight: bold,
+                                  color: const Color.fromARGB(255, 210, 26, 26),
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                          confirmBtnText: 'Ya',
+                          cancelBtnText: 'Tidak',
+                          confirmBtnColor:
+                              const Color.fromARGB(255, 210, 26, 26),
+                          onConfirmBtnTap: () async {
+                            deleteInformationNotification(
+                              user: UserModel(
+                                uid: loggedInUser.uid,
+                                name: loggedInUser.name,
+                                email: loggedInUser.email,
+                                phone: loggedInUser.phone,
+                              ),
+                              id: DateTime.now()
+                                  .millisecondsSinceEpoch
+                                  .toString(),
+                              logo: 'assets/information.png',
+                              type: 'Data Informasi Subyek',
+                              date: DateFormat(
+                                      "EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
+                                  .format(DateTime.now()),
+                              title: 'Upss! Data Anda Dihapus',
+                              content:
+                                  'Data anda berhasil dihapus dari dalam database kami. Untuk memasukkan data kembali, klik disini!',
+                              route: '7',
+                              isRead: false,
+                            );
+
+                            await InformationService().deleteInformation();
+
+                            Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (context) => const HomePage()),
+                              ModalRoute.withName('/'),
+                            );
+
+                            Fluttertoast.showToast(
+                              msg: 'Data Berhasil Dihapus',
+                            );
+                          },
+                          confirmBtnTextStyle:
+                              TextStyle(color: backgroundColor, fontSize: 18),
+                        );
+                      },
+                      icon: Icon(
+                        Icons.delete,
+                        color: primaryColor,
+                        size: 25,
                       ),
-                    ],
-                  ),
-                  confirmBtnText: 'Ya',
-                  cancelBtnText: 'Tidak',
-                  confirmBtnColor: const Color.fromARGB(255, 210, 26, 26),
-                  onConfirmBtnTap: () async {
-                    await InformationService().deleteInformation();
-
-                    Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (context) => const HomePage()),
-                      ModalRoute.withName('/'),
                     );
-
-                    Fluttertoast.showToast(
-                      msg: 'Data Berhasil Dihapus',
-                    );
-                  },
-                  confirmBtnTextStyle:
-                      TextStyle(color: backgroundColor, fontSize: 18),
-                );
+                  }
+                }
+                return Container();
               },
-              icon: Icon(
-                Icons.delete,
-                color: primaryColor,
-                size: 25,
-              ),
             ),
           ],
         ),
@@ -796,4 +842,35 @@ class _ResultInformationState extends State<ResultInformation> {
       ),
     );
   }
+}
+
+Future<void> deleteInformationNotification({
+  required UserModel user,
+  required String id,
+  required String logo,
+  required String type,
+  required String date,
+  required String title,
+  required String content,
+  required String route,
+  required bool isRead,
+}) async {
+  await AwesomeNotifications().createNotification(
+    content: NotificationContent(
+        id: createUniqueId(),
+        channelKey: 'basic_channel',
+        title: 'Data Informasi Anda Dihapus!',
+        body: 'Data informasi anda dihapus dari database kami.'),
+  );
+  HistoryNotificationModel notifModel = HistoryNotificationModel(
+      user: user,
+      id: id,
+      logo: logo,
+      type: type,
+      date: date,
+      title: title,
+      content: content,
+      route: route,
+      isRead: isRead);
+  await NotificationService().createNotification(notifModel);
 }
