@@ -69,7 +69,7 @@ class _HistoryFormHemoglobinState extends State<HistoryFormHemoglobin> {
                   width: 10,
                 ),
                 Text(
-                  '${historyHBModel.hbModel.last.hemoglobin} Hb',
+                  '${historyHBModel.hbModel.first.hemoglobin} Hb',
                   style:
                       primaryTextStyle.copyWith(fontSize: 20, fontWeight: bold),
                 ),

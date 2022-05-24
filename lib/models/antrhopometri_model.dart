@@ -7,22 +7,26 @@ import 'package:healthy/models/user_model.dart';
 
 class HistoryAntrhopoModel {
   final UserModel user;
+  final String id;
   final String date;
   final List<AntrhopoModel> antrhopoModel;
 
   HistoryAntrhopoModel({
     required this.user,
+    required this.id,
     required this.date,
     required this.antrhopoModel,
   });
 
   HistoryAntrhopoModel copyWith({
     UserModel? user,
+    String? id,
     String? date,
     List<AntrhopoModel>? antrhopoModel,
   }) {
     return HistoryAntrhopoModel(
       user: user ?? this.user,
+      id: id ?? this.id,
       date: date ?? this.date,
       antrhopoModel: antrhopoModel ?? this.antrhopoModel,
     );
@@ -31,6 +35,7 @@ class HistoryAntrhopoModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'user': user.toMap(),
+      'id': id,
       'date': date,
       'antrhopoModel': antrhopoModel.map((x) => x.toMap()).toList(),
     };
@@ -39,10 +44,11 @@ class HistoryAntrhopoModel {
   factory HistoryAntrhopoModel.fromMap(Map<String, dynamic> map) {
     return HistoryAntrhopoModel(
       user: UserModel.fromMap(map['user'] as Map<String, dynamic>),
+      id: map['id'] as String,
       date: map['date'] as String,
       antrhopoModel: List<AntrhopoModel>.from(
         (map['antrhopoModel']).map<AntrhopoModel>(
-          (x) => AntrhopoModel.fromMap(x),
+          (x) => AntrhopoModel.fromMap(x as Map<String, dynamic>),
         ),
       ),
     );
@@ -54,8 +60,9 @@ class HistoryAntrhopoModel {
       HistoryAntrhopoModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() =>
-      'HistoryAntrhopoModel(user: $user, date: $date, antrhopoModel: $antrhopoModel)';
+  String toString() {
+    return 'HistoryAntrhopoModel(user: $user, id: $id, date: $date, antrhopoModel: $antrhopoModel)';
+  }
 
   @override
   bool operator ==(Object other) {
@@ -63,12 +70,15 @@ class HistoryAntrhopoModel {
 
     return other is HistoryAntrhopoModel &&
         other.user == user &&
+        other.id == id &&
         other.date == date &&
         listEquals(other.antrhopoModel, antrhopoModel);
   }
 
   @override
-  int get hashCode => user.hashCode ^ date.hashCode ^ antrhopoModel.hashCode;
+  int get hashCode {
+    return user.hashCode ^ id.hashCode ^ date.hashCode ^ antrhopoModel.hashCode;
+  }
 }
 
 class AntrhopoModel {
@@ -139,6 +149,7 @@ class AntrhopoModel {
 final List<HistoryAntrhopoModel> mockHistoryAntrhopoModel = [
   HistoryAntrhopoModel(
     user: UserModel(uid: '1234'),
+    id: "12312",
     date: "28/03/2022",
     antrhopoModel: [
       AntrhopoModel(
@@ -150,6 +161,7 @@ final List<HistoryAntrhopoModel> mockHistoryAntrhopoModel = [
   ),
   HistoryAntrhopoModel(
     user: UserModel(uid: '1234'),
+    id: "12312",
     date: "29/03/2022",
     antrhopoModel: [
       AntrhopoModel(
@@ -161,6 +173,7 @@ final List<HistoryAntrhopoModel> mockHistoryAntrhopoModel = [
   ),
   HistoryAntrhopoModel(
     user: UserModel(uid: '1234'),
+    id: "12312",
     date: "30/03/2022",
     antrhopoModel: [
       AntrhopoModel(

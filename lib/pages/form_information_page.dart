@@ -1130,7 +1130,7 @@ class _FormInformationState extends State<FormInformation> {
                       email: loggedInUser.email,
                       phone: loggedInUser.phone,
                     ),
-                    id: createUniqueId().toString(),
+                    id: DateTime.now().millisecondsSinceEpoch.toString(),
                     logo: 'assets/information.png',
                     type: 'Data Informasi Subyek',
                     date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")

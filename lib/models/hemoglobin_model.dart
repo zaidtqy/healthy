@@ -7,22 +7,26 @@ import 'package:healthy/models/user_model.dart';
 
 class HistoryHBModel {
   final UserModel user;
+  final String id;
   final String date;
   final List<HbModel> hbModel;
 
   HistoryHBModel({
     required this.user,
+    required this.id,
     required this.date,
     required this.hbModel,
   });
 
   HistoryHBModel copyWith({
     UserModel? user,
+    String? id,
     String? date,
     List<HbModel>? hbModel,
   }) {
     return HistoryHBModel(
       user: user ?? this.user,
+      id: id ?? this.id,
       date: date ?? this.date,
       hbModel: hbModel ?? this.hbModel,
     );
@@ -31,6 +35,7 @@ class HistoryHBModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'user': user.toMap(),
+      'id': id,
       'date': date,
       'hbModel': hbModel.map((x) => x.toMap()).toList(),
     };
@@ -39,10 +44,11 @@ class HistoryHBModel {
   factory HistoryHBModel.fromMap(Map<String, dynamic> map) {
     return HistoryHBModel(
       user: UserModel.fromMap(map['user'] as Map<String, dynamic>),
+      id: map['id'] as String,
       date: map['date'] as String,
       hbModel: List<HbModel>.from(
         (map['hbModel']).map<HbModel>(
-          (x) => HbModel.fromMap(x),
+          (x) => HbModel.fromMap(x as Map<String, dynamic>),
         ),
       ),
     );
@@ -54,8 +60,9 @@ class HistoryHBModel {
       HistoryHBModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() =>
-      'HistoryHBModel(user: $user, date: $date, hbModel: $hbModel)';
+  String toString() {
+    return 'HistoryHBModel(user: $user, id: $id, date: $date, hbModel: $hbModel)';
+  }
 
   @override
   bool operator ==(Object other) {
@@ -63,12 +70,15 @@ class HistoryHBModel {
 
     return other is HistoryHBModel &&
         other.user == user &&
+        other.id == id &&
         other.date == date &&
         listEquals(other.hbModel, hbModel);
   }
 
   @override
-  int get hashCode => user.hashCode ^ date.hashCode ^ hbModel.hashCode;
+  int get hashCode {
+    return user.hashCode ^ id.hashCode ^ date.hashCode ^ hbModel.hashCode;
+  }
 }
 
 class HbModel {
@@ -120,6 +130,7 @@ class HbModel {
 final List<HistoryHBModel> mockHistoryHbModel = [
   HistoryHBModel(
     user: UserModel(uid: '1234'),
+    id: "1234",
     date: "27/03/2022",
     hbModel: [
       HbModel(
@@ -129,6 +140,7 @@ final List<HistoryHBModel> mockHistoryHbModel = [
   ),
   HistoryHBModel(
     user: UserModel(uid: '1234'),
+    id: "1234",
     date: "28/03/2022",
     hbModel: [
       HbModel(

@@ -2792,7 +2792,7 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               email: loggedInUser.email,
               phone: loggedInUser.phone,
             ),
-            id: createUniqueId().toString(),
+            id: DateTime.now().millisecondsSinceEpoch.toString(),
             logo: 'assets/information.png',
             type: 'Pengetahuan Kesehatan Reproduksi',
             date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
@@ -2811,6 +2811,7 @@ class _FormKnowledgeState extends State<FormKnowledge> {
               email: loggedInUser.email,
               phone: loggedInUser.phone,
             ),
+            id: DateTime.now().millisecondsSinceEpoch.toString(),
             date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
                 .format(DateTime.now()),
             no1: _valNo1 ?? '-',
@@ -2919,6 +2920,7 @@ class _FormKnowledgeState extends State<FormKnowledge> {
 
   void save({
     required UserModel user,
+    required String id,
     required String date,
     required String no1,
     required String no2,
@@ -2960,6 +2962,7 @@ class _FormKnowledgeState extends State<FormKnowledge> {
     if (_formKey.currentState!.validate()) {
       HistoryKnowledgeModel knowledgeModel = HistoryKnowledgeModel(
         user: user,
+        id: id,
         date: date,
         knowledgeModel: [
           KnowledgeModel(

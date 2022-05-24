@@ -964,7 +964,7 @@ class _FormActivityState extends State<FormActivity> {
                 email: loggedInUser.email,
                 phone: loggedInUser.phone,
               ),
-              id: createUniqueId().toString(),
+              id: DateTime.now().millisecondsSinceEpoch.toString(),
               logo: 'assets/information.png',
               type: 'Aktifitas Fisik',
               date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
@@ -984,6 +984,7 @@ class _FormActivityState extends State<FormActivity> {
                 email: loggedInUser.email,
                 phone: loggedInUser.phone,
               ),
+              id: DateTime.now().millisecondsSinceEpoch.toString(),
               date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
                   .format(DateTime.now()),
               actMorning: _valAct1 ?? 'Data Kosong',
@@ -1120,6 +1121,7 @@ class _FormActivityState extends State<FormActivity> {
 
   void save({
     required UserModel user,
+    required String id,
     required String date,
     String? actMorning,
     String? otherActMorning,
@@ -1147,6 +1149,7 @@ class _FormActivityState extends State<FormActivity> {
 
       HistoryActivityModel activityModel = HistoryActivityModel(
         user: user,
+        id: id,
         date: date,
         activityModel: [
           ActivityModel(

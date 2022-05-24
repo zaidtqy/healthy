@@ -7,22 +7,26 @@ import 'package:healthy/models/user_model.dart';
 
 class HistoryKnowledgeModel {
   final UserModel user;
+  final String id;
   final String date;
   final List<KnowledgeModel> knowledgeModel;
 
   HistoryKnowledgeModel({
     required this.user,
+    required this.id,
     required this.date,
     required this.knowledgeModel,
   });
 
   HistoryKnowledgeModel copyWith({
     UserModel? user,
+    String? id,
     String? date,
     List<KnowledgeModel>? knowledgeModel,
   }) {
     return HistoryKnowledgeModel(
       user: user ?? this.user,
+      id: id ?? this.id,
       date: date ?? this.date,
       knowledgeModel: knowledgeModel ?? this.knowledgeModel,
     );
@@ -31,6 +35,7 @@ class HistoryKnowledgeModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'user': user.toMap(),
+      'id': id,
       'date': date,
       'knowledgeModel': knowledgeModel.map((x) => x.toMap()).toList(),
     };
@@ -39,10 +44,11 @@ class HistoryKnowledgeModel {
   factory HistoryKnowledgeModel.fromMap(Map<String, dynamic> map) {
     return HistoryKnowledgeModel(
       user: UserModel.fromMap(map['user'] as Map<String, dynamic>),
+      id: map['id'] as String,
       date: map['date'] as String,
       knowledgeModel: List<KnowledgeModel>.from(
         (map['knowledgeModel']).map<KnowledgeModel>(
-          (x) => KnowledgeModel.fromMap(x),
+          (x) => KnowledgeModel.fromMap(x as Map<String, dynamic>),
         ),
       ),
     );
@@ -55,8 +61,9 @@ class HistoryKnowledgeModel {
           json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() =>
-      'HistoryKnowledgeModel(user: $user, date: $date, knowledgeModel: $knowledgeModel)';
+  String toString() {
+    return 'HistoryKnowledgeModel(user: $user, id: $id, date: $date, knowledgeModel: $knowledgeModel)';
+  }
 
   @override
   bool operator ==(Object other) {
@@ -64,12 +71,18 @@ class HistoryKnowledgeModel {
 
     return other is HistoryKnowledgeModel &&
         other.user == user &&
+        other.id == id &&
         other.date == date &&
         listEquals(other.knowledgeModel, knowledgeModel);
   }
 
   @override
-  int get hashCode => user.hashCode ^ date.hashCode ^ knowledgeModel.hashCode;
+  int get hashCode {
+    return user.hashCode ^
+        id.hashCode ^
+        date.hashCode ^
+        knowledgeModel.hashCode;
+  }
 }
 
 class KnowledgeModel {
@@ -406,6 +419,7 @@ class KnowledgeModel {
 final List<HistoryKnowledgeModel> mockHistoryKnowledgeModel = [
   HistoryKnowledgeModel(
     user: UserModel(uid: '1234'),
+    id: "12121",
     date: "26/03/2022",
     knowledgeModel: [
       KnowledgeModel(
@@ -449,6 +463,7 @@ final List<HistoryKnowledgeModel> mockHistoryKnowledgeModel = [
   ),
   HistoryKnowledgeModel(
     user: UserModel(uid: '1234'),
+    id: "21312312",
     date: "27/03/2022",
     knowledgeModel: [
       KnowledgeModel(

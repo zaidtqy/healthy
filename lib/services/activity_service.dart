@@ -29,6 +29,8 @@ class ActivityService {
       final filterActivityModel =
           activityModel.where((element) => element.user.uid == uid).toList();
 
+      filterActivityModel.sort(((a, b) => b.id.compareTo(a.id)));
+
       return filterActivityModel;
     } catch (e) {
       // throw Exception(e);

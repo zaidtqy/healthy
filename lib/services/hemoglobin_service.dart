@@ -28,6 +28,8 @@ class HemoglobinService {
       final filterHbModel =
           hbModel.where((element) => element.user.uid == uid).toList();
 
+      filterHbModel.sort(((a, b) => b.id.compareTo(a.id)));
+
       return filterHbModel;
     } catch (e) {
       // throw Exception(e);

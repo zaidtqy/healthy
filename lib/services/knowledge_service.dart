@@ -29,6 +29,8 @@ class KnowledgeService {
       final filterKnowledgeModel =
           knowledgeModel.where((element) => element.user.uid == uid).toList();
 
+      filterKnowledgeModel.sort(((a, b) => b.id.compareTo(a.id)));
+
       return filterKnowledgeModel;
     } catch (e) {
       // throw Exception(e);

@@ -63,7 +63,7 @@ class HistoryFormActivity extends StatelessWidget {
                   width: 10,
                 ),
                 Text(
-                  '${historyActivityModel.activityModel.last.activityTime} Menit',
+                  '${historyActivityModel.activityModel.first.activityTime} Menit',
                   style:
                       primaryTextStyle.copyWith(fontSize: 20, fontWeight: bold),
                 ),
@@ -82,7 +82,7 @@ class HistoryFormActivity extends StatelessWidget {
                   width: 10,
                 ),
                 Text(
-                  historyActivityModel.activityModel.last.descriptionActivity,
+                  historyActivityModel.activityModel.first.descriptionActivity,
                   style: primaryTextStyle.copyWith(
                     fontSize: 10,
                     fontWeight: medium,
@@ -108,7 +108,7 @@ class HistoryFormActivity extends StatelessWidget {
                 SizedBox(
                   width: 73,
                   child: Text(
-                    historyActivityModel.activityModel.last.activityName,
+                    historyActivityModel.activityModel.first.activityName,
                     style: primaryTextStyle.copyWith(
                       fontSize: 10,
                       fontWeight: bold,

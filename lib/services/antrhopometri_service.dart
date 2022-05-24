@@ -29,6 +29,8 @@ class AntrhopoService {
       final filterAntrhopoModel =
           antrhopoModel.where((element) => element.user.uid == uid).toList();
 
+      filterAntrhopoModel.sort(((a, b) => b.id.compareTo(a.id)));
+
       return filterAntrhopoModel;
     } catch (e) {
       // throw Exception(e);

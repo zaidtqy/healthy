@@ -142,7 +142,7 @@ class _FormHemoglobinState extends State<FormHemoglobin> {
                 email: loggedInUser.email,
                 phone: loggedInUser.phone,
               ),
-              id: createUniqueId().toString(),
+              id: DateTime.now().millisecondsSinceEpoch.toString(),
               logo: 'assets/information.png',
               type: 'Konsumsi Tablet Tambah Darah',
               date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
@@ -161,6 +161,7 @@ class _FormHemoglobinState extends State<FormHemoglobin> {
                 email: loggedInUser.email,
                 phone: loggedInUser.phone,
               ),
+              id: DateTime.now().millisecondsSinceEpoch.toString(),
               date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
                   .format(DateTime.now()),
               hb: hbFormController.text,
@@ -227,12 +228,14 @@ class _FormHemoglobinState extends State<FormHemoglobin> {
 
   void save({
     required UserModel user,
+    required String id,
     required String date,
     required String hb,
   }) async {
     if (_formKey.currentState!.validate()) {
       HistoryHBModel hbModel = HistoryHBModel(
         user: user,
+        id: id,
         date: date,
         hbModel: [
           HbModel(

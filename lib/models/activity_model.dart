@@ -7,22 +7,26 @@ import 'package:healthy/models/user_model.dart';
 
 class HistoryActivityModel {
   final UserModel user;
+  final String id;
   final String date;
   final List<ActivityModel> activityModel;
 
   HistoryActivityModel({
     required this.user,
+    required this.id,
     required this.date,
     required this.activityModel,
   });
 
   HistoryActivityModel copyWith({
     UserModel? user,
+    String? id,
     String? date,
     List<ActivityModel>? activityModel,
   }) {
     return HistoryActivityModel(
       user: user ?? this.user,
+      id: id ?? this.id,
       date: date ?? this.date,
       activityModel: activityModel ?? this.activityModel,
     );
@@ -31,6 +35,7 @@ class HistoryActivityModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'user': user.toMap(),
+      'id': id,
       'date': date,
       'activityModel': activityModel.map((x) => x.toMap()).toList(),
     };
@@ -39,10 +44,11 @@ class HistoryActivityModel {
   factory HistoryActivityModel.fromMap(Map<String, dynamic> map) {
     return HistoryActivityModel(
       user: UserModel.fromMap(map['user'] as Map<String, dynamic>),
+      id: map['id'] as String,
       date: map['date'] as String,
       activityModel: List<ActivityModel>.from(
         (map['activityModel']).map<ActivityModel>(
-          (x) => ActivityModel.fromMap(x),
+          (x) => ActivityModel.fromMap(x as Map<String, dynamic>),
         ),
       ),
     );
@@ -54,8 +60,9 @@ class HistoryActivityModel {
       HistoryActivityModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() =>
-      'HistoryActivityModel(user: $user, date: $date, activityModel: $activityModel)';
+  String toString() {
+    return 'HistoryActivityModel(user: $user, id: $id, date: $date, activityModel: $activityModel)';
+  }
 
   @override
   bool operator ==(Object other) {
@@ -63,12 +70,15 @@ class HistoryActivityModel {
 
     return other is HistoryActivityModel &&
         other.user == user &&
+        other.id == id &&
         other.date == date &&
         listEquals(other.activityModel, activityModel);
   }
 
   @override
-  int get hashCode => user.hashCode ^ date.hashCode ^ activityModel.hashCode;
+  int get hashCode {
+    return user.hashCode ^ id.hashCode ^ date.hashCode ^ activityModel.hashCode;
+  }
 }
 
 class ActivityModel {

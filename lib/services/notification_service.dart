@@ -28,6 +28,8 @@ class NotificationService {
       final filterNotificationModel =
           notifModel.where((element) => element.user.uid == uid).toList();
 
+      filterNotificationModel.sort(((a, b) => b.id.compareTo(a.id)));
+
       return filterNotificationModel;
     } catch (e) {
       return null;

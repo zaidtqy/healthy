@@ -261,7 +261,7 @@ class _FormAntrhopometriState extends State<FormAntrhopometri> {
                 email: loggedInUser.email,
                 phone: loggedInUser.phone,
               ),
-              id: createUniqueId().toString(),
+              id: DateTime.now().millisecondsSinceEpoch.toString(),
               logo: 'assets/information.png',
               type: 'Data Antrhopometri',
               date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
@@ -280,6 +280,7 @@ class _FormAntrhopometriState extends State<FormAntrhopometri> {
                 email: loggedInUser.email,
                 phone: loggedInUser.phone,
               ),
+              id: DateTime.now().millisecondsSinceEpoch.toString(),
               date: DateFormat("EEEE, dd/MM/yyyy (hh:mm a)", "id_ID")
                   .format(DateTime.now()),
               height: heightFormController.text,
@@ -349,6 +350,7 @@ class _FormAntrhopometriState extends State<FormAntrhopometri> {
 
   void save({
     required UserModel user,
+    required String id,
     required String date,
     required String height,
     required String weight,
@@ -357,6 +359,7 @@ class _FormAntrhopometriState extends State<FormAntrhopometri> {
     if (_formKey.currentState!.validate()) {
       HistoryAntrhopoModel antrhopoModel = HistoryAntrhopoModel(
         user: user,
+        id: id,
         date: date,
         antrhopoModel: [
           AntrhopoModel(

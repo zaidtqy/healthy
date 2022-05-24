@@ -74,7 +74,7 @@ class _HistoryFormAntrhopometriState extends State<HistoryFormAntrhopometri> {
                   width: 10,
                 ),
                 Text(
-                  '${historyAntrhopoModel.antrhopoModel.last.antrhopoHeight} CM',
+                  '${historyAntrhopoModel.antrhopoModel.first.antrhopoHeight} CM',
                   style:
                       primaryTextStyle.copyWith(fontSize: 20, fontWeight: bold),
                 ),
@@ -89,7 +89,7 @@ class _HistoryFormAntrhopometriState extends State<HistoryFormAntrhopometri> {
                   width: 10,
                 ),
                 Text(
-                  '${historyAntrhopoModel.antrhopoModel.last.antrhopoWeight} Kg',
+                  '${historyAntrhopoModel.antrhopoModel.first.antrhopoWeight} Kg',
                   style:
                       primaryTextStyle.copyWith(fontSize: 20, fontWeight: bold),
                 ),

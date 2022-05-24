@@ -44,11 +44,19 @@ class _HomePageState extends State<HomePage> {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel(uid: '1234');
 
+  List<HistoryNotificationModel> listNotification = [];
+
   @override
   void initState() {
-    // ignore: todo
-    // TODO: Implement initState
     super.initState();
+    // NotificationService()
+    //     .fetchNotification(uid: loggedInUser.uid)
+    //     .then((value) {
+    //   setState(() {
+    //     listNotification = value!;
+    //   });
+    // });
+
     AwesomeNotifications().isNotificationAllowed().then(
       (isAllowed) {
         if (!isAllowed) {
@@ -88,6 +96,50 @@ class _HomePageState extends State<HomePage> {
       },
     );
 
+    // AwesomeNotifications().displayedStream.listen((notification) {
+    //   // context.read<NotificationHistoryCubit>().addNotification(
+    //   //       ModelNotification(
+    //   //         id: notification.id.toString(),
+    //   //         title: notification.title!,
+    //   //         subTitle: notification.body!,
+    //   //         dateTime: DateTime.now().toIso8601String(),
+    //   //         onPressed: () {
+    //   //           Navigator.pushAndRemoveUntil(
+    //   //             context,
+    //   //             MaterialPageRoute(
+    //   //               builder: (_) => const PlantStatsPage(),
+    //   //             ),
+    //   //             (route) => route.isFirst,
+    //   //           );
+
+    //   //           AwesomeNotifications().dismiss(notification.id!);
+
+    //   //           context
+    //   //               .read<NotificationHistoryCubit>()
+    //   //               .updateNotification(notification.id.toString());
+    //   //         },
+    //   //       ),
+    //   //     );
+    // });
+
+    // AwesomeNotifications().actionStream.listen((notification) {
+    //   // if (notification.channelKey == 'basic_channel' && Platform.isIOS) {
+    //   //   AwesomeNotifications().getGlobalBadgeCounter().then(
+    //   //       (value) => AwesomeNotifications().setGlobalBadgeCounter(value - 1));
+    //   // }
+
+    //   // context
+    //   //     .read<NotificationHistoryCubit>()
+    //   //     .updateNotification(notification.id.toString());
+
+    //   Navigator.pushAndRemoveUntil(
+    //       context,
+    //       MaterialPageRoute(
+    //         builder: (_) => NotificationsPage(listNotifModel: listNotification),
+    //       ),
+    //       (route) => route.isFirst);
+    // });
+
     FirebaseFirestore.instance
         .collection("users")
         .doc(user!.uid)
@@ -98,6 +150,13 @@ class _HomePageState extends State<HomePage> {
       setState(() {});
     });
   }
+
+  // @override
+  // void dispose() {
+  //   AwesomeNotifications().displayedSink.close();
+  //   AwesomeNotifications().actionSink.close();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -860,7 +919,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           const Spacer(),
                           Text(
-                            snapshot.data!.last.date,
+                            snapshot.data!.first.date,
                             style: primaryTextStyle.copyWith(
                               fontSize: 10,
                               fontWeight: bold,
@@ -881,7 +940,7 @@ class _HomePageState extends State<HomePage> {
                             width: 10,
                           ),
                           Text(
-                            '${snapshot.data!.last.activityModel.last.activityTime} Menit',
+                            '${snapshot.data!.first.activityModel.first.activityTime} Menit',
                             style: primaryTextStyle.copyWith(
                               fontSize: 20,
                               fontWeight: bold,
@@ -902,7 +961,7 @@ class _HomePageState extends State<HomePage> {
                             width: 10,
                           ),
                           Text(
-                            snapshot.data!.last.activityModel.last
+                            snapshot.data!.first.activityModel.first
                                 .descriptionActivity,
                             style: primaryTextStyle.copyWith(
                               fontSize: 10,
@@ -930,7 +989,7 @@ class _HomePageState extends State<HomePage> {
                             width: 75,
                             child: Text(
                               snapshot
-                                  .data!.last.activityModel.last.activityName,
+                                  .data!.first.activityModel.first.activityName,
                               style: primaryTextStyle.copyWith(
                                 fontSize: 10,
                                 fontWeight: bold,
@@ -1235,7 +1294,7 @@ class _HomePageState extends State<HomePage> {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasData) {
               if (snapshot.data != null && snapshot.data!.isNotEmpty) {
-                final result = Utils.countData(snapshot.data!.last);
+                final result = Utils.countData(snapshot.data!.first);
                 final convertDesc = Utils.converToDesc(result);
 
                 return Container(
@@ -1259,7 +1318,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           const Spacer(),
                           Text(
-                            snapshot.data!.last.date,
+                            snapshot.data!.first.date,
                             style: primaryTextStyle.copyWith(
                               fontSize: 10,
                               fontWeight: bold,
@@ -1280,7 +1339,7 @@ class _HomePageState extends State<HomePage> {
                             width: 10,
                           ),
                           Text(
-                            '${snapshot.data!.last.antrhopoModel.last.antrhopoHeight} CM',
+                            '${snapshot.data!.first.antrhopoModel.first.antrhopoHeight} CM',
                             style: primaryTextStyle.copyWith(
                                 fontSize: 20, fontWeight: bold),
                           ),
@@ -1295,7 +1354,7 @@ class _HomePageState extends State<HomePage> {
                             width: 10,
                           ),
                           Text(
-                            '${snapshot.data!.last.antrhopoModel.last.antrhopoWeight} Kg',
+                            '${snapshot.data!.first.antrhopoModel.first.antrhopoWeight} Kg',
                             style: primaryTextStyle.copyWith(
                                 fontSize: 20, fontWeight: bold),
                           ),
@@ -1523,7 +1582,7 @@ class _HomePageState extends State<HomePage> {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasData) {
               if (snapshot.data != null && snapshot.data!.isNotEmpty) {
-                final result = Utils.getDataAnemia(snapshot.data!.last);
+                final result = Utils.getDataAnemia(snapshot.data!.first);
                 final anemia = Utils.descAnemia(result);
                 return Container(
                   width: double.infinity,
@@ -1546,7 +1605,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           const Spacer(),
                           Text(
-                            snapshot.data!.last.date,
+                            snapshot.data!.first.date,
                             style: primaryTextStyle.copyWith(
                               fontSize: 10,
                               fontWeight: bold,
@@ -1567,7 +1626,7 @@ class _HomePageState extends State<HomePage> {
                             width: 10,
                           ),
                           Text(
-                            '${snapshot.data!.last.hbModel.last.hemoglobin} Hb',
+                            '${snapshot.data!.first.hbModel.first.hemoglobin} Hb',
                             style: primaryTextStyle.copyWith(
                                 fontSize: 20, fontWeight: bold),
                           ),
@@ -1821,7 +1880,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           const Spacer(),
                           Text(
-                            snapshot.data!.last.date,
+                            snapshot.data!.first.date,
                             style: primaryTextStyle.copyWith(
                               fontSize: 10,
                               fontWeight: bold,
