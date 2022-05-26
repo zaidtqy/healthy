@@ -797,9 +797,6 @@ class _AdminHomePageState extends State<AdminHomePage> {
                   fontWeight: bold,
                 ),
               ),
-              const SizedBox(
-                height: 15,
-              ),
               Row(
                 children: [
                   downloadInformation(),
