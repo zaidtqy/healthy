@@ -466,7 +466,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/admin-homepage');
+              },
               child: Image.asset(
                 'assets/cutlery.png',
                 width: 50,

@@ -1,6 +1,7 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:healthy/pages/admin_home_page.dart';
 import 'package:healthy/pages/splash_page.dart';
 import 'package:healthy/pages/sign_in_page.dart';
 import 'package:healthy/pages/sign_up_page.dart';
@@ -95,6 +96,7 @@ class MyApp extends StatelessWidget {
         // '/result-antrhopometri': (context) => const ResultAntrhopometri(),
         // '/result-hemoglobin': (context) => const ResultHemoglobin(),
         // '/result-knowledge': (context) => const ResultKnowledge(),
+        '/admin-homepage': (context) => const AdminHomePage(),
       },
     );
   }
