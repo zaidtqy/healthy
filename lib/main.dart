@@ -1,7 +1,6 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:healthy/pages/notif_success_inform_page.dart';
 import 'package:healthy/pages/splash_page.dart';
 import 'package:healthy/pages/sign_in_page.dart';
 import 'package:healthy/pages/sign_up_page.dart';
@@ -86,7 +85,6 @@ class MyApp extends StatelessWidget {
         '/notif-tablets': (context) => const NotifTablets(),
         '/notif-activity': (context) => const NotifActivity(),
         '/notif-prokes': (context) => const NotifProkes(),
-        '/notif-success-inform': (context) => const NotifSuccessInform(),
         // '/history-activity': (context) => const HistoryFormActivity(),
         '/history-intake': (context) => const HistoryFormIntake(),
         // '/history-antrhopometri': (context) => const HistoryFormAntrhopometri(),

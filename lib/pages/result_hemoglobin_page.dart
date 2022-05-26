@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthy/helpers/utils.dart';
 import 'package:healthy/models/hemoglobin_model.dart';
 import 'package:healthy/theme.dart';
 
@@ -10,6 +11,9 @@ class ResultHemoglobin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final result = Utils.getDataAnemia(historyHBModel);
+    final anemia = Utils.descAnemia(result);
+
     Widget image() {
       return Image.asset(
         'assets/image_hb.png',
@@ -142,7 +146,7 @@ class ResultHemoglobin extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  'Berdasarkan hasil perhitungan data diatas, nilai Hb anda adalah: ',
+                  'Berdasarkan hasil perhitungan data HB diatas maka anda dinyatakan: ',
                   style: primaryTextStyle.copyWith(
                     fontSize: 15,
                     fontWeight: medium,
@@ -175,7 +179,7 @@ class ResultHemoglobin extends StatelessWidget {
                       ),
                       const Spacer(),
                       Text(
-                        hbModel.hemoglobin,
+                        anemia,
                         style: primaryTextStyle.copyWith(
                           fontSize: 25,
                           fontWeight: bold,

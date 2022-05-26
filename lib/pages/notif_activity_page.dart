@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthy/pages/home_page.dart';
 import 'package:healthy/theme.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -281,65 +282,83 @@ class NotifActivity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: backgroundColor,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(50.0),
-        child: AppBar(
-          backgroundColor: fourthColor,
-          automaticallyImplyLeading: false,
-          elevation: 5,
-          title: Text(
-            'Artikel Aktifitas Fisik',
-            style: primaryTextStyle.copyWith(
-              fontSize: 15,
-              fontWeight: bold,
-            ),
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomePage(),
           ),
-          leading: IconButton(
-            onPressed: () => Navigator.of(context).pop(context),
-            icon: const Icon(Icons.chevron_left),
-            color: primaryColor,
+          (route) => false,
+        );
+        return false;
+      },
+      child: Scaffold(
+        backgroundColor: backgroundColor,
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(50.0),
+          child: AppBar(
+            backgroundColor: fourthColor,
+            automaticallyImplyLeading: false,
+            elevation: 5,
+            title: Text(
+              'Artikel Aktifitas Fisik',
+              style: primaryTextStyle.copyWith(
+                fontSize: 15,
+                fontWeight: bold,
+              ),
+            ),
+            leading: IconButton(
+              onPressed: () => Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const HomePage(),
+                ),
+                (route) => false,
+              ),
+              icon: const Icon(Icons.chevron_left),
+              color: primaryColor,
+            ),
           ),
         ),
-      ),
-      body: Container(
-        margin: const EdgeInsets.symmetric(),
-        child: ListView(
-          children: [
-            const SizedBox(
-              height: 30,
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-              child: Text(
-                'Artikel',
-                style: primaryTextStyle.copyWith(
-                  fontSize: 15,
-                  fontWeight: semibold,
-                  color: primaryColor.withOpacity(0.5),
+        body: Container(
+          margin: const EdgeInsets.symmetric(),
+          child: ListView(
+            children: [
+              const SizedBox(
+                height: 30,
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+                child: Text(
+                  'Artikel',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: semibold,
+                    color: primaryColor.withOpacity(0.5),
+                  ),
                 ),
               ),
-            ),
-            articleDailyActivity(),
-            articleTypesAct(),
-            articleMaxAct(),
-            const SizedBox(
-              height: 30,
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-              child: Text(
-                'Situs Artikel Terkait',
-                style: primaryTextStyle.copyWith(
-                  fontSize: 15,
-                  fontWeight: semibold,
-                  color: primaryColor.withOpacity(0.5),
+              articleDailyActivity(),
+              articleTypesAct(),
+              articleMaxAct(),
+              const SizedBox(
+                height: 30,
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+                child: Text(
+                  'Situs Artikel Terkait',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: semibold,
+                    color: primaryColor.withOpacity(0.5),
+                  ),
                 ),
               ),
-            ),
-            link1(),
-          ],
+              link1(),
+            ],
+          ),
         ),
       ),
     );
