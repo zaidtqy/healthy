@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:healthy/models/user_model.dart';
 import 'package:healthy/pages/admin_home_page.dart';
 import 'package:healthy/pages/home_page.dart';
 import 'package:healthy/pages/sign_in_page.dart';
@@ -20,9 +19,6 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   String role = 'user';
 
-  User? user = FirebaseAuth.instance.currentUser;
-  UserModel loggedInUser = UserModel(uid: '1234');
-
   @override
   void initState() {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
@@ -37,27 +33,7 @@ class _SplashPageState extends State<SplashPage> {
             ),
           );
         } else {
-          User? user = FirebaseAuth.instance.currentUser;
-          final DocumentSnapshot snap = await FirebaseFirestore.instance
-              .collection("users")
-              .doc(user!.uid)
-              .get();
-
-          setState(() {
-            role = snap['role'];
-          });
-
-          if (role == 'user') {
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => const HomePage()),
-              ModalRoute.withName('/'),
-            );
-          } else if (role == 'admin') {
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => const AdminHomePage()),
-              ModalRoute.withName('/'),
-            );
-          }
+          checkRole();
         }
       });
     });
@@ -83,5 +59,29 @@ class _SplashPageState extends State<SplashPage> {
         ),
       ),
     );
+  }
+
+  void checkRole() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    final DocumentSnapshot snap = await FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get();
+
+    setState(() {
+      role = snap['role'];
+    });
+
+    if (role == 'user') {
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const HomePage()),
+        ModalRoute.withName('/'),
+      );
+    } else if (role == 'admin') {
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const AdminHomePage()),
+        ModalRoute.withName('/'),
+      );
+    }
   }
 }
