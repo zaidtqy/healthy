@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:healthy/pages/admin_home_page.dart';
 import 'package:healthy/pages/sign_up_page.dart';
 // import 'package:healthy/pages/sign_up_page.dart';
 import 'package:healthy/theme.dart';
@@ -16,6 +18,8 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  String role = 'user';
+
   // form key
   final _formKey = GlobalKey<FormState>();
 
@@ -295,13 +299,35 @@ class _SignInPageState extends State<SignInPage> {
         pref.setString('password_key', passwordController.text);
 
         Fluttertoast.showToast(msg: "Berhasil Masuk");
-        Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => const HomePage()),
-          ModalRoute.withName('/'),
-        );
+
+        checkRole();
       }).catchError((e) {
         Fluttertoast.showToast(msg: e!.message);
       });
+    }
+  }
+
+  void checkRole() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    final DocumentSnapshot snap = await FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get();
+
+    setState(() {
+      role = snap['role'];
+    });
+
+    if (role == 'user') {
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const HomePage()),
+        ModalRoute.withName('/'),
+      );
+    } else if (role == 'admin') {
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const AdminHomePage()),
+        ModalRoute.withName('/'),
+      );
     }
   }
 }
