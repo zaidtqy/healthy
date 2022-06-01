@@ -11,7 +11,7 @@ import 'package:healthy/pages/notif_food_page.dart';
 import 'package:healthy/pages/notif_prokes_page.dart';
 import 'package:healthy/pages/notif_reproduction_page.dart';
 import 'package:healthy/pages/notif_tablets_page.dart';
-import 'package:healthy/pages/result_information_page.dart';
+import 'package:healthy/pages/result_information2_page.dart';
 import 'package:healthy/services/information_service.dart';
 import 'package:healthy/services/notification_service.dart';
 import 'package:healthy/theme.dart';
@@ -170,7 +170,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                ResultInformation(informModel: result),
+                                ResultInformation2(informModel: result),
                           ),
                         );
                       } else if (widget.listNotifModel[index].route == "7") {
