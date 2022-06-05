@@ -769,24 +769,24 @@ class _AdminHomePageState extends State<AdminHomePage> {
           child: ListView(
             children: [
               info(),
-              Row(
-                children: [
-                  menuInformation(),
-                  const Spacer(),
-                  menuActivity(),
-                  const Spacer(),
-                  menuIntake(),
-                ],
-              ),
-              Row(
-                children: [
-                  menuAntrhopometri(),
-                  const Spacer(),
-                  menuHb(),
-                  const Spacer(),
-                  menuKnowledge(),
-                ],
-              ),
+              // Row(
+              //   children: [
+              //     menuInformation(),
+              //     const Spacer(),
+              //     menuActivity(),
+              //     const Spacer(),
+              //     menuIntake(),
+              //   ],
+              // ),
+              // Row(
+              //   children: [
+              //     menuAntrhopometri(),
+              //     const Spacer(),
+              //     menuHb(),
+              //     const Spacer(),
+              //     menuKnowledge(),
+              //   ],
+              // ),
               const SizedBox(
                 height: 30,
               ),

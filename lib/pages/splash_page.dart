@@ -27,10 +27,9 @@ class _SplashPageState extends State<SplashPage> {
         final getEmail = pref.getString('email_key');
         final getPassword = pref.getString('password_key');
         if (getEmail == null || getPassword == null) {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) => const SignInPage(),
-            ),
+          Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => const SignInPage()),
+            ModalRoute.withName('/'),
           );
         } else {
           checkRole();
