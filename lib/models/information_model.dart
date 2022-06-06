@@ -165,22 +165,3 @@ class HistoryInformModel {
         disease.hashCode;
   }
 }
-
-// final List<HistoryInformModel> mockHistoryInformModel = [
-//   HistoryInformModel(
-//       user: UserModel(uid: '', name: '', email: '', phone: ''),
-//       date: "30/03/2022",
-//       name: "Muhammad Zaid Taqy",
-//       address:
-//           "Perum Kodim Blok D No 10 RT.005/002, Kel. Bekasi Jaya, Kec. Bekasi Timur, Kota Bekasi, 17112",
-//       eduFather: "Sarjana, Master, Doktor",
-//       eduMother: "Sarjana, Master, Doktor",
-//       jobFather: "Pegawai Swasta",
-//       jobMother: "Tidak Bekerja",
-//       brothers: "3",
-//       amount: "3",
-//       income: "> Rp 10,000,000",
-//       outcome: "Rp 5,000,000 - Rp 10,000,000",
-//       ageTeen: "0",
-//       disease: "Tidak Ada")
-// ];

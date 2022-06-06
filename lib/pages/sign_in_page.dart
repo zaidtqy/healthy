@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthy/pages/admin_home_page.dart';
 import 'package:healthy/pages/sign_up_page.dart';
-// import 'package:healthy/pages/sign_up_page.dart';
 import 'package:healthy/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

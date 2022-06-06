@@ -23,7 +23,6 @@ Future<void> scheduledActivityNotification1() async {
           'Abis bangun tidur jangan tidur lagi yaa. Isi pagi mu dengan kegiatan produktif!',
     ),
     schedule: NotificationCalendar(
-      // weekday: notificationSchedule.dayOfTheWeek,
       hour: 6,
       minute: 0,
       second: 0,
@@ -42,7 +41,6 @@ Future<void> scheduledActivityNotification2() async {
       body: 'Isi waktu siang mu dengan aktifitas ringan ya!',
     ),
     schedule: NotificationCalendar(
-      // weekday: notificationSchedule.dayOfTheWeek,
       hour: 12,
       minute: 0,
       second: 0,
@@ -62,7 +60,6 @@ Future<void> scheduledActivityNotification3() async {
           'Badan sudah mulai lelah, baik nya istirahatin sebentar ya badannya :)',
     ),
     schedule: NotificationCalendar(
-      // weekday: notificationSchedule.dayOfTheWeek,
       hour: 18,
       minute: 0,
       second: 0,
@@ -82,7 +79,6 @@ Future<void> scheduledActivityNotification4() async {
       body: 'Istirahat yang cukup biar semangat terus kebesokkan harinya!',
     ),
     schedule: NotificationCalendar(
-      // weekday: notificationSchedule.dayOfTheWeek,
       hour: 22,
       minute: 0,
       second: 0,
@@ -103,7 +99,6 @@ Future<void> scheduledActivityNotification() async {
           'Jangan lupa Isi form aktifitas harian mu di menu \'Data Aktifitas Fisik Subyek\', oke?',
     ),
     schedule: NotificationCalendar(
-      // weekday: notificationSchedule.dayOfTheWeek,
       hour: 22,
       minute: 1,
       second: 0,
@@ -172,7 +167,6 @@ Future<void> testNotification() async {
       body: 'Testing notifikasi ketika waktu sudah diatur.',
     ),
     schedule: NotificationCalendar(
-      // weekday: notificationSchedule.dayOfTheWeek,
       hour: 13,
       minute: 40,
       second: 0,

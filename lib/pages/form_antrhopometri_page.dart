@@ -34,8 +34,6 @@ class _FormAntrhopometriState extends State<FormAntrhopometri> {
 
   @override
   void initState() {
-    // ignore: todo
-    // TODO: Implement initState
     super.initState();
     FirebaseFirestore.instance
         .collection("users")

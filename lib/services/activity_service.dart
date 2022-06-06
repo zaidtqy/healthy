@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:flutter/cupertino.dart';
 import 'package:healthy/helpers/const.dart';
 import 'package:healthy/models/activity_model.dart';
 
@@ -33,7 +32,6 @@ class ActivityService {
 
       return filterActivityModel;
     } catch (e) {
-      // throw Exception(e);
       return null;
     }
   }

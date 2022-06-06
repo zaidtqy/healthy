@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:healthy/models/hemoglobin_model.dart';
 import 'package:healthy/models/notification_model.dart';
 import 'package:healthy/models/user_model.dart';
-// import 'package:healthy/pages/history_form_hemoglobin_page.dart';
 import 'package:healthy/pages/home_page.dart';
 import 'package:healthy/services/hemoglobin_service.dart';
 import 'package:healthy/services/notification_service.dart';
@@ -33,8 +32,6 @@ class _FormHemoglobinState extends State<FormHemoglobin> {
 
   @override
   void initState() {
-    // ignore: todo
-    // TODO: Implement initState
     super.initState();
     FirebaseFirestore.instance
         .collection("users")

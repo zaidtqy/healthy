@@ -1,21 +1,16 @@
-// import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-// import 'package:healthy/helpers/notifications.dart';
 import 'package:healthy/models/activity_model.dart';
 import 'package:healthy/models/notification_model.dart';
-// import 'package:healthy/models/notification_model.dart';
 import 'package:healthy/models/user_model.dart';
 import 'package:healthy/pages/home_page.dart';
 import 'package:healthy/services/activity_service.dart';
 import 'package:healthy/services/notification_service.dart';
-// import 'package:healthy/services/notification_service.dart';
 import 'package:healthy/theme.dart';
 import 'package:healthy/utils/utilities.dart';
-// import 'package:healthy/utils/utilities.dart';
 import 'package:intl/intl.dart';
 
 class FormActivityMorning extends StatefulWidget {
@@ -30,23 +25,13 @@ class _FormActivityMorningState extends State<FormActivityMorning> {
   final _formKey = GlobalKey<FormState>();
 
   // controller
-
   final other1FormController = TextEditingController();
   final minutesAct1Controller = TextEditingController();
-  // final other2FormController = TextEditingController();
-  // final minutesAct2Controller = TextEditingController();
-  // final other3FormController = TextEditingController();
-  // final minutesAct3Controller = TextEditingController();
-  // final other4FormController = TextEditingController();
-  // final minutesAct4Controller = TextEditingController();
 
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel(uid: '1234');
 
   bool _isShowField1 = false;
-  // bool _isShowField2 = false;
-  // bool _isShowField3 = false;
-  // bool _isShowField4 = false;
 
   String? _valAct1;
   final _act1 = [
@@ -58,40 +43,8 @@ class _FormActivityMorningState extends State<FormActivityMorning> {
     "Kegiatan Lain"
   ];
 
-  // String? _valAct2;
-  // final _act2 = [
-  //   "Berjalan",
-  //   "Berlari",
-  //   "Senam",
-  //   "Berenang",
-  //   "Duduk/Kegiatan Santai",
-  //   "Kegiatan Lain"
-  // ];
-
-  // String? _valAct3;
-  // final _act3 = [
-  //   "Berjalan",
-  //   "Berlari",
-  //   "Senam",
-  //   "Berenang",
-  //   "Duduk/Kegiatan Santai",
-  //   "Kegiatan Lain"
-  // ];
-
-  // String? _valAct4;
-  // final _act4 = [
-  //   "Berjalan",
-  //   "Berlari",
-  //   "Senam",
-  //   "Berenang",
-  //   "Duduk/Kegiatan Santai",
-  //   "Kegiatan Lain"
-  // ];
-
   @override
   void initState() {
-    // ignore: todo
-    // TODO: Implement initState
     super.initState();
     FirebaseFirestore.instance
         .collection("users")
@@ -108,12 +61,6 @@ class _FormActivityMorningState extends State<FormActivityMorning> {
   void dispose() {
     other1FormController.dispose();
     minutesAct1Controller.dispose();
-    // other2FormController.dispose();
-    // minutesAct2Controller.dispose();
-    // other3FormController.dispose();
-    // minutesAct3Controller.dispose();
-    // other4FormController.dispose();
-    // minutesAct4Controller.dispose();
     super.dispose();
   }
 
@@ -735,12 +682,6 @@ class _FormActivityMorningState extends State<FormActivityMorning> {
               actMorning: _valAct1 ?? 'Data Kosong',
               otherActMorning: other1FormController.text,
               timeMorning: minutesAct1Controller.text,
-              // act12Clock: 'Data Kosong',
-              // time12Clock: '0',
-              // act18Clock: 'Data Kosong',
-              // time18Clock: '0',
-              // actNight: 'Data Kosong',
-              // timeNight: '0',
             );
           },
           style: TextButton.styleFrom(
@@ -815,9 +756,6 @@ class _FormActivityMorningState extends State<FormActivityMorning> {
               const SizedBox(
                 height: 10,
               ),
-              // if (_isShowField2) ...[
-              //   other2Form(),
-              // ],
               const SizedBox(
                 height: 10,
               ),
@@ -831,9 +769,6 @@ class _FormActivityMorningState extends State<FormActivityMorning> {
               const SizedBox(
                 height: 10,
               ),
-              // if (_isShowField3) ...[
-              //   other3Form(),
-              // ],
               const SizedBox(
                 height: 10,
               ),
@@ -847,9 +782,6 @@ class _FormActivityMorningState extends State<FormActivityMorning> {
               const SizedBox(
                 height: 10,
               ),
-              // if (_isShowField4) ...[
-              //   other4Form(),
-              // ],
               const SizedBox(
                 height: 10,
               ),
@@ -868,16 +800,6 @@ class _FormActivityMorningState extends State<FormActivityMorning> {
     String? actMorning,
     String? otherActMorning,
     required String timeMorning,
-    // String? act12Clock,
-    // String? otherAct12Clock,
-    // required String time12Clock,
-    // String? act18Clock,
-    // String? otherAct18Clock,
-    // required String time18Clock,
-    // String? actNight,
-    // String? otherActNight,
-    // required String timeNight,
-    // ActivityModel details,
   }) async {
     if (_formKey.currentState!.validate()) {
       String dataActMorning =
@@ -896,21 +818,6 @@ class _FormActivityMorningState extends State<FormActivityMorning> {
             activityTime: timeMorning,
             descriptionActivity: 'Bangun Tidur - Jam 12 Siang',
           ),
-          // ActivityModel(
-          //   activityName: dataAct12Clock,
-          //   activityTime: time12Clock,
-          //   descriptionActivity: 'Jam 12 Siang - Jam 6 Sore',
-          // ),
-          // ActivityModel(
-          //   activityName: dataAct18Clock,
-          //   activityTime: time18Clock,
-          //   descriptionActivity: 'Jam 6 Sore - Jam 10 Malam',
-          // ),
-          // ActivityModel(
-          //   activityName: dataActNight,
-          //   activityTime: timeNight,
-          //   descriptionActivity: 'Jam 10 Malam - Bangun Tidur',
-          // ),
         ],
       );
       await ActivityService().createActivity(activityModel);

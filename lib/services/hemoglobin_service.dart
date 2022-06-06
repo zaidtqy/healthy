@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:flutter/cupertino.dart';
 import 'package:healthy/helpers/const.dart';
 import 'package:healthy/models/hemoglobin_model.dart';
 
@@ -32,7 +31,6 @@ class HemoglobinService {
 
       return filterHbModel;
     } catch (e) {
-      // throw Exception(e);
       return null;
     }
   }

@@ -3,14 +3,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-// import 'package:healthy/helpers/notifications.dart';
 import 'package:healthy/models/information_model.dart';
 import 'package:healthy/models/notification_model.dart';
 import 'package:healthy/models/user_model.dart';
 import 'package:healthy/pages/home_page.dart';
 import 'package:healthy/services/information_service.dart';
 import 'package:healthy/services/notification_service.dart';
-// import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthy/theme.dart';
 import 'package:healthy/utils/utilities.dart';
 import 'package:intl/intl.dart';
@@ -112,8 +110,6 @@ class _FormInformationState extends State<FormInformation> {
 
   @override
   void initState() {
-    // ignore: todo
-    // TODO: Implement initState
     super.initState();
     FirebaseFirestore.instance
         .collection("users")
@@ -1412,33 +1408,4 @@ class _FormInformationState extends State<FormInformation> {
       );
     } else {}
   }
-
-  // postDetailsToFirestore() async {
-  //   // calling our firestore
-  //   // calling our user model
-  //   // sending there values
-
-  //   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-  //   User? user = _auth.currentUser;
-
-  //   UserModel userModel = UserModel();
-
-  //   // writing all the values
-  //   userModel.email = user!.email;
-  //   userModel.uid = user.uid;
-  //   userModel.name = nameEditingController.text;
-  //   userModel.phone = phoneEditingController.text;
-
-  //   await firebaseFirestore
-  //       .collection("users")
-  //       .doc(user.uid)
-  //       .set(userModel.toMap());
-  //   Fluttertoast.showToast(msg: "Akun Anda Berhasil Dibuat!");
-
-  //   Navigator.pushAndRemoveUntil(
-  //       (context),
-  //       MaterialPageRoute(builder: (context) => const SignInPage()),
-  //       (route) => false);
-  // }
-
 }

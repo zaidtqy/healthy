@@ -5,7 +5,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-// import 'package:healthy/helpers/notifications.dart';
 import 'package:healthy/helpers/utils.dart';
 import 'package:healthy/models/activity_model.dart';
 import 'package:healthy/models/antrhopometri_model.dart';
@@ -14,7 +13,10 @@ import 'package:healthy/models/information_model.dart';
 import 'package:healthy/models/knowledge_model.dart';
 import 'package:healthy/models/notification_model.dart';
 import 'package:healthy/models/user_model.dart';
-import 'package:healthy/pages/form_activity_page.dart';
+import 'package:healthy/pages/form_activity_afternoon_page.dart';
+import 'package:healthy/pages/form_activity_morning_page.dart';
+import 'package:healthy/pages/form_activity_night_page.dart';
+import 'package:healthy/pages/form_activity_noon_page.dart';
 import 'package:healthy/pages/form_antrhopometri_page.dart';
 import 'package:healthy/pages/form_hemoglobin_page.dart';
 import 'package:healthy/pages/form_information_page.dart';
@@ -32,7 +34,7 @@ import 'package:healthy/services/information_service.dart';
 import 'package:healthy/services/knowledge_service.dart';
 import 'package:healthy/services/notification_service.dart';
 import 'package:healthy/theme.dart';
-// import 'package:intl/intl.dart';
+import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -50,96 +52,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    // NotificationService()
-    //     .fetchNotification(uid: loggedInUser.uid)
-    //     .then((value) {
-    //   setState(() {
-    //     listNotification = value!;
-    //   });
-    // });
-
-    AwesomeNotifications().isNotificationAllowed().then(
-      (isAllowed) {
-        if (!isAllowed) {
-          showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-              title: const Text('Allow Notifications'),
-              content:
-                  const Text('Our app would like to send you notifications'),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text(
-                    'Don\'t Allow',
-                    style: TextStyle(color: Colors.grey, fontSize: 18),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () => AwesomeNotifications()
-                      .requestPermissionToSendNotifications()
-                      .then((_) => Navigator.pop(context)),
-                  child: const Text(
-                    'Allow',
-                    style: TextStyle(
-                      color: Colors.teal,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-        }
-      },
-    );
-
-    // AwesomeNotifications().displayedStream.listen((notification) {
-    //   // context.read<NotificationHistoryCubit>().addNotification(
-    //   //       ModelNotification(
-    //   //         id: notification.id.toString(),
-    //   //         title: notification.title!,
-    //   //         subTitle: notification.body!,
-    //   //         dateTime: DateTime.now().toIso8601String(),
-    //   //         onPressed: () {
-    //   //           Navigator.pushAndRemoveUntil(
-    //   //             context,
-    //   //             MaterialPageRoute(
-    //   //               builder: (_) => const PlantStatsPage(),
-    //   //             ),
-    //   //             (route) => route.isFirst,
-    //   //           );
-
-    //   //           AwesomeNotifications().dismiss(notification.id!);
-
-    //   //           context
-    //   //               .read<NotificationHistoryCubit>()
-    //   //               .updateNotification(notification.id.toString());
-    //   //         },
-    //   //       ),
-    //   //     );
-    // });
-
-    // AwesomeNotifications().actionStream.listen((notification) {
-    //   // if (notification.channelKey == 'basic_channel' && Platform.isIOS) {
-    //   //   AwesomeNotifications().getGlobalBadgeCounter().then(
-    //   //       (value) => AwesomeNotifications().setGlobalBadgeCounter(value - 1));
-    //   // }
-
-    //   // context
-    //   //     .read<NotificationHistoryCubit>()
-    //   //     .updateNotification(notification.id.toString());
-
-    //   Navigator.pushAndRemoveUntil(
-    //       context,
-    //       MaterialPageRoute(
-    //         builder: (_) => NotificationsPage(listNotifModel: listNotification),
-    //       ),
-    //       (route) => route.isFirst);
-    // });
 
     FirebaseFirestore.instance
         .collection("users")
@@ -152,24 +64,12 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  // @override
-  // void dispose() {
-  //   AwesomeNotifications().displayedSink.close();
-  //   AwesomeNotifications().actionSink.close();
-  //   super.dispose();
-  // }
-
   @override
   Widget build(BuildContext context) {
-    // 0400 & 1159 = form activity
-    // 1200 & 1759 = form antrhopometri
-    // 1800 & 2159 = form hemoglobin
-    // 2200 & 0359 = form knowledge
-    final String time = "2200";
-    // final String time = DateFormat("hhmm", "id_ID").format(DateTime.now());
+    final String time = DateFormat("HHmm").format(DateTime.now());
     final int intTime = int.parse(time);
 
-    debugPrint('waktu sekarang = ' + time);
+    debugPrint('time now = ' + time);
 
     Widget info() {
       return Container(
@@ -1178,11 +1078,33 @@ class _HomePageState extends State<HomePage> {
                         cancelBtnText: 'Nanti',
                         confirmBtnColor: const Color(0xff2F5D62),
                         onConfirmBtnTap: () async {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (context) => const FormActivity(),
-                            ),
-                          );
+                          if (intTime >= 0400 && intTime <= 1159) {
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const FormActivityMorning(),
+                              ),
+                            );
+                          } else if (intTime >= 1200 && intTime <= 1759) {
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => const FormActivityNoon(),
+                              ),
+                            );
+                          } else if (intTime >= 1800 && intTime <= 2159) {
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const FormActivityAfternoon(),
+                              ),
+                            );
+                          } else {
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => const FormActivityNight(),
+                              ),
+                            );
+                          }
                         },
                         confirmBtnTextStyle:
                             TextStyle(color: backgroundColor, fontSize: 18),

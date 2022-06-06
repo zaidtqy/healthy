@@ -6,7 +6,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthy/models/information_model.dart';
 import 'package:healthy/models/notification_model.dart';
 import 'package:healthy/models/user_model.dart';
-// import 'package:healthy/pages/form_information_page.dart';
 import 'package:healthy/pages/home_page.dart';
 import 'package:healthy/services/information_service.dart';
 import 'package:healthy/services/notification_service.dart';

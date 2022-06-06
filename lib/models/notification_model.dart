@@ -15,8 +15,6 @@ class HistoryNotificationModel {
   final String content;
   final String route;
   final bool isRead;
-  // final VoidCallback onPressed;
-  // final VoidCallback onDelete;
 
   HistoryNotificationModel({
     required this.user,
@@ -28,8 +26,6 @@ class HistoryNotificationModel {
     required this.content,
     required this.route,
     required this.isRead,
-    // required this.onPressed,
-    // required this.onDelete,
   });
 
   HistoryNotificationModel copyWith({
@@ -42,8 +38,6 @@ class HistoryNotificationModel {
     String? content,
     String? route,
     bool? isRead,
-    // VoidCallback? onPressed,
-    // VoidCallback? onDelete,
   }) {
     return HistoryNotificationModel(
       user: user ?? this.user,
@@ -55,8 +49,6 @@ class HistoryNotificationModel {
       content: content ?? this.content,
       route: route ?? this.route,
       isRead: isRead ?? this.isRead,
-      // onPressed: onPressed ?? this.onPressed,
-      // onDelete: onDelete ?? this.onDelete,
     );
   }
 
@@ -71,8 +63,6 @@ class HistoryNotificationModel {
       'content': content,
       'route': route,
       'isRead': isRead,
-      // 'onPressed': onPressed.toMap(),
-      // 'onDelete': onDelete.toMap(),
     };
   }
 
@@ -87,8 +77,6 @@ class HistoryNotificationModel {
       content: map['content'] as String,
       route: map['route'] as String,
       isRead: map['isRead'] as bool,
-      // onPressed: VoidCallback.fromMap(map['onPressed'] as Map<String,dynamic>),
-      // onDelete: VoidCallback.fromMap(map['onDelete'] as Map<String,dynamic>),
     );
   }
 

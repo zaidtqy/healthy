@@ -29,8 +29,6 @@ class _MenuPageState extends State<MenuPage> {
 
   @override
   void initState() {
-    // ignore: todo
-    // TODO: Implement initState
     super.initState();
     FirebaseFirestore.instance
         .collection("users")
