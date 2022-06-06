@@ -152,7 +152,7 @@ class HistoryFormActivity extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    'Lihat Detail',
+                    'Lihat Form',
                     style: primaryTextStyle.copyWith(
                       fontSize: 15,
                       fontWeight: bold,

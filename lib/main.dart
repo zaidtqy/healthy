@@ -2,6 +2,10 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:healthy/pages/admin_home_page.dart';
+import 'package:healthy/pages/form_activity_noon_page.dart';
+import 'package:healthy/pages/form_activity_afternoon_page.dart';
+import 'package:healthy/pages/form_activity_morning_page.dart';
+import 'package:healthy/pages/form_activity_night_page.dart';
 import 'package:healthy/pages/splash_page.dart';
 import 'package:healthy/pages/sign_in_page.dart';
 import 'package:healthy/pages/sign_up_page.dart';
@@ -76,6 +80,10 @@ class MyApp extends StatelessWidget {
         '/home-page': (context) => const HomePage(),
         '/form-information': (context) => const FormInformation(),
         '/form-activity': (context) => const FormActivity(),
+        '/form-activity-morning': (context) => const FormActivityMorning(),
+        '/form-activity-noon': (context) => const FormActivityNoon(),
+        '/form-activity-afternoon': (context) => const FormActivityAfternoon(),
+        '/form-activity-night': (context) => const FormActivityNight(),
         '/form-antrhopometri': (context) => const FormAntrhopometri(),
         '/form-hemoglobin': (context) => const FormHemoglobin(),
         '/form-knowledge': (context) => const FormKnowledge(),

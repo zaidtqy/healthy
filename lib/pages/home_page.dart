@@ -32,6 +32,7 @@ import 'package:healthy/services/information_service.dart';
 import 'package:healthy/services/knowledge_service.dart';
 import 'package:healthy/services/notification_service.dart';
 import 'package:healthy/theme.dart';
+// import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -160,6 +161,16 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    // 0400 & 1159 = form activity
+    // 1200 & 1759 = form antrhopometri
+    // 1800 & 2159 = form hemoglobin
+    // 2200 & 0359 = form knowledge
+    final String time = "2200";
+    // final String time = DateFormat("hhmm", "id_ID").format(DateTime.now());
+    final int intTime = int.parse(time);
+
+    debugPrint('waktu sekarang = ' + time);
+
     Widget info() {
       return Container(
         height: 97,
@@ -416,7 +427,15 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               onPressed: () {
-                Navigator.pushNamed(context, '/form-activity');
+                if (intTime >= 0400 && intTime <= 1159) {
+                  Navigator.pushNamed(context, '/form-activity-morning');
+                } else if (intTime >= 1200 && intTime <= 1759) {
+                  Navigator.pushNamed(context, '/form-activity-noon');
+                } else if (intTime >= 1800 && intTime <= 2159) {
+                  Navigator.pushNamed(context, '/form-activity-afternoon');
+                } else {
+                  Navigator.pushNamed(context, '/form-activity-night');
+                }
               },
               child: Image.asset(
                 'assets/run.png',

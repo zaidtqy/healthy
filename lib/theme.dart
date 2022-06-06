@@ -8,6 +8,7 @@ Color secondaryColor = const Color(0xff5E8B7E);
 Color thirdColor = const Color(0xffDFEEEA);
 Color fourthColor = const Color(0xffA7C4BC);
 Color backgroundColor = const Color(0xffF4F4F4);
+Color disable = const Color(0xff9E9E9E);
 
 TextStyle primaryTextStyle = GoogleFonts.nunito(
   color: primaryColor,
