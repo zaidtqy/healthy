@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:healthy/pages/sign_in_page.dart';
 import 'package:healthy/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AdminHomePage extends StatefulWidget {
   const AdminHomePage({Key? key}) : super(key: key);
@@ -112,9 +113,9 @@ class _AdminHomePageState extends State<AdminHomePage> {
                   ),
                 ),
               ),
-              onPressed: () {
-                // Navigator.pushNamed(context, '/form-information');
-              },
+              onPressed: () => launch(
+                'https://docs.google.com/spreadsheets/d/1vcWd2bfzQJOhgBjbn2rkdkwwxYVyEuOnWleViccjO7M/edit#gid=49968534',
+              ),
               child: Image.asset(
                 'assets/xls.png',
                 width: 50,
@@ -161,9 +162,9 @@ class _AdminHomePageState extends State<AdminHomePage> {
                   ),
                 ),
               ),
-              onPressed: () {
-                // Navigator.pushNamed(context, '/form-activity');
-              },
+              onPressed: () => launch(
+                'https://docs.google.com/spreadsheets/d/1vcWd2bfzQJOhgBjbn2rkdkwwxYVyEuOnWleViccjO7M/edit#gid=1100699008',
+              ),
               child: Image.asset(
                 'assets/xls.png',
                 width: 50,
@@ -261,9 +262,9 @@ class _AdminHomePageState extends State<AdminHomePage> {
                   ),
                 ),
               ),
-              onPressed: () {
-                // Navigator.pushNamed(context, '/form-antrhopometri');
-              },
+              onPressed: () => launch(
+                'https://docs.google.com/spreadsheets/d/1vcWd2bfzQJOhgBjbn2rkdkwwxYVyEuOnWleViccjO7M/edit#gid=1085751755',
+              ),
               child: Image.asset(
                 'assets/xls.png',
                 width: 50,
@@ -310,9 +311,9 @@ class _AdminHomePageState extends State<AdminHomePage> {
                   ),
                 ),
               ),
-              onPressed: () {
-                // Navigator.pushNamed(context, '/form-hemoglobin');
-              },
+              onPressed: () => launch(
+                'https://docs.google.com/spreadsheets/d/1vcWd2bfzQJOhgBjbn2rkdkwwxYVyEuOnWleViccjO7M/edit#gid=390369604',
+              ),
               child: Image.asset(
                 'assets/xls.png',
                 width: 50,
@@ -359,9 +360,9 @@ class _AdminHomePageState extends State<AdminHomePage> {
                   ),
                 ),
               ),
-              onPressed: () {
-                // Navigator.pushNamed(context, '/form-knowledge');
-              },
+              onPressed: () => launch(
+                'https://docs.google.com/spreadsheets/d/1vcWd2bfzQJOhgBjbn2rkdkwwxYVyEuOnWleViccjO7M/edit#gid=234313493',
+              ),
               child: Image.asset(
                 'assets/xls.png',
                 width: 50,
@@ -377,6 +378,55 @@ class _AdminHomePageState extends State<AdminHomePage> {
               'Unduh Kesehatan Reproduksi dan Pola Makan',
               style: primaryTextStyle.copyWith(
                 fontSize: 8,
+                fontWeight: bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      );
+    }
+
+    Widget downloadNotification() {
+      return Column(
+        children: [
+          Container(
+            height: 75,
+            width: 75,
+            margin: const EdgeInsets.only(top: 30),
+            decoration: BoxDecoration(
+              color: fourthColor,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(
+                  fourthColor,
+                ),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                ),
+              ),
+              onPressed: () => launch(
+                'https://docs.google.com/spreadsheets/d/1vcWd2bfzQJOhgBjbn2rkdkwwxYVyEuOnWleViccjO7M/edit#gid=1992698539',
+              ),
+              child: Image.asset(
+                'assets/xls.png',
+                width: 50,
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          SizedBox(
+            width: 75,
+            child: Text(
+              'Unduh Notifikasi',
+              style: primaryTextStyle.copyWith(
+                fontSize: 10,
                 fontWeight: bold,
               ),
               textAlign: TextAlign.center,
@@ -499,6 +549,11 @@ class _AdminHomePageState extends State<AdminHomePage> {
                   downloadHb(),
                   const Spacer(),
                   downloadKnowledge(),
+                ],
+              ),
+              Row(
+                children: [
+                  downloadNotification(),
                 ],
               ),
               const SizedBox(
