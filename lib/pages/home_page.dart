@@ -63,38 +63,38 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  Future<bool> _onWillPop(BuildContext context) async {
-    bool? exitResult = await showDialog(
-      context: context,
-      builder: (context) => _buildExitDialog(context),
-    );
-    return exitResult ?? false;
-  }
+  // Future<bool> _onWillPop(BuildContext context) async {
+  //   bool? exitResult = await showDialog(
+  //     context: context,
+  //     builder: (context) => _buildExitDialog(context),
+  //   );
+  //   return exitResult ?? false;
+  // }
 
   // ignore: unused_element
-  Future<bool?> _showExitDialog(BuildContext context) async {
-    return await showDialog(
-      context: context,
-      builder: (context) => _buildExitDialog(context),
-    );
-  }
+  // Future<bool?> _showExitDialog(BuildContext context) async {
+  //   return await showDialog(
+  //     context: context,
+  //     builder: (context) => _buildExitDialog(context),
+  //   );
+  // }
 
-  AlertDialog _buildExitDialog(BuildContext context) {
-    return AlertDialog(
-      title: const Text('Konfirmasi'),
-      content: const Text('Apakah anda ingin keluar dari aplikasi?'),
-      actions: <Widget>[
-        TextButton(
-          onPressed: () => Navigator.of(context).pop(false),
-          child: const Text('Tidak'),
-        ),
-        TextButton(
-          onPressed: () => Navigator.of(context).pop(true),
-          child: const Text('Iya'),
-        ),
-      ],
-    );
-  }
+  // AlertDialog _buildExitDialog(BuildContext context) {
+  //   return AlertDialog(
+  //     title: const Text('Konfirmasi'),
+  //     content: const Text('Apakah anda ingin keluar dari aplikasi?'),
+  //     actions: <Widget>[
+  //       TextButton(
+  //         onPressed: () => Navigator.of(context).pop(false),
+  //         child: const Text('Tidak'),
+  //       ),
+  //       TextButton(
+  //         onPressed: () => Navigator.of(context).pop(true),
+  //         child: const Text('Iya'),
+  //       ),
+  //     ],
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -2408,192 +2408,189 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
-    return WillPopScope(
-      onWillPop: () => _onWillPop(context),
-      child: Scaffold(
-        backgroundColor: backgroundColor,
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(50.0),
-          child: AppBar(
-            backgroundColor: fourthColor,
-            automaticallyImplyLeading: false,
-            elevation: 5,
-            title: Text(
-              'Halo, Selamat datang',
-              style: primaryTextStyle.copyWith(
-                fontSize: 15,
-                fontWeight: bold,
-              ),
+    return Scaffold(
+      backgroundColor: backgroundColor,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(50.0),
+        child: AppBar(
+          backgroundColor: fourthColor,
+          automaticallyImplyLeading: false,
+          elevation: 5,
+          title: Text(
+            'Halo, Selamat datang',
+            style: primaryTextStyle.copyWith(
+              fontSize: 15,
+              fontWeight: bold,
             ),
-            leading: IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/menu-page');
-              },
-              icon: Icon(
-                Icons.menu,
-                color: primaryColor,
-                size: 30,
-              ),
+          ),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/menu-page');
+            },
+            icon: Icon(
+              Icons.menu,
+              color: primaryColor,
+              size: 30,
             ),
-            actions: [
-              FutureBuilder<List<HistoryNotificationModel>?>(
-                future: NotificationService()
-                    .fetchNotification(uid: loggedInUser.uid),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done) {
-                    if (snapshot.hasData) {
-                      return IconButton(
-                        onPressed: () async {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => NotificationsPage(
-                                listNotifModel: snapshot.data!,
-                              ),
-                            ),
-                          );
-                        },
-                        padding: const EdgeInsets.only(right: 25),
-                        icon: Badge(
-                          badgeContent: Align(
-                            alignment: Alignment.topRight,
-                            child: Text(
-                              snapshot.data!
-                                  .where((e) => e.isRead == false)
-                                  .length
-                                  .toString(),
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 10,
-                                fontWeight: bold,
-                              ),
+          ),
+          actions: [
+            FutureBuilder<List<HistoryNotificationModel>?>(
+              future: NotificationService()
+                  .fetchNotification(uid: loggedInUser.uid),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  if (snapshot.hasData) {
+                    return IconButton(
+                      onPressed: () async {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => NotificationsPage(
+                              listNotifModel: snapshot.data!,
                             ),
                           ),
-                          badgeColor: backgroundColor,
-                          child: Icon(
-                            Icons.notifications,
-                            color: primaryColor,
-                            size: 30,
+                        );
+                      },
+                      padding: const EdgeInsets.only(right: 25),
+                      icon: Badge(
+                        badgeContent: Align(
+                          alignment: Alignment.topRight,
+                          child: Text(
+                            snapshot.data!
+                                .where((e) => e.isRead == false)
+                                .length
+                                .toString(),
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 10,
+                              fontWeight: bold,
+                            ),
                           ),
                         ),
-                      );
-                    }
-                  }
-                  return IconButton(
-                    onPressed: () {},
-                    padding: const EdgeInsets.only(right: 25),
-                    icon: Badge(
-                      badgeContent: Align(
-                        alignment: Alignment.topRight,
-                        child: Text(
-                          '0',
-                          style: primaryTextStyle.copyWith(
-                            fontSize: 10,
-                            fontWeight: bold,
-                          ),
+                        badgeColor: backgroundColor,
+                        child: Icon(
+                          Icons.notifications,
+                          color: primaryColor,
+                          size: 30,
                         ),
                       ),
-                      badgeColor: backgroundColor,
-                      child: Icon(
-                        Icons.notifications,
-                        color: primaryColor,
-                        size: 30,
+                    );
+                  }
+                }
+                return IconButton(
+                  onPressed: () {},
+                  padding: const EdgeInsets.only(right: 25),
+                  icon: Badge(
+                    badgeContent: Align(
+                      alignment: Alignment.topRight,
+                      child: Text(
+                        '0',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 10,
+                          fontWeight: bold,
+                        ),
                       ),
                     ),
-                  );
-                },
+                    badgeColor: backgroundColor,
+                    child: Icon(
+                      Icons.notifications,
+                      color: primaryColor,
+                      size: 30,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+      body: SafeArea(
+        child: Container(
+          margin: EdgeInsets.symmetric(
+            horizontal: defaultMargin,
+          ),
+          child: ListView(
+            children: [
+              info(),
+              Row(
+                children: [
+                  menuInformation(),
+                  const Spacer(),
+                  menuActivity(),
+                  const Spacer(),
+                  menuIntake(),
+                ],
+              ),
+              Row(
+                children: [
+                  menuAntrhopometri(),
+                  const Spacer(),
+                  menuHb(),
+                  const Spacer(),
+                  menuKnowledge(),
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Text(
+                'Riwayat Data Anda',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 20,
+                  fontWeight: bold,
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              informationSubject(
+                uid: loggedInUser.uid,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              activitySubject(
+                uid: loggedInUser.uid,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              intakeSubject(),
+              const SizedBox(
+                height: 15,
+              ),
+              antrhopometriSubject(
+                uid: loggedInUser.uid,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              hemoglobinSubject(
+                uid: loggedInUser.uid,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              knowledgeSubject(
+                uid: loggedInUser.uid,
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Text(
+                'Artikel Terkait',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 20,
+                  fontWeight: bold,
+                ),
+              ),
+              article1(),
+              article2(),
+              article3(),
+              article4(),
+              article5(),
+              const SizedBox(
+                height: 30,
               ),
             ],
-          ),
-        ),
-        body: SafeArea(
-          child: Container(
-            margin: EdgeInsets.symmetric(
-              horizontal: defaultMargin,
-            ),
-            child: ListView(
-              children: [
-                info(),
-                Row(
-                  children: [
-                    menuInformation(),
-                    const Spacer(),
-                    menuActivity(),
-                    const Spacer(),
-                    menuIntake(),
-                  ],
-                ),
-                Row(
-                  children: [
-                    menuAntrhopometri(),
-                    const Spacer(),
-                    menuHb(),
-                    const Spacer(),
-                    menuKnowledge(),
-                  ],
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Text(
-                  'Riwayat Data Anda',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 20,
-                    fontWeight: bold,
-                  ),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                informationSubject(
-                  uid: loggedInUser.uid,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                activitySubject(
-                  uid: loggedInUser.uid,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                intakeSubject(),
-                const SizedBox(
-                  height: 15,
-                ),
-                antrhopometriSubject(
-                  uid: loggedInUser.uid,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                hemoglobinSubject(
-                  uid: loggedInUser.uid,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                knowledgeSubject(
-                  uid: loggedInUser.uid,
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Text(
-                  'Artikel Terkait',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 20,
-                    fontWeight: bold,
-                  ),
-                ),
-                article1(),
-                article2(),
-                article3(),
-                article4(),
-                article5(),
-                const SizedBox(
-                  height: 30,
-                ),
-              ],
-            ),
           ),
         ),
       ),

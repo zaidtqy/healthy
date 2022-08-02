@@ -27,10 +27,12 @@ class _SplashPageState extends State<SplashPage> {
         final getEmail = pref.getString('email_key');
         final getPassword = pref.getString('password_key');
         if (getEmail == null || getPassword == null) {
-          Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => const SignInPage()),
-            ModalRoute.withName('/'),
-          );
+          // Navigator.of(context).pushAndRemoveUntil(
+          //   MaterialPageRoute(builder: (context) => const SignInPage()),
+          //   ModalRoute.withName('/'),
+          // );
+          Navigator.of(context).pushNamedAndRemoveUntil(
+              '/sign-in', (Route<dynamic> route) => false);
         } else {
           checkRole();
         }
@@ -72,10 +74,11 @@ class _SplashPageState extends State<SplashPage> {
     });
 
     if (role == 'user') {
-      Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => const HomePage()),
-        ModalRoute.withName('/'),
-      );
+      // Navigator.of(context).pushAndRemoveUntil(
+      //     MaterialPageRoute(builder: (context) => const HomePage()),
+      //     (Route<dynamic> route) => false);
+      Navigator.of(context).pushNamedAndRemoveUntil(
+          '/home-page', (Route<dynamic> route) => false);
     } else if (role == 'admin') {
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) => const AdminHomePage()),

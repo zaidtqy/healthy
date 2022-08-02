@@ -318,10 +318,12 @@ class _SignInPageState extends State<SignInPage> {
     });
 
     if (role == 'user') {
-      Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => const HomePage()),
-        ModalRoute.withName('/'),
-      );
+      // Navigator.of(context).pushAndRemoveUntil(
+      //   MaterialPageRoute(builder: (context) => const HomePage()),
+      //   ModalRoute.withName('/'),
+      // );
+      Navigator.of(context).pushNamedAndRemoveUntil(
+          '/home-page', (Route<dynamic> route) => false);
     } else if (role == 'admin') {
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) => const AdminHomePage()),
