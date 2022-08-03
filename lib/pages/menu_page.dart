@@ -572,11 +572,11 @@ class _MenuPageState extends State<MenuPage> {
                                         Fluttertoast.showToast(
                                           msg: 'Semua Notifikasi Diaktifkan',
                                         );
-                                        scheduledActivityNotification1();
-                                        scheduledActivityNotification2();
-                                        scheduledActivityNotification3();
-                                        scheduledActivityNotification4();
-                                        scheduledActivityNotification();
+                                        // scheduledActivityNotification1();
+                                        // scheduledActivityNotification2();
+                                        // scheduledActivityNotification3();
+                                        // scheduledActivityNotification4();
+                                        // scheduledActivityNotification();
                                         testNotification();
                                       });
                                     } else {
@@ -584,7 +584,8 @@ class _MenuPageState extends State<MenuPage> {
                                         Fluttertoast.showToast(
                                           msg: 'Semua Notifikasi Dimatikan',
                                         );
-                                        cancelScheduledNotifications();
+                                        // cancelScheduledNotifications();
+                                        cancelScheduledNotificationsTest();
                                       });
                                     }
                                   },

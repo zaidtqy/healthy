@@ -63,39 +63,6 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  // Future<bool> _onWillPop(BuildContext context) async {
-  //   bool? exitResult = await showDialog(
-  //     context: context,
-  //     builder: (context) => _buildExitDialog(context),
-  //   );
-  //   return exitResult ?? false;
-  // }
-
-  // ignore: unused_element
-  // Future<bool?> _showExitDialog(BuildContext context) async {
-  //   return await showDialog(
-  //     context: context,
-  //     builder: (context) => _buildExitDialog(context),
-  //   );
-  // }
-
-  // AlertDialog _buildExitDialog(BuildContext context) {
-  //   return AlertDialog(
-  //     title: const Text('Konfirmasi'),
-  //     content: const Text('Apakah anda ingin keluar dari aplikasi?'),
-  //     actions: <Widget>[
-  //       TextButton(
-  //         onPressed: () => Navigator.of(context).pop(false),
-  //         child: const Text('Tidak'),
-  //       ),
-  //       TextButton(
-  //         onPressed: () => Navigator.of(context).pop(true),
-  //         child: const Text('Iya'),
-  //       ),
-  //     ],
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     final String time = DateFormat("HHmm").format(DateTime.now());

@@ -3,9 +3,6 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:healthy/pages/admin_home_page.dart';
-import 'package:healthy/pages/home_page.dart';
-import 'package:healthy/pages/sign_in_page.dart';
 import 'package:healthy/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -27,10 +24,6 @@ class _SplashPageState extends State<SplashPage> {
         final getEmail = pref.getString('email_key');
         final getPassword = pref.getString('password_key');
         if (getEmail == null || getPassword == null) {
-          // Navigator.of(context).pushAndRemoveUntil(
-          //   MaterialPageRoute(builder: (context) => const SignInPage()),
-          //   ModalRoute.withName('/'),
-          // );
           Navigator.of(context).pushNamedAndRemoveUntil(
               '/sign-in', (Route<dynamic> route) => false);
         } else {
@@ -74,16 +67,11 @@ class _SplashPageState extends State<SplashPage> {
     });
 
     if (role == 'user') {
-      // Navigator.of(context).pushAndRemoveUntil(
-      //     MaterialPageRoute(builder: (context) => const HomePage()),
-      //     (Route<dynamic> route) => false);
       Navigator.of(context).pushNamedAndRemoveUntil(
           '/home-page', (Route<dynamic> route) => false);
     } else if (role == 'admin') {
-      Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => const AdminHomePage()),
-        ModalRoute.withName('/'),
-      );
+      Navigator.of(context).pushNamedAndRemoveUntil(
+          '/admin-homepage', (Route<dynamic> route) => false);
     }
   }
 }

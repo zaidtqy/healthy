@@ -2,7 +2,6 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:healthy/pages/sign_in_page.dart';
 import 'package:healthy/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -573,8 +572,6 @@ class _AdminHomePageState extends State<AdminHomePage> {
 
 Future<void> logout(BuildContext context) async {
   await FirebaseAuth.instance.signOut();
-  Navigator.of(context).pushAndRemoveUntil(
-    MaterialPageRoute(builder: (context) => const SignInPage()),
-    ModalRoute.withName('/'),
-  );
+  Navigator.of(context)
+      .pushNamedAndRemoveUntil('/sign-in', (Route<dynamic> route) => false);
 }

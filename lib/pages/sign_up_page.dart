@@ -507,9 +507,7 @@ class _SignUpPageState extends State<SignUpPage> {
         .set(userModel.toMap());
     Fluttertoast.showToast(msg: "Akun Anda Berhasil Dibuat!");
 
-    Navigator.pushAndRemoveUntil(
-        (context),
-        MaterialPageRoute(builder: (context) => const SignInPage()),
-        (route) => false);
+    Navigator.of(context)
+        .pushNamedAndRemoveUntil('/sign-in', (Route<dynamic> route) => false);
   }
 }

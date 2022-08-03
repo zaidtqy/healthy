@@ -2,12 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:healthy/pages/admin_home_page.dart';
 import 'package:healthy/pages/sign_up_page.dart';
 import 'package:healthy/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'home_page.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -318,17 +315,11 @@ class _SignInPageState extends State<SignInPage> {
     });
 
     if (role == 'user') {
-      // Navigator.of(context).pushAndRemoveUntil(
-      //   MaterialPageRoute(builder: (context) => const HomePage()),
-      //   ModalRoute.withName('/'),
-      // );
       Navigator.of(context).pushNamedAndRemoveUntil(
           '/home-page', (Route<dynamic> route) => false);
     } else if (role == 'admin') {
-      Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => const AdminHomePage()),
-        ModalRoute.withName('/'),
-      );
+      Navigator.of(context).pushNamedAndRemoveUntil(
+          '/admin-homepage', (Route<dynamic> route) => false);
     }
   }
 }

@@ -161,14 +161,14 @@ Future<void> createKnowledgeNotification() async {
 Future<void> testNotification() async {
   await AwesomeNotifications().createNotification(
     content: NotificationContent(
-      id: createUniqueId(),
+      id: 99,
       channelKey: 'basic_channel',
       title: '${Emojis.transport_police_car_light} TESTING BERHASIL MUNCUL!',
       body: 'Testing notifikasi ketika waktu sudah diatur.',
     ),
     schedule: NotificationCalendar(
-      hour: 13,
-      minute: 40,
+      hour: 5,
+      minute: 42,
       second: 0,
       millisecond: 0,
       repeats: true,
@@ -178,4 +178,8 @@ Future<void> testNotification() async {
 
 Future<void> cancelScheduledNotifications() async {
   await AwesomeNotifications().cancelAllSchedules();
+}
+
+Future<void> cancelScheduledNotificationsTest() async {
+  await AwesomeNotifications().cancel(99);
 }
